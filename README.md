@@ -34,6 +34,7 @@ An **AI gateway** sits between your code and LLM providers: one endpoint, one ke
 - [☸️ Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra)
 - [📰 What's new](#-whats-new)
 - [🚀 Recent releases (auto-updated)](#-recent-releases-auto-updated)
+- [Glossary](#glossary)
 - [How to choose safely](#how-to-choose-safely)
 - [FAQ](#faq)
 - [Contributing](#contributing)
@@ -266,6 +267,26 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 - **2026-05-29** · [tbphp/gpt-load v1.4.8](https://github.com/tbphp/gpt-load/releases/tag/v1.4.8) — v1.4.8
 - **2026-05-26** · [QuantumNous/new-api v1.0.0-rc.10](https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.10) — v1.0.0-rc.10
 <!-- RELEASES:END -->
+
+## Glossary
+
+<details>
+<summary>Key terms used in the tables above (click to expand)</summary>
+
+- **AI gateway / LLM gateway** — a proxy between your app and LLM providers; one endpoint and key for many models.
+- **LLM router** — the part that decides *which model* serves each request (cheap vs flagship, by cost or quality).
+- **Fallback** — automatically retry on another model/provider when the first fails or times out.
+- **Load balancing (LB)** — spread traffic across keys/providers to dodge rate limits and outages.
+- **Semantic caching** — return a cached answer when a *new* prompt is semantically similar to a past one (not just identical).
+- **Prompt / cached input** — providers bill reused prompt prefixes at a steep discount (≈0.1×); the gateway must not mangle the prefix or the cache misses.
+- **Guardrails** — input/output checks: prompt-injection detection, PII redaction, content filtering, schema enforcement.
+- **Virtual keys** — per-user/team keys the gateway issues in front of your real provider keys, with their own budgets and limits.
+- **ZDR (zero data retention)** — provider/gateway contractually does not store your prompts or completions.
+- **BYOK** — bring your own key: the gateway uses *your* provider accounts rather than reselling tokens.
+- **Markup** — the gateway's fee on top of provider token cost (0% to ~6%).
+- **MCP gateway** — governs agent ↔ tool traffic (Model Context Protocol), the agentic counterpart to an LLM gateway.
+
+</details>
 
 ## How to choose safely
 

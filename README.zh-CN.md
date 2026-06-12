@@ -34,6 +34,7 @@
 - [☸️ Kubernetes 原生与推理基础设施](#️-kubernetes-原生与推理基础设施)
 - [📰 行业动态](#-行业动态)
 - [🚀 最新版本发布（自动更新）](#-最新版本发布自动更新)
+- [术语表](#术语表)
 - [如何安全选型](#如何安全选型)
 - [常见问题 FAQ](#常见问题-faq)
 - [参与贡献](#参与贡献)
@@ -266,6 +267,26 @@ resp = client.chat.completions.create(
 - **2026-05-29** · [tbphp/gpt-load v1.4.8](https://github.com/tbphp/gpt-load/releases/tag/v1.4.8) — v1.4.8
 - **2026-05-26** · [QuantumNous/new-api v1.0.0-rc.10](https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.10) — v1.0.0-rc.10
 <!-- RELEASES:END -->
+
+## 术语表
+
+<details>
+<summary>上面表格里用到的关键术语（点击展开）</summary>
+
+- **AI 网关 / LLM 网关** — 应用与大模型厂商之间的代理；一个端点、一把 Key 打通多模型。
+- **LLM 路由** — 决定*每个请求走哪个模型*的部分（便宜款 vs 旗舰款，按成本或质量）。
+- **故障转移（Fallback）** — 首选模型/厂商失败或超时时，自动改用另一个重试。
+- **负载均衡（LB）** — 把流量分散到多个 Key/厂商，规避限流和宕机。
+- **语义缓存** — 当*新* prompt 与历史 prompt 语义相近（而非完全相同）时返回缓存答案。
+- **Prompt / 缓存输入** — 厂商对复用的 prompt 前缀大幅打折（约 0.1×）；网关若改动前缀会导致缓存失效。
+- **护栏（Guardrails）** — 输入/输出检查：Prompt 注入检测、PII 脱敏、内容过滤、结构化校验。
+- **虚拟 Key** — 网关在你真实厂商 Key 前面发放的按用户/团队的 Key，各带预算与限额。
+- **ZDR（零数据保留）** — 厂商/网关以合约形式承诺不存储你的 prompt 和回复。
+- **BYOK** — 自带 Key：网关用*你自己*的厂商账号，而非转售 token。
+- **Markup（加价）** — 网关在厂商 token 成本之上收的费（0% 到约 6%）。
+- **MCP 网关** — 治理 Agent ↔ 工具流量（Model Context Protocol），是 LLM 网关在智能体侧的对应物。
+
+</details>
 
 ## 如何安全选型
 
