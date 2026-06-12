@@ -1,5 +1,13 @@
 # Awesome AI Gateway [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+[![GitHub stars](https://img.shields.io/github/stars/cuihuan/awesome-ai-gateway?style=social)](https://github.com/cuihuan/awesome-ai-gateway/stargazers)
+[![Gateways](https://img.shields.io/badge/网关-50%2B-blue)](#快速对比)
+[![Data updated daily](https://img.shields.io/badge/数据-每日更新-success?logo=githubactions&logoColor=white)](.github/workflows/daily-update.yml)
+[![Evaluation set](https://img.shields.io/badge/📊-评测集-orange)](BENCHMARKS.zh-CN.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway)](https://github.com/cuihuan/awesome-ai-gateway/commits/main)
+
 > **AI 网关 / LLM 代理精选清单** — LiteLLM、OpenRouter、Portkey、Kong、Higress、new-api 等 50+ 项目，按真实诉求分类：**性价比、合规、自托管、智能路由、国内生态**。星数与版本发布由 CI 每日自动刷新。
 
 **语言：** [English](README.md) · 简体中文

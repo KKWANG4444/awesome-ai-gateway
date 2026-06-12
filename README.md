@@ -1,5 +1,13 @@
 # Awesome AI Gateway [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+[![GitHub stars](https://img.shields.io/github/stars/cuihuan/awesome-ai-gateway?style=social)](https://github.com/cuihuan/awesome-ai-gateway/stargazers)
+[![Gateways](https://img.shields.io/badge/gateways-50%2B-blue)](#quick-comparison)
+[![Data updated daily](https://img.shields.io/badge/data-updated%20daily-success?logo=githubactions&logoColor=white)](.github/workflows/daily-update.yml)
+[![Evaluation set](https://img.shields.io/badge/📊-evaluation%20set-orange)](BENCHMARKS.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway)](https://github.com/cuihuan/awesome-ai-gateway/commits/main)
+
 > A curated list of **AI gateways & LLM proxies** — LiteLLM, OpenRouter, Portkey, Kong, Higress, new-api and 50+ more — organized by what you actually need: **lowest cost, compliance, self-hosting, smart routing, or China-ecosystem support**. Star counts and releases refresh daily via CI.
 
 **Languages:** English · [简体中文](README.zh-CN.md)
