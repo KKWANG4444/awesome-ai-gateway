@@ -56,6 +56,33 @@ Do you want to self-host?
     └─ Governing AI agents & MCP traffic ───────▶ agentgateway · Lunar.dev
 ```
 
+## Quick start (drop-in)
+
+The whole promise of a gateway: **change `base_url`, keep your OpenAI code.** Same request, now with routing, fallback, caching and cost tracking.
+
+```python
+from openai import OpenAI
+
+# Hosted example — OpenRouter (400+ models, one key):
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-...",
+)
+
+# Self-hosted example — a LiteLLM proxy you run:
+client = OpenAI(
+    base_url="http://localhost:4000",
+    api_key="sk-litellm-...",
+)
+
+resp = client.chat.completions.create(
+    model="anthropic/claude-fable-5",        # ask the gateway for any provider's model
+    messages=[{"role": "user", "content": "Hello!"}],
+)
+```
+
+Base URLs for the rest are on each project's docs (linked below). Most are OpenAI-compatible, so the only change is these two lines.
+
 ## Quick comparison
 
 Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not available.

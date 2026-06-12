@@ -56,6 +56,33 @@
     └─ 治理 Agent / MCP 流量 ───────▶ agentgateway · Lunar.dev
 ```
 
+## 快速上手（一行接入）
+
+网关的全部承诺就是：**改一个 `base_url`，OpenAI 代码照旧**。同一个请求，立刻拥有路由、兜底、缓存与成本核算。
+
+```python
+from openai import OpenAI
+
+# 托管示例 —— OpenRouter（400+ 模型，一把 Key）：
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-...",
+)
+
+# 自托管示例 —— 你自己跑的 LiteLLM 代理：
+client = OpenAI(
+    base_url="http://localhost:4000",
+    api_key="sk-litellm-...",
+)
+
+resp = client.chat.completions.create(
+    model="anthropic/claude-fable-5",        # 向网关点名任意厂商的模型
+    messages=[{"role": "user", "content": "你好！"}],
+)
+```
+
+其余网关的 base_url 见各项目文档（下方有链接）。大多兼容 OpenAI 格式，所以改动就这两行。
+
 ## 快速对比
 
 星数每日自动刷新。✅ 内置 · ➕ 插件/付费版 · ❌ 不支持。
