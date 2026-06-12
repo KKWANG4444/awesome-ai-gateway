@@ -21,6 +21,7 @@ An **AI gateway** sits between your code and LLM providers: one endpoint, one ke
 
 - [📊 Evaluation set: model benchmarks · token cost · gateway scorecard](BENCHMARKS.md)
 - [Which gateway should I use? (decision tree)](#which-gateway-should-i-use)
+- [Quick start (drop-in)](#quick-start-drop-in)
 - [Quick comparison](#quick-comparison)
 - [💰 Cost-first: cheapest multi-model access](#-cost-first-cheapest-multi-model-access)
 - [🔓 Self-hosted open source](#-self-hosted-open-source)
@@ -34,6 +35,7 @@ An **AI gateway** sits between your code and LLM providers: one endpoint, one ke
 - [📰 What's new](#-whats-new)
 - [🚀 Recent releases (auto-updated)](#-recent-releases-auto-updated)
 - [How to choose safely](#how-to-choose-safely)
+- [FAQ](#faq)
 - [Contributing](#contributing)
 
 ## Which gateway should I use?
