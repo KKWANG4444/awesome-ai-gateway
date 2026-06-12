@@ -1,0 +1,199 @@
+{
+  "_comment": "Benchmark + pricing snapshot for the evaluation set. Pricing drives scripts/cost_calc.py (reproducible cost tables). Benchmarks are dated public figures; null = not verified at review time. Prices USD per 1M tokens.",
+  "as_of": "2026-06-12",
+  "sources": {
+    "benchmarks": "Artificial Analysis Intelligence Index v4.0, Arena (ex-LMArena), SWE-bench, vendor model cards (see BENCHMARKS.md Sources)",
+    "pricing": "Official provider pricing pages + Artificial Analysis, captured 2026-06-12"
+  },
+  "models": [
+    {
+      "name": "Claude Fable 5",
+      "provider": "Anthropic",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 65.0, "gpqa_diamond": 0.95, "swe_bench_verified": 0.95, "swe_bench_pro": 0.803, "hle": 0.59, "arena_elo": null, "aime": null, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 10.0, "output": 50.0, "cached_input": 1.0},
+      "reasoning": true,
+      "scenario_cost": false,
+      "benchmark_table": true,
+      "notes": "AA Index #1 and SWE-bench Pro #1 as of review date. Arena Elo not yet settled."
+    },
+    {
+      "name": "Claude Opus 4.8",
+      "provider": "Anthropic",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 61.4, "gpqa_diamond": 0.936, "swe_bench_verified": 0.886, "swe_bench_pro": 0.692, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 5.0, "output": 25.0, "cached_input": 0.5},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Flagship-tier capability, ceiling-tier price."
+    },
+    {
+      "name": "GPT-5.5",
+      "provider": "OpenAI",
+      "open": false,
+      "context_tokens": 400000,
+      "benchmarks": {"aa_index": 60.2, "gpqa_diamond": 0.936, "swe_bench_verified": 0.887, "swe_bench_pro": 0.586, "hle": null, "arena_elo": 1402, "aime": null, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 5.0, "output": 30.0, "cached_input": 0.5},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Unified agentic/reasoning model; emits hidden thinking tokens billed as output. Arena Elo shown is the prior GPT-5.2 snapshot. Context ~400k+ (exact UNVERIFIED)."
+    },
+    {
+      "name": "Gemini 3.1 Pro",
+      "provider": "Google",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 57.2, "gpqa_diamond": 0.943, "swe_bench_verified": 0.806, "swe_bench_pro": null, "hle": 0.444, "arena_elo": 1406, "aime": 0.982, "aime_year": 2026, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 2.0, "output": 12.0, "cached_input": 0.2},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Price doubles above 200k context ($4/$18). Top of Arena."
+    },
+    {
+      "name": "Qwen3.7 Max",
+      "provider": "Alibaba",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 56.6, "gpqa_diamond": 0.924, "swe_bench_verified": null, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": 0.75, "aime_year": 2025, "mmlu_pro": 0.838},
+      "reasoning": false,
+      "scenario_cost": false,
+      "benchmark_table": true,
+      "notes": "DashScope USD pricing RMB-derived and promo-heavy — excluded from cost tables to avoid stale FX."
+    },
+    {
+      "name": "Gemini 3.5 Flash",
+      "provider": "Google",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 55.3, "gpqa_diamond": null, "swe_bench_verified": null, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 1.5, "output": 9.0, "cached_input": 0.15},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Cost-tier Gemini; no long-context surcharge."
+    },
+    {
+      "name": "Kimi K2.6",
+      "provider": "Moonshot",
+      "open": true,
+      "context_tokens": 256000,
+      "benchmarks": {"aa_index": 53.9, "gpqa_diamond": 0.905, "swe_bench_verified": 0.802, "swe_bench_pro": 0.586, "hle": null, "arena_elo": null, "aime": 0.964, "aime_year": 2026, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 0.95, "output": 4.0, "cached_input": 0.16},
+      "reasoning": false,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Highest open-weights AA Index; coding/agentic specialist."
+    },
+    {
+      "name": "Grok 4.3",
+      "provider": "xAI",
+      "open": false,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 53.2, "gpqa_diamond": 0.89, "swe_bench_verified": 0.75, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": 0.95, "aime_year": 2025, "mmlu_pro": null},
+      "reasoning": true,
+      "scenario_cost": false,
+      "benchmark_table": true,
+      "notes": "GPQA/SWE/AIME extrapolated from Grok 4 reporting — treat as approximate. Priced as Grok 4 in cost set."
+    },
+    {
+      "name": "DeepSeek V4 Pro",
+      "provider": "DeepSeek",
+      "open": true,
+      "context_tokens": 1000000,
+      "benchmarks": {"aa_index": 51.5, "gpqa_diamond": 0.901, "swe_bench_verified": 0.806, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": 0.893, "aime_year": 2025, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 0.435, "output": 0.87, "cached_input": 0.003625},
+      "reasoning": true,
+      "scenario_cost": false,
+      "benchmark_table": true,
+      "notes": "MIT-licensed open weights. AIME figure is the V3.2 baseline; V4-Pro-specific reproduction pending."
+    },
+    {
+      "name": "GLM-5.1",
+      "provider": "Z.ai (Zhipu)",
+      "open": true,
+      "context_tokens": 200000,
+      "benchmarks": {"aa_index": 51.4, "gpqa_diamond": 0.862, "swe_bench_verified": null, "swe_bench_pro": 0.584, "hle": null, "arena_elo": null, "aime": 0.953, "aime_year": 2026, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 1.4, "output": 4.4, "cached_input": 0.26},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "First Chinese model to top SWE-bench Pro (58.4). Self-reported figures."
+    },
+    {
+      "name": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "open": false,
+      "context_tokens": 200000,
+      "benchmarks": {"aa_index": null, "gpqa_diamond": null, "swe_bench_verified": 0.733, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": null},
+      "pricing_usd_per_mtok": {"input": 1.0, "output": 5.0, "cached_input": 0.1},
+      "reasoning": false,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "Cheapest Claude; strong SWE-bench for its tier."
+    },
+    {
+      "name": "Muse Spark",
+      "provider": "Meta (Llama line)",
+      "open": true,
+      "context_tokens": 262000,
+      "benchmarks": {"aa_index": 52.1, "gpqa_diamond": null, "swe_bench_verified": null, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": null},
+      "reasoning": false,
+      "scenario_cost": false,
+      "benchmark_table": true,
+      "notes": "Latest Meta open-weights line; trails the Chinese open models on coding."
+    },
+    {
+      "name": "Mistral Large 3",
+      "provider": "Mistral",
+      "open": true,
+      "context_tokens": 256000,
+      "benchmarks": {"aa_index": 22.8, "gpqa_diamond": 0.439, "swe_bench_verified": null, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": 0.807},
+      "pricing_usd_per_mtok": {"input": 0.5, "output": 1.5, "cached_input": null},
+      "reasoning": false,
+      "scenario_cost": true,
+      "benchmark_table": true,
+      "notes": "European open-weights MoE; value pick. 'Large 3' = $0.50/$1.50 (legacy Large was $2/$6)."
+    },
+    {
+      "name": "GPT-5.4 nano",
+      "provider": "OpenAI",
+      "open": false,
+      "context_tokens": 400000,
+      "benchmarks": {},
+      "pricing_usd_per_mtok": {"input": 0.2, "output": 1.25, "cached_input": 0.02},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": false,
+      "notes": "Cheapest OpenAI reasoning tier; cost-table representative."
+    },
+    {
+      "name": "DeepSeek V4-Flash",
+      "provider": "DeepSeek",
+      "open": true,
+      "context_tokens": 1000000,
+      "benchmarks": {},
+      "pricing_usd_per_mtok": {"input": 0.14, "output": 0.28, "cached_input": 0.0028},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": false,
+      "notes": "Cost floor across every scenario. Cache reads ~98% off. Reasoner alias = thinking mode."
+    },
+    {
+      "name": "Grok 4",
+      "provider": "xAI",
+      "open": false,
+      "context_tokens": 256000,
+      "benchmarks": {},
+      "pricing_usd_per_mtok": {"input": 3.0, "output": 15.0, "cached_input": null},
+      "reasoning": true,
+      "scenario_cost": true,
+      "benchmark_table": false,
+      "notes": "Pricing stand-in for the Grok line in cost tables."
+    }
+  ]
+}
