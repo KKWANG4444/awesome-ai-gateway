@@ -15,6 +15,12 @@ jobs:
           python-version: '3.12'
       - name: Unit tests
         run: python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Cost tables match data/models.json
+        run: |
+          python scripts/cost_calc.py
+          git diff --exit-code BENCHMARKS.md BENCHMARKS.zh-CN.md || {
+            echo "::error::Cost tables are stale — run 'python scripts/cost_calc.py' after editing data/models.json"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest
