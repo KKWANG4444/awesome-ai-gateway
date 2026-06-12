@@ -21,6 +21,12 @@ jobs:
           git diff --exit-code BENCHMARKS.md BENCHMARKS.zh-CN.md || {
             echo "::error::Cost tables are stale — run 'python scripts/cost_calc.py' after editing data/models.json"; exit 1;
           }
+      - name: CSV exports match the data
+        run: |
+          python scripts/export_csv.py
+          git diff --exit-code data/cost_table.csv data/gateways_scorecard.csv || {
+            echo "::error::CSV exports are stale — run 'python scripts/export_csv.py' after editing the data"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest

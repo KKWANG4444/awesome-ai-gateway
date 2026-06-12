@@ -129,6 +129,8 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ¹ LiteLLM core is MIT; the repo contains a separately licensed enterprise directory.
 
+> 📂 **Browse the raw data** (machine-readable, CC0): [models & pricing JSON](data/models.json) · [cost table CSV](data/cost_table.csv) · [gateway scorecard CSV](data/gateways_scorecard.csv). Every cost cell is regenerated from this data by a [unit-tested script](scripts/cost_calc.py).
+
 ## 💰 Cost-first: cheapest multi-model access
 
 *Pain point: "I want many models for the least money and zero ops."*

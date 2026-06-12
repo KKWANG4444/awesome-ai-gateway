@@ -129,6 +129,8 @@ resp = client.chat.completions.create(
 
 ¹ LiteLLM 核心为 MIT，仓库内含单独授权的企业版目录。
 
+> 📂 **浏览原始数据**（机器可读，CC0）：[模型与价格 JSON](data/models.json) · [成本表 CSV](data/cost_table.csv) · [网关评分卡 CSV](data/gateways_scorecard.csv)。每个成本数字都由[带单测的脚本](scripts/cost_calc.py)从这些数据重新生成。
+
 ## 💰 性价比优先
 
 *痛点："用最少的钱接入最多的模型，还不想搞运维。"*
