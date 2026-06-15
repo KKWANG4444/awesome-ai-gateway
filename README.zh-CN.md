@@ -53,6 +53,12 @@
 
 ## 我该用哪个网关？
 
+<p align="center">
+  <img src="assets/decision-tree.zh-CN.png" alt="决策树：我该用哪个 AI 网关？托管（OpenRouter、Vercel、Cloudflare、Bedrock、Azure、Vertex、Portkey）vs 自托管开源（LiteLLM、Bifrost、TensorZero、new-api、one-api、GPT-Load、Kong、Higress、APISIX、Envoy AI Gateway、agentgateway），按你的需求来选。" width="840">
+</p>
+
+> _速览版 —— 完整决策树（分支更全）就在下面。_
+
 ```text
 要不要自己部署？
 │

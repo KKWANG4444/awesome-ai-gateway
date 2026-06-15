@@ -53,6 +53,12 @@
 
 ## Which gateway should I use?
 
+<p align="center">
+  <img src="assets/decision-tree.png" alt="Decision tree: which AI gateway should you use? Hosted (OpenRouter, Vercel, Cloudflare, Bedrock, Azure, Vertex, Portkey) vs self-hosted open source (LiteLLM, Bifrost, TensorZero, new-api, one-api, GPT-Load, Kong, Higress, APISIX, Envoy AI Gateway, agentgateway), chosen by what you need." width="840">
+</p>
+
+> _At a glance — the complete decision tree (more branches) is right below._
+
 ```text
 Do you want to self-host?
 │
