@@ -6,6 +6,8 @@
 
 > **Pick the right AI gateway for your need in ~10 seconds — then trust the answer.** A decision tree, a drop-in snippet, a reproducible cost benchmark, and independent evidence for what we exclude. Organized by what you actually need, not by vendor.
 
+_Built the hard way: **I burned $788 on AI coding in a single day** — one flagship model ate 78% of it, just because I'd defaulted everything to the priciest option. So I mapped the whole gateway landscape. → [the story](#why-this-exists)_
+
 **Languages:** English · [简体中文](README.zh-CN.md)
 
 <p align="center">
@@ -26,7 +28,7 @@
 
 **Browse by need** · [💰 Cost-first](#-cost-first-cheapest-multi-model-access) · [🔓 Self-hosted](#-self-hosted-open-source) · [🏢 Enterprise & compliance](#-enterprise--compliance) · [☁️ First-party clouds](#️-first-party-gateways-cloud--model-vendors) · [🇨🇳 China ecosystem](#-china-ecosystem) · [🤖 MCP & agent gateways](#-mcp--agent-gateways)
 
-**Reference** · [📊 Evaluation set](BENCHMARKS.md) · [How to choose safely](#how-to-choose-safely) · [FAQ](#faq) · [📚 Essential reading](#-essential-reading) · [📰 What's new](#-whats-new) · [Glossary](#glossary) · [Contributing](#contributing)
+**Reference** · [📊 Evaluation set](BENCHMARKS.md) · [How to choose safely](#how-to-choose-safely) · [FAQ](#faq) · [📚 Essential reading](#-essential-reading) · [📰 What's new](#-whats-new) · [Glossary](#glossary) · [Why this exists](#why-this-exists) · [Contributing](#contributing)
 
 </details>
 
@@ -453,6 +455,18 @@ In-depth, data-backed comparisons for the questions people actually search:
 - [**one-api vs new-api vs LiteLLM**](compare/one-api-vs-new-api-vs-litellm.zh-CN.md) — 国内大模型 API 中转怎么选(中文)
 
 *More comparisons coming. Suggest one via an [issue](https://github.com/cuihuan/awesome-ai-gateway/issues).*
+
+## Why this exists
+
+On **June 10 I ran Claude Code hard for ~13 hours, and the bill came to ≈ $788.** One look at the per-model breakdown told the whole story: the flagship (Fable 5) alone was **$617 — 78% of the bill** — while the cheap model (Haiku) did 242 real tasks for **$1.70**. I hadn't done anything clever to rack that up; I'd done the opposite — defaulted every request to the most capable (and most expensive) model because I couldn't be bothered to set up routing.
+
+<p align="center">
+  <img src="assets/claude-code-cost-receipt.png" alt="Claude Code usage for one day: 11 sessions, 3,572 API calls across 4 models, ≈ $788 — Fable 5 alone $617 (78% of the bill), while Haiku did 242 tasks for $1.70." width="760">
+</p>
+
+The fix wasn't "stop using good models." It was **route by task** — default to a cheap model, escalate to a flagship only when the work is genuinely hard. That's exactly what an AI gateway is for. While I was at it, I couldn't find a single gateway list organized by *what you actually need*, that scored the options honestly (CVEs and all), and shipped *reproducible* cost numbers instead of vibes. So I built one — that's this repo.
+
+No vendor money, no affiliate links, CC0. If it saves you one surprise bill, it did its job. ⭐ **[Star it](https://github.com/cuihuan/awesome-ai-gateway)** so the next person mid-$788-day finds it.
 
 ## Contributing
 
