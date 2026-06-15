@@ -40,6 +40,27 @@ A project belongs on this list if **all** of these hold:
 - [ ] `python -m unittest discover -s scripts -p 'test_*.py'` passes if you touched scripts
 - [ ] One project per PR (easier to review)
 
+## Report a sketchy relay (community watch list)
+
+This list **excludes** ToS-violating "free-api" relays — but it also helps you spot
+and document the ones that swap models, harvest data, overcharge, or vanish. That
+watch list is built together, **on evidence, never hearsay.**
+
+1. Generate proof. The fastest is a **canary diff**: run
+   [`scripts/canary_check.py`](scripts/canary_check.py) against the relay and the
+   official endpoint — it sends fixed discriminating prompts, diffs the outputs, and
+   prints a verdict (`OK` / `inconclusive` / `suspicious — likely downgraded`).
+   ```
+   python scripts/canary_check.py \
+     --relay-url https://some-relay.example/v1 --relay-key sk-... \
+     --ref-url   https://api.openai.com/v1     --ref-key  sk-... --model gpt-5.5
+   ```
+   Other accepted evidence: a documented incident/thread, or a redacted billing screenshot.
+2. Open a report with the **[⚠️ Report a sketchy relay](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml)** template and attach the evidence. Redact your keys.
+3. **The rule:** a relay is named only with verifiable, shareable proof — not a rumor,
+   not a competitor grudge. Reports without evidence are closed. This is what keeps the
+   watch list a credibility asset instead of a liability.
+
 ## Reporting stale or wrong entries
 
 Open an issue with the project name and evidence (last release date, archived repo,
