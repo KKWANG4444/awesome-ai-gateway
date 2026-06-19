@@ -1,64 +1,106 @@
 {
-  "generated_at": "2026-06-18T03:36:29Z",
+  "generated_at": "2026-06-19T03:37:12Z",
   "stars": {
-    "BerriAI/litellm": 50738,
-    "QuantumNous/new-api": 39245,
-    "songquanpeng/one-api": 35048,
-    "Kong/kong": 43606,
-    "apache/apisix": 16743,
-    "Portkey-AI/gateway": 12109,
-    "tensorzero/tensorzero": 11656,
-    "higress-group/higress": 8677,
-    "tbphp/gpt-load": 6219,
-    "maximhq/bifrost": 5873,
-    "Helicone/helicone": 5832,
-    "envoyproxy/ai-gateway": 1760,
-    "Helicone/ai-gateway": 602,
-    "katanemo/plano": 6593,
-    "theopenco/llmgateway": 1316,
+    "BerriAI/litellm": 50831,
+    "QuantumNous/new-api": 39332,
+    "songquanpeng/one-api": 35078,
+    "Kong/kong": 43617,
+    "apache/apisix": 16747,
+    "Portkey-AI/gateway": 12114,
+    "tensorzero/tensorzero": 11657,
+    "higress-group/higress": 8681,
+    "tbphp/gpt-load": 6220,
+    "maximhq/bifrost": 5894,
+    "Helicone/helicone": 5838,
+    "envoyproxy/ai-gateway": 1763,
+    "Helicone/ai-gateway": 603,
+    "katanemo/plano": 6595,
+    "theopenco/llmgateway": 1319,
     "APIParkLab/APIPark": 1757,
     "pydantic/pydantic-ai-gateway": 190,
-    "algorithmicsuperintelligence/optillm": 4147,
-    "andrewyng/aisuite": 14724,
-    "lightseekorg/smg": 341,
-    "RelayPlane/proxy": 181,
+    "algorithmicsuperintelligence/optillm": 4149,
+    "andrewyng/aisuite": 14744,
+    "lightseekorg/smg": 343,
+    "RelayPlane/proxy": 182,
     "nehadangwal/sentrynode-gateway": 0,
-    "bricks-cloud/BricksLLM": 1210,
-    "EinStack/glide": 160,
-    "kgateway-dev/kgateway": 5568,
+    "bricks-cloud/BricksLLM": 1211,
+    "EinStack/glide": 161,
+    "kgateway-dev/kgateway": 5570,
     "TheLunarCompany/lunar": 457,
-    "krakend/krakend-ce": 2638,
+    "krakend/krakend-ce": 2639,
     "MartialBE/one-hub": 2845,
-    "fruitbars/simple-one-api": 2315,
-    "Veloera/Veloera": 1629,
-    "yym68686/uni-api": 1227,
-    "VoAPI/VoAPI": 1052,
+    "fruitbars/simple-one-api": 2317,
+    "Veloera/Veloera": 1626,
+    "yym68686/uni-api": 1228,
+    "VoAPI/VoAPI": 1054,
     "deanxv/done-hub": 771,
-    "agentgateway/agentgateway": 3341,
-    "IBM/mcp-context-forge": 3918,
-    "metatool-ai/metamcp": 2427,
+    "agentgateway/agentgateway": 3361,
+    "IBM/mcp-context-forge": 3925,
+    "metatool-ai/metamcp": 2429,
     "mcpjungle/MCPJungle": 1101,
-    "obot-platform/obot": 834,
+    "obot-platform/obot": 835,
     "fdmtl/director": 479,
     "lasso-security/mcp-gateway": 376,
-    "pomerium/pomerium": 4854,
-    "lm-sys/RouteLLM": 5037,
-    "musistudio/claude-code-router": 35090,
-    "vllm-project/semantic-router": 4420,
-    "NVIDIA-AI-Blueprints/llm-router": 296,
-    "ulab-uiuc/LLMRouter": 1993,
+    "pomerium/pomerium": 4856,
+    "lm-sys/RouteLLM": 5043,
+    "musistudio/claude-code-router": 35126,
+    "vllm-project/semantic-router": 4445,
+    "NVIDIA-AI-Blueprints/llm-router": 297,
+    "ulab-uiuc/LLMRouter": 1997,
     "vllora/vllora": 803,
     "braintrustdata/braintrust-proxy": 399,
-    "mlflow/mlflow": 26591,
+    "mlflow/mlflow": 26611,
     "kubernetes-sigs/gateway-api-inference-extension": 694,
     "vllm-project/aibrix": 4880,
-    "llm-d/llm-d": 3388,
+    "llm-d/llm-d": 3403,
     "inference-gateway/inference-gateway": 126,
-    "kserve/kserve": 5581,
-    "gpustack/gpustack": 5175,
-    "vllm-project/production-stack": 2410
+    "kserve/kserve": 5586,
+    "gpustack/gpustack": 5181,
+    "vllm-project/production-stack": 2412
   },
   "releases": [
+    {
+      "repo": "obot-platform/obot",
+      "tag": "v0.23.1",
+      "name": "v0.23.1",
+      "published_at": "2026-06-18T22:54:51Z",
+      "url": "https://github.com/obot-platform/obot/releases/tag/v0.23.1"
+    },
+    {
+      "repo": "kgateway-dev/kgateway",
+      "tag": "v2.3.4",
+      "name": "v2.3.4",
+      "published_at": "2026-06-18T21:02:42Z",
+      "url": "https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.4"
+    },
+    {
+      "repo": "theopenco/llmgateway",
+      "tag": "v1.4.0",
+      "name": "v1.4.0",
+      "published_at": "2026-06-18T18:32:52Z",
+      "url": "https://github.com/theopenco/llmgateway/releases/tag/v1.4.0"
+    },
+    {
+      "repo": "agentgateway/agentgateway",
+      "tag": "v1.3.0",
+      "name": "v1.3.0",
+      "published_at": "2026-06-18T17:44:26Z",
+      "url": "https://github.com/agentgateway/agentgateway/releases/tag/v1.3.0"
+    },
+    {
+      "repo": "gpustack/gpustack",
+      "tag": "v2.2.0",
+      "name": "v2.2.0",
+      "published_at": "2026-06-18T15:54:18Z",
+      "url": "https://github.com/gpustack/gpustack/releases/tag/v2.2.0"
+    },
+    {
+      "repo": "QuantumNous/new-api",
+      "tag": "v1.0.0-rc.12",
+      "name": "v1.0.0-rc.12",
+      "published_at": "2026-06-18T12:34:16Z",
+      "url": "https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.12"
+    },
     {
       "repo": "BerriAI/litellm",
       "tag": "v1.89.2",
@@ -72,13 +114,6 @@
       "name": "v0.7.0",
       "published_at": "2026-06-18T00:23:05Z",
       "url": "https://github.com/vllm-project/aibrix/releases/tag/v0.7.0"
-    },
-    {
-      "repo": "obot-platform/obot",
-      "tag": "v0.23.0",
-      "name": "v0.23.0",
-      "published_at": "2026-06-17T21:33:51Z",
-      "url": "https://github.com/obot-platform/obot/releases/tag/v0.23.0"
     },
     {
       "repo": "maximhq/bifrost",
@@ -135,20 +170,6 @@
       "name": "v0.19.0",
       "published_at": "2026-06-14T03:09:11Z",
       "url": "https://github.com/kserve/kserve/releases/tag/v0.19.0"
-    },
-    {
-      "repo": "QuantumNous/new-api",
-      "tag": "v1.0.0-rc.11",
-      "name": "v1.0.0-rc.11",
-      "published_at": "2026-06-13T08:15:40Z",
-      "url": "https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.11"
-    },
-    {
-      "repo": "kgateway-dev/kgateway",
-      "tag": "v2.3.3",
-      "name": "v2.3.3",
-      "published_at": "2026-06-12T20:12:53Z",
-      "url": "https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.3"
     },
     {
       "repo": "lightseekorg/smg",
@@ -235,13 +256,6 @@
       "url": "https://github.com/RelayPlane/proxy/releases/tag/v1.9.38"
     },
     {
-      "repo": "agentgateway/agentgateway",
-      "tag": "v1.2.1",
-      "name": "v1.2.1",
-      "published_at": "2026-05-15T17:59:45Z",
-      "url": "https://github.com/agentgateway/agentgateway/releases/tag/v1.2.1"
-    },
-    {
       "repo": "llm-d/llm-d",
       "tag": "v0.7.0",
       "name": "Release v0.7.0",
@@ -261,13 +275,6 @@
       "name": "v0.3.15",
       "published_at": "2026-05-07T08:48:50Z",
       "url": "https://github.com/algorithmicsuperintelligence/optillm/releases/tag/v0.3.15"
-    },
-    {
-      "repo": "gpustack/gpustack",
-      "tag": "v2.1.2",
-      "name": "v2.1.2",
-      "published_at": "2026-04-21T09:23:09Z",
-      "url": "https://github.com/gpustack/gpustack/releases/tag/v2.1.2"
     },
     {
       "repo": "kubernetes-sigs/gateway-api-inference-extension",
@@ -317,13 +324,6 @@
       "name": "2.4.22 Security updates, custom headers, tool sync caching",
       "published_at": "2025-12-19T07:27:06Z",
       "url": "https://github.com/metatool-ai/metamcp/releases/tag/v2.4.22"
-    },
-    {
-      "repo": "theopenco/llmgateway",
-      "tag": "v1.3.0",
-      "name": "v1.3.0",
-      "published_at": "2025-12-18T17:43:45Z",
-      "url": "https://github.com/theopenco/llmgateway/releases/tag/v1.3.0"
     },
     {
       "repo": "MartialBE/one-hub",
