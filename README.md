@@ -348,6 +348,17 @@ Then, whatever tier you're in:
 5. **Project health.** Star count ≠ maintenance. Check last release date — several once-popular gateways (BricksLLM, Glide, RouteLLM) are effectively unmaintained; this list labels them.
 6. **Avoid gray-market relays** reselling reverse-engineered or stolen-quota access. Beyond account-ban risk, 2026 research caught relays serving poisoned models and exfiltrating planted secrets ([*Your Agent Is Mine*](https://arxiv.org/abs/2604.08407)) — and the most-visible relay "rankings" are often paid press releases or carry affiliate links. Account bans and data leaks are your risk, not theirs. **Caught one swapping models, harvesting data, or vanishing with your balance? [Report it — with evidence](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) — and we'll build the community watch list together.**
 
+### Community relay watch-list
+
+Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic.
+
+| Relay | Listed in | Status | Why it's here |
+|---|---|---|---|
+| [FlintAPI](https://flintapi.ai) | Cost-first | ⚠️ Unverified — vet before use | Claims Qwen2.5-72B on custom "PPU" silicon ~30% below OpenRouter; model fidelity unconfirmed. |
+| [FlowBar](https://flowbarai.com) | Cost-first | ⚠️ Unverified — vet before use | Resells frontier models (GPT/Claude/Gemini) below OpenRouter with crypto/CNY payment; model fidelity unconfirmed. |
+
+*Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay.*
+
 ## FAQ
 
 **What is an AI gateway (LLM gateway)?**
