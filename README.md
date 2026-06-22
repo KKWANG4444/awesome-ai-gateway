@@ -136,6 +136,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 - [Novita AI](https://novita.ai) — Unified API to 200+ open-source models (DeepSeek/Qwen/Llama…) with load balancing, autoscaling and failover; also a GPU cloud.
 - [FlintAPI](https://flintapi.ai) ([repo](https://github.com/moozechen/flintapi)) — Hosted OpenAI-compatible gateway for Chinese open models; claims to run Qwen2.5-72B on custom "PPU" silicon at ~30% below OpenRouter. New and unverified — confirm model fidelity (e.g. with [canary_check.py](scripts/canary_check.py)) before relying on it in production.
 - [FlowBar](https://flowbarai.com) — Hosted OpenAI-compatible relay reselling 50+ models (GPT, Claude, Gemini, DeepSeek, Qwen, GLM, Kimi) below OpenRouter, with USD/CNY/crypto payment. New and unverified — confirm model fidelity (e.g. with [canary_check.py](scripts/canary_check.py)) before relying on it in production.
+- [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) — Solo-built, OpenAI-compatible router over 7+ providers (Anthropic, OpenAI, Google, Cerebras, Groq, Grok, GLM) with tiered automatic fallback that selects the cheapest available model. Free tier plus a $1/month paid tier, advertised at 0% markup on Anthropic models (Vercel AI Gateway and Helicone make the same 0%-markup claim). New and unverified — ⭐ 0, no license file yet — confirm model fidelity (e.g. with [canary_check.py](scripts/canary_check.py)) before relying on it in production.
 - [OpenPaths](https://openpaths.io) — Hosted OpenAI-compatible router across 15+ providers spanning chat, image, video, music, speech, embeddings, transcription and search; source/dev on [Codex Infinity](https://codex-infinity.com/lee101/openpaths). Newer SaaS.
 - [Glama Gateway](https://glama.ai/ai/gateway) — OpenAI-compatible gateway to 100+ models with consolidated billing, caching and logging (OSS core [glama-ai/lightport](https://github.com/glama-ai/lightport)).
 
@@ -356,6 +357,7 @@ Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *liste
 |---|---|---|---|
 | [FlintAPI](https://flintapi.ai) ([repo](https://github.com/moozechen/flintapi)) | Cost-first | ⚠️ Unverified — vet before use | Claims Qwen2.5-72B on custom "PPU" silicon ~30% below OpenRouter; model fidelity unconfirmed. |
 | [FlowBar](https://flowbarai.com) | Cost-first | ⚠️ Unverified — vet before use | Resells frontier models (GPT/Claude/Gemini) below OpenRouter with crypto/CNY payment; model fidelity unconfirmed. |
+| [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) | Cost-first | ⚠️ Unverified — vet before use | Solo-built router reselling Anthropic/OpenAI/Google frontier models at an advertised 0% markup on a $1/mo tier; model fidelity unconfirmed. |
 
 *Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay.*
 
