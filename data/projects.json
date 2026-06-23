@@ -50,6 +50,7 @@
     "VoAPI/VoAPI",
     "deanxv/done-hub",
     "lasso-security/mcp-gateway",
-    "fdmtl/director"
+    "fdmtl/director",
+    "docker/mcp-gateway"
   ]
 }
