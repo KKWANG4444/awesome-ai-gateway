@@ -9,7 +9,7 @@ structural and editorial changes.
 First tagged release. The list is stable, bilingual, and CI-verified.
 
 ### Added
-- Pain-point-organized directory of **50+ AI gateways / LLM proxies** across 9 categories
+- Pain-point-organized directory of **100+ AI gateways / LLM proxies** across 9 categories
   (cost-first, self-hosted, enterprise & compliance, first-party clouds, China ecosystem,
   MCP & agent gateways, and cross-cutting routing/observability).
 - **Decision tree** ("which gateway should I use?") plus a 10-second fast-answer table.
