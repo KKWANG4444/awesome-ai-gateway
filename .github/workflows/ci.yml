@@ -27,6 +27,12 @@ jobs:
           git diff --exit-code data/cost_table.csv data/gateways_scorecard.csv || {
             echo "::error::CSV exports are stale — run 'python scripts/export_csv.py' after editing the data"; exit 1;
           }
+      # Advisory on PRs (a contributor's change shouldn't be blocked because the
+      # pricing snapshot drifted) — the blocking nag lives in the daily job.
+      - name: Data snapshots are fresh (advisory)
+        run: |
+          python scripts/check_freshness.py --max-age-days 30 || \
+            echo "::warning::Pricing/scorecard snapshot is stale — re-review and bump 'as_of' (enforced in the daily job)"
 
   awesome-lint:
     runs-on: ubuntu-latest

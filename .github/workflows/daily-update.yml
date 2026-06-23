@@ -28,10 +28,17 @@ jobs:
         run: |
           if git diff --quiet; then
             echo "No content changes today."
-            exit 0
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md README.zh-CN.md data/releases.json
+            git commit -m "docs: daily refresh — stars & releases ($(date -u +%F))"
+            git push
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md README.zh-CN.md data/releases.json
-          git commit -m "docs: daily refresh — stars & releases ($(date -u +%F))"
-          git push
+
+      # Blocking nag: the auto-refresh above keeps stars/releases current, but the
+      # pricing/scorecard snapshots are hand-reviewed. If they rot past 30 days the
+      # daily run goes red (the data is already pushed above) so the maintainer is
+      # prompted to actually re-review and bump 'as_of' — not to fake the date.
+      - name: Snapshots are still fresh
+        run: python scripts/check_freshness.py --max-age-days 30
