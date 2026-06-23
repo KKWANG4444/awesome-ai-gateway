@@ -383,13 +383,13 @@ Then, whatever tier you're in:
 
 ### Community relay watch-list
 
-Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic.
+Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic. A passing canary from a project's own team is logged as *self-reported* — reaching ✅ verified takes an **independent** reproduction by someone unaffiliated.
 
 | Relay | Listed in | Status | Why it's here |
 |---|---|---|---|
 | [FlintAPI](https://flintapi.ai) ([repo](https://github.com/moozechen/flintapi)) | Cost-first | ⚠️ Unverified — vet before use | Claims Qwen2.5-72B on custom "PPU" silicon ~30% below OpenRouter; model fidelity unconfirmed. |
 | [FlowBar](https://flowbarai.com) | Cost-first | ⚠️ Unverified — vet before use | Resells frontier models (GPT/Claude/Gemini) below OpenRouter with crypto/CNY payment; model fidelity unconfirmed. |
-| [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) | Cost-first | ⚠️ Unverified — vet before use | Solo-built router reselling Anthropic/OpenAI/Google frontier models at an advertised 0% markup on a $1/mo tier; model fidelity unconfirmed. |
+| [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) | Cost-first | ⚠️ Unverified — [self-reported canary OK](https://github.com/cuihuan/awesome-ai-gateway/issues/8) (2026-06-22); needs independent repro | Solo-built router reselling Anthropic/OpenAI/Google frontier models at an advertised 0% markup on a $1/mo tier. A canary-diff run posted by the project's own side passed (mean sim 1.0 on Opus 4.8); not yet independently reproduced. |
 
 *Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay.*
 
