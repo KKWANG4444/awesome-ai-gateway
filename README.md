@@ -23,11 +23,41 @@ _Built the hard way: **I burned $788 on AI coding in a single day** — one flag
 [![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway)](https://github.com/cuihuan/awesome-ai-gateway/commits/main)
 
-**Pick fast** · [Which gateway should I use?](#which-gateway-should-i-use) · [Quick comparison](#quick-comparison)
+**Pick fast** · [Which gateway should I use?](#which-gateway-should-i-use) · [📊 Latest evaluations](#-latest-evaluations) · [Quick comparison](#quick-comparison)
 
 **Browse by need** · [💰 Cost-first](#-cost-first-cheapest-multi-model-access) · [🔓 Self-hosted](#-self-hosted-open-source) · [🏢 Enterprise & compliance](#-enterprise--compliance) · [☁️ First-party clouds](#️-first-party-gateways-cloud--model-vendors) · [🇨🇳 China ecosystem](#-china-ecosystem) · [🤖 MCP & agent gateways](#-mcp--agent-gateways)
 
 **Reference** · [📊 Evaluation set](BENCHMARKS.md) · [How to choose safely](#how-to-choose-safely) · [FAQ](#faq) · [📚 Essential reading](#-essential-reading) · [📰 What's new](#-whats-new) · [Glossary](#glossary) · [Why this exists](#why-this-exists) · [Contributing](#contributing)
+
+</details>
+
+## 📊 Latest evaluations
+
+*A running digest of fresh model, pricing and gateway evals — **newest first, every entry dated and sourced.** This is the fast-moving signal layer; for our own **reproducible** cost tables and model scorecard, see the [full evaluation set](BENCHMARKS.md). Spotted a new eval worth tracking? [Add it](CONTRIBUTING.md).*
+
+| Date | Category | Finding | Source |
+|---|---|---|---|
+| 2026-06-21 | 💰 Pricing | The API pricing market now spans **123 models across 12 providers**, with a **>400× price spread** over the full input/output range — cheapest flagship **DeepSeek V4 Flash ($0.14/M input)** vs priciest **GPT-5.5 Pro ($30.00/M input)** is already ~214× on input alone. Tiering has hardened: top reasoning (o3) runs ~20× a nano-tier model on input, wider on output. | [aipricing.guru](https://aipricing.guru) |
+| 2026-06 | 📈 Adoption | ChatGPT hit **~900M weekly active users** and **>2.5B queries/day** — demand scaling about as fast as the price spread. | [DemandSage](https://www.demandsage.com/chatgpt-statistics/) |
+
+<details>
+<summary>💸 <b>Same ¥100 (≈ $14.66) — how much can each model read?</b> The 400× spread, made concrete.</summary>
+
+How many **input+output tokens** ¥100 buys, by model (blended estimate · snapshot **2026-06-21** · [aipricing.guru](https://aipricing.guru)):
+
+| Tier | Model | Tokens / ¥100 | ≈ Chinese chars |
+|---|---|---|---|
+| 🥇 Rock-bottom | **DeepSeek V4 Flash** | 35.2M | ~26.4M |
+| 🥇 Rock-bottom | GPT-4.1 nano | 29.6M | ~22.2M |
+| 🥇 Rock-bottom | GPT-5.4 nano | 10.2M | ~7.7M |
+| 💚 Value | GPT-5.4 mini | 2.83M | ~2.1M |
+| 💚 Value | DeepSeek V4 Pro | 2.83M | ~2.1M |
+| 🧠 Reasoning | o3 | 1.48M | ~1.1M |
+| 🏁 Flagship | Gemini 2.5 Pro | 1.31M | ~0.98M |
+| 🏁 Flagship | GPT-5.5 | 0.42M | ~0.32M |
+| 🏁 Flagship | GPT-5.5 Pro | 0.07M | ~0.05M |
+
+> **One line:** ¥100 reads **~26M Chinese characters** on DeepSeek V4 Flash — roughly **52× the *Three-Body* trilogy** — but only **~50K** on GPT-5.5 Pro, about one short story. Choosing a model is choosing the scale factor on your money; the [Cost-first](#-cost-first-cheapest-multi-model-access) gateways exist to exploit exactly this spread.
 
 </details>
 
