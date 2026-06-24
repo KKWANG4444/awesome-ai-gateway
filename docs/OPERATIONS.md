@@ -123,7 +123,11 @@ Total stars + **weekly velocity** (star-history.com) · **GitHub Insights → Tr
 ## 8. Foundation status (2026-06-24)
 ✅ Label taxonomy created · ✅ #8 classified (`watch-list`+`needs-evidence`) · ✅ description→"100+" · ✅ topics tuned ·
 ✅ artifacts complete (llms.txt/sitemap/feed/JSON-LD/CITATION/SECURITY) ·
-✅ launch-post drafts (`docs/launch-posts.md`) · ⬜👤 social-preview image · ⬜👤 pin+profile README ·
-⬜👤 execute launch sequence (drafts ready) · ⬜🤖 prep awesome-list backlink PRs (next).
+✅ launch-post drafts (`docs/launch-posts.md`) · ✅ +8 verified gateways (coverage audit) · ✅ batch pushed live (Pages verified) ·
+✅ 3 awesome-list backlink PRs open (kelvins#216, tensorchord#572, Hannibal046#682) ·
+⬜👤 social-preview image · ⬜👤 pin+profile README · ⬜👤 execute forum launch (drafts ready).
+
+### Maintenance log
+- **2026-06-24 · accuracy audit** — all 66 GitHub-backed entries verified via `gh api`: 61 active, 5 stale/archived (TensorZero, pydantic-ai-gateway, BricksLLM, Glide, RouteLLM) — **all 5 already correctly labeled** in the list. 0 uncorrected issues; the "active within 12 months or labeled stale" promise holds. Re-run quarterly (or after big additions).
 
 _Sources & full research: condensed from a 2026 competitive-research pass (HN/Reddit/周刊/awesome-list mechanics, GitHub Trending, issue-ops). The bottleneck is distribution + issue-ops + backlinks — not more artifacts._
