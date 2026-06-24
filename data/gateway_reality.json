@@ -1,0 +1,68 @@
+{
+  "source": "BENCHMARKS.md#part-5--real-world-reviews-what-production-users-report",
+  "rows": [
+    {
+      "gateway": "LiteLLM",
+      "praised": "Default OpenAI-compatible multi-provider proxy; unmatched model breadth",
+      "gripe": "Latency/memory overhead and degradation at high RPS",
+      "event": "⚠️ <strong>PyPI supply-chain attack (Mar 2026)</strong> — v1.82.7/1.82.8 were backdoored with a credential stealer after a Trivy CI-token compromise (TeamPCP); PyPI quarantined the project in ~3h. Pin to a clean release. <a href=\"https://www.trendmicro.com/en/research/26/c/inside-litellm-supply-chain-compromise.html\">Trend Micro</a> · <a href=\"https://securitylabs.datadoghq.com/articles/litellm-compromised-pypi-teampcp-supply-chain-campaign/\">Datadog</a>",
+      "search": "LiteLLM Default OpenAI-compatible multi-provider proxy; unmatched model breadth Latency/memory overhead and degradation at high RPS ⚠️ PyPI supply-chain attack (Mar 2026) — v1.82.7/1.82.8 were backdoored with a credential stealer after a Trivy CI-token compromise (TeamPCP); PyPI quarantined the project in ~3h. Pin to a clean release. Trend Micro · Datadog"
+    },
+    {
+      "gateway": "OpenRouter",
+      "praised": "400+ models behind one key and one bill; hard spend caps",
+      "gripe": "~5.5% credit fee at scale; provider quality/quantization varies; no public SLA",
+      "event": "<strong>~50-min database outage (Aug 28 2025)</strong> — a DB-layer failure, not an upstream provider; ~99.96% uptime over 8 months, but no SLA or downtime credits. <a href=\"https://statusgator.com/services/openrouter\">StatusGator</a>",
+      "search": "OpenRouter 400+ models behind one key and one bill; hard spend caps ~5.5% credit fee at scale; provider quality/quantization varies; no public SLA ~50-min database outage (Aug 28 2025) — a DB-layer failure, not an upstream provider; ~99.96% uptime over 8 months, but no SLA or downtime credits. StatusGator"
+    },
+    {
+      "gateway": "Portkey",
+      "praised": "Genuinely production-grade; strong observability, fallbacks, prompt management",
+      "gripe": "Much &quot;review&quot; content is SEO — weigh G2/Gartner over listicles",
+      "event": "<strong>Acquired by Palo Alto Networks (closed May 2026)</strong> — now the control plane for Prisma AIRS; a neutrality/roadmap question if you want vendor-independent infra. <a href=\"https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-completes-acquisition-of-portkey-to-secure-ai-agents\">Palo Alto Networks</a>",
+      "search": "Portkey Genuinely production-grade; strong observability, fallbacks, prompt management Much \"review\" content is SEO — weigh G2/Gartner over listicles Acquired by Palo Alto Networks (closed May 2026) — now the control plane for Prisma AIRS; a neutrality/roadmap question if you want vendor-independent infra. Palo Alto Networks"
+    },
+    {
+      "gateway": "Vercel AI Gateway",
+      "praised": "One endpoint, 0% markup on BYOK, native to the AI SDK",
+      "gripe": "Durable independent sentiment still thin",
+      "event": "<strong>Vercel breach (Apr 2026)</strong> — a Context.ai OAuth supply-chain compromise exposed environment variables for a subset of customers. Not the gateway product itself, but it bears on trusting Vercel with your keys. <a href=\"https://techcrunch.com/2026/04/20/app-host-vercel-confirms-security-incident-says-customer-data-was-stolen-via-breach-at-context-ai/\">TechCrunch</a> · <a href=\"https://vercel.com/kb/bulletin/vercel-april-2026-security-incident\">Vercel</a>",
+      "search": "Vercel AI Gateway One endpoint, 0% markup on BYOK, native to the AI SDK Durable independent sentiment still thin Vercel breach (Apr 2026) — a Context.ai OAuth supply-chain compromise exposed environment variables for a subset of customers. Not the gateway product itself, but it bears on trusting Vercel with your keys. TechCrunch · Vercel"
+    },
+    {
+      "gateway": "Cloudflare AI Gateway",
+      "praised": "Zero-infra observability / caching / rate-limiting on CF&#x27;s edge; dollar spend limits",
+      "gripe": "Limited request-placement / routing control",
+      "event": "Newer entrant; independent production-review depth is still thin.",
+      "search": "Cloudflare AI Gateway Zero-infra observability / caching / rate-limiting on CF's edge; dollar spend limits Limited request-placement / routing control Newer entrant; independent production-review depth is still thin."
+    },
+    {
+      "gateway": "Kong AI Gateway",
+      "praised": "Inherits a battle-tested data plane + broad plugin ecosystem",
+      "gripe": "Open-core: several important plugins are Enterprise-only (some prefer Apache APISIX for predictable OSS)",
+      "event": "The AI Gateway is newer; most Kong-vs-LiteLLM/Portkey benchmarks are vendor-published — reproduce before trusting.",
+      "search": "Kong AI Gateway Inherits a battle-tested data plane + broad plugin ecosystem Open-core: several important plugins are Enterprise-only (some prefer Apache APISIX for predictable OSS) The AI Gateway is newer; most Kong-vs-LiteLLM/Portkey benchmarks are vendor-published — reproduce before trusting."
+    },
+    {
+      "gateway": "TensorZero",
+      "praised": "Ambitious OSS gateway + observability + optimization &quot;flywheel&quot;",
+      "gripe": "",
+      "event": "⚠️ <strong>Archived June 2026</strong> — company wound down; Apache-2.0 code and community forks remain, but plan for self-support, not a vendor roadmap. <a href=\"https://github.com/tensorzero/tensorzero\">GitHub</a>",
+      "search": "TensorZero Ambitious OSS gateway + observability + optimization \"flywheel\" — ⚠️ Archived June 2026 — company wound down; Apache-2.0 code and community forks remain, but plan for self-support, not a vendor roadmap. GitHub"
+    },
+    {
+      "gateway": "Helicone",
+      "praised": "~2-minute onboarding; fast cost/usage and token-limit debugging",
+      "gripe": "As a proxy it sits in the request path (a SPOF unless you use async logging)",
+      "event": "<strong>Acquired by Mintlify (Mar 2026), now maintenance mode</strong> — security fixes, bug fixes and new models keep shipping; Mintlify supports migration. <a href=\"https://www.mintlify.com/blog/mintlify-acquires-helicone\">Mintlify</a> · <a href=\"https://www.helicone.ai/blog/joining-mintlify\">Helicone</a>",
+      "search": "Helicone ~2-minute onboarding; fast cost/usage and token-limit debugging As a proxy it sits in the request path (a SPOF unless you use async logging) Acquired by Mintlify (Mar 2026), now maintenance mode — security fixes, bug fixes and new models keep shipping; Mintlify supports migration. Mintlify · Helicone"
+    },
+    {
+      "gateway": "Bifrost",
+      "praised": "Markets itself as a fast Go drop-in for LiteLLM",
+      "gripe": "Independent production evidence is still thin",
+      "event": "Its 50–90× lower-p99 claims are <strong>vendor-reported</strong> — reproduce on your own workload before betting on them.",
+      "search": "Bifrost Markets itself as a fast Go drop-in for LiteLLM Independent production evidence is still thin Its 50–90× lower-p99 claims are vendor-reported — reproduce on your own workload before betting on them."
+    }
+  ]
+}

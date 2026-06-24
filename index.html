@@ -92,6 +92,7 @@
   <div class="tabs">
     <button class="tab active" data-view="cost">💰 Model cost</button>
     <button class="tab" data-view="score">🛡️ Gateway scorecard</button>
+    <button class="tab" data-view="reality">🔥 Production reality</button>
   </div>
   <input type="search" id="q" placeholder="Filter…" />
 
@@ -112,6 +113,13 @@
       <th data-k="gateway">Gateway</th><th data-k="type">Type</th>
       <th data-k="compliance" class="num">Compliance</th><th data-k="markup">Markup</th>
       <th data-k="security" class="num">Security</th><th data-k="stability" class="num">Stability</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+
+  <div id="reality-view" class="hidden">
+    <p class="sub">What actually breaks once a gateway is in production — incidents, CVEs, acquisitions — from <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.md#part-5--real-world-reviews-what-production-users-report">BENCHMARKS Part 5</a>. Every event is dated and links to a primary source; stars measure popularity, this measures the 3am pager.</p>
+    <table id="reality-table"><thead><tr>
+      <th>Gateway</th><th>Praised for</th><th>Recurring gripe</th><th>Dated event worth knowing</th>
     </tr></thead><tbody></tbody></table>
   </div>
 
@@ -159,7 +167,7 @@ function parseCSV(text){
 const fmtUsd=v=>{const n=+v;return n<0.1?'$'+n.toFixed(3).replace(/0+$/,'').replace(/\.$/,''):n<100?'$'+n.toFixed(2):'$'+Math.round(n)};
 const stars=n=>{const f=Math.floor(n);return '<span class="star">'+'★'.repeat(f)+(n-f>=0.5?'½':'')+'</span> '+n.toFixed(1)};
 
-let costData=[],scoreData=[],sort={cost:{k:'chatbot_usd',asc:true},score:{k:'compliance',asc:false}};
+let costData=[],scoreData=[],realityData=[],sort={cost:{k:'chatbot_usd',asc:true},score:{k:'compliance',asc:false}};
 
 function renderCost(){
   const q=document.getElementById('q').value.toLowerCase();
@@ -187,23 +195,30 @@ function renderScore(){
       <td class="num">${stars(+r.security)}</td><td class="num">${stars(+r.stability)}</td></tr>`;
   }).join('');
 }
+function renderReality(){
+  const q=document.getElementById('q').value.toLowerCase();
+  const tb=document.querySelector('#reality-table tbody');
+  const rows=realityData.filter(r=>(r.search||'').toLowerCase().includes(q));
+  // praised/gripe/event are pre-rendered, sanitized HTML from BENCHMARKS Part 5 (our own content)
+  tb.innerHTML=rows.map(r=>`<tr><td><strong>${r.gateway}</strong></td><td>${r.praised}</td><td>${r.gripe||'—'}</td><td>${r.event}</td></tr>`).join('');
+}
 function wireSort(tableId,view,render){
   document.querySelectorAll('#'+tableId+' th').forEach(th=>th.onclick=()=>{
     const k=th.dataset.k,s=sort[view];s.asc=s.k===k?!s.asc:true;s.k=k;render();
   });
 }
+const VIEWS=['cost','score','reality'];
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
-  const cost=t.dataset.view==='cost';
-  document.getElementById('cost-view').classList.toggle('hidden',!cost);
-  document.getElementById('score-view').classList.toggle('hidden',cost);
+  VIEWS.forEach(v=>document.getElementById(v+'-view').classList.toggle('hidden',v!==t.dataset.view));
 });
-document.getElementById('q').oninput=()=>{renderCost();renderScore()};
+document.getElementById('q').oninput=()=>{renderCost();renderScore();renderReality()};
 
 Promise.all([
   fetch('data/cost_table.csv').then(r=>r.text()).then(parseCSV),
-  fetch('data/gateways_scorecard.csv').then(r=>r.text()).then(parseCSV)
-]).then(([c,s])=>{costData=c;scoreData=s;wireSort('cost-table','cost',renderCost);wireSort('score-table','score',renderScore);renderCost();renderScore()})
+  fetch('data/gateways_scorecard.csv').then(r=>r.text()).then(parseCSV),
+  fetch('data/gateway_reality.json').then(r=>r.json()).then(d=>d.rows).catch(()=>[])
+]).then(([c,s,rl])=>{costData=c;scoreData=s;realityData=rl;wireSort('cost-table','cost',renderCost);wireSort('score-table','score',renderScore);renderCost();renderScore();renderReality()})
  .catch(e=>{document.querySelector('.wrap').insertAdjacentHTML('beforeend','<p class="sub">Data loads on GitHub Pages. View the <a href=\"https://github.com/cuihuan/awesome-ai-gateway\">repo</a>.</p>')});
 </script>
 </body>

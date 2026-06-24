@@ -38,6 +38,11 @@ jobs:
           python scripts/build_compare_html.py --check || {
             echo "::error::compare/*.html or sitemap.xml are stale — run 'python scripts/build_compare_html.py' after editing compare/*.md"; exit 1;
           }
+      - name: Production-reality JSON matches BENCHMARKS Part 5
+        run: |
+          python scripts/build_reality.py --check || {
+            echo "::error::data/gateway_reality.json is stale — run 'python scripts/build_reality.py' after editing BENCHMARKS.md Part 5"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest
