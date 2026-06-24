@@ -55,7 +55,9 @@ Every "you should add X" → offer the 2-line PR + `good first issue`. Recognize
 
 ---
 
-## 3. Launch sequence (spread over ~2 weeks, never same-day)
+## 3. Launch sequence (one concentrated 48–72h burst — distinct post per channel)
+
+> **Corrected 2026-06-25 (was "spread over ~2 weeks").** GitHub Trending ranks star *velocity vs. this repo's own ~1–2 star/day baseline*, so 15–25 stars in one day is already a large multiple — spreading the same posts over two weeks *dilutes* that multiple. HN delivers ~92% of its star impact within 48h. So: fire the high-velocity channels inside **one 48–72h window** (ideally Mon–Tue ~13–16 UTC), each with a **channel-distinct** post (copy-paste across subreddits triggers shadowbans), and stay present to answer. "Never same-day" still applies *per channel* (don't repost the same HN/subreddit), not across channels.
 
 Lead asset everywhere: **$788/day** + **>400× price spread** + **reproducible benchmark**. Link the **repo** (not the Pages page) on HN.
 
@@ -79,11 +81,12 @@ Subreddit etiquette: read each sub's self-promo rules; r/LLMDevs **bans** self-p
 | Target | Action | Bar | Owner |
 |---|---|---|---|
 | **sindresorhus/awesome** | PR adding us under AI | list ≥**30 days old**, `awesome-lint` clean (see `docs/awesome-lint-triage.md`), title-case heading, slug repo name, **review 4 other PRs**, comment `unicorn` | 👤 (🤖 preps PR) |
-| **tensorchord/Awesome-LLMOps**, **InftyAI/Awesome-LLMOps** | PR under gateways/routing | fork→PR | 🤖 preps |
-| **Hannibal046/Awesome-LLM** | PR under tools/infra | active queue | 🤖 preps |
-| **punkpeye/ & appcypher/awesome-mcp-servers** | PR (we have an MCP/agent section) | relevant | 🤖 preps |
-| **"best AI gateway" listicles** (TrueFoundry, Braintrust, denshub, …) | offer our independent benchmark as a citable source | — | 👤 |
-| **AI answer engines (GEO)** | already shipped llms.txt/sitemap/JSON-LD/feed.xml; keep feed fresh (daily CI) | ✅ | 🤖 |
+| **tensorchord/Awesome-LLMOps** | PR under gateways/routing | fork→PR | ✅ submitted #572 |
+| **Hannibal046/Awesome-LLM** | PR under tools/infra | active queue | ✅ submitted #682 |
+| ~~InftyAI/Awesome-LLMOps~~ · ~~punkpeye/awesome-mcp-servers~~ | — | verified bad fit (don't PR) | ❌ skip — but punkpeye is now **reciprocally linked** in our Related-lists footer |
+| **Next-wave awesome targets** (see §9): kyrolabs/awesome-langchain, eudk/awesome-ai-tools, awesomelistsio/awesome-llmops | PR under each list's meta/LLMOps section | verified actively-merging 2026 | 🤖 preps — hold ~1/mo |
+| **"best AI gateway" listicles** (TechSY, TrueFoundry, Braintrust, denshub, …) + **OpenAlternative.co** directory | offer our independent benchmark as a citable source / submit via their form | — | 👤 |
+| **AI answer engines (GEO)** | llms.txt/sitemap/JSON-LD/feed shipped; **+ machine-readable `dateModified` + IndexNow→Bing shipped 2026-06-25**; Bing WMT account still 👤 (see §9) | partial — see §9 | 🤖 + 👤 |
 
 **Submitted backlink PRs (check here before opening new ones — don't duplicate):**
 - ✅ [kelvins/awesome-mlops #216](https://github.com/kelvins/awesome-mlops/pull/216) — OPEN (Other Lists)
@@ -136,3 +139,46 @@ Total stars + **weekly velocity** (star-history.com) · **GitHub Insights → Tr
 - **Still 👤 (needs you — live presence / your account):** the real-time forum launch (HN Show HN, r/LocalLLaMA, r/selfhosted, V2EX, linux.do — drafts in `launch-posts.md`), social-preview image upload, pin repos, sindresorhus/awesome PR. These move stars most but backfire if fired without you present.
 
 _Sources & full research: condensed from a 2026 competitive-research pass (HN/Reddit/周刊/awesome-list mechanics, GitHub Trending, issue-ops). The bottleneck is distribution + issue-ops + backlinks — not more artifacts._
+
+---
+
+## 9. Deep-research update (2026-06-25) — evidence-backed method v2
+
+A 6-agent research pass (how comparable awesome-lists + LLM-gateway projects actually grow & maintain, + GEO citation mechanics, + verified new backlink targets) sharpened the method. The headline: **the moat is credibility + freshness, and the unfixed bottleneck is the retrieval layer (Bing) + the human-led launch — not more on-page artifacts.**
+
+### 9a. What the research changed (corrections to conventional wisdom — all evidence-backed)
+- **llms.txt is near-dead for AI *citations*** (~0.1% of AI-bot traffic touches it; Google's Illyes confirmed Google won't support it). Keep it (≈0 cost) but **reclassify it as a B2A / IDE-agent convenience** (Cursor/Claude Code/Copilot *do* fetch it); optionally add `/llms-full.txt`. It is *not* the GEO win §4 used to imply.
+- **The real GEO precondition is being in Bing's index** — ~87% of ChatGPT Search citations match Bing top results. → shipped **IndexNow** (push protocol, no account needed) + machine-readable **`dateModified`**; Bing Webmaster Tools account is still 👤 (9d).
+- **Buying stars backfires** (controlled study: zero effect on real downloads; detection tooling flags the inorganic spike — the *opposite* of the velocity pattern Trending rewards). The maintainer's no-fraud stance is *empirically* correct, not just ethical.
+- **"Show HN" tag isn't magic** — engagement *score* predicts stars (r≈0.29), comment count barely does (r≈0.10). Optimize for a clear factual title + fast author replies, not a lively comment thread.
+- **Badge walls + posting-time obsession are cargo-cult** — current 5–6 functional badges are at the right ceiling; best-vs-worst HN slot is only ~4×. Don't let timing anxiety delay a ready launch.
+- **"Asking for stars" is nuanced, not banned** — a soft README CTA + *personalized 1:1 thank-you-and-ask* to people who already engaged converts; generic "please star" pleas + mass-DMs are spam. Crossing **~100 real stars** is the human-credibility gate that lets organic traffic convert against a visible number.
+- **The 2014 category land-grab is not replicable in 2026** — `awesome-ai-gateway` enters a crowded namespace, so chasing first-mover timing is wasted; win on the moats incumbents won't build (independence/CC0, the reproducible $788 benchmark, the evidence-based relay watch-list).
+
+### 9b. Shipped 2026-06-25 (agent-doable, done)
+- ✅ **IndexNow** key + `scripts/ping_indexnow.py` (+6 unit tests) + daily-CI ping step → Bing/Yandex discovery.
+- ✅ **Machine-readable freshness** — `dateModified`/`datePublished` + `article:modified_time` on compare pages, auto-stamped from the byline (never fabricated).
+- ✅ **Reciprocal "Related lists" footer** (EN+zh) — the backlink-graph play's missing half.
+- ✅ **Release-tracking** for the 13 audit-added repos; **CHANGELOG** brought current + first contributor (@c99e) credited.
+
+### 9c. Agent-doable queue (next iterations — do NOT do all at once; one focused change per loop)
+1. **Add `dateModified` to the 8 static guide pages + index.html** (currently only compare/* have it). Honest date = file's last-commit date.
+2. **Extend schema**: `FAQPage` on compare pages (only top-level pages have it), `ItemList` for the ranked list on README/index, `SoftwareApplication` (sameAs→repo) for the top 4 gateways. *Each FAQ Q&A is a citation candidate (highest-leverage GEO schema).*
+3. **"Key numbers" block** — surface the proprietary stats ($0.03-vs-$3.01 = 106×, $788, >400×) as standalone **dated + sourced one-sentence claims** atop each comparison page. The only peer-reviewed GEO study (Princeton/KDD-2024) shows Statistics + Quotations + Cite-Sources each yield +30–40% AI visibility.
+4. **Two "won't-rot" CI workflows**: a scheduled stale-gateway flagger (uses the stars/releases data daily-update already pulls; flag no-release-in-12mo) + publish the removal rule in CONTRIBUTING so pruning is mechanical, not a debate (awesome-selfhosted model). Keep the contribution *gate* narrow (3-criteria + 5-day SLA) — the opposite of punkpeye's 1,700-open-PR firehose.
+5. **Above-the-fold visual** — a GIF/screenshot of gateway-picker.html / the decision tree (the one missing <7s-conversion element; ≈2× conversion). *May need 👤 for a clean browser capture.*
+
+### 9d. New verified backlink/listing targets (the NEXT WAVE — hold to ~1/month; 6 already open is enough for the launch window)
+| Target | Section we fit | Recent-merge evidence | Priority |
+|---|---|---|---|
+| [kyrolabs/awesome-langchain](https://github.com/kyrolabs/awesome-langchain) (9.4k★) | `## Complement to this list` (+ optional fix: flag the now-archived TensorZero under `## Other LLM Frameworks` as reviewer value-add) | merged ext. PRs #327/#322 (2026-04-26), #215/#210 (03-14); **0 open PRs** | **TOP** |
+| [eudk/awesome-ai-tools](https://github.com/eudk/awesome-ai-tools) (522★) | `## LLM Ops` | 10 recent merges 2026-06-05→07 from distinct authors | secondary (≠ the already-submitted mahseema/awesome-ai-tools #1631) |
+| [awesomelistsio/awesome-llmops](https://github.com/awesomelistsio/awesome-llmops) | `## Related Awesome Lists` | ext. PRs #16 (06-22), #28 (06-23); 0 open | lowest-friction (small but compounding network cross-links) |
+| [OpenAlternative.co](https://github.com/piotrkulpinski/openalternative) (6.4k★) | AI-gateways category, via /submit form | repo pushed 2026-06-24; public /submit | best **non-awesome** directory — 👤 (lists tools, not catalogs; submit individual angle) |
+| [TechSY "8 Gateways Ranked 2026"](https://techsy.io/en/blog/best-llm-gateway-tools) | listicle citation (no PR path) | updated 2026-06-13; admits it uses only internal testing + star counts, **no independent benchmark** | 👤 outreach — offer our benchmark as the missing independent cross-check |
+
+### 9e. 👤 Maintainer-only — the moves that actually move stars now (agent has maxed the prep)
+1. **Create a Bing Webmaster Tools account** (bing.com/webmasters) → *Import from Google Search Console* (1-click) → submit `sitemap.xml` → record the June-2026 **Citation Share** baseline (it can't be backfilled, so every week of delay loses trend history). This unlocks the IndexNow pings already firing.
+2. **Submit to sindresorhus/awesome** — agent preps (`npx awesome-lint` to zero via `docs/awesome-lint-triage.md`; confirm topics `awesome`+`awesome-list`, branch `main`, PR body). You: open the PR from your account, **review 4 other open PRs**, post `unicorn` — in one sitting. *No star minimum exists; the gate is purely mechanical and we clear the 30-day age.* This is the single biggest evergreen backlink.
+3. **Run the 48–72h launch burst** (§3) — HN (factual title, $788 first comment) + r/LocalLLaMA + r/selfhosted + one newsletter, channel-distinct posts, present to answer. Drafts in `docs/launch-posts.md` (agent keeps them channel-distinct).
+4. **Warm 1:1 outreach** to people who already engaged (issue reporters, the #14 contributor, anyone who forked) — the proven path to the first ~100 real stars.
