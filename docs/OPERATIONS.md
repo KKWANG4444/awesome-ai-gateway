@@ -89,9 +89,12 @@ Subreddit etiquette: read each sub's self-promo rules; r/LLMDevs **bans** self-p
 - ✅ [kelvins/awesome-mlops #216](https://github.com/kelvins/awesome-mlops/pull/216) — OPEN (Other Lists)
 - ✅ [tensorchord/Awesome-LLMOps #572](https://github.com/tensorchord/Awesome-LLMOps/pull/572) — OPEN (Awesome Lists)
 - ✅ [Hannibal046/Awesome-LLM #682](https://github.com/Hannibal046/Awesome-LLM/pull/682) — OPEN (Miscellaneous)
-- ❌ InftyAI/Awesome-LLMOps — skip (tools-only list, no meta-list/curated-list section; would be a bad-fit/spam PR)
-- ⬜ awesome-mcp-servers (punkpeye/appcypher) — borderline (we're a gateway list with an MCP section); assess fit first
+- ✅ [steven2358/awesome-generative-ai #902](https://github.com/steven2358/awesome-generative-ai/pull/902) — OPEN (More lists)
+- ✅ [mahseema/awesome-ai-tools #1631](https://github.com/mahseema/awesome-ai-tools/pull/1631) — OPEN (Related Awesome Lists)
+- ✅ [underlines/awesome-ml #65](https://github.com/underlines/awesome-ml/pull/65) — OPEN (llm-tools.md / Libraries & Wrappers)
+- ❌ skip (verified bad fit): InftyAI/Awesome-LLMOps & EthicalML/awesome-production-machine-learning (tools-only, no meta-list section + star gate) · punkpeye/awesome-mcp-servers (MCP-only) · DefTruth/Awesome-LLM-Inference (deprecated/papers-only) · formulahendry/awesome-gpt (PR-averse, unmerged since 2023)
 - ⬜ sindresorhus/awesome — gated (≥30d old + lint-clean + maintainer personally reviews 4 PRs + `unicorn`); 👤
+- **6 backlink PRs is plenty for launch period — hold further submissions (more same-week = spam-perception).**
 
 ---
 
