@@ -4,6 +4,31 @@ All notable changes to this curated list are documented here.
 The list's data (stars, releases) is refreshed daily by CI; this changelog tracks
 structural and editorial changes.
 
+## [Unreleased]
+
+### Added
+- Directory grown to **~122 entries** since 1.0.0. A multi-agent accuracy/coverage audit
+  added **17 verified gateways** — including the previously-missing high-star projects
+  **CLIProxyAPI**, **sub2api**, **9router** and **NVIDIA Dynamo**, plus enterprise/cloud
+  vendors **Axway Amplify**, **Red Hat Connectivity Link**, **Sensedia** and
+  **Tencent Cloud AI Gateway** — each with honest risk/maintenance caveats.
+- **Bilingual high-intent guide cluster** (EN + 简体中文): *LiteLLM vs OpenRouter*,
+  *OpenRouter alternatives*, *self-hosted gateways*, and *how to cut LLM API costs* —
+  cross-linked with an interactive **cost calculator** and **gateway picker**.
+- First inbound community contribution — **nullsink** added by
+  [@c99e](https://github.com/c99e) in [#14](https://github.com/cuihuan/awesome-ai-gateway/pull/14). 🙏
+
+### Changed
+- Account-less / crypto-only relays (**Loop Gateway**, **nullsink**) now carry an explicit
+  "new & unverified" caveat and sit on the community relay watch-list, matching the FlintAPI
+  precedent — listed on evidence, with the resale/recourse risk stated plainly.
+- Marked **TensorZero** (archived June 2026) and **Pydantic AI Gateway** (merged into
+  Pydantic Logfire) as deprecated/renamed — both verified `archived` via the GitHub API.
+
+### Contributors
+Thanks to [@c99e](https://github.com/c99e) for the first community PR. Spotted a gateway we're
+missing, or run one in production? See [CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
+
 ## [1.0.0] - 2026-06-18
 
 First tagged release. The list is stable, bilingual, and CI-verified.
