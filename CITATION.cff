@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Awesome AI Gateway"
+message: "If you use this list or its data, please cite it."
+type: dataset
+abstract: >-
+  A curated, bilingual, vendor-neutral directory of 100+ AI gateways / LLM
+  proxies, with a reproducible token-cost benchmark, a 4-axis (compliance,
+  price, security, stability) gateway scorecard, dated real-world production
+  reviews, and data-backed comparison guides.
+authors:
+  - name: "cuihuan"
+url: "https://cuihuan.github.io/awesome-ai-gateway/"
+repository-code: "https://github.com/cuihuan/awesome-ai-gateway"
+license: CC0-1.0
+keywords:
+  - AI gateway
+  - LLM proxy
+  - LLM gateway
+  - benchmark
+  - model cost
+  - OpenAI-compatible
+  - awesome list
