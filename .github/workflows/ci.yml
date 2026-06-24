@@ -33,6 +33,11 @@ jobs:
         run: |
           python scripts/check_freshness.py --max-age-days 30 || \
             echo "::warning::Pricing/scorecard snapshot is stale — re-review and bump 'as_of' (enforced in the daily job)"
+      - name: Compare HTML + sitemap match compare/*.md
+        run: |
+          python scripts/build_compare_html.py --check || {
+            echo "::error::compare/*.html or sitemap.xml are stale — run 'python scripts/build_compare_html.py' after editing compare/*.md"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest

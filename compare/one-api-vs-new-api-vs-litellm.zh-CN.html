@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)</title>
+<meta name="description" content="国内自建大模型 API 中转/分发,绕不开这三个名字:one-api、new-api、LiteLLM。它们都能&quot;一个接口打通多家模型&quot;,但定位差别很大。这是一份基于数据的实话对比。" />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html" />
+<meta property="og:title" content="one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)" />
+<meta property="og:description" content="国内自建大模型 API 中转/分发,绕不开这三个名字:one-api、new-api、LiteLLM。它们都能&quot;一个接口打通多家模型&quot;,但定位差别很大。这是一份基于数据的实话对比。" />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)" />
+<meta name="twitter:description" content="国内自建大模型 API 中转/分发,绕不开这三个名字:one-api、new-api、LiteLLM。它们都能&quot;一个接口打通多家模型&quot;,但定位差别很大。这是一份基于数据的实话对比。" />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)","description":"国内自建大模型 API 中转/分发,绕不开这三个名字:one-api、new-api、LiteLLM。它们都能\"一个接口打通多家模型\",但定位差别很大。这是一份基于数据的实话对比。","inLanguage":"zh-CN","mainEntityOfPage":"https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html","author":{"@type":"Organization","name":"Awesome AI Gateway"},"publisher":{"@type":"Organization","name":"Awesome AI Gateway"},"isPartOf":"https://cuihuan.github.io/awesome-ai-gateway/","url":"https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Awesome AI Gateway","item":"https://cuihuan.github.io/awesome-ai-gateway/"},{"@type":"ListItem","position":2,"name":"one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)","item":"https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html"}]}</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:18px}
+  h1{font-size:30px;line-height:1.25;margin:0 0 18px}
+  h2{font-size:21px;margin:34px 0 10px;padding-top:6px;border-top:1px solid var(--border)}
+  p{margin:0 0 14px}
+  ul,ol{margin:0 0 16px;padding-left:22px}li{margin:4px 0}
+  blockquote{margin:0 0 16px;padding:2px 16px;border-left:3px solid var(--blue);color:var(--mut)}
+  code{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:1px 5px;font-size:13px}
+  hr{border:0;border-top:1px solid var(--border);margin:26px 0}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 18px;display:block;overflow-x:auto}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--mut);font-weight:600;white-space:nowrap}
+  footer{margin-top:44px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="https://cuihuan.github.io/awesome-ai-gateway/">Awesome AI Gateway</a> › Comparisons</nav>
+<article>
+<h1>one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)</h1>
+<p><em>更新于 2026-06-13 · <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/README.zh-CN.md">Awesome AI Gateway</a> 的一部分。<a href="https://github.com/cuihuan/awesome-ai-gateway">⭐ 点个 Star</a>。</em></p>
+<p>国内自建大模型 API 中转/分发,绕不开这三个名字:<strong>one-api、new-api、LiteLLM</strong>。它们都能&quot;一个接口打通多家模型&quot;,但定位差别很大。这是一份基于数据的实话对比。</p>
+<h2>一眼对比</h2>
+<table><thead><tr><th></th><th>one-api</th><th>new-api</th><th>LiteLLM</th></tr></thead><tbody><tr><td><strong>定位</strong></td><td>元祖级中转/分发系统</td><td>one-api 的活跃继任者</td><td>功能最全的自托管网关</td></tr><tr><td><strong>语言</strong></td><td>Go</td><td>Go</td><td>Python</td></tr><tr><td><strong>协议</strong></td><td>MIT</td><td>AGPL-3.0</td><td>MIT(核心)</td></tr><tr><td><strong>国产模型</strong></td><td>✅ 豆包/DeepSeek/通义…</td><td>✅ + Rerank/Realtime</td><td>✅(走 OpenAI 格式)</td></tr><tr><td><strong>计费/分发</strong></td><td>✅</td><td>✅ 更完善</td><td>✅ 虚拟 Key/预算</td></tr><tr><td><strong>维护活跃度</strong></td><td>已放缓</td><td>最活跃</td><td>高(周更)</td></tr><tr><td><strong>Star</strong></td><td>~35k</td><td>~38k(已反超)</td><td>~50k</td></tr></tbody></table>
+<h2>按需求选</h2>
+<ul><li><strong>要团队计费 + 卖/分发额度 → new-api。</strong> 现在国内最活跃的中转系统,已在 Star 上反超 one-api,协议转换、计费、Rerank/Realtime 都更全。<strong>注意是 AGPL-3.0</strong>,商用嵌入前务必看清协议义务。</li><li><strong>只要个人/小团队跑通、图稳定经典 → one-api。</strong> 元祖、MIT、生态成熟,但维护节奏明显放缓——新需求建议直接上 new-api。</li><li><strong>要功能最全、虚拟 Key/预算/护栏/可观测 → LiteLLM。</strong> Python 生态、100+ 厂商、社区最大。国产模型也能通过 OpenAI 兼容层接入。代价:功能重,且因太流行成了攻击目标(见下)。</li></ul>
+<h2>安全:别只看 Star 数</h2>
+<p>自托管 = 安全你自己扛。2026 年的实话:</p>
+<ul><li><strong>new-api</strong> 2026 年有一串 CVE(IDOR 越权 CVE-2026-30886、SSRF、SQLi/DoS)——<strong>务必隔离部署、限制出站、别把后台暴露公网、及时打补丁</strong>。</li><li><strong>one-api</strong> 同源风险,且维护放缓,上生产前自行审计。</li><li><strong>LiteLLM</strong> 两个严重 CVE(预鉴权 SQLi + 一个上了 CISA 在野利用清单的 RCE)均<strong>已在 v1.83.7 修复</strong>——锁定最新 stable 即可。</li></ul>
+<p>23 个网关的合规/安全/稳定 ★1–5 评分见<a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.zh-CN.md#第四部分--网关四维评分合规价格安全稳定">网关评分卡</a>。</p>
+<h2>别忽略模型成本</h2>
+<p>网关本身 0 加价,真正花钱的是<strong>背后的模型</strong>。同一份 10 万 token 报告:<strong>DeepSeek $0.03 vs GPT-5.5 $3.01,差 106 倍</strong>。国产模型(DeepSeek/Kimi/GLM/通义)把成本压到了几十分之一,还能私有化、数据零出境——这正是国内自建中转的最大价值。<a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.zh-CN.md">完整成本对比表</a>。</p>
+<h2>结论</h2>
+<ul><li><strong>团队计费/分发 → new-api</strong>(看清 AGPL)</li><li><strong>个人跑通/经典稳定 → one-api</strong></li><li><strong>功能最全/要护栏可观测 → LiteLLM</strong>(锁最新 stable)</li></ul>
+<p>完整 50+ 网关(按痛点分类、带决策树和评测数据): 👉 <strong><a href="https://github.com/cuihuan/awesome-ai-gateway">Awesome AI Gateway</a></strong> · <a href="https://cuihuan.github.io/awesome-ai-gateway/">在线交互站</a> · <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/README.md">English</a></p>
+</article>
+<footer>
+Part of <a href="https://cuihuan.github.io/awesome-ai-gateway/">Awesome AI Gateway</a> — a curated, bilingual, independently-benchmarked list of AI gateways.
+<a href="https://github.com/cuihuan/awesome-ai-gateway">Star it on GitHub ★</a>
+</footer>
+</div>
+</body>
+</html>
