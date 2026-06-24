@@ -127,7 +127,9 @@ Total stars + **weekly velocity** (star-history.com) · **GitHub Insights → Tr
 ✅ 3 awesome-list backlink PRs open (kelvins#216, tensorchord#572, Hannibal046#682) ·
 ⬜👤 social-preview image · ⬜👤 pin+profile README · ⬜👤 execute forum launch (drafts ready).
 
-### Maintenance log
+### Maintenance / growth log
 - **2026-06-24 · accuracy audit** — all 66 GitHub-backed entries verified via `gh api`: 61 active, 5 stale/archived (TensorZero, pydantic-ai-gateway, BricksLLM, Glide, RouteLLM) — **all 5 already correctly labeled** in the list. 0 uncorrected issues; the "active within 12 months or labeled stale" promise holds. Re-run quarterly (or after big additions).
+- **2026-06-24 · growth actions executed (agent-doable):** +8 verified gateways · cost-calculator.html live · 3 `good first issue`s (#11–13) · 3 awesome-list backlink PRs (kelvins#216, tensorchord#572, Hannibal046#682) · 阮一峰周刊 self-rec ([ruanyf/weekly#10435](https://github.com/ruanyf/weekly/issues/10435)).
+- **Still 👤 (needs you — live presence / your account):** the real-time forum launch (HN Show HN, r/LocalLLaMA, r/selfhosted, V2EX, linux.do — drafts in `launch-posts.md`), social-preview image upload, pin repos, sindresorhus/awesome PR. These move stars most but backfire if fired without you present.
 
 _Sources & full research: condensed from a 2026 competitive-research pass (HN/Reddit/周刊/awesome-list mechanics, GitHub Trending, issue-ops). The bottleneck is distribution + issue-ops + backlinks — not more artifacts._
