@@ -58,6 +58,19 @@
     "smart-mcp-proxy/mcpproxy-go",
     "bestruirui/octopus",
     "NadirRouter/NadirClaw",
-    "thushan/olla"
+    "thushan/olla",
+    "router-for-me/CLIProxyAPI",
+    "decolua/9router",
+    "ENTERPILOT/GoModel",
+    "Wei-Shaw/sub2api",
+    "labring/aiproxy",
+    "cita-777/metapi",
+    "archestra-ai/archestra",
+    "AmoyLab/Unla",
+    "ascending-llc/jarvis-registry",
+    "agentic-community/mcp-gateway-registry",
+    "Nexus-Router/nexus",
+    "ai-dynamo/dynamo",
+    "InftyAI/llmaz"
   ]
 }
