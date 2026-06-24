@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenRouter 替代品（2026）：按"换用原因"整理的诚实清单</title>
+<meta name="description" content="在找 OpenRouter 替代品？按你换用的真实原因整理的诚实清单——零/低加价、数据自留、企业治理、一方合规。覆盖托管聚合器、BYOK 控制面、自托管代理与一方网关。独立、无厂商返利。" />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.zh-CN.html" />
+<link rel="alternate" hreflang="en" href="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.html" />
+<link rel="alternate" hreflang="zh-Hans" href="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.zh-CN.html" />
+<link rel="alternate" hreflang="x-default" href="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.zh-CN.html" />
+<meta property="og:title" content="OpenRouter 替代品（2026）：诚实清单" />
+<meta property="og:description" content="按换用原因整理——加价、自托管、治理、合规。托管/BYOK/自托管/一方网关都有。" />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OpenRouter 替代品（2026）" />
+<meta name="twitter:description" content="按你换用的真实原因整理的诚实清单。" />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OpenRouter 替代品（2026）：按换用原因整理的诚实清单",
+  "description": "独立、有数据支撑的 OpenRouter 替代品清单，按原因整理：加价、自托管、治理、合规。",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.zh-CN.html",
+  "inLanguage": "zh-Hans",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "about": ["OpenRouter", "AI 网关", "LLM 代理", "LLM API 聚合器"],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "zh-Hans",
+  "mainEntity": [
+    {"@type":"Question","name":"有免费的 OpenRouter 替代品吗？","acceptedAnswer":{"@type":"Answer","text":"有——自托管的开源代理如 LiteLLM、Bifrost 是免费软件（你只付模型厂商费用和自己的托管成本）。它们同样提供'多模型一个 API'的便利，没有按 token 的网关费，代价是你要自己运维这套服务。"}},
+    {"@type":"Question","name":"最便宜的 OpenRouter 替代品是哪个？","acceptedAnswer":{"@type":"Answer","text":"若要在自有密钥上做到最低总成本，BYOK 控制面（Vercel AI Gateway、Cloudflare AI Gateway）按 token 0% 加价，或自托管 LiteLLM/Bifrost。但模型选择才是主导：跨模型价差远大于任何网关费，先按真实负载估算。"}},
+    {"@type":"Question","name":"有自托管的 OpenRouter 替代品吗？","acceptedAnswer":{"@type":"Answer","text":"有——LiteLLM 和 Bifrost 是自托管代理，用你自己的密钥接 100+ provider，流量留在你的基础设施内、不加价。需要数据掌控或治理时通常选它们。"}},
+    {"@type":"Question","name":"为什么要找 OpenRouter 的替代品？","acceptedAnswer":{"@type":"Answer","text":"常见原因：在高用量下避开充值费、让数据留在自己基础设施内、需要企业治理（RBAC、审计、虚拟密钥/预算），或需要一方合规认证。OpenRouter 在'快速、零运维接入众多模型'上仍然很出色。"}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:27px;margin:0 0 8px;line-height:1.3}
+  h2{font-size:20px;margin:32px 0 10px}
+  .sub{color:var(--mut);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--mut);margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--fg);font-weight:600}
+  td:first-child{color:var(--fg);white-space:nowrap}
+  .cat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .cat h3{margin:0 0 6px;font-size:16px}
+  .cat .when{color:var(--mut);font-size:13.5px;margin:0 0 8px}
+  .cat ul{margin:0;padding-left:18px}.cat li{margin:3px 0}
+  .note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:10px;padding:12px 15px;font-size:14.5px;margin:14px 0}
+  details{border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:8px 0;background:var(--card)}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--mut);font-size:14.5px}
+  footer{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › OpenRouter 替代品 &nbsp;|&nbsp; <a href="openrouter-alternatives.html">English</a></nav>
+<h1>OpenRouter 替代品：诚实清单</h1>
+<p class="sub">OpenRouter 在"用一个 key 快速、零运维接入众多模型"上很出色。会去找替代品，通常是出于四个具体原因之一——所以这份清单按<em>你为什么要换</em>来组织，而不是按热度堆砌。</p>
+<p class="meta">独立 · 无厂商返利 · 属于 <a href="./">Awesome AI Gateway</a>（100+ 网关评测）· 依赖前请核对各厂商当前定价与认证。</p>
+
+<h2>先问：为什么要换？</h2>
+<table>
+<thead><tr><th>如果你的原因是…</th><th>就看…</th></tr></thead>
+<tbody>
+<tr><td>更低 / 零加价</td><td>BYOK 控制面，或自托管</td></tr>
+<tr><td>数据必须留在自己基础设施内</td><td>自托管代理</td></tr>
+<tr><td>企业治理 / 审计</td><td>自托管 + 企业网关</td></tr>
+<tr><td>一方合规认证</td><td>云 / 模型厂商网关</td></tr>
+</tbody>
+</table>
+
+<h2>替代品，按类别</h2>
+
+<div class="cat"><h3>托管聚合器（零运维，与 OpenRouter 同类）</h3>
+<p class="when">如果你喜欢 OpenRouter 这种模式，但想要不同的模型组合、特性或定价——同样无需运维。</p>
+<ul>
+<li><b>Together AI</b> / <b>Fireworks AI</b> — 托管的多模型推理，开源模型目录广。</li>
+<li><b>Portkey</b> — 托管 AI 网关，带路由、缓存、护栏和可观测。</li>
+</ul></div>
+
+<div class="cat"><h3>BYOK 控制面（按 token 0% 加价）</h3>
+<p class="when">如果你想要 OpenRouter 式的便利，但用在<em>你自己的</em>厂商密钥上——缓存、路由、限额，且没有充值费。</p>
+<ul>
+<li><b>Vercel AI Gateway</b> — 在你自己的密钥前做 0% 加价的统一 API、支出控制。</li>
+<li><b>Cloudflare AI Gateway</b> — 在你的密钥前做缓存、限流和分析。</li>
+</ul></div>
+
+<div class="cat"><h3>自托管、开源（完全掌控、无加价）</h3>
+<p class="when">如果数据必须留在自己基础设施内，或你想要零按 token 费用 + 团队集中治理——代价是要运维一套服务。<a href="self-hosted-llm-gateway.zh-CN.html">如何选一个的完整指南 →</a></p>
+<ul>
+<li><b>LiteLLM</b> — 默认的自托管代理：100+ provider、虚拟密钥、预算、负载均衡。</li>
+<li><b>Bifrost</b> — Go 原生，高吞吐下开销极低。</li>
+<li><b>Helicone</b> — 开源可观测 + 网关（日志、缓存、监控）。</li>
+</ul></div>
+
+<div class="cat"><h3>企业 & 一方（治理 / 合规）</h3>
+<p class="when">如果你需要在久经考验的数据面上做 RBAC + 审计，或需要一方合规认证。</p>
+<ul>
+<li><b>Kong</b> / <b>Higress</b> — 在企业级 API 网关数据面上的 AI 插件。</li>
+<li><b>Azure OpenAI</b> / <b>AWS Bedrock</b> — 一方、多模型、最强认证（HIPAA-BAA、FedRAMP）与 ZDR。</li>
+</ul></div>
+
+<div class="note">⚖️ 无论选哪个，<b>主导成本的是模型而非网关</b>——同一任务跨模型能差 <b>100×+</b>，远大于任何网关费。先按真实负载估算 → <a href="cost-calculator.html"><b>成本计算器</b></a>。</div>
+
+<h2>信任任何一家之前，先验真</h2>
+<p>每个聚合器和代理都夹在你和模型之间。上生产前，确认它不会悄悄换模型、假流式或虚报 token 用量——跑 <a href="https://github.com/cuihuan/awesome-ai-gateway#how-to-choose-safely">canary 保真测试</a>，并让网关的信任层级与你数据的敏感度匹配。</p>
+
+<h2>常见问题</h2>
+<details><summary>有免费的替代品吗？</summary><p>有——自托管的 LiteLLM 和 Bifrost 是免费软件；你只付厂商和托管成本。</p></details>
+<details><summary>最便宜的是哪个？</summary><p>BYOK 控制面（Vercel / Cloudflare AI Gateway）0% 加价，或自托管。但模型选择主导——先估算负载。</p></details>
+<details><summary>有自托管的替代品吗？</summary><p>有——LiteLLM 和 Bifrost 用你自己的密钥接 100+ provider，数据留在你的基础设施内。</p></details>
+<details><summary>到底为什么要换？</summary><p>规模化避开充值费、数据掌控、企业治理或一方合规。OpenRouter 在快速、零运维覆盖上仍然出色。</p></details>
+
+<footer>
+头对头对比前两名 → <a href="litellm-vs-openrouter.zh-CN.html"><b>LiteLLM vs OpenRouter</b></a>。
+不确定？<a href="gateway-picker.html"><b>🧭 选网关</b></a> · <a href="cost-calculator.html"><b>💰 成本计算器</b></a> · <a href="./">100+ 完整列表</a>。
+独立 & CC0 — <a href="https://github.com/cuihuan/awesome-ai-gateway">★ 在 GitHub 点个 Star</a>。
+</footer>
+</div>
+</body>
+</html>
