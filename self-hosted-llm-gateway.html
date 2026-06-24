@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Best self-hosted / open-source LLM gateway (2026): how to choose</title>
+<meta name="description" content="Decided to self-host your LLM gateway? A fair, data-grounded guide to the leading open-source options — LiteLLM, Bifrost, Portkey Gateway, Helicone, Higress, Kong — and how to choose by features, throughput, observability or enterprise needs. Independent, no vendor money." />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.html" />
+<meta property="og:title" content="Best self-hosted / open-source LLM gateway (2026)" />
+<meta property="og:description" content="LiteLLM, Bifrost, Portkey, Helicone, Higress, Kong — how to choose by features, throughput, observability or enterprise needs." />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Best self-hosted / open-source LLM gateway (2026)" />
+<meta name="twitter:description" content="How to choose among the leading open-source LLM gateways." />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best self-hosted / open-source LLM gateway (2026): how to choose",
+  "description": "An independent, data-grounded guide to the leading open-source self-hosted LLM gateways and how to choose between them.",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.html",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "about": ["self-hosted LLM gateway", "open-source AI gateway", "LiteLLM", "Bifrost", "LLM proxy"],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the best open-source LLM gateway?","acceptedAnswer":{"@type":"Answer","text":"There's no single best — it depends on your priority. LiteLLM is the default for the broadest provider coverage and team governance; Bifrost for lowest overhead at high throughput; Helicone when observability is the priority; Higress or Kong for enterprise Kubernetes deployments with audit and RBAC."}},
+    {"@type":"Question","name":"Is LiteLLM the best self-hosted gateway?","acceptedAnswer":{"@type":"Answer","text":"LiteLLM is the most common default because of its breadth — 100+ providers, virtual keys, budgets and load balancing. It's the safe first choice, but if your priority is raw throughput, observability, or enterprise K8s governance, Bifrost, Helicone or Higress/Kong may fit better."}},
+    {"@type":"Question","name":"Which self-hosted LLM gateway is fastest?","acceptedAnswer":{"@type":"Answer","text":"Go-native gateways like Bifrost are designed for very low overhead and high request rates. Always benchmark with your own traffic shape and models before committing — overhead claims depend heavily on workload."}},
+    {"@type":"Question","name":"Self-hosted or hosted gateway — which should I choose?","acceptedAnswer":{"@type":"Answer","text":"Self-host when data must stay in your infrastructure, you want no per-token markup, or you need central governance and can run a service. Use a hosted gateway/aggregator when you want zero operational burden and fastest access to many models."}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:28px;margin:0 0 8px;line-height:1.25}
+  h2{font-size:20px;margin:32px 0 10px}
+  .sub{color:var(--mut);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--mut);margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--fg);font-weight:600}
+  td:first-child{color:var(--fg);white-space:nowrap;font-weight:600}
+  .note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:10px;padding:12px 15px;font-size:14.5px;margin:14px 0}
+  details{border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:8px 0;background:var(--card)}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--mut);font-size:14.5px}
+  footer{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › Self-hosted LLM gateway</nav>
+<h1>Best self-hosted / open-source LLM gateway: how to choose</h1>
+<p class="sub">If you've decided to self-host — for data control, no per-token markup, or central governance — these are the leading open-source options. None is universally "best"; the right one depends on whether you optimize for features, throughput, observability, or enterprise operations.</p>
+<p class="meta">Independent · no vendor money · part of the <a href="./">Awesome AI Gateway</a> benchmark · self-host means you own HA, upgrades and scaling — budget for it.</p>
+
+<h2>Why self-host a gateway at all?</h2>
+<p>Four concrete reasons: your traffic and keys <b>stay in your infrastructure</b>; <b>no per-token markup</b> (you pay providers directly); central <b>governance</b> — virtual keys, budgets, rate limits across a team; and <b>on-prem / air-gapped or compliance</b> needs your infra already satisfies. The trade-off is real operational work.</p>
+
+<h2>The leading options</h2>
+<table>
+<thead><tr><th>Gateway</th><th>Strength / best when</th></tr></thead>
+<tbody>
+<tr><td>LiteLLM</td><td>Broadest coverage — 100+ providers, virtual keys, budgets, load balancing. The default first choice.</td></tr>
+<tr><td>Bifrost</td><td>Go-native, very low overhead at high request rates. Pick when throughput/latency dominate.</td></tr>
+<tr><td>Portkey Gateway</td><td>Open-source, edge-deployable gateway with routing, caching and guardrails.</td></tr>
+<tr><td>Helicone</td><td>Observability-first — logging, caching, monitoring with a gateway. Pick when you need visibility.</td></tr>
+<tr><td>Higress</td><td>Envoy/Istio-based, cloud-native — AI gateway for Kubernetes shops wanting an enterprise data plane.</td></tr>
+<tr><td>Kong</td><td>AI plugins on a battle-tested API-gateway data plane — RBAC, audit, semantic caching at enterprise scale.</td></tr>
+</tbody>
+</table>
+
+<h2>How to choose in one line</h2>
+<table>
+<thead><tr><th>Your priority</th><th>Start with</th></tr></thead>
+<tbody>
+<tr><td>Broadest features, fastest to adopt</td><td>LiteLLM</td></tr>
+<tr><td>Lowest overhead / high throughput</td><td>Bifrost</td></tr>
+<tr><td>Observability &amp; cost visibility</td><td>Helicone</td></tr>
+<tr><td>Edge deploy + guardrails</td><td>Portkey Gateway</td></tr>
+<tr><td>Enterprise Kubernetes + audit</td><td>Higress / Kong</td></tr>
+</tbody>
+</table>
+
+<div class="note">⚖️ Self-hosting removes the gateway fee, but the <b>model you choose still dominates cost</b> — a 100×+ spread across models, far larger than any markup you're avoiding. Size your workload → <a href="cost-calculator.html"><b>cost calculator</b></a>.</div>
+
+<h2>Before production: verify fidelity</h2>
+<p>Self-hosted or not, a proxy can still misbehave after a misconfiguration or upgrade — silently swapping models, fake-streaming, or misreporting usage. Run the <a href="https://github.com/cuihuan/awesome-ai-gateway#how-to-choose-safely">canary fidelity test</a> against your deployment, and pin to a known-good release.</p>
+
+<h2>FAQ</h2>
+<details><summary>What's the best open-source LLM gateway?</summary><p>No single winner — LiteLLM for breadth, Bifrost for throughput, Helicone for observability, Higress/Kong for enterprise K8s.</p></details>
+<details><summary>Is LiteLLM the best?</summary><p>It's the common default for breadth and governance; pick something else if throughput, observability or enterprise K8s is your top priority.</p></details>
+<details><summary>Which is fastest?</summary><p>Go-native gateways like Bifrost target low overhead — but benchmark with your own traffic before committing.</p></details>
+<details><summary>Self-hosted or hosted?</summary><p>Self-host for data control / no markup / governance (if you can run a service); hosted for zero ops and fastest reach.</p></details>
+
+<footer>
+Not sure self-hosting is right? Compare → <a href="litellm-vs-openrouter.html"><b>LiteLLM vs OpenRouter</b></a> · <a href="openrouter-alternatives.html"><b>OpenRouter alternatives</b></a>.
+Or <a href="gateway-picker.html"><b>🧭 pick by need</b></a> · <a href="cost-calculator.html"><b>💰 size the cost</b></a> · <a href="https://github.com/cuihuan/awesome-ai-gateway#-self-hosted-open-source">see all self-hosted options</a>.
+Independent &amp; CC0 — <a href="https://github.com/cuihuan/awesome-ai-gateway">★ Star on GitHub</a>.
+</footer>
+</div>
+</body>
+</html>
