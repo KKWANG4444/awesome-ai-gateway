@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Model Cost Calculator — compare LLM API costs for your workload</title>
+<meta name="description" content="Free interactive calculator: enter your input/output token mix and see what your task costs across 16 LLM models (Claude, GPT, Gemini, DeepSeek…). Same open pricing data as the Awesome AI Gateway benchmark." />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html" />
+<meta property="og:title" content="AI Model Cost Calculator — what will your LLM workload cost?" />
+<meta property="og:description" content="Enter your token mix, see the cost across 16 models and the spread. Open, reproducible pricing data." />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Model Cost Calculator" />
+<meta name="twitter:description" content="Enter your token mix, see the cost across 16 models and the spread." />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Model Cost Calculator",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (web)",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "description": "Interactive calculator for per-task LLM API cost across models, from open pricing data.",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/"
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--red:#f85149}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:880px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:27px;margin:0 0 6px}
+  .sub{color:var(--mut);margin:0 0 20px}
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:18px}
+  label{display:block;font-size:13px;color:var(--mut);margin:0 0 4px}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:150px}
+  input[type=number]{width:100%;background:#0d1117;border:1px solid var(--border);color:var(--fg);border-radius:8px;padding:9px 12px;font-size:15px;font-variant-numeric:tabular-nums}
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  .preset{background:#0d1117;border:1px solid var(--border);color:var(--fg);border-radius:20px;padding:5px 13px;cursor:pointer;font-size:13px}
+  .preset:hover{border-color:var(--blue);color:var(--blue)}
+  .headline{font-size:15px;margin:0 0 14px;line-height:1.5}
+  .headline b{font-size:17px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border)}
+  th{color:var(--mut);font-weight:600;cursor:pointer;white-space:nowrap}
+  td.num{font-variant-numeric:tabular-nums;text-align:right}
+  tr:hover td{background:#1c2128}
+  .cheap{color:var(--green);font-weight:700}.dear{color:var(--red);font-weight:700}
+  footer{margin-top:36px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › Cost calculator</nav>
+<h1>AI Model Cost Calculator</h1>
+<p class="sub">Enter the token mix of <em>your</em> task and see what it costs across models — and how big the spread is. Prices from the same open, reproducible data behind the <a href="BENCHMARKS.md">benchmark</a>; the formula is the one in the unit-tested <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/scripts/cost_calc.py">cost_calc.py</a>.</p>
+
+<div class="panel">
+  <div class="row">
+    <div><label for="in">Input tokens (prompt)</label><input id="in" type="number" min="0" value="10000" /></div>
+    <div><label for="out">Output tokens (completion)</label><input id="out" type="number" min="0" value="10000" /></div>
+    <div><label for="runs">× how many times</label><input id="runs" type="number" min="1" value="1" /></div>
+  </div>
+  <div class="presets" id="presets"></div>
+</div>
+
+<p class="headline" id="headline">…</p>
+<table id="t"><thead><tr>
+  <th data-k="name">Model</th><th data-k="provider">Provider</th>
+  <th data-k="pin" class="num">$/M in</th><th data-k="pout" class="num">$/M out</th>
+  <th data-k="cost" class="num">Your cost</th>
+</tr></thead><tbody></tbody></table>
+
+<footer>
+Part of <a href="./">Awesome AI Gateway</a> — a curated, independently-benchmarked list of 100+ AI gateways.
+Pricing snapshot updates with the dataset; verify against provider pricing before relying on it. <a href="https://github.com/cuihuan/awesome-ai-gateway">★ Star on GitHub</a>
+</footer>
+</div>
+
+<script>
+const PRESETS = [
+  ["100K-token report", 2000, 100000],
+  ["Coding session", 50000, 20000],
+  ["Summarize a long doc", 100000, 2000],
+  ["Chatbot turn", 4000, 600],
+  ["Heavy day (1M+1M)", 1000000, 1000000],
+];
+const fmt = v => v < 0.01 ? '$'+v.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') : v < 1 ? '$'+v.toFixed(3) : v < 100 ? '$'+v.toFixed(2) : '$'+Math.round(v).toLocaleString();
+let models = [], sort = {k:'cost', asc:true};
+
+function taskCost(m, inTok, outTok){
+  const p = m.pricing_usd_per_mtok || {};
+  return ((inTok * (p.input||0)) + (outTok * (p.output||0))) / 1e6;
+}
+function render(){
+  const inTok = +document.getElementById('in').value||0, outTok = +document.getElementById('out').value||0, runs = +document.getElementById('runs').value||1;
+  const rows = models.filter(m => m.pricing_usd_per_mtok && (m.pricing_usd_per_mtok.input!=null)).map(m => ({
+    name:m.name, provider:m.provider, pin:m.pricing_usd_per_mtok.input, pout:m.pricing_usd_per_mtok.output,
+    cost: taskCost(m, inTok, outTok) * runs
+  }));
+  if(!rows.length){return;}
+  const costs = rows.map(r=>r.cost), lo=Math.min(...costs), hi=Math.max(...costs);
+  rows.sort((a,b)=>{const x=a[sort.k],y=b[sort.k];return (typeof x==='number'? x-y : (''+x).localeCompare(''+y))*(sort.asc?1:-1);});
+  document.querySelector('#t tbody').innerHTML = rows.map(r=>{
+    const c = r.cost===lo?'cheap':r.cost===hi?'dear':'';
+    return `<tr><td>${r.name}</td><td>${r.provider}</td><td class="num">$${r.pin}</td><td class="num">$${r.pout}</td><td class="num ${c}">${fmt(r.cost)}</td></tr>`;
+  }).join('');
+  const spread = lo>0 ? Math.round(hi/lo) : null;
+  const cheapest = rows.find(r=>r.cost===lo), priciest = rows.find(r=>r.cost===hi);
+  document.getElementById('headline').innerHTML = spread
+    ? `This workload costs <b class="cheap">${fmt(lo)}</b> on ${cheapest.name} vs <b class="dear">${fmt(hi)}</b> on ${priciest.name} — a <b>${spread}×</b> spread. The gateway you route through decides how easily you exploit that.`
+    : `Cheapest <b class="cheap">${fmt(lo)}</b> (${cheapest.name}).`;
+}
+const pc = document.getElementById('presets');
+PRESETS.forEach(([label,i,o])=>{const b=document.createElement('button');b.className='preset';b.textContent=label;
+  b.onclick=()=>{document.getElementById('in').value=i;document.getElementById('out').value=o;render();};pc.appendChild(b);});
+['in','out','runs'].forEach(id=>document.getElementById(id).oninput=render);
+document.querySelectorAll('#t th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sort.asc=sort.k===k?!sort.asc:true;sort.k=k;render();});
+fetch('data/models.json').then(r=>r.json()).then(d=>{models=(d&&d.models)||[];render();})
+  .catch(()=>{document.getElementById('headline').innerHTML='Pricing data loads on the live site — see the <a href="https://github.com/cuihuan/awesome-ai-gateway">repo</a>.';});
+</script>
+</body>
+</html>

@@ -184,6 +184,7 @@ class TestSitemap(unittest.TestCase):
         ib = xml.index("b-article.html")
         self.assertLess(ia, ib)  # sorted
         self.assertIn("<priority>0.8</priority>", xml)
+        self.assertIn("cost-calculator.html", xml)  # interactive tool is in the sitemap
         self.assertTrue(xml.strip().endswith("</urlset>"))
 
     def test_lastmod_emitted_only_when_present(self):
