@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Which AI Gateway should I use? — interactive picker</title>
+<meta name="description" content="Answer one question and get a vetted AI-gateway recommendation (OpenRouter, LiteLLM, Bifrost, new-api, Kong, Azure/Bedrock, agentgateway…) by need — cost, self-hosting, enterprise, China, or MCP/agents. From the independent Awesome AI Gateway list." />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/gateway-picker.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/gateway-picker.html" />
+<meta property="og:title" content="Which AI Gateway should I use? — interactive picker" />
+<meta property="og:description" content="Pick by need in 10 seconds — a vetted recommendation across 100+ AI gateways." />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/decision-tree.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Which AI Gateway should I use?" />
+<meta name="twitter:description" content="Pick by need in 10 seconds — a vetted recommendation across 100+ AI gateways." />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/decision-tree.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Gateway Picker",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/gateway-picker.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (web)",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "description": "Interactive decision tool that recommends an AI gateway by need, from a curated independent list.",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/"
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:27px;margin:0 0 6px}
+  .sub{color:var(--mut);margin:0 0 22px}
+  .q{font-size:15px;color:var(--mut);margin:0 0 10px}
+  .needs{display:flex;flex-direction:column;gap:8px}
+  .need{text-align:left;background:var(--card);border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:12px 15px;cursor:pointer;font-size:15px}
+  .need:hover,.need.active{border-color:var(--blue);color:var(--blue)}
+  .rec{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:10px;padding:16px 18px;margin:18px 0 0}
+  .rec h2{font-size:19px;margin:0 0 6px}
+  .rec .why{color:var(--mut);margin:0 0 10px}
+  .rec .links{font-size:14px}
+  .safety{font-size:13px;color:var(--yellow);margin:12px 0 0}
+  footer{margin-top:36px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › Gateway picker</nav>
+<h1>Which AI gateway should I use?</h1>
+<p class="sub">Pick the one that matches your main need — a vetted starting point from the <a href="https://github.com/cuihuan/awesome-ai-gateway#which-gateway-should-i-use">decision tree</a>, plus where to drill in. (Alternatives in each linked section.)</p>
+<p class="q">I need…</p>
+<div class="needs" id="needs"></div>
+<div id="rec"></div>
+<footer>
+From <a href="./">Awesome AI Gateway</a> — independent, CC0, no vendor money. Then size the cost: <a href="cost-calculator.html">cost calculator →</a>. <a href="https://github.com/cuihuan/awesome-ai-gateway">★ Star on GitHub</a>
+</footer>
+</div>
+<script>
+const SITE='https://cuihuan.github.io/awesome-ai-gateway/';
+const REPO='https://github.com/cuihuan/awesome-ai-gateway';
+// Recommendations are the README "fast answer" table verbatim — vetted, not invented.
+const NEEDS=[
+  {k:'cheap', q:'Cheapest access to many models, zero ops', pick:'OpenRouter', url:'https://openrouter.ai', why:'400+ models behind one key and one bill, in minutes (watch the ~5.5% credit fee at scale).', drill:'#-cost-first-cheapest-multi-model-access'},
+  {k:'byok', q:'Zero markup on my own provider keys', pick:'Vercel AI Gateway / Cloudflare AI Gateway', url:'https://vercel.com/ai-gateway', why:'A control plane in front of your own keys at 0% markup — caching, routing, spend limits.', drill:'#-cost-first-cheapest-multi-model-access'},
+  {k:'selfhost', q:'Self-host, broadest features', pick:'LiteLLM', url:'https://github.com/BerriAI/litellm', why:'The default self-hosted proxy: 100+ providers, virtual keys, budgets, load balancing. (Pin to current stable.)', drill:'#-self-hosted-open-source'},
+  {k:'fast', q:'Self-host, lowest overhead / high throughput', pick:'Bifrost (Go)', url:'https://github.com/maximhq/bifrost', why:'Go-native gateway, very low overhead at high RPS, adaptive load balancing.', drill:'#-self-hosted-open-source'},
+  {k:'china', q:'China models + team key billing', pick:'new-api', url:'https://github.com/QuantumNous/new-api', why:'The most active one-api fork: 国产模型, protocol conversion, key distribution & billing.', drill:'#-china-ecosystem'},
+  {k:'enterprise', q:'Enterprise K8s, audit & guardrails', pick:'Kong / Higress', url:'https://github.com/Kong/kong', why:'AI plugins on a battle-tested API-gateway data plane: RBAC, audit, semantic caching.', drill:'#-enterprise--compliance'},
+  {k:'compliance', q:'Strongest compliance (HIPAA / FedRAMP)', pick:'Azure / AWS Bedrock', url:'https://azure.microsoft.com/products/ai-services/openai-service', why:'First-party + ZDR; HIPAA-BAA and FedRAMP High — at the cost of single-vendor lock-in.', drill:'#️-first-party-gateways-cloud--model-vendors'},
+  {k:'mcp', q:'Govern agents / MCP traffic', pick:'agentgateway', url:'https://github.com/agentgateway/agentgateway', why:'CNCF proxy for agentic traffic: MCP governance and agent-to-agent (A2A) communication.', drill:'#-mcp--agent-gateways'},
+];
+const SAFETY='⚠️ Match the gateway’s trust tier to your data’s sensitivity, and for any third-party relay run the <a href="'+REPO+'#how-to-choose-safely">canary fidelity test</a> + check the scorecard before trusting it.';
+function show(k){
+  const n=NEEDS.find(x=>x.k===k); if(!n) return;
+  document.querySelectorAll('.need').forEach(b=>b.classList.toggle('active', b.dataset.k===k));
+  document.getElementById('rec').innerHTML =
+    '<div class="rec"><h2>Start with: <a href="'+n.url+'">'+n.pick+'</a></h2>'
+    + '<p class="why">'+n.why+'</p>'
+    + '<p class="links">Drill into all options → <a href="'+REPO+n.drill+'">this section of the list</a> · then size it with the <a href="cost-calculator.html">cost calculator</a>.</p>'
+    + '<p class="safety">'+SAFETY+'</p></div>';
+  history.replaceState(null,'','#need='+k);
+}
+const box=document.getElementById('needs');
+NEEDS.forEach(n=>{const b=document.createElement('button');b.className='need';b.dataset.k=n.k;b.textContent=n.q;b.onclick=()=>show(n.k);box.appendChild(b);});
+const init=new URLSearchParams(location.hash.slice(1)).get('need');
+if(init && NEEDS.some(n=>n.k===init)) show(init);
+</script>
+</body>
+</html>
