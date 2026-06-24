@@ -39,6 +39,13 @@ jobs:
             git push
           fi
 
+      # Push the sitemap URLs to IndexNow so Bing (→ ~87% of ChatGPT Search
+      # citations) keeps them in its crawl queue. The key is public by design;
+      # non-blocking so a transient IndexNow hiccup never reds the daily job.
+      - name: Ping IndexNow (Bing/Yandex discovery)
+        run: python scripts/ping_indexnow.py
+        continue-on-error: true
+
       # Blocking nag: the auto-refresh above keeps stars/releases current, but the
       # pricing/scorecard snapshots are hand-reviewed. If they rot past 30 days the
       # daily run goes red (the data is already pushed above) so the maintainer is
