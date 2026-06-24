@@ -441,6 +441,7 @@ def build_sitemap(articles: list[tuple[str, str | None]]) -> str:
     """articles: [(slug, lastmod_or_None), ...]. The home page has no lastmod
     (its 'daily' changefreq already signals freshness)."""
     rows = [(SITE, "1.0", "daily", None)]
+    rows.append((SITE + "litellm-vs-openrouter.html", "0.7", "monthly", None))  # comparison article
     rows.append((SITE + "gateway-picker.html", "0.8", "monthly", None))   # interactive decision tool
     rows.append((SITE + "cost-calculator.html", "0.8", "monthly", None))  # interactive tool
     lastmods = [lm for _, lm in articles if lm]

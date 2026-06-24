@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LiteLLM vs OpenRouter (2026): which AI gateway should you use?</title>
+<meta name="description" content="A fair, data-grounded comparison of LiteLLM (self-hosted open-source proxy) vs OpenRouter (hosted aggregator): cost & markup, setup, providers, data path, governance, and when to pick each — or use both. From the independent Awesome AI Gateway benchmark." />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/litellm-vs-openrouter.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/litellm-vs-openrouter.html" />
+<meta property="og:title" content="LiteLLM vs OpenRouter (2026): which should you use?" />
+<meta property="og:description" content="Self-hosted proxy vs hosted aggregator — cost, ops, data path, governance, and when to pick each. Independent, no vendor money." />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="LiteLLM vs OpenRouter (2026)" />
+<meta name="twitter:description" content="Self-hosted proxy vs hosted aggregator — cost, ops, data path, and when to pick each." />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LiteLLM vs OpenRouter (2026): which AI gateway should you use?",
+  "description": "A fair, data-grounded comparison of LiteLLM (self-hosted open-source proxy) and OpenRouter (hosted aggregator).",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/litellm-vs-openrouter.html",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "about": ["LiteLLM", "OpenRouter", "AI gateway", "LLM proxy"],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is LiteLLM free?","acceptedAnswer":{"@type":"Answer","text":"The LiteLLM proxy is open-source (free to self-host). You still pay your underlying model providers, and there is a paid enterprise tier for SSO, audit and support. You operate and scale the proxy yourself."}},
+    {"@type":"Question","name":"Does OpenRouter add a markup?","acceptedAnswer":{"@type":"Answer","text":"OpenRouter passes through provider pricing and charges a small fee on credit purchases (roughly 5%); you can also bring your own provider keys (BYOK) to avoid the per-token margin. Check OpenRouter's current pricing page for exact numbers."}},
+    {"@type":"Question","name":"Can LiteLLM use OpenRouter?","acceptedAnswer":{"@type":"Answer","text":"Yes. OpenRouter is one of the 100+ providers LiteLLM can route to, so you can self-host LiteLLM for governance and use OpenRouter as a fallback or breadth provider behind it. They are not mutually exclusive."}},
+    {"@type":"Question","name":"Which is better for production?","acceptedAnswer":{"@type":"Answer","text":"Neither is universally better. Choose LiteLLM when you need control, no per-token markup, your data to stay in your infrastructure, and team-level virtual keys/budgets — and you can run a service. Choose OpenRouter when you want the fastest access to many models with zero operational burden."}},
+    {"@type":"Question","name":"Is OpenRouter cheaper than LiteLLM?","acceptedAnswer":{"@type":"Answer","text":"It depends on volume. OpenRouter has no infrastructure cost but adds a credit fee; LiteLLM has no software cost but you pay to run and scale it. At low volume OpenRouter is usually cheaper all-in; at high, steady volume self-hosting LiteLLM on your own keys often wins. Model choice dominates both — the price spread across models is far larger than any gateway fee."}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:28px;margin:0 0 8px;line-height:1.25}
+  h2{font-size:20px;margin:32px 0 10px}
+  h3{font-size:16px;margin:20px 0 6px}
+  .sub{color:var(--mut);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--mut);margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--fg);font-weight:600}
+  th.col{color:var(--blue)}
+  td:first-child{color:var(--mut);white-space:nowrap}
+  .pick{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .pick.l{border-left:3px solid var(--green)}.pick.o{border-left:3px solid var(--blue)}
+  .note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:10px;padding:12px 15px;font-size:14.5px;margin:14px 0}
+  details{border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:8px 0;background:var(--card)}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--mut);font-size:14.5px}
+  footer{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › LiteLLM vs OpenRouter</nav>
+<h1>LiteLLM vs OpenRouter: which AI gateway should you use?</h1>
+<p class="sub">The two most common starting points represent two different models: <b>LiteLLM</b> is a self-hosted open-source proxy you run; <b>OpenRouter</b> is a hosted aggregator you sign up for. The right answer depends on how much control and how little operational burden you want.</p>
+<p class="meta">Independent · no vendor money · part of the <a href="./">Awesome AI Gateway</a> benchmark · figures change — verify against each vendor's current pricing.</p>
+
+<h2>TL;DR</h2>
+<table>
+<thead><tr><th></th><th class="col">LiteLLM</th><th class="col">OpenRouter</th></tr></thead>
+<tbody>
+<tr><td>What it is</td><td>Open-source proxy you self-host</td><td>Hosted aggregator (SaaS)</td></tr>
+<tr><td>Setup</td><td>Deploy &amp; operate it yourself</td><td>Sign up, one API key, minutes</td></tr>
+<tr><td>Reach</td><td>100+ providers via <em>your</em> keys</td><td>Hundreds of models on <em>their</em> accounts</td></tr>
+<tr><td>Cost model</td><td>Free software + your provider costs + your hosting</td><td>Provider price + small credit fee (~5%), or BYOK</td></tr>
+<tr><td>Keys &amp; billing</td><td>Your provider keys; virtual keys &amp; budgets for your team</td><td>One key, one bill; no per-provider accounts</td></tr>
+<tr><td>Ops burden</td><td>You run it (HA, upgrades, scaling)</td><td>Zero — they operate it</td></tr>
+<tr><td>Data path</td><td>Stays in your infrastructure</td><td>Routes through OpenRouter</td></tr>
+<tr><td>Best for</td><td>Control, governance, no markup, on your infra</td><td>Fastest access to many models, zero ops</td></tr>
+</tbody>
+</table>
+
+<h2>When to pick each</h2>
+<div class="pick l"><b>Pick LiteLLM if</b> you want your traffic and keys to stay in your own infrastructure, no per-token markup, central virtual keys + budgets + rate limits for a team, and you're comfortable running a service (Helm/Docker, HA, upgrades). It's the default open-source proxy for a reason: broad provider coverage and governance features.</div>
+<div class="pick o"><b>Pick OpenRouter if</b> you want one key and one bill across many models in minutes, no provider-account sprawl, and zero operational burden — ideal for experimentation, prototyping, and teams that don't want to run infrastructure. You trade a small fee and an extra hop in the data path for that convenience.</div>
+
+<h2>Cost: the part people get wrong</h2>
+<p>The gateway fee is usually the <em>smaller</em> variable. OpenRouter adds a small credit fee (or 0% with BYOK); LiteLLM's software is free but you pay to host and scale it. At low volume, OpenRouter is typically cheaper all-in; at high, steady volume, self-hosting on your own provider keys often wins.</p>
+<div class="note">⚖️ The dominant cost lever is <b>which model you pick</b>, not which gateway. The same task can vary <b>100×+</b> across models — far more than any gateway fee. Size your real workload first → <a href="cost-calculator.html"><b>cost calculator</b></a>.</div>
+
+<h2>You can use both</h2>
+<p>This isn't either/or. OpenRouter is one of the 100+ providers LiteLLM can route to — so a common production setup is <b>self-host LiteLLM</b> for governance, virtual keys and budgets, with <b>OpenRouter behind it</b> as a breadth/fallback provider for long-tail models. You get governance <em>and</em> reach.</p>
+
+<h2>Before you trust either in production</h2>
+<p>Any proxy or aggregator sits between you and the model — so verify it doesn't silently swap models, fake-stream, or misreport token usage. Run the <a href="https://github.com/cuihuan/awesome-ai-gateway#how-to-choose-safely">canary fidelity test</a> and match the gateway's trust tier to your data's sensitivity. (This applies to <em>every</em> relay, not just these two.)</p>
+
+<h2>FAQ</h2>
+<details><summary>Is LiteLLM free?</summary><p>The proxy is open-source and free to self-host; you still pay your model providers, and there's a paid enterprise tier (SSO, audit, support). You operate and scale it yourself.</p></details>
+<details><summary>Does OpenRouter add a markup?</summary><p>It passes through provider pricing and charges a small fee on credits (~5%); BYOK avoids the per-token margin. Check OpenRouter's current pricing for exact numbers.</p></details>
+<details><summary>Can LiteLLM use OpenRouter?</summary><p>Yes — OpenRouter is a supported provider in LiteLLM, so you can put LiteLLM in front for governance and use OpenRouter for breadth/fallback behind it.</p></details>
+<details><summary>Which is better for production?</summary><p>Neither universally. LiteLLM for control + no markup + data-in-your-infra + team budgets (if you can run a service); OpenRouter for fastest reach with zero ops.</p></details>
+<details><summary>Is OpenRouter cheaper than LiteLLM?</summary><p>Depends on volume — low volume favors OpenRouter (no infra cost), high steady volume favors self-hosted LiteLLM on your own keys. Model choice dominates both.</p></details>
+
+<footer>
+See all options → <a href="https://github.com/cuihuan/awesome-ai-gateway#-self-hosted-open-source">self-hosted</a> · <a href="https://github.com/cuihuan/awesome-ai-gateway#-cost-first-cheapest-multi-model-access">hosted/cost-first</a> in the full list.
+Not sure? <a href="gateway-picker.html"><b>🧭 Gateway picker</b></a> · <a href="cost-calculator.html"><b>💰 Cost calculator</b></a>.
+Independent &amp; CC0 — <a href="https://github.com/cuihuan/awesome-ai-gateway">★ Star on GitHub</a>.
+</footer>
+</div>
+</body>
+</html>
