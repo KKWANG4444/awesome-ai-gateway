@@ -352,6 +352,83 @@ Part of <a href="{SITE}">Awesome AI Gateway</a> — a curated, bilingual, indepe
 """
 
 
+def render_hub(articles: list[dict]) -> str:
+    """Render compare/index.html — the hub page listing every deep-dive comparison
+    (newest first). `articles`: [{slug, title, description, lastmod}, ...]."""
+    items = sorted(articles, key=lambda a: (a.get("lastmod") or "", a["title"]), reverse=True)
+    url = SITE + "compare/"
+    title = "AI Gateway Comparisons (2026) — data-backed head-to-heads"
+    desc = ("Independent, data-backed AI gateway comparisons: LiteLLM vs OpenRouter vs Portkey, "
+            "LiteLLM & OpenRouter alternatives, Cloudflare vs Vercel, best self-hosted, one-api vs new-api.")
+    e = lambda s: html.escape(s, quote=True)
+    cards, ld = [], []
+    for i, a in enumerate(items, 1):
+        date = f' · <span class="d">updated {a["lastmod"]}</span>' if a.get("lastmod") else ""
+        cards.append(
+            f'<li><a class="t" href="{a["slug"]}.html">{e(a["title"])}</a>{date}'
+            f'<p>{e(a["description"])}</p></li>'
+        )
+        ld.append(f'{{"@type":"ListItem","position":{i},"url":"{SITE}compare/{a["slug"]}.html","name":{_json(a["title"])}}}')
+    collection_ld = (
+        '{"@context":"https://schema.org","@type":"CollectionPage",'
+        f'"name":{_json(title)},"description":{_json(desc)},"url":"{url}",'
+        f'"isPartOf":"{SITE}","mainEntity":{{"@type":"ItemList","itemListElement":[{",".join(ld)}]}}}}'
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}" />
+<link rel="canonical" href="{url}" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="{url}" />
+<meta property="og:title" content="{e(title)}" />
+<meta property="og:description" content="{e(desc)}" />
+<meta property="og:image" content="{OG_IMAGE}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{e(title)}" />
+<meta name="twitter:description" content="{e(desc)}" />
+<meta name="twitter:image" content="{OG_IMAGE}" />
+<script type="application/ld+json">{collection_ld}</script>
+<style>
+  :root{{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff}}
+  *{{box-sizing:border-box}}
+  body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}}
+  a{{color:var(--blue);text-decoration:none}}a:hover{{text-decoration:underline}}
+  .wrap{{max-width:820px;margin:0 auto;padding:28px 20px 80px}}
+  nav.bc{{font-size:13px;color:var(--mut);margin-bottom:18px}}
+  h1{{font-size:28px;margin:0 0 8px}}
+  .sub{{color:var(--mut);margin:0 0 22px}}
+  ul.cards{{list-style:none;margin:0;padding:0}}
+  ul.cards li{{border:1px solid var(--border);background:var(--card);border-radius:10px;padding:14px 16px;margin:0 0 12px}}
+  a.t{{font-size:18px;font-weight:600}}
+  .d{{color:var(--mut);font-size:12px}}
+  ul.cards p{{margin:6px 0 0;color:var(--mut);font-size:14px}}
+  footer{{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="{SITE}">Awesome AI Gateway</a> &rsaquo; Comparisons</nav>
+<h1>AI Gateway Comparisons (2026)</h1>
+<p class="sub">Data-backed head-to-heads for the gateway questions people actually search — each grounded in the same <a href="{SITE}">reproducible cost benchmark and scorecard</a>.</p>
+<ul class="cards">
+{"".join(cards)}
+</ul>
+<footer>
+Part of <a href="{SITE}">Awesome AI Gateway</a> — a curated, bilingual, independently-benchmarked list of AI gateways.
+<a href="https://github.com/cuihuan/awesome-ai-gateway">Star it on GitHub &#9733;</a>
+</footer>
+</div>
+</body>
+</html>
+"""
+
+
 def _json(s: str) -> str:
     """JSON-string-encode for inline JSON-LD (escapes quotes/backslashes/<)."""
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"').replace("<", "\\u003c") + '"'
@@ -363,6 +440,8 @@ def build_sitemap(articles: list[tuple[str, str | None]]) -> str:
     """articles: [(slug, lastmod_or_None), ...]. The home page has no lastmod
     (its 'daily' changefreq already signals freshness)."""
     rows = [(SITE, "1.0", "daily", None)]
+    lastmods = [lm for _, lm in articles if lm]
+    rows.append((SITE + "compare/", "0.7", "weekly", max(lastmods) if lastmods else None))
     for slug, lastmod in sorted(articles):
         rows.append((f"{SITE}compare/{slug}.html", "0.8", "monthly", lastmod))
     parts = []
@@ -388,37 +467,42 @@ def _targets():
 
 def build_all(check: bool = False) -> int:
     files = _targets()
-    articles = []
+    metas = []
     stale = []
+
+    def diff(path, content):
+        current = path.read_text(encoding="utf-8") if path.exists() else None
+        if current != content:
+            stale.append(str(path.relative_to(ROOT)))
+
     for md_path in files:
         md = md_path.read_text(encoding="utf-8")
-        slug, _ = slug_lang(md_path.name)
-        articles.append((slug, extract_lastmod(md)))
+        slug, lang = slug_lang(md_path.name)
+        metas.append({"slug": slug, "lang": lang, "title": extract_title(md),
+                      "description": extract_description(md), "lastmod": extract_lastmod(md)})
         html_path = COMPARE / f"{slug}.html"
         rendered = render_page(md, md_path.name)
         if check:
-            current = html_path.read_text(encoding="utf-8") if html_path.exists() else None
-            if current != rendered:
-                stale.append(str(html_path.relative_to(ROOT)))
+            diff(html_path, rendered)
         else:
             html_path.write_text(rendered, encoding="utf-8")
 
-    slugs = [s for s, _ in articles]
-    sitemap = build_sitemap(articles)
-    sitemap_path = ROOT / "sitemap.xml"
+    hub = render_hub(metas)
+    sitemap = build_sitemap([(m["slug"], m["lastmod"]) for m in metas])
     if check:
-        if sitemap_path.read_text(encoding="utf-8") != sitemap:
-            stale.append("sitemap.xml")
+        diff(COMPARE / "index.html", hub)
+        diff(ROOT / "sitemap.xml", sitemap)
         if stale:
             print("::error::stale generated files — run 'python scripts/build_compare_html.py':", file=sys.stderr)
             for s in stale:
                 print(f"  - {s}", file=sys.stderr)
             return 1
-        print(f"compare HTML + sitemap up to date ({len(slugs)} articles)")
+        print(f"compare HTML + hub + sitemap up to date ({len(metas)} articles)")
         return 0
 
-    sitemap_path.write_text(sitemap, encoding="utf-8")
-    print(f"built {len(slugs)} compare pages + sitemap.xml")
+    (COMPARE / "index.html").write_text(hub, encoding="utf-8")
+    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    print(f"built {len(metas)} compare pages + hub + sitemap.xml")
     return 0
 
 

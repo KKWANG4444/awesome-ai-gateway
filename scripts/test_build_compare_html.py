@@ -8,6 +8,7 @@ from build_compare_html import (
     extract_lastmod,
     extract_title,
     md_to_html,
+    render_hub,
     render_inline,
     rewrite_link,
     slug_lang,
@@ -144,6 +145,35 @@ class TestLastmod(unittest.TestCase):
 
     def test_none_when_absent(self):
         self.assertIsNone(extract_lastmod("# T\n\nNo date here."))
+
+
+class TestHub(unittest.TestCase):
+    ARTICLES = [
+        {"slug": "older", "title": "Older Article", "description": "Older desc.", "lastmod": "2026-06-10"},
+        {"slug": "newer", "title": "Newer Article", "description": "Newer desc.", "lastmod": "2026-06-20"},
+        {"slug": "nodate", "title": "No Date Article", "description": "No date desc.", "lastmod": None},
+    ]
+
+    def test_lists_every_article_with_link_and_description(self):
+        html = render_hub(self.ARTICLES)
+        for a in self.ARTICLES:
+            self.assertIn(f'href="{a["slug"]}.html"', html)
+            self.assertIn(a["title"], html)
+            self.assertIn(a["description"], html)
+
+    def test_newest_first(self):
+        html = render_hub(self.ARTICLES)
+        self.assertLess(html.index("Newer Article"), html.index("Older Article"))
+
+    def test_canonical_and_itemlist_jsonld(self):
+        html = render_hub(self.ARTICLES)
+        self.assertIn('<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/compare/"', html)
+        self.assertIn('"@type":"ItemList"', html)
+        self.assertIn('"@type":"CollectionPage"', html)
+
+    def test_no_markdown_or_placeholder_leak(self):
+        html = render_hub(self.ARTICLES)
+        self.assertNotIn("\x00", html)
 
 
 class TestSitemap(unittest.TestCase):
