@@ -35,8 +35,15 @@ def render_feed(releases: list[dict]) -> str:
     """Render an Atom 1.0 feed from release dicts (repo/tag/name/published_at/url).
     Newest first, capped at MAX_ENTRIES. Pure — no I/O."""
     valid = [r for r in releases if r.get("published_at") and r.get("url") and r.get("repo")]
-    valid.sort(key=lambda r: r["published_at"], reverse=True)
-    valid = valid[:MAX_ENTRIES]
+    # dedup by url so Atom <id> stays unique even if releases.json has a dup (RFC 4287 §4.1.2)
+    seen, deduped = set(), []
+    for r in valid:
+        if r["url"] in seen:
+            continue
+        seen.add(r["url"])
+        deduped.append(r)
+    deduped.sort(key=lambda r: r["published_at"], reverse=True)
+    valid = deduped[:MAX_ENTRIES]
     updated = valid[0]["published_at"] if valid else "1970-01-01T00:00:00Z"
 
     parts = [

@@ -62,7 +62,7 @@ def rewrite_link(href: str) -> str:
 # ── Inline rendering ─────────────────────────────────────────────────────────
 
 _CODE = re.compile(r"`([^`]+)`")
-_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+_LINK = re.compile(r"\[([^\]]+)\]\(([^()]*(?:\([^()]*\)[^()]*)*)\)")  # tolerate one level of ()s in the URL
 _BOLD = re.compile(r"\*\*([^*]+)\*\*")
 _ITALIC = re.compile(r"(?<!\*)\*([^*\n]+)\*(?!\*)")  # single-asterisk emphasis, not part of **
 
@@ -431,7 +431,8 @@ Part of <a href="{SITE}">Awesome AI Gateway</a> — a curated, bilingual, indepe
 
 def _json(s: str) -> str:
     """JSON-string-encode for inline JSON-LD (escapes quotes/backslashes/<)."""
-    return '"' + s.replace("\\", "\\\\").replace('"', '\\"').replace("<", "\\u003c") + '"'
+    return '"' + (s.replace("\\", "\\\\").replace('"', '\\"')
+                  .replace("\n", "\\n").replace("\r", "\\r").replace("<", "\\u003c")) + '"'
 
 
 # ── Sitemap ──────────────────────────────────────────────────────────────────

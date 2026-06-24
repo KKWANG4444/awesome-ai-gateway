@@ -239,7 +239,7 @@ document.getElementById('q').oninput=()=>{renderCost();renderScore();renderReali
 Promise.all([
   fetch('data/cost_table.csv').then(r=>r.text()).then(parseCSV),
   fetch('data/gateways_scorecard.csv').then(r=>r.text()).then(parseCSV),
-  fetch('data/gateway_reality.json').then(r=>r.json()).then(d=>d.rows).catch(()=>[])
+  fetch('data/gateway_reality.json').then(r=>r.json()).then(d=>(d&&Array.isArray(d.rows)?d.rows:[])).catch(()=>[])
 ]).then(([c,s,rl])=>{costData=c;scoreData=s;realityData=rl;wireSort('cost-table','cost',renderCost);wireSort('score-table','score',renderScore);renderCost();renderScore();renderReality()})
  .catch(e=>{document.querySelector('.wrap').insertAdjacentHTML('beforeend','<p class="sub">Data loads on GitHub Pages. View the <a href=\"https://github.com/cuihuan/awesome-ai-gateway\">repo</a>.</p>')});
 </script>

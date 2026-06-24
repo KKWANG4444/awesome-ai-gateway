@@ -44,6 +44,11 @@ class TestRenderFeed(unittest.TestCase):
         self.assertIn("a=1&amp;b=2", feed)
         minidom.parseString(feed)
 
+    def test_dedup_by_url_keeps_ids_unique(self):
+        dup = RELEASES + [{"repo": "z/dup", "tag": "v9", "name": "dup", "published_at": "2026-06-25T00:00:00Z", "url": "https://x/2"}]
+        feed = render_feed(dup)
+        self.assertEqual(feed.count("<id>https://x/2</id>"), 1)  # the dup url appears once
+
     def test_empty_is_valid(self):
         feed = render_feed([])
         minidom.parseString(feed)
