@@ -1,0 +1,29 @@
+# Awesome AI Gateway
+
+> A curated, bilingual, vendor-neutral directory of 100+ AI gateways / LLM proxies, with a reproducible token-cost benchmark, a 4-axis (compliance · price · security · stability) gateway scorecard, dated real-world production reviews (incidents / CVEs / acquisitions), and data-backed comparison guides. CC0, no affiliate links.
+
+Use it to pick an AI gateway by need (cost-first, self-hosted, enterprise & compliance, first-party clouds, China ecosystem, MCP & agent gateways), verify the one you pick with the companion tools, then route to the cheapest capable model. Every cost figure is computed by a unit-tested script from open pricing data; every gateway claim is dated and sourced. An AI gateway sits between your code and LLM providers (one OpenAI-compatible endpoint and key for many models), adding routing, failover, caching, rate limits, cost tracking and guardrails.
+
+## Core
+- [Interactive site — cost, scorecard & production reality](https://cuihuan.github.io/awesome-ai-gateway/): sortable model-cost table, the 4-axis gateway scorecard, and dated incident/CVE/acquisition data.
+- [Full list & decision tree (README)](https://github.com/cuihuan/awesome-ai-gateway/blob/main/README.md): 100+ gateways across 9 categories, a "which gateway should I use?" decision tree, FAQ and glossary.
+- [Evaluation set (BENCHMARKS)](https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.md): model benchmark scores, reproducible per-task token-cost tables, the gateway scorecard rubric, and Part 5 real-world production reviews.
+- [How to choose safely](https://github.com/cuihuan/awesome-ai-gateway/blob/main/README.md#how-to-choose-safely): trust-tier-to-data matching, the canary model-fidelity test, and the gray-relay exclusion policy.
+
+## Comparisons
+- [OpenRouter Alternatives (2026): 8 AI Gateways Compared by Markup, Compliance & Self-Hosting](https://cuihuan.github.io/awesome-ai-gateway/compare/openrouter-alternatives-2026.html): OpenRouter is the default hosted AI gateway — change one base_url, get 400+ models behind a single key, with auto-failover and a smart auto router. It's…
+- [LiteLLM Alternatives (2026): 8 AI Gateways Compared by Cost, Security & Self-Hosting](https://cuihuan.github.io/awesome-ai-gateway/compare/litellm-alternatives-2026.html): LiteLLM is the default self-hosted LLM gateway — one OpenAI-compatible proxy in front of 100+ providers, virtual keys, budgets, load balancing. It's…
+- [Cloudflare AI Gateway vs Vercel AI Gateway (2026): Which 0%-Markup Hosted Gateway?](https://cuihuan.github.io/awesome-ai-gateway/compare/cloudflare-vs-vercel-ai-gateway-2026.html): If you want a hosted AI gateway that doesn't take a cut of your token spend, the two from major infrastructure vendors are Cloudflare AI Gateway and…
+- [Best Self-Hosted AI Gateway in 2026 (LiteLLM vs Bifrost vs Portkey vs Kong)](https://cuihuan.github.io/awesome-ai-gateway/compare/best-self-hosted-ai-gateway-2026.html): If you want one OpenAI-compatible endpoint for every model — but on your own infrastructure, with $0 markup — you're choosing a self-hosted AI gateway…
+- [one-api vs new-api vs LiteLLM:国内大模型 API 中转/网关怎么选(2026)](https://cuihuan.github.io/awesome-ai-gateway/compare/one-api-vs-new-api-vs-litellm.zh-CN.html): 国内自建大模型 API 中转/分发,绕不开这三个名字:one-api、new-api、LiteLLM。它们都能"一个接口打通多家模型",但定位差别很大。这是一份基于数据的实话对比。
+- [LiteLLM vs OpenRouter vs Portkey (2026): Which AI Gateway Should You Use?](https://cuihuan.github.io/awesome-ai-gateway/compare/litellm-vs-openrouter-vs-portkey-2026.html): The three names everyone compares when they pick an AI gateway are LiteLLM, OpenRouter, and Portkey. They solve the same surface problem — one endpoint…
+
+## Data (machine-readable, CC0)
+- [data/models.json](https://github.com/cuihuan/awesome-ai-gateway/blob/main/data/models.json): per-model prices and benchmark scores (source of the cost tables).
+- [data/cost_table.csv](https://github.com/cuihuan/awesome-ai-gateway/blob/main/data/cost_table.csv): per-task USD costs computed from models.json.
+- [data/gateways_scorecard.csv](https://github.com/cuihuan/awesome-ai-gateway/blob/main/data/gateways_scorecard.csv): gateway scores on compliance, price, security, stability.
+- [data/gateway_reality.json](https://github.com/cuihuan/awesome-ai-gateway/blob/main/data/gateway_reality.json): production incidents / CVEs / acquisitions, dated and sourced.
+
+## Companion tools (same author)
+- [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench): black-box benchmark for any OpenAI-compatible gateway — TTFT/throughput, success rate, price multiple, plus fidelity probes (model-echo, fake-streaming, usage inflation, context truncation). Live dashboard at https://cuihuan.github.io/llm-gateway-bench/.
+- [modelprobe](https://github.com/cuihuan/modelprobe): tiny dependency-free Go availability prober — per model, is it up and how fast, in one command (drop in CI or a cron).

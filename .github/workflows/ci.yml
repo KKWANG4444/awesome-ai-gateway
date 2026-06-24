@@ -43,6 +43,11 @@ jobs:
           python scripts/build_reality.py --check || {
             echo "::error::data/gateway_reality.json is stale — run 'python scripts/build_reality.py' after editing BENCHMARKS.md Part 5"; exit 1;
           }
+      - name: llms.txt matches the comparison set
+        run: |
+          python scripts/build_llms_txt.py --check || {
+            echo "::error::llms.txt is stale — run 'python scripts/build_llms_txt.py' after adding/removing a compare article"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest
