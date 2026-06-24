@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>最佳自托管 / 开源 LLM 网关（2026）：如何选型</title>
+<meta name="description" content="决定自托管 LLM 网关了？一份公平、有数据支撑的开源选型指南——LiteLLM、Bifrost、Portkey Gateway、Helicone、Higress、Kong——按特性、吞吐、可观测或企业需求该怎么选。独立、无厂商返利。" />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.zh-CN.html" />
+<link rel="alternate" hreflang="en" href="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.html" />
+<link rel="alternate" hreflang="zh-Hans" href="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.zh-CN.html" />
+<link rel="alternate" hreflang="x-default" href="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.zh-CN.html" />
+<meta property="og:title" content="最佳自托管 / 开源 LLM 网关（2026）" />
+<meta property="og:description" content="LiteLLM、Bifrost、Portkey、Helicone、Higress、Kong——按特性、吞吐、可观测或企业需求怎么选。" />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="最佳自托管 / 开源 LLM 网关（2026）" />
+<meta name="twitter:description" content="如何在主流开源 LLM 网关之间选型。" />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "最佳自托管 / 开源 LLM 网关（2026）：如何选型",
+  "description": "独立、有数据支撑的主流开源自托管 LLM 网关选型指南。",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/self-hosted-llm-gateway.zh-CN.html",
+  "inLanguage": "zh-Hans",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "about": ["自托管 LLM 网关", "开源 AI 网关", "LiteLLM", "Bifrost", "LLM 代理"],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "zh-Hans",
+  "mainEntity": [
+    {"@type":"Question","name":"最好的开源 LLM 网关是哪个？","acceptedAnswer":{"@type":"Answer","text":"没有单一最优，取决于你的优先级。LiteLLM 在 provider 覆盖最广、团队治理上是默认之选；Bifrost 在高吞吐下开销最低；可观测优先时选 Helicone；需要企业级 Kubernetes 部署 + 审计 + RBAC 时选 Higress 或 Kong。"}},
+    {"@type":"Question","name":"LiteLLM 是最好的自托管网关吗？","acceptedAnswer":{"@type":"Answer","text":"LiteLLM 因覆盖广而成为最常见的默认选择——100+ provider、虚拟密钥、预算、负载均衡，是稳妥的第一选择。但若你的优先级是裸吞吐、可观测或企业 K8s 治理，Bifrost、Helicone 或 Higress/Kong 可能更合适。"}},
+    {"@type":"Question","name":"哪个自托管 LLM 网关最快？","acceptedAnswer":{"@type":"Answer","text":"Go 原生的网关如 Bifrost 以极低开销和高请求率为设计目标。提交前请务必用你自己的流量形态和模型实测——开销表现高度依赖具体负载。"}},
+    {"@type":"Question","name":"自托管还是托管网关，怎么选？","acceptedAnswer":{"@type":"Answer","text":"当数据必须留在自己基础设施内、想要零按 token 加价、或需要集中治理且你能运维一套服务时，选自托管；想要零运维负担和最快接入众多模型时，选托管网关/聚合器。"}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:27px;margin:0 0 8px;line-height:1.3}
+  h2{font-size:20px;margin:32px 0 10px}
+  .sub{color:var(--mut);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--mut);margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--fg);font-weight:600}
+  td:first-child{color:var(--fg);white-space:nowrap;font-weight:600}
+  .note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:10px;padding:12px 15px;font-size:14.5px;margin:14px 0}
+  details{border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:8px 0;background:var(--card)}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--mut);font-size:14.5px}
+  footer{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › 自托管 LLM 网关 &nbsp;|&nbsp; <a href="self-hosted-llm-gateway.html">English</a></nav>
+<h1>最佳自托管 / 开源 LLM 网关：如何选型</h1>
+<p class="sub">如果你已决定自托管——为了数据掌控、无按 token 加价、或集中治理——下面是主流开源选项。没有"绝对最优"，对的那个取决于你优先看重特性、吞吐、可观测，还是企业级运维。</p>
+<p class="meta">独立 · 无厂商返利 · 属于 <a href="./">Awesome AI Gateway</a> 评测 · 自托管意味着高可用、升级、扩容都归你——请预留这部分成本。</p>
+
+<h2>为什么要自托管网关？</h2>
+<p>四个具体原因：流量和密钥<b>留在你自己的基础设施内</b>；<b>无按 token 加价</b>（直接付厂商）；集中<b>治理</b>——全团队的虚拟密钥、预算、限流；以及<b>本地 / 内网隔离或合规</b>能被你现有基础设施满足。代价是实打实的运维工作。</p>
+
+<h2>主流选项</h2>
+<table>
+<thead><tr><th>网关</th><th>强项 / 何时选它</th></tr></thead>
+<tbody>
+<tr><td>LiteLLM</td><td>覆盖最广——100+ provider、虚拟密钥、预算、负载均衡。默认的第一选择。</td></tr>
+<tr><td>Bifrost</td><td>Go 原生，高请求率下开销极低。当吞吐/延迟最关键时选它。</td></tr>
+<tr><td>Portkey Gateway</td><td>开源、可边缘部署的网关，带路由、缓存和护栏。</td></tr>
+<tr><td>Helicone</td><td>可观测优先——日志、缓存、监控加网关。需要可见性时选它。</td></tr>
+<tr><td>Higress</td><td>基于 Envoy/Istio、云原生——面向 Kubernetes 团队、想要企业级数据面的 AI 网关。</td></tr>
+<tr><td>Kong</td><td>久经考验的 API 网关数据面上的 AI 插件——企业规模的 RBAC、审计、语义缓存。</td></tr>
+</tbody>
+</table>
+
+<h2>一句话选型</h2>
+<table>
+<thead><tr><th>你的优先级</th><th>从哪个起步</th></tr></thead>
+<tbody>
+<tr><td>特性最全、上手最快</td><td>LiteLLM</td></tr>
+<tr><td>最低开销 / 高吞吐</td><td>Bifrost</td></tr>
+<tr><td>可观测与成本可见性</td><td>Helicone</td></tr>
+<tr><td>边缘部署 + 护栏</td><td>Portkey Gateway</td></tr>
+<tr><td>企业 Kubernetes + 审计</td><td>Higress / Kong</td></tr>
+</tbody>
+</table>
+
+<div class="note">⚖️ 自托管省掉了网关费，但<b>你选的模型仍主导成本</b>——跨模型 100×+ 的价差，远大于你省下的那点加价。先估算负载 → <a href="cost-calculator.html"><b>成本计算器</b></a>。</div>
+
+<h2>上生产前：验证保真</h2>
+<p>无论是否自托管，代理在配置错误或升级后仍可能出问题——悄悄换模型、假流式、虚报用量。针对你的部署跑 <a href="https://github.com/cuihuan/awesome-ai-gateway#how-to-choose-safely">canary 保真测试</a>，并锁定到一个已知良好的版本。</p>
+
+<h2>常见问题</h2>
+<details><summary>最好的开源 LLM 网关是哪个？</summary><p>没有单一赢家——覆盖广选 LiteLLM、吞吐选 Bifrost、可观测选 Helicone、企业 K8s 选 Higress/Kong。</p></details>
+<details><summary>LiteLLM 是最好的吗？</summary><p>它是覆盖与治理上的常见默认；若吞吐、可观测或企业 K8s 是首要诉求，可另选。</p></details>
+<details><summary>哪个最快？</summary><p>Go 原生网关如 Bifrost 以低开销为目标——但提交前请用你自己的流量实测。</p></details>
+<details><summary>自托管还是托管？</summary><p>要数据掌控 / 无加价 / 治理（且你能运维）选自托管；要零运维和最快覆盖选托管。</p></details>
+
+<footer>
+不确定该不该自托管？对比 → <a href="litellm-vs-openrouter.zh-CN.html"><b>LiteLLM vs OpenRouter</b></a> · <a href="openrouter-alternatives.zh-CN.html"><b>OpenRouter 替代品</b></a>。
+或 <a href="gateway-picker.html"><b>🧭 按需求选</b></a> · <a href="cost-calculator.html"><b>💰 估算成本</b></a> · <a href="https://github.com/cuihuan/awesome-ai-gateway#-self-hosted-open-source">看全部自托管选项</a>。
+独立 & CC0 — <a href="https://github.com/cuihuan/awesome-ai-gateway">★ 在 GitHub 点个 Star</a>。
+</footer>
+</div>
+</body>
+</html>

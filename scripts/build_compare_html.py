@@ -446,6 +446,7 @@ def build_sitemap(articles: list[tuple[str, str | None]]) -> str:
     rows.append((SITE + "openrouter-alternatives.html", "0.7", "monthly", None))  # comparison article
     rows.append((SITE + "openrouter-alternatives.zh-CN.html", "0.6", "monthly", None))  # zh-CN localization
     rows.append((SITE + "self-hosted-llm-gateway.html", "0.7", "monthly", None))  # guide article
+    rows.append((SITE + "self-hosted-llm-gateway.zh-CN.html", "0.6", "monthly", None))  # zh-CN localization
     rows.append((SITE + "reduce-llm-api-costs.html", "0.7", "monthly", None))  # guide article
     rows.append((SITE + "gateway-picker.html", "0.8", "monthly", None))   # interactive decision tool
     rows.append((SITE + "cost-calculator.html", "0.8", "monthly", None))  # interactive tool
