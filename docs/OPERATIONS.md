@@ -85,6 +85,14 @@ Subreddit etiquette: read each sub's self-promo rules; r/LLMDevs **bans** self-p
 | **"best AI gateway" listicles** (TrueFoundry, Braintrust, denshub, …) | offer our independent benchmark as a citable source | — | 👤 |
 | **AI answer engines (GEO)** | already shipped llms.txt/sitemap/JSON-LD/feed.xml; keep feed fresh (daily CI) | ✅ | 🤖 |
 
+**Submitted backlink PRs (check here before opening new ones — don't duplicate):**
+- ✅ [kelvins/awesome-mlops #216](https://github.com/kelvins/awesome-mlops/pull/216) — OPEN (Other Lists)
+- ✅ [tensorchord/Awesome-LLMOps #572](https://github.com/tensorchord/Awesome-LLMOps/pull/572) — OPEN (Awesome Lists)
+- ✅ [Hannibal046/Awesome-LLM #682](https://github.com/Hannibal046/Awesome-LLM/pull/682) — OPEN (Miscellaneous)
+- ❌ InftyAI/Awesome-LLMOps — skip (tools-only list, no meta-list/curated-list section; would be a bad-fit/spam PR)
+- ⬜ awesome-mcp-servers (punkpeye/appcypher) — borderline (we're a gateway list with an MCP section); assess fit first
+- ⬜ sindresorhus/awesome — gated (≥30d old + lint-clean + maintainer personally reviews 4 PRs + `unicorn`); 👤
+
 ---
 
 ## 5. GitHub discovery
