@@ -37,6 +37,26 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AI gateway model-cost benchmark and gateway scorecard",
+  "description": "Reproducible per-task token costs across LLM models, and a 4-axis (compliance, price, security, stability) scorecard of AI gateways, computed by unit-tested scripts from open pricing data.",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "sameAs": "https://github.com/cuihuan/awesome-ai-gateway",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "creator": {"@type": "Organization", "name": "Awesome AI Gateway"},
+  "keywords": ["AI gateway", "LLM proxy", "model cost", "benchmark", "OpenAI-compatible"],
+  "distribution": [
+    {"@type": "DataDownload", "name": "Per-task model costs (CSV)", "encodingFormat": "text/csv", "contentUrl": "https://cuihuan.github.io/awesome-ai-gateway/data/cost_table.csv"},
+    {"@type": "DataDownload", "name": "Gateway scorecard (CSV)", "encodingFormat": "text/csv", "contentUrl": "https://cuihuan.github.io/awesome-ai-gateway/data/gateways_scorecard.csv"},
+    {"@type": "DataDownload", "name": "Model prices & benchmarks (JSON)", "encodingFormat": "application/json", "contentUrl": "https://cuihuan.github.io/awesome-ai-gateway/data/models.json"},
+    {"@type": "DataDownload", "name": "Production incidents/CVEs (JSON)", "encodingFormat": "application/json", "contentUrl": "https://cuihuan.github.io/awesome-ai-gateway/data/gateway_reality.json"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {"@type":"Question","name":"What is an AI gateway (LLM gateway)?","acceptedAnswer":{"@type":"Answer","text":"A proxy between your code and LLM providers: one OpenAI-compatible endpoint and key for many models, adding routing, failover, caching, rate limits, cost tracking and guardrails."}},
