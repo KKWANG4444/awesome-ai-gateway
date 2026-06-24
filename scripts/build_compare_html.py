@@ -442,6 +442,7 @@ def build_sitemap(articles: list[tuple[str, str | None]]) -> str:
     (its 'daily' changefreq already signals freshness)."""
     rows = [(SITE, "1.0", "daily", None)]
     rows.append((SITE + "litellm-vs-openrouter.html", "0.7", "monthly", None))  # comparison article
+    rows.append((SITE + "litellm-vs-openrouter.zh-CN.html", "0.6", "monthly", None))  # zh-CN localization
     rows.append((SITE + "openrouter-alternatives.html", "0.7", "monthly", None))  # comparison article
     rows.append((SITE + "self-hosted-llm-gateway.html", "0.7", "monthly", None))  # guide article
     rows.append((SITE + "reduce-llm-api-costs.html", "0.7", "monthly", None))  # guide article
