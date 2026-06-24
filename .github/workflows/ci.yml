@@ -48,6 +48,11 @@ jobs:
           python scripts/build_llms_txt.py --check || {
             echo "::error::llms.txt is stale — run 'python scripts/build_llms_txt.py' after adding/removing a compare article"; exit 1;
           }
+      - name: feed.xml matches data/releases.json
+        run: |
+          python scripts/build_feed.py --check || {
+            echo "::error::feed.xml is stale — run 'python scripts/build_feed.py' after data/releases.json changes"; exit 1;
+          }
 
   awesome-lint:
     runs-on: ubuntu-latest

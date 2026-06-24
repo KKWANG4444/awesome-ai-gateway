@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Awesome AI Gateway — ecosystem releases</title>
+  <subtitle>Latest releases from the AI gateways / LLM proxies tracked by Awesome AI Gateway.</subtitle>
+  <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
+  <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
+  <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
+  <updated>2026-06-22T22:10:45Z</updated>
+  <author><name>Awesome AI Gateway</name></author>
+  <entry>
+    <title>agentgateway/agentgateway v1.3.1</title>
+    <link href="https://github.com/agentgateway/agentgateway/releases/tag/v1.3.1" />
+    <id>https://github.com/agentgateway/agentgateway/releases/tag/v1.3.1</id>
+    <updated>2026-06-22T22:10:45Z</updated>
+    <summary>agentgateway/agentgateway released v1.3.1.</summary>
+  </entry>
+  <entry>
+    <title>obot-platform/obot v0.23.2</title>
+    <link href="https://github.com/obot-platform/obot/releases/tag/v0.23.2" />
+    <id>https://github.com/obot-platform/obot/releases/tag/v0.23.2</id>
+    <updated>2026-06-22T19:43:21Z</updated>
+    <summary>obot-platform/obot released v0.23.2.</summary>
+  </entry>
+  <entry>
+    <title>theopenco/llmgateway v1.5.0</title>
+    <link href="https://github.com/theopenco/llmgateway/releases/tag/v1.5.0" />
+    <id>https://github.com/theopenco/llmgateway/releases/tag/v1.5.0</id>
+    <updated>2026-06-22T11:04:52Z</updated>
+    <summary>theopenco/llmgateway released v1.5.0.</summary>
+  </entry>
+  <entry>
+    <title>yym68686/uni-api v1.7.147</title>
+    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.147" />
+    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.147</id>
+    <updated>2026-06-22T04:32:02Z</updated>
+    <summary>yym68686/uni-api released Release 1.7.147.</summary>
+  </entry>
+  <entry>
+    <title>maximhq/bifrost ent-v1.4.13-base</title>
+    <link href="https://github.com/maximhq/bifrost/releases/tag/ent-v1.4.13-base" />
+    <id>https://github.com/maximhq/bifrost/releases/tag/ent-v1.4.13-base</id>
+    <updated>2026-06-21T13:31:08Z</updated>
+    <summary>maximhq/bifrost released Enterprise v1.4.13 base.</summary>
+  </entry>
+  <entry>
+    <title>lightseekorg/smg v1.6.0</title>
+    <link href="https://github.com/lightseekorg/smg/releases/tag/v1.6.0" />
+    <id>https://github.com/lightseekorg/smg/releases/tag/v1.6.0</id>
+    <updated>2026-06-21T02:50:18Z</updated>
+    <summary>lightseekorg/smg released v1.6.0.</summary>
+  </entry>
+  <entry>
+    <title>deanxv/done-hub v1.22.5</title>
+    <link href="https://github.com/deanxv/done-hub/releases/tag/v1.22.5" />
+    <id>https://github.com/deanxv/done-hub/releases/tag/v1.22.5</id>
+    <updated>2026-06-21T00:51:06Z</updated>
+    <summary>deanxv/done-hub released v1.22.5.</summary>
+  </entry>
+  <entry>
+    <title>BerriAI/litellm v1.89.3</title>
+    <link href="https://github.com/BerriAI/litellm/releases/tag/v1.89.3" />
+    <id>https://github.com/BerriAI/litellm/releases/tag/v1.89.3</id>
+    <updated>2026-06-20T23:00:10Z</updated>
+    <summary>BerriAI/litellm released v1.89.3.</summary>
+  </entry>
+  <entry>
+    <title>QuantumNous/new-api v1.0.0-rc.14</title>
+    <link href="https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.14" />
+    <id>https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.14</id>
+    <updated>2026-06-20T14:15:42Z</updated>
+    <summary>QuantumNous/new-api released v1.0.0-rc.14.</summary>
+  </entry>
+  <entry>
+    <title>kgateway-dev/kgateway v2.3.4</title>
+    <link href="https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.4" />
+    <id>https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.4</id>
+    <updated>2026-06-18T21:02:42Z</updated>
+    <summary>kgateway-dev/kgateway released v2.3.4.</summary>
+  </entry>
+  <entry>
+    <title>gpustack/gpustack v2.2.0</title>
+    <link href="https://github.com/gpustack/gpustack/releases/tag/v2.2.0" />
+    <id>https://github.com/gpustack/gpustack/releases/tag/v2.2.0</id>
+    <updated>2026-06-18T15:54:18Z</updated>
+    <summary>gpustack/gpustack released v2.2.0.</summary>
+  </entry>
+  <entry>
+    <title>vllm-project/aibrix v0.7.0</title>
+    <link href="https://github.com/vllm-project/aibrix/releases/tag/v0.7.0" />
+    <id>https://github.com/vllm-project/aibrix/releases/tag/v0.7.0</id>
+    <updated>2026-06-18T00:23:05Z</updated>
+    <summary>vllm-project/aibrix released v0.7.0.</summary>
+  </entry>
+  <entry>
+    <title>mlflow/mlflow v3.14.0</title>
+    <link href="https://github.com/mlflow/mlflow/releases/tag/v3.14.0" />
+    <id>https://github.com/mlflow/mlflow/releases/tag/v3.14.0</id>
+    <updated>2026-06-17T08:50:33Z</updated>
+    <summary>mlflow/mlflow released v3.14.0.</summary>
+  </entry>
+  <entry>
+    <title>Kong/kong 3.9.3</title>
+    <link href="https://github.com/Kong/kong/releases/tag/3.9.3" />
+    <id>https://github.com/Kong/kong/releases/tag/3.9.3</id>
+    <updated>2026-06-17T06:02:19Z</updated>
+    <summary>Kong/kong released 3.9.3.</summary>
+  </entry>
+  <entry>
+    <title>pomerium/pomerium v0.32.9</title>
+    <link href="https://github.com/pomerium/pomerium/releases/tag/v0.32.9" />
+    <id>https://github.com/pomerium/pomerium/releases/tag/v0.32.9</id>
+    <updated>2026-06-16T17:25:01Z</updated>
+    <summary>pomerium/pomerium released v0.32.9.</summary>
+  </entry>
+  <entry>
+    <title>apache/apisix 3.17.0</title>
+    <link href="https://github.com/apache/apisix/releases/tag/3.17.0" />
+    <id>https://github.com/apache/apisix/releases/tag/3.17.0</id>
+    <updated>2026-06-16T07:22:13Z</updated>
+    <summary>apache/apisix released 3.17.0.</summary>
+  </entry>
+  <entry>
+    <title>katanemo/plano 0.4.25</title>
+    <link href="https://github.com/katanemo/plano/releases/tag/0.4.25" />
+    <id>https://github.com/katanemo/plano/releases/tag/0.4.25</id>
+    <updated>2026-06-15T21:25:54Z</updated>
+    <summary>katanemo/plano released 0.4.25.</summary>
+  </entry>
+  <entry>
+    <title>kserve/kserve v0.19.0</title>
+    <link href="https://github.com/kserve/kserve/releases/tag/v0.19.0" />
+    <id>https://github.com/kserve/kserve/releases/tag/v0.19.0</id>
+    <updated>2026-06-14T03:09:11Z</updated>
+    <summary>kserve/kserve released v0.19.0.</summary>
+  </entry>
+  <entry>
+    <title>andrewyng/aisuite app-v0.1.1</title>
+    <link href="https://github.com/andrewyng/aisuite/releases/tag/app-v0.1.1" />
+    <id>https://github.com/andrewyng/aisuite/releases/tag/app-v0.1.1</id>
+    <updated>2026-06-11T22:46:31Z</updated>
+    <summary>andrewyng/aisuite released OpenCoworker 0.1.1.</summary>
+  </entry>
+  <entry>
+    <title>IBM/mcp-context-forge v1.0.3</title>
+    <link href="https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.3" />
+    <id>https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.3</id>
+    <updated>2026-06-10T10:45:40Z</updated>
+    <summary>IBM/mcp-context-forge released v1.0.3 - Auth &amp; JWT Cleanup, Admin UI Fixes, FedRAMP/FIPS Hardening, and Bug Fixes.</summary>
+  </entry>
+  <entry>
+    <title>envoyproxy/ai-gateway v0.7.0</title>
+    <link href="https://github.com/envoyproxy/ai-gateway/releases/tag/v0.7.0" />
+    <id>https://github.com/envoyproxy/ai-gateway/releases/tag/v0.7.0</id>
+    <updated>2026-06-06T20:59:58Z</updated>
+    <summary>envoyproxy/ai-gateway released v0.7.0.</summary>
+  </entry>
+  <entry>
+    <title>vllm-project/semantic-router v0.3.0</title>
+    <link href="https://github.com/vllm-project/semantic-router/releases/tag/v0.3.0" />
+    <id>https://github.com/vllm-project/semantic-router/releases/tag/v0.3.0</id>
+    <updated>2026-06-05T12:08:52Z</updated>
+    <summary>vllm-project/semantic-router released Release v0.3.0.</summary>
+  </entry>
+  <entry>
+    <title>tensorzero/tensorzero 2026.6.0</title>
+    <link href="https://github.com/tensorzero/tensorzero/releases/tag/2026.6.0" />
+    <id>https://github.com/tensorzero/tensorzero/releases/tag/2026.6.0</id>
+    <updated>2026-06-04T15:15:42Z</updated>
+    <summary>tensorzero/tensorzero released 2026.6.0.</summary>
+  </entry>
+  <entry>
+    <title>krakend/krakend-ce v2.13.7</title>
+    <link href="https://github.com/krakend/krakend-ce/releases/tag/v2.13.7" />
+    <id>https://github.com/krakend/krakend-ce/releases/tag/v2.13.7</id>
+    <updated>2026-06-03T13:58:16Z</updated>
+    <summary>krakend/krakend-ce released v2.13.7.</summary>
+  </entry>
+  <entry>
+    <title>tbphp/gpt-load v1.4.8</title>
+    <link href="https://github.com/tbphp/gpt-load/releases/tag/v1.4.8" />
+    <id>https://github.com/tbphp/gpt-load/releases/tag/v1.4.8</id>
+    <updated>2026-05-29T01:24:16Z</updated>
+    <summary>tbphp/gpt-load released v1.4.8.</summary>
+  </entry>
+  <entry>
+    <title>higress-group/higress v2.2.2</title>
+    <link href="https://github.com/higress-group/higress/releases/tag/v2.2.2" />
+    <id>https://github.com/higress-group/higress/releases/tag/v2.2.2</id>
+    <updated>2026-05-26T01:41:03Z</updated>
+    <summary>higress-group/higress released v2.2.2.</summary>
+  </entry>
+  <entry>
+    <title>mcpjungle/MCPJungle 0.4.5</title>
+    <link href="https://github.com/mcpjungle/MCPJungle/releases/tag/0.4.5" />
+    <id>https://github.com/mcpjungle/MCPJungle/releases/tag/0.4.5</id>
+    <updated>2026-05-20T09:05:27Z</updated>
+    <summary>mcpjungle/MCPJungle released 0.4.5.</summary>
+  </entry>
+  <entry>
+    <title>RelayPlane/proxy v1.9.38</title>
+    <link href="https://github.com/RelayPlane/proxy/releases/tag/v1.9.38" />
+    <id>https://github.com/RelayPlane/proxy/releases/tag/v1.9.38</id>
+    <updated>2026-05-19T06:31:33Z</updated>
+    <summary>RelayPlane/proxy released v1.9.38.</summary>
+  </entry>
+  <entry>
+    <title>llm-d/llm-d v0.7.0</title>
+    <link href="https://github.com/llm-d/llm-d/releases/tag/v0.7.0" />
+    <id>https://github.com/llm-d/llm-d/releases/tag/v0.7.0</id>
+    <updated>2026-05-12T19:15:56Z</updated>
+    <summary>llm-d/llm-d released Release v0.7.0.</summary>
+  </entry>
+  <entry>
+    <title>vllm-project/production-stack vllm-stack-0.1.11</title>
+    <link href="https://github.com/vllm-project/production-stack/releases/tag/vllm-stack-0.1.11" />
+    <id>https://github.com/vllm-project/production-stack/releases/tag/vllm-stack-0.1.11</id>
+    <updated>2026-05-07T18:23:19Z</updated>
+    <summary>vllm-project/production-stack released vllm-stack-0.1.11.</summary>
+  </entry>
+</feed>
