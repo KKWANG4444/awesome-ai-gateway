@@ -5,8 +5,22 @@
   <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
   <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
   <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
-  <updated>2026-06-22T22:10:45Z</updated>
+  <updated>2026-06-23T15:32:39Z</updated>
   <author><name>Awesome AI Gateway</name></author>
+  <entry>
+    <title>envoyproxy/ai-gateway v1.0.0</title>
+    <link href="https://github.com/envoyproxy/ai-gateway/releases/tag/v1.0.0" />
+    <id>https://github.com/envoyproxy/ai-gateway/releases/tag/v1.0.0</id>
+    <updated>2026-06-23T15:32:39Z</updated>
+    <summary>envoyproxy/ai-gateway released v1.0.0.</summary>
+  </entry>
+  <entry>
+    <title>IBM/mcp-context-forge v1.0.4</title>
+    <link href="https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.4" />
+    <id>https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.4</id>
+    <updated>2026-06-23T12:49:04Z</updated>
+    <summary>IBM/mcp-context-forge released v1.0.4 - Rust Migration, Docker Improvements, Security Enhancements, and Bug Fixes.</summary>
+  </entry>
   <entry>
     <title>agentgateway/agentgateway v1.3.1</title>
     <link href="https://github.com/agentgateway/agentgateway/releases/tag/v1.3.1" />
@@ -139,20 +153,6 @@
     <id>https://github.com/andrewyng/aisuite/releases/tag/app-v0.1.1</id>
     <updated>2026-06-11T22:46:31Z</updated>
     <summary>andrewyng/aisuite released OpenCoworker 0.1.1.</summary>
-  </entry>
-  <entry>
-    <title>IBM/mcp-context-forge v1.0.3</title>
-    <link href="https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.3" />
-    <id>https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.3</id>
-    <updated>2026-06-10T10:45:40Z</updated>
-    <summary>IBM/mcp-context-forge released v1.0.3 - Auth &amp; JWT Cleanup, Admin UI Fixes, FedRAMP/FIPS Hardening, and Bug Fixes.</summary>
-  </entry>
-  <entry>
-    <title>envoyproxy/ai-gateway v0.7.0</title>
-    <link href="https://github.com/envoyproxy/ai-gateway/releases/tag/v0.7.0" />
-    <id>https://github.com/envoyproxy/ai-gateway/releases/tag/v0.7.0</id>
-    <updated>2026-06-06T20:59:58Z</updated>
-    <summary>envoyproxy/ai-gateway released v0.7.0.</summary>
   </entry>
   <entry>
     <title>vllm-project/semantic-router v0.3.0</title>
