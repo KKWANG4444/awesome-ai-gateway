@@ -71,6 +71,7 @@
     <div><label for="runs">× how many times</label><input id="runs" type="number" min="1" value="1" /></div>
   </div>
   <div class="presets" id="presets"></div>
+  <div style="margin-top:12px"><button class="preset" id="share">🔗 Copy share link</button> <span id="sharemsg" style="font-size:12px;color:var(--mut)"></span></div>
 </div>
 
 <p class="headline" id="headline">…</p>
@@ -119,12 +120,16 @@ function render(){
   document.getElementById('headline').innerHTML = spread
     ? `This workload costs <b class="cheap">${fmt(lo)}</b> on ${cheapest.name} vs <b class="dear">${fmt(hi)}</b> on ${priciest.name} — a <b>${spread}×</b> spread. The gateway you route through decides how easily you exploit that.`
     : `Cheapest <b class="cheap">${fmt(lo)}</b> (${cheapest.name}).`;
+  history.replaceState(null, '', '#in=' + inTok + '&out=' + outTok + '&runs=' + runs);
 }
 const pc = document.getElementById('presets');
 PRESETS.forEach(([label,i,o])=>{const b=document.createElement('button');b.className='preset';b.textContent=label;
   b.onclick=()=>{document.getElementById('in').value=i;document.getElementById('out').value=o;render();};pc.appendChild(b);});
 ['in','out','runs'].forEach(id=>document.getElementById(id).oninput=render);
 document.querySelectorAll('#t th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sort.asc=sort.k===k?!sort.asc:true;sort.k=k;render();});
+document.getElementById('share').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>{document.getElementById('sharemsg').textContent='Link copied — it reproduces this exact workload.';},()=>{});};
+// shareable permalink: prefill inputs from the URL hash (#in=&out=&runs=)
+(function(){const h=new URLSearchParams(location.hash.slice(1));['in','out','runs'].forEach(k=>{const v=h.get(k);if(v!==null&&!isNaN(+v))document.getElementById(k).value=v;});})();
 fetch('data/models.json').then(r=>r.json()).then(d=>{models=(d&&d.models)||[];render();})
   .catch(()=>{document.getElementById('headline').innerHTML='Pricing data loads on the live site — see the <a href="https://github.com/cuihuan/awesome-ai-gateway">repo</a>.';});
 </script>
