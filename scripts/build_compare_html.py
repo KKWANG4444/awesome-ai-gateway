@@ -281,6 +281,17 @@ def render_page(md: str, filename: str) -> str:
     body = md_to_html(md)
     url = f"{SITE}compare/{slug}.html"
     e = lambda s: html.escape(s, quote=True)
+    # Machine-readable freshness — emitted only from the article's own "Last updated"
+    # byline (never fabricated). AI answer engines (esp. Perplexity) weight recency, and
+    # this content is genuinely refreshed; surface that as a parseable signal.
+    lastmod = extract_lastmod(md)
+    date_fields = (
+        f'"datePublished":"{lastmod}","dateModified":"{lastmod}",' if lastmod else ""
+    )
+    modified_meta = (
+        f'<meta property="article:modified_time" content="{lastmod}T00:00:00Z" />\n'
+        if lastmod else ""
+    )
     breadcrumb = (
         '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":['
         f'{{"@type":"ListItem","position":1,"name":"Awesome AI Gateway","item":"{SITE}"}},'
@@ -289,6 +300,7 @@ def render_page(md: str, filename: str) -> str:
     article_ld = (
         '{"@context":"https://schema.org","@type":"Article",'
         f'"headline":{_json(title)},"description":{_json(desc)},'
+        f'{date_fields}'
         f'"inLanguage":"{lang}","mainEntityOfPage":"{url}",'
         '"author":{"@type":"Organization","name":"Awesome AI Gateway"},'
         '"publisher":{"@type":"Organization","name":"Awesome AI Gateway"},'
@@ -302,7 +314,7 @@ def render_page(md: str, filename: str) -> str:
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}" />
 <link rel="canonical" href="{url}" />
-<meta name="theme-color" content="#0d1117" />
+{modified_meta}<meta name="theme-color" content="#0d1117" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Awesome AI Gateway" />
 <meta property="og:url" content="{url}" />
