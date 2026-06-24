@@ -115,7 +115,7 @@ Total stars + **weekly velocity** (star-history.com) · **GitHub Insights → Tr
 ## 8. Foundation status (2026-06-24)
 ✅ Label taxonomy created · ✅ #8 classified (`watch-list`+`needs-evidence`) · ✅ description→"100+" · ✅ topics tuned ·
 ✅ artifacts complete (llms.txt/sitemap/feed/JSON-LD/CITATION/SECURITY) ·
-⬜ launch-post drafts (`docs/launch-posts.md`, next) · ⬜👤 social-preview image · ⬜👤 pin+profile README ·
-⬜👤 execute launch sequence · ⬜🤖 prep awesome-list backlink PRs.
+✅ launch-post drafts (`docs/launch-posts.md`) · ⬜👤 social-preview image · ⬜👤 pin+profile README ·
+⬜👤 execute launch sequence (drafts ready) · ⬜🤖 prep awesome-list backlink PRs (next).
 
 _Sources & full research: condensed from a 2026 competitive-research pass (HN/Reddit/周刊/awesome-list mechanics, GitHub Trending, issue-ops). The bottleneck is distribution + issue-ops + backlinks — not more artifacts._
