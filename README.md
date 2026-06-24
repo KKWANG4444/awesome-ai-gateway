@@ -522,6 +522,17 @@ No vendor money, no affiliate links, CC0. If it saves you one surprise bill, it 
 
 Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first. Inclusion criteria, in short: the project must be an actual gateway/proxy/router for LLM or agent traffic (not an SDK wrapper or chat UI), publicly available, and active within the last 12 months — or clearly labeled as stale.
 
+## 🔗 Related lists
+
+This list lives in the awesome-list ecosystem. If it doesn't have what you need, these well-maintained neighbors might — and the gateways here sit *between* their tools and the models:
+
+- [Awesome-LLMOps](https://github.com/tensorchord/Awesome-LLMOps) — the broader LLMOps landscape (serving, fine-tuning, observability) this list's gateways plug into.
+- [Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM) — models, papers and the wider LLM ecosystem.
+- [awesome-langchain](https://github.com/kyrolabs/awesome-langchain) — LangChain tools and LLM app frameworks that call through these gateways.
+- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) — MCP servers to put *behind* the [MCP & agent gateways](#-mcp--agent-gateways) here.
+
+Maintain a related list and think this belongs in yours? [Open an issue](https://github.com/cuihuan/awesome-ai-gateway/issues) — cross-linking helps every list's readers.
+
 ## Star history
 
 [![Star History Chart](https://api.star-history.com/svg?repos=cuihuan/awesome-ai-gateway&type=Date)](https://star-history.com/#cuihuan/awesome-ai-gateway&Date)

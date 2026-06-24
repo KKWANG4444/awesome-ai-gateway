@@ -522,6 +522,17 @@ OpenRouter 是托管（零运维、约 5.5% 手续费、400+ 模型）；LiteLLM
 
 欢迎贡献！请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。收录标准简述：必须是真正的 LLM/Agent 流量网关、代理或路由（不是 SDK 封装或聊天 UI），公开可用，且最近 12 个月内活跃——或明确标注停滞状态。
 
+## 🔗 相关清单
+
+本清单身处 awesome-list 生态。如果这里没有你要的，下面这些维护良好的"邻居"也许有——而本清单的网关正好位于它们的工具与模型**之间**：
+
+- [Awesome-LLMOps](https://github.com/tensorchord/Awesome-LLMOps) — 更广的 LLMOps 全景（推理服务、微调、可观测），本清单的网关接入其中。
+- [Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM) — 模型、论文与更宽的 LLM 生态。
+- [awesome-langchain](https://github.com/kyrolabs/awesome-langchain) — LangChain 工具与 LLM 应用框架，它们的请求会穿过这些网关。
+- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) — 可放在本清单 [MCP 与 Agent 网关](#-mcp-与-agent-网关)**之后**的 MCP server。
+
+你也维护一份相关清单、觉得本项目该被收录?[提个 issue](https://github.com/cuihuan/awesome-ai-gateway/issues)——互相链接对每份清单的读者都有好处。
+
 ## Star 历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=cuihuan/awesome-ai-gateway&type=Date)](https://star-history.com/#cuihuan/awesome-ai-gateway&Date)
