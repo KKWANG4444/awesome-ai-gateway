@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenRouter alternatives (2026): the honest shortlist by reason</title>
+<meta name="description" content="Looking for an OpenRouter alternative? The honest shortlist organized by why you're switching — lower/zero markup, self-hosting & data control, enterprise governance, or first-party compliance. Hosted aggregators, self-hosted proxies, BYOK control planes & first-party gateways. Independent, no vendor money." />
+<link rel="canonical" href="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.html" />
+<meta name="theme-color" content="#0d1117" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Awesome AI Gateway" />
+<meta property="og:url" content="https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.html" />
+<meta property="og:title" content="OpenRouter alternatives (2026): the honest shortlist" />
+<meta property="og:description" content="By reason, not hype — markup, self-hosting, governance, compliance. Hosted, self-hosted, BYOK & first-party options." />
+<meta property="og:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OpenRouter alternatives (2026)" />
+<meta name="twitter:description" content="The honest shortlist organized by why you're switching." />
+<meta name="twitter:image" content="https://cuihuan.github.io/awesome-ai-gateway/assets/cost-spread.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "OpenRouter alternatives (2026): the honest shortlist by reason",
+  "description": "An independent, data-grounded shortlist of OpenRouter alternatives organized by reason: markup, self-hosting, governance, compliance.",
+  "url": "https://cuihuan.github.io/awesome-ai-gateway/openrouter-alternatives.html",
+  "isPartOf": "https://cuihuan.github.io/awesome-ai-gateway/",
+  "about": ["OpenRouter", "AI gateway", "LLM proxy", "LLM API aggregator"],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is there a free OpenRouter alternative?","acceptedAnswer":{"@type":"Answer","text":"Yes — self-hosted open-source proxies like LiteLLM and Bifrost are free software (you only pay your model providers and your own hosting). They give you the same many-models-behind-one-API benefit without a per-token gateway fee, in exchange for running the service yourself."}},
+    {"@type":"Question","name":"What is the cheapest OpenRouter alternative?","acceptedAnswer":{"@type":"Answer","text":"For lowest total cost on your own provider keys, a BYOK control plane (Vercel AI Gateway, Cloudflare AI Gateway) adds 0% per-token markup, or self-host LiteLLM/Bifrost. But model choice dominates: the price spread across models is far larger than any gateway fee, so size your real workload first."}},
+    {"@type":"Question","name":"Is there a self-hosted alternative to OpenRouter?","acceptedAnswer":{"@type":"Answer","text":"Yes — LiteLLM and Bifrost are self-hosted proxies that route to 100+ providers using your own keys, keeping traffic in your infrastructure and adding no markup. They are the usual choice when data control or governance matters."}},
+    {"@type":"Question","name":"Why look for an OpenRouter alternative?","acceptedAnswer":{"@type":"Answer","text":"Common reasons: avoiding the credit fee at high volume, keeping data in your own infrastructure, needing enterprise governance (RBAC, audit, virtual keys/budgets), or needing first-party compliance certifications. OpenRouter remains excellent for fast, zero-ops access to many models."}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#f0f6fc;--mut:#8b949e;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  nav.bc{font-size:13px;color:var(--mut);margin-bottom:16px}
+  h1{font-size:28px;margin:0 0 8px;line-height:1.25}
+  h2{font-size:20px;margin:32px 0 10px}
+  .sub{color:var(--mut);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--mut);margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--fg);font-weight:600}
+  td:first-child{color:var(--fg);white-space:nowrap}
+  .cat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .cat h3{margin:0 0 6px;font-size:16px}
+  .cat .when{color:var(--mut);font-size:13.5px;margin:0 0 8px}
+  .cat ul{margin:0;padding-left:18px}.cat li{margin:3px 0}
+  .note{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:10px;padding:12px 15px;font-size:14.5px;margin:14px 0}
+  details{border:1px solid var(--border);border-radius:8px;padding:8px 14px;margin:8px 0;background:var(--card)}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--mut);font-size:14.5px}
+  footer{margin-top:40px;color:var(--mut);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="bc"><a href="./">Awesome AI Gateway</a> › OpenRouter alternatives</nav>
+<h1>OpenRouter alternatives: the honest shortlist</h1>
+<p class="sub">OpenRouter is excellent for fast, zero-ops access to many models behind one key. You'd look for an alternative for one of four concrete reasons — so this list is organized by <em>why you're switching</em>, not by hype.</p>
+<p class="meta">Independent · no vendor money · part of the <a href="./">Awesome AI Gateway</a> benchmark of 100+ gateways · verify each vendor's current pricing &amp; certs before relying on them.</p>
+
+<h2>First, why switch?</h2>
+<table>
+<thead><tr><th>If your reason is…</th><th>Look at…</th></tr></thead>
+<tbody>
+<tr><td>Lower / zero markup</td><td>BYOK control planes, or self-host</td></tr>
+<tr><td>Data must stay in your infra</td><td>Self-hosted proxies</td></tr>
+<tr><td>Enterprise governance / audit</td><td>Self-hosted + enterprise gateways</td></tr>
+<tr><td>First-party compliance certs</td><td>Cloud / model-vendor gateways</td></tr>
+</tbody>
+</table>
+
+<h2>The alternatives, by category</h2>
+
+<div class="cat"><h3>Hosted aggregators (zero-ops, like OpenRouter)</h3>
+<p class="when">Pick if you like the OpenRouter model but want a different mix, features, or pricing — still no infrastructure to run.</p>
+<ul>
+<li><b>Together AI</b> / <b>Fireworks AI</b> — hosted multi-model inference with broad open-model catalogs.</li>
+<li><b>Portkey</b> — hosted AI gateway with routing, caching, guardrails and observability.</li>
+</ul></div>
+
+<div class="cat"><h3>BYOK control planes (0% per-token markup)</h3>
+<p class="when">Pick if you want OpenRouter-style convenience but on <em>your own</em> provider keys — caching, routing and spend limits without the credit fee.</p>
+<ul>
+<li><b>Vercel AI Gateway</b> — front your own keys at 0% markup, unified API, spend controls.</li>
+<li><b>Cloudflare AI Gateway</b> — caching, rate limiting and analytics in front of your keys.</li>
+</ul></div>
+
+<div class="cat"><h3>Self-hosted, open-source (full control, no markup)</h3>
+<p class="when">Pick if data must stay in your infrastructure, or you want no per-token fee and central team governance — in exchange for running a service.</p>
+<ul>
+<li><b>LiteLLM</b> — the default self-hosted proxy: 100+ providers, virtual keys, budgets, load balancing.</li>
+<li><b>Bifrost</b> — Go-native, very low overhead at high throughput.</li>
+<li><b>Helicone</b> — open-source observability + gateway (logging, caching, monitoring).</li>
+</ul></div>
+
+<div class="cat"><h3>Enterprise &amp; first-party (governance / compliance)</h3>
+<p class="when">Pick if you need RBAC + audit on a battle-tested data plane, or first-party compliance certifications.</p>
+<ul>
+<li><b>Kong</b> / <b>Higress</b> — AI plugins on an enterprise API-gateway data plane.</li>
+<li><b>Azure OpenAI</b> / <b>AWS Bedrock</b> — first-party, multi-model, strongest certs (HIPAA-BAA, FedRAMP) and ZDR.</li>
+</ul></div>
+
+<div class="note">⚖️ Whichever you choose, the <b>dominant cost lever is the model, not the gateway</b> — the same task can vary <b>100×+</b> across models, far more than any gateway fee. Size your real workload → <a href="cost-calculator.html"><b>cost calculator</b></a>.</div>
+
+<h2>Verify before you trust any of them</h2>
+<p>Every aggregator and proxy sits between you and the model. Before production, confirm it doesn't silently swap models, fake-stream, or misreport token usage — run the <a href="https://github.com/cuihuan/awesome-ai-gateway#how-to-choose-safely">canary fidelity test</a>, and match the gateway's trust tier to your data's sensitivity.</p>
+
+<h2>FAQ</h2>
+<details><summary>Is there a free OpenRouter alternative?</summary><p>Yes — self-hosted LiteLLM and Bifrost are free software; you pay only your providers and hosting.</p></details>
+<details><summary>What's the cheapest alternative?</summary><p>A BYOK control plane (Vercel / Cloudflare AI Gateway) at 0% markup, or self-host. But model choice dominates — size your workload first.</p></details>
+<details><summary>Is there a self-hosted alternative?</summary><p>Yes — LiteLLM and Bifrost route to 100+ providers on your own keys, keeping data in your infrastructure.</p></details>
+<details><summary>Why look for an alternative at all?</summary><p>Avoiding the credit fee at scale, data control, enterprise governance, or first-party compliance. OpenRouter stays great for fast, zero-ops reach.</p></details>
+
+<footer>
+Compare the top two head-to-head → <a href="litellm-vs-openrouter.html"><b>LiteLLM vs OpenRouter</b></a>.
+Not sure? <a href="gateway-picker.html"><b>🧭 Gateway picker</b></a> · <a href="cost-calculator.html"><b>💰 Cost calculator</b></a> · <a href="./">full list of 100+</a>.
+Independent &amp; CC0 — <a href="https://github.com/cuihuan/awesome-ai-gateway">★ Star on GitHub</a>.
+</footer>
+</div>
+</body>
+</html>
