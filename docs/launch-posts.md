@@ -7,8 +7,13 @@ auto-post in your voice. Edit freely before posting.
 - [ ] **Push everything** so the repo + live site reflect all improvements (the launchers will look).
 - [ ] Upload a **social-preview image** (Settings → Social preview, 1280×640 — the price-spread or decision-tree chart). Every share unfurls with it.
 - [ ] Sanity-check the live site loads: https://cuihuan.github.io/awesome-ai-gateway/
-- [ ] **Stagger** channels over ~2 weeks; **never solicit upvotes** anywhere (esp. HN).
 - [ ] Be available to reply for a few hours after the HN/Reddit post.
+
+### Sequencing for velocity (the part that actually trips GitHub Trending)
+GitHub Trending ranks by star **velocity vs. *your own* baseline** (plus forks/issues/PRs/comments) — **not** absolute count. From ~24★, even **15–30 stars in 24–48h** can trip it in a niche tag; spreading the same stars thin over two weeks never builds the spike. So:
+- [ ] **Concentrate the high-velocity channels into one 24–48h window** — HN Show HN + r/LocalLLaMA + the X thread — ideally **Tue–Thu morning US Pacific** (avoid weekends/Mondays).
+- [ ] **Then sustain** over the next 1–2 weeks with the slower channels (周刊 async, V2EX, linux.do, r/selfhosted) **and reply to every issue/PR** — ongoing engagement keeps feeding Trending's signal after the initial burst.
+- [ ] **Never solicit upvotes** anywhere (esp. HN) — it gets the post flagged and undoes the whole launch.
 
 ---
 
