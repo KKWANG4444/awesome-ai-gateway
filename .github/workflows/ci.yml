@@ -56,11 +56,12 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      # Advisory while the list stabilizes: the pain-point layout intentionally
-      # violates some awesome-lint rules (cross-section entries, em-dash
-      # separators). Full conformance is scheduled before the
-      # sindresorhus/awesome submission (day 30), when this becomes blocking.
+      # Advisory on purpose. Most findings are design tensions (compact wide
+      # tables, a TOC that double-links sections, em-dash entry style), not
+      # defects — see docs/awesome-lint-triage.md for the categorized breakdown
+      # and the path to a sindresorhus/awesome submission. Flip to blocking once
+      # that conformance pass is done.
       - name: awesome-lint (advisory)
         run: |
           npx --yes awesome-lint && echo "awesome-lint clean" || \
-            echo "::warning::awesome-lint reported issues — advisory until the day-30 awesome submission"
+            echo "::warning::awesome-lint reported issues — triaged in docs/awesome-lint-triage.md (advisory until the conformance pass)"
