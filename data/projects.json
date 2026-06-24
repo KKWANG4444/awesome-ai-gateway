@@ -51,6 +51,13 @@
     "deanxv/done-hub",
     "lasso-security/mcp-gateway",
     "fdmtl/director",
-    "docker/mcp-gateway"
+    "docker/mcp-gateway",
+    "stacklok/toolhive",
+    "microsoft/mcp-gateway",
+    "1mcp-app/agent",
+    "smart-mcp-proxy/mcpproxy-go",
+    "bestruirui/octopus",
+    "NadirRouter/NadirClaw",
+    "thushan/olla"
   ]
 }
