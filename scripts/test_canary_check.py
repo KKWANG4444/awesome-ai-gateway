@@ -2,7 +2,16 @@
 
 import unittest
 
-from canary_check import capability_hit, normalize, token_similarity, verdict
+from canary_check import (
+    Reply,
+    capability_hit,
+    fingerprint_summary,
+    normalize,
+    parse_models,
+    parse_reply,
+    token_similarity,
+    verdict,
+)
 
 
 class TestNormalize(unittest.TestCase):
@@ -77,6 +86,81 @@ class TestVerdict(unittest.TestCase):
         rows = [{"id": "a", "similarity": 0.4, "relay_hit": None, "ref_hit": None},
                 {"id": "b", "similarity": 0.6, "relay_hit": None, "ref_hit": None}]
         self.assertEqual(verdict(rows)["mean_similarity"], 0.5)
+
+
+class TestParseReply(unittest.TestCase):
+    def test_full_body(self):
+        r = parse_reply({
+            "choices": [{"message": {"content": "hello"}}],
+            "usage": {"prompt_tokens": 42, "completion_tokens": 3},
+            "system_fingerprint": "fp_abc",
+        })
+        self.assertEqual(r, Reply(content="hello", system_fingerprint="fp_abc", prompt_tokens=42))
+
+    def test_missing_fields_tolerated(self):
+        r = parse_reply({"choices": [{}]})
+        self.assertEqual(r, Reply(content="", system_fingerprint=None, prompt_tokens=None))
+        self.assertEqual(parse_reply({}), Reply(content="", system_fingerprint=None, prompt_tokens=None))
+        self.assertEqual(parse_reply(None), Reply(content="", system_fingerprint=None, prompt_tokens=None))
+
+    def test_blank_fingerprint_is_none(self):
+        r = parse_reply({"choices": [{"message": {"content": "x"}}], "system_fingerprint": ""})
+        self.assertIsNone(r.system_fingerprint)
+
+
+class TestParseModels(unittest.TestCase):
+    def test_splits_trims_dedupes_preserving_order(self):
+        self.assertEqual(parse_models("gpt-5.5, claude-opus-4-8 ,gpt-5.5"), ["gpt-5.5", "claude-opus-4-8"])
+
+    def test_single(self):
+        self.assertEqual(parse_models("gpt-4o"), ["gpt-4o"])
+
+    def test_empty(self):
+        self.assertEqual(parse_models(""), [])
+        self.assertEqual(parse_models(" , "), [])
+
+
+class TestFingerprintSummary(unittest.TestCase):
+    def _r(self, fp=None, pt=None):
+        return Reply(content="x", system_fingerprint=fp, prompt_tokens=pt)
+
+    def test_no_metadata_is_not_comparable(self):
+        s = fingerprint_summary([(self._r(), self._r())])
+        self.assertEqual(s["comparable"], 0)
+        self.assertEqual(s["flags"], [])
+        self.assertIsNone(s["fp_mismatch"])
+        self.assertIsNone(s["max_prompt_token_skew"])
+
+    def test_matching_fingerprint_and_tokens_clean(self):
+        s = fingerprint_summary([(self._r("fp_a", 100), self._r("fp_a", 100))])
+        self.assertEqual(s["flags"], [])
+        self.assertFalse(s["fp_mismatch"])
+        self.assertEqual(s["max_prompt_token_skew"], 0.0)
+        self.assertEqual(s["comparable"], 1)
+
+    def test_fingerprint_mismatch_flagged(self):
+        s = fingerprint_summary([(self._r("fp_a", 100), self._r("fp_b", 100))])
+        self.assertTrue(s["fp_mismatch"])
+        self.assertIn("system_fingerprint", s["flags"])
+
+    def test_prompt_token_skew_beyond_tolerance_flagged(self):
+        # 100 vs 130 = 30% skew > default 15% tolerance → tokenizer tell
+        s = fingerprint_summary([(self._r(pt=130), self._r(pt=100))])
+        self.assertIn("prompt_tokens", s["flags"])
+        self.assertEqual(s["max_prompt_token_skew"], 0.3)
+
+    def test_small_skew_within_tolerance_not_flagged(self):
+        s = fingerprint_summary([(self._r(pt=105), self._r(pt=100))])
+        self.assertEqual(s["flags"], [])
+        self.assertEqual(s["max_prompt_token_skew"], 0.05)
+
+    def test_max_skew_across_canaries(self):
+        s = fingerprint_summary([
+            (self._r(pt=102), self._r(pt=100)),  # 2%
+            (self._r(pt=140), self._r(pt=100)),  # 40%
+        ])
+        self.assertEqual(s["max_prompt_token_skew"], 0.4)
+        self.assertIn("prompt_tokens", s["flags"])
 
 
 if __name__ == "__main__":

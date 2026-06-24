@@ -384,7 +384,7 @@ Then, whatever tier you're in:
 
 ### Community relay watch-list
 
-Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic. A passing canary from a project's own team is logged as *self-reported* — reaching ✅ verified takes an **independent** reproduction by someone unaffiliated.
+Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic. The script diffs across one or more models in a single pass (`--model a,b`) and adds a tokenizer/fingerprint probe — `system_fingerprint` mismatch and `prompt_tokens` divergence on identical prompts — an independent tell beyond text similarity. A passing canary from a project's own team is logged as *self-reported* — reaching ✅ verified takes an **independent** reproduction by someone unaffiliated.
 
 | Relay | Listed in | Status | Why it's here |
 |---|---|---|---|
