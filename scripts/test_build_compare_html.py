@@ -5,6 +5,7 @@ import unittest
 from build_compare_html import (
     build_sitemap,
     extract_description,
+    extract_lastmod,
     extract_title,
     md_to_html,
     render_inline,
@@ -136,15 +137,31 @@ class TestMetadata(unittest.TestCase):
                          ("one-api-vs-new-api-vs-litellm.zh-CN", "zh-CN"))
 
 
+class TestLastmod(unittest.TestCase):
+    def test_extracts_byline_date(self):
+        self.assertEqual(extract_lastmod("# T\n\n*Last updated 2026-06-16 · Part of X.*"), "2026-06-16")
+        self.assertEqual(extract_lastmod("# T\n\n*最近更新：2026-06-13*"), "2026-06-13")
+
+    def test_none_when_absent(self):
+        self.assertIsNone(extract_lastmod("# T\n\nNo date here."))
+
+
 class TestSitemap(unittest.TestCase):
     def test_includes_home_and_articles_sorted(self):
-        xml = build_sitemap(["b-article", "a-article"])
+        xml = build_sitemap([("b-article", None), ("a-article", "2026-06-16")])
         self.assertIn("<loc>https://cuihuan.github.io/awesome-ai-gateway/</loc>", xml)
         ia = xml.index("a-article.html")
         ib = xml.index("b-article.html")
         self.assertLess(ia, ib)  # sorted
         self.assertIn("<priority>0.8</priority>", xml)
         self.assertTrue(xml.strip().endswith("</urlset>"))
+
+    def test_lastmod_emitted_only_when_present(self):
+        xml = build_sitemap([("dated", "2026-06-16"), ("undated", None)])
+        self.assertIn("<lastmod>2026-06-16</lastmod>", xml)
+        # the undated article must not borrow another's lastmod
+        undated_block = xml.split("compare/undated.html")[1].split("</url>")[0]
+        self.assertNotIn("<lastmod>", undated_block)
 
 
 if __name__ == "__main__":

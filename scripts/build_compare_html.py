@@ -254,6 +254,16 @@ def extract_description(md: str, limit: int = 155) -> str:
     return cut.rstrip(",.;:") + "…"
 
 
+_LASTMOD = re.compile(r"(?:Last updated|最近更新|更新于)\D*(\d{4}-\d{2}-\d{2})", re.IGNORECASE)
+
+
+def extract_lastmod(md: str) -> str | None:
+    """The article's own '*Last updated YYYY-MM-DD*' byline date, for sitemap
+    <lastmod>. None if the article carries no such date (no fabricated date)."""
+    m = _LASTMOD.search(md)
+    return m.group(1) if m else None
+
+
 def slug_lang(filename: str) -> tuple[str, str]:
     """('litellm-alternatives-2026.md') → (slug, lang). '.zh-CN.md' → lang 'zh-CN'."""
     name = filename[:-3] if filename.endswith(".md") else filename
@@ -349,19 +359,23 @@ def _json(s: str) -> str:
 
 # ── Sitemap ──────────────────────────────────────────────────────────────────
 
-def build_sitemap(slugs: list[str]) -> str:
-    urls = [(SITE, "1.0", "daily")] + [
-        (f"{SITE}compare/{s}.html", "0.8", "monthly") for s in sorted(slugs)
-    ]
-    body = "\n".join(
-        f"  <url>\n    <loc>{loc}</loc>\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>"
-        for loc, pr, cf in urls
-    )
+def build_sitemap(articles: list[tuple[str, str | None]]) -> str:
+    """articles: [(slug, lastmod_or_None), ...]. The home page has no lastmod
+    (its 'daily' changefreq already signals freshness)."""
+    rows = [(SITE, "1.0", "daily", None)]
+    for slug, lastmod in sorted(articles):
+        rows.append((f"{SITE}compare/{slug}.html", "0.8", "monthly", lastmod))
+    parts = []
+    for loc, pr, cf, lm in rows:
+        lm_line = f"\n    <lastmod>{lm}</lastmod>" if lm else ""
+        parts.append(
+            f"  <url>\n    <loc>{loc}</loc>{lm_line}\n    <changefreq>{cf}</changefreq>\n    <priority>{pr}</priority>\n  </url>"
+        )
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f"{body}\n"
-        "</urlset>\n"
+        + "\n".join(parts)
+        + "\n</urlset>\n"
     )
 
 
@@ -374,13 +388,14 @@ def _targets():
 
 def build_all(check: bool = False) -> int:
     files = _targets()
-    slugs = []
+    articles = []
     stale = []
     for md_path in files:
+        md = md_path.read_text(encoding="utf-8")
         slug, _ = slug_lang(md_path.name)
-        slugs.append(slug)
+        articles.append((slug, extract_lastmod(md)))
         html_path = COMPARE / f"{slug}.html"
-        rendered = render_page(md_path.read_text(encoding="utf-8"), md_path.name)
+        rendered = render_page(md, md_path.name)
         if check:
             current = html_path.read_text(encoding="utf-8") if html_path.exists() else None
             if current != rendered:
@@ -388,7 +403,8 @@ def build_all(check: bool = False) -> int:
         else:
             html_path.write_text(rendered, encoding="utf-8")
 
-    sitemap = build_sitemap(slugs)
+    slugs = [s for s, _ in articles]
+    sitemap = build_sitemap(articles)
     sitemap_path = ROOT / "sitemap.xml"
     if check:
         if sitemap_path.read_text(encoding="utf-8") != sitemap:
