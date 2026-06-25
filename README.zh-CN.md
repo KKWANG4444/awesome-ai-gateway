@@ -316,6 +316,8 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 
 *痛点："谁在哪个模型上花了多少钱？质量为什么降了？"*
 
+> 🔎 **怎么评估一个网关的可观测性**（必备/加分/进阶分级，依据 OpenTelemetry GenAI 约定）：见 [BENCHMARKS → 第六部分](BENCHMARKS.zh-CN.md#第六部分--网关可观测性真正该看的因素)。
+
 - [Helicone](https://github.com/Helicone/helicone) <!--s:Helicone/helicone-->⭐ 5.9k<!--/s--> — 日志、成本、会话、Prompt 实验；一行代码接入。
 - [TensorZero](https://github.com/tensorzero/tensorzero) <!--s:tensorzero/tensorzero-->⭐ 11.7k<!--/s--> — ⚠️ **2026 年 6 月已归档**（仓库只读，Apache-2.0 代码与社区分支尚存）。网关+可观测+评测一体（Rust），数据留在你自己的 ClickHouse。
 - [Portkey](https://portkey.ai) — 基于其开源网关的完整 LLMOps：链路追踪、预算、Prompt 管理。

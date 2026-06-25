@@ -14,6 +14,7 @@ Every number here is **sourced and dated**. Cost cells are *computed* from a pub
 - [Part 3 — Real-world token cost (computed)](#part-3--real-world-token-cost-computed)
 - [Part 4 — Gateway scorecard: compliance · price · security · stability](#part-4--gateway-scorecard-compliance--price--security--stability)
 - [Part 5 — Real-world reviews: what production users report](#part-5--real-world-reviews-what-production-users-report)
+- [Part 6 — Gateway observability: the factors that matter](#part-6--gateway-observability-the-factors-that-matter)
 - [Methodology & caveats](#methodology--caveats)
 - [Sources](#sources)
 
@@ -263,6 +264,55 @@ Benchmarks rank capability; this ranks **what actually breaks once a gateway is 
 
 ---
 
+## Part 6 — Gateway observability: the factors that matter
+
+*Why this is its own axis — separate from the [scorecard](#part-4--gateway-scorecard-compliance--price--security--stability) and from generic APM: a gateway sits between many internal consumers and metered, $-per-token providers, so the unit of analysis is **tokens and dollars attributed per key / team / user / model** — and the gateway's own value-add (retries, fallback, caching, guardrails) actively **masks** cost and failure unless it's instrumented. The cross-vendor standard is the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) (`gen_ai.*` spans + metrics), now natively consumed by Datadog/Honeycomb/Grafana — but most `gen_ai.*` attributes are still **"Development"** status in 2026, and several heavily-marketed capabilities (online evals, drift detection) are real **product features, not standards**. This rubric grades what a gateway actually exposes, flags standardized vs aspirational, and stays neutral.*
+
+### Table-stakes — miss these and it's barely instrumented (mostly maps to Required/Stable OTel)
+
+| Factor | What a well-instrumented gateway exposes | How to verify |
+|---|---|---|
+| **Core inference telemetry** | `gen_ai.operation.name` + `gen_ai.provider.name` on every span (**both Required**), span named `{op} {model}`, and **both** `gen_ai.request.model` (alias requested) **and** `gen_ai.response.model` (concrete model that answered) — so a silent reroute / alias-swap is visible. | Call two upstreams via a model alias; confirm distinct `provider.name`, and `request.model`=alias vs `response.model`=resolved version. |
+| **Token & $ cost attribution** | input/output token counts + the `gen_ai.client.token.usage` histogram split by `gen_ai.token.type`; cost read from the **provider usage payload** (not just model-name inference), broken down by token type (prompt / completion / cached-read / reasoning) and rolled up per key/team/user/model. | Two identical calls under different keys → separate cost; a cache-read costs less than a miss; an **unknown model still yields token counts**, not a silent $0. |
+| **Decomposed latency** | total **and** upstream-provider **and** gateway-overhead as separate numbers, plus **TTFT** on streams, as **histograms** (p95/p99) — `gen_ai.client.operation.duration` is the **only** metric the spec marks Required. | One trace shows total/upstream/overhead separately; a streaming call records TTFT distinctly; the metric is a histogram, not an average gauge. |
+| **Error taxonomy by origin** | failures carry the **Stable** `error.type` + provider status + class, separated by origin (client/gateway rejection vs upstream failure vs guardrail block) — not one flat 5xx counter. | Trigger a provider 429, an oversized-prompt 400, a budget/auth rejection, and a guardrail block → each labeled distinctly. |
+| **Open export / no lock-in** | emits **and** ingests OTLP (`gen_ai.*` / OpenInference), a Prometheus `/metrics` endpoint, webhooks, and bulk raw export to S3/warehouse — not a dashboard-only silo (a real risk after the 2026 shakeout: TensorZero archived, Helicone→Mintlify maintenance, Portkey→Palo Alto). | Point its exporter at a throwaway OTel Collector; `curl /metrics`; configure a test webhook; ask for a documented warehouse export. |
+| **Cardinality discipline** | metrics use only **bounded** labels (model / provider / region / status / deployment); unbounded ids (prompt text, conversation/request id, raw user id) live in trace/log attributes, **never** labels — else the monitoring bill exceeds the inference bill. | Scrape `/metrics` and look for any unbounded label; ask "what's my metrics bill at 10k RPS with 1M distinct users?" |
+
+### Differentiating — instruments the gateway's own value-add (which otherwise hides cost & failure)
+
+| Factor | What a well-instrumented gateway exposes | How to verify |
+|---|---|---|
+| **Reliability visibility** (retry / fallback / failover / cooldown) | counters for successful vs failed fallbacks labeled `requested→fallback` model, retry-attempt counts, circuit-breaker/cooldown events — because a request that succeeds after 3 retries + a fallback otherwise looks like a clean 200. | Force the primary to 500 → trace shows retry spans, the fallback source→target, and which deployment finally served. |
+| **Cache visibility** | per-request HIT/MISS + hit-rate % + cost/time saved; exact **and** semantic caching; provider prompt-cache read/write tokens tracked **separately** from the gateway's own response cache. | Send the same request twice → 2nd flagged HIT with lower cost/latency; dashboard shows hit rate + cumulative savings. |
+| **Budget / quota / rate-limit telemetry** | live remaining-budget gauges per key **and** team ($ + hours-to-reset), remaining RPM/TPM per model, upstream provider rate-limit headroom, graduated alerts, and a **hard cutoff** at the limit (not just an alert). | Set a small team budget, drive spend → gauge ticks down, alert fires, **and traffic is actually cut off**. |
+| **Streaming lifecycle** | a `gen_ai.request.stream` flag, TTFT + per-output-token latency, and **mid-stream failure** detected as a failure/partial (a stream can send 200 OK then stall or error). | Stream a request → TTFT distinct from total; cut the connection mid-stream → recorded as failure/partial, not a clean success. |
+| **Prompt/response capture *with* redaction** | content capture **off by default** (the OTel default, toggled via `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`), landing in `gen_ai.input.messages` / `output.messages`; paired with **PII redaction before storage and before the provider call**. Raw logging without redaction can breach GDPR + the EU AI Act (high-risk provisions enforceable **2026-08-02**). | With capture unset, only metadata appears; a planted SSN/email is masked on both input **and** output. |
+
+### Advanced — the 2026 frontier, mostly **non-standard product features** (grade as bonus, verify claims)
+
+| Factor | What a well-instrumented gateway exposes | Honest caveat |
+|---|---|---|
+| **Retention + tail/eval-driven sampling** | per-data-class retention (keep metrics long, expire raw prompts fast) + sampling that keeps **100% of errors** and high-cost/anomalous traces while sampling the boring bulk — head-only sampling drops the rare hallucination you needed. | Only OTLP transport is standardized; the **sampling policy is product-specific**. |
+| **Eval / quality & drift signals** | online evals (LLM-as-judge or programmatic) attachable to live traces and chartable over time, + capture of the **resolved** `gen_ai.response.model` so a silent provider re-point is visible, + trace→eval behind a CI gate. | Online evals / LLM-as-judge are **vendor product features, NOT the OTel standard** — only `gen_ai.response.model` is standardized. Treat vendor eval/latency claims as vendor-reported until reproduced. |
+
+**Exemplars among listed gateways** (illustrative, not endorsements): **LiteLLM** ships the reference self-hosted label set (`litellm_spend_metric`, cached/reasoning token splits, distinct request/upstream/overhead latency, fallback + budget metrics, Prometheus + Grafana). **Helicone**, **Langfuse**, **Arize Phoenix**, **Pydantic Logfire** and **Braintrust** are observability-first (OTLP-native, cost-by-segment, evals). **Portkey** exposes OTLP export + hard budget enforcement + cache/guardrail telemetry. **Kong AI Gateway** maps the `gen_ai.*` span set and PII sanitization. **Cloudflare AI Gateway** adds spend limits + free DLP/PII scan. *Verify against your own workload — most performance/eval figures are vendor-reported.*
+
+> **Questions to ask before you trust a gateway's dashboard**
+> - Show me a sample exported span: do you **emit and ingest OTLP** with `gen_ai.*` / OpenInference names, or is telemetry proprietary-only?
+> - Is there a Prometheus `/metrics` endpoint, and are all labels **bounded**? (Any unbounded label — prompt text, conversation/request id, raw user id — is a walk-away.)
+> - Can cost be attributed **simultaneously per virtual-key / team / user / model AND by token type**, read from the provider usage payload (not just inferred from the model name, which breaks on new/renamed models)?
+> - Can I read **total, upstream, and gateway-overhead latency separately**, with TTFT on streams, as histograms (p95/p99) — not one average gauge?
+> - When a request succeeds only after retries + a fallback, does the trace show the **retry spans and the fallback source→target**, or just a 200?
+> - Do budgets **hard-cut-off** at the limit or only alert, and where do alerts route?
+> - Is content capture **off by default**, with PII redacted **before storage and before the provider sees it**?
+> - Do you record the **resolved** `gen_ai.response.model`, so a silent provider re-point or model re-tune is detectable?
+> - Under ZDR / self-host, **what observability do I lose** (typically you keep metadata/metrics, drop prompt bodies)?
+
+> **Grounded in** the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) ([spans](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md) · [metrics](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-metrics.md)). Most `gen_ai.*` attributes are still **Development** status in 2026 (`error.type` / `server.*` are Stable) — pin `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental` so dashboards don't silently break across releases. Reference label sets: [LiteLLM Prometheus](https://docs.litellm.ai/docs/proxy/prometheus), [OpenLLMetry/Traceloop](https://github.com/traceloop/openllmetry), [OpenInference](https://github.com/Arize-ai/openinference). Last reviewed **2026-06-25**.
+
+---
+
 ## Methodology & caveats
 
 - **Benchmarks are necessary, not sufficient.** Public sets leak into training data (contamination), and vendors optimize for the leaderboard. We therefore show *several* benchmarks + blind human preference (Arena) + real cost, and weight none of them alone.
@@ -279,6 +329,7 @@ Primary leaderboards and pricing references (verify live — these move weekly):
 - [SWE-bench](https://www.swebench.com) — agentic coding leaderboard
 - [Vellum LLM Leaderboard](https://www.vellum.ai/llm-leaderboard), [OpenRouter rankings](https://openrouter.ai/rankings)
 - Official pricing: [Anthropic](https://www.anthropic.com/pricing), [OpenAI](https://openai.com/api/pricing/), [Google](https://ai.google.dev/pricing), [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
+- Observability standard (Part 6): [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) — `gen_ai.*` spans & metrics
 
 Per-cell sources are listed in [`data/models.json`](data/models.json) and the gateway research notes.
 

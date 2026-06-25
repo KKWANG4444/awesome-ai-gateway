@@ -14,6 +14,7 @@
 - [第三部分 — 真实 Token 成本实测（脚本计算）](#第三部分--真实-token-成本实测脚本计算)
 - [第四部分 — 网关四维评分：合规·价格·安全·稳定](#第四部分--网关四维评分合规价格安全稳定)
 - [第五部分 — 真实评测：生产环境里用户怎么说](#第五部分--真实评测生产环境里用户怎么说)
+- [第六部分 — 网关可观测性：真正该看的因素](#第六部分--网关可观测性真正该看的因素)
 - [方法论与注意事项](#方法论与注意事项)
 - [数据来源](#数据来源)
 
@@ -261,6 +262,55 @@
 
 ---
 
+## 第六部分 — 网关可观测性：真正该看的因素
+
+*为什么它是独立的一维——既不同于[评分卡](#第四部分--网关四维评分合规价格安全稳定)，也不同于通用 APM：网关处在「众多内部调用方」与「按 token 计费的厂商」之间，所以分析单位是**按 key／团队／用户／模型归集的 token 与美元**——而网关自身的增值能力（重试、兜底、缓存、护栏）会**掩盖**成本与故障，除非被埋点。跨厂商标准是 [OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)（`gen_ai.*` span + 指标），已被 Datadog/Honeycomb/Grafana 原生消费——但 2026 年大多数 `gen_ai.*` 属性仍是 **"Development"** 状态，且若干被大肆营销的能力（在线评测、漂移检测）是真实的**产品功能、而非标准**。本评估表衡量网关「实际暴露了什么」，标注「标准化 vs 仅为愿景」，并保持中立。*
+
+### 必备项——缺了就是几乎没埋点（大体对应 OTel 的 Required/Stable 部分）
+
+| 因素 | 埋点良好的网关会暴露什么 | 如何验证 |
+|---|---|---|
+| **核心推理遥测** | 每个 span 带 `gen_ai.operation.name` + `gen_ai.provider.name`（**两者皆 Required**），span 命名为 `{op} {model}`，且**同时**记录 `gen_ai.request.model`（请求的别名）与 `gen_ai.response.model`（真正应答的具体模型）——使静默改路由/换别名可见。 | 用一个模型别名调两个上游；确认 `provider.name` 不同，且 `request.model`=别名、`response.model`=解析后的具体版本。 |
+| **Token 与美元成本归集** | 输入/输出 token 数 + 按 `gen_ai.token.type` 切分的 `gen_ai.client.token.usage` 直方图；成本**取自厂商用量回包**（而非仅靠模型名推断），按 token 类型（prompt/completion/缓存读/推理）拆分并按 key/团队/用户/模型汇总。 | 用不同 key 发两次相同请求 → 成本分别归集；缓存命中比未命中便宜；**未知模型仍产出 token 数**而非静默 $0。 |
+| **拆解的延迟** | 总耗时、**上游厂商**耗时、**网关开销**分别可读，外加流式的 **TTFT**，均为**直方图**（看 p95/p99）——`gen_ai.client.operation.duration` 是规范中**唯一**标 Required 的指标。 | 一条 trace 能分别读出 总/上游/开销；流式调用单独记录 TTFT；该指标是直方图而非平均值仪表。 |
+| **按来源的错误分类** | 失败带 **Stable** 的 `error.type` + 厂商状态码 + 类别，按来源区分（客户端/网关拒绝 vs 上游故障 vs 护栏拦截）——而非一个笼统的 5xx 计数。 | 触发厂商 429、超长 prompt 400、预算/鉴权拒绝、护栏拦截 → 各自被区分标注。 |
+| **开放导出 / 不锁定** | 既**发出**也**摄入** OTLP（`gen_ai.*`/OpenInference），有 Prometheus `/metrics` 端点、webhook、以及到 S3/数仓的批量原始导出——而非只能看自家看板的数据孤岛（2026 洗牌后是真实风险：TensorZero 归档、Helicone→Mintlify 维护态、Portkey→Palo Alto）。 | 把它的 exporter 指向一个临时 OTel Collector；`curl /metrics`；配一个测试 webhook；索要有文档的数仓导出。 |
+| **基数纪律** | 指标只用**有界**标签（模型/厂商/区域/状态/部署）；无界 id（prompt 文本、会话/请求 id、原始用户 id）放进 trace/log 属性，**绝不**做标签——否则监控账单会超过推理账单。 | 抓取 `/metrics` 看有无无界标签；问「1 万 RPS、100 万独立用户时我的监控账单是多少？」 |
+
+### 加分项——给网关自身的增值能力埋点（否则它们会掩盖成本与故障）
+
+| 因素 | 埋点良好的网关会暴露什么 | 如何验证 |
+|---|---|---|
+| **可靠性可见**（重试/兜底/故障转移/冷却） | 成功 vs 失败兜底计数，标注 `请求→兜底` 模型；重试次数；熔断/冷却事件——因为「重试 3 次 + 兜底后成功」的请求否则看起来就是个干净的 200。 | 把主用强制 500 → trace 显示重试 span、兜底的 源→目标、最终应答的部署。 |
+| **缓存可见** | 单请求 HIT/MISS + 命中率% + 省下的成本/时间；支持精确**与**语义缓存；厂商 prompt 缓存的读/写 token 与网关自身的响应缓存**分开**计。 | 同一请求发两次 → 第二次标为 HIT、成本/延迟更低；看板显示命中率 + 累计节省。 |
+| **预算/配额/限流遥测** | 每 key **与**每团队的实时剩余预算仪表（美元 + 距重置小时数）、每模型剩余 RPM/TPM、上游厂商限流余量、分级告警，以及到限额时的**硬截断**（不只是告警）。 | 设一个小团队预算、跑高消费 → 仪表下降、告警触发，**且流量被真正切断**。 |
+| **流式全生命周期** | `gen_ai.request.stream` 标志、TTFT + 逐 token 延迟，以及把**流中途失败**判为失败/部分（流可能先 200 OK 再卡住或报错）。 | 发流式请求 → TTFT 与总耗时分开；中途断连 → 记为失败/部分，而非干净的成功。 |
+| **prompt/响应留存*配合*脱敏** | 内容留存**默认关闭**（OTel 默认，经 `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` 切换），开启后落在 `gen_ai.input.messages`/`output.messages`；并配合**入库前、且调厂商前**的 PII 脱敏。未脱敏的原始留存可能违反 GDPR 与欧盟 AI 法案（高风险条款 **2026-08-02** 起强制）。 | 不设留存时只出现元数据；植入的假 SSN/邮箱在输入**和**输出里都被打码。 |
+
+### 进阶项——2026 前沿，多为**非标准的产品功能**（按加分项看待、核实其宣称）
+
+| 因素 | 埋点良好的网关会暴露什么 | 诚实提醒 |
+|---|---|---|
+| **留存窗口 + 尾部/评测驱动采样** | 按数据类别分别留存（指标留久、原始 prompt 尽快过期）+ 采样保留**100% 错误**及高成本/异常 trace，同时对无聊的大流量采样——只做头部采样会丢掉你最需要的那条罕见幻觉。 | 仅 OTLP 传输是标准化的；**采样策略是产品自定义**。 |
+| **评测/质量与漂移信号** | 可挂到实时 trace 上、并随时间作图的在线评测（LLM-as-judge 或程序化），+ 捕获**解析后的** `gen_ai.response.model` 以便发现静默改路由，+ trace→评测并接 CI 门禁。 | 在线评测/LLM-as-judge 是**厂商产品功能、不属 OTel 标准**——只有 `gen_ai.response.model` 是标准化的。厂商的评测/延迟宣称在你复现前按「厂商自报」看待。 |
+
+**清单内网关的范例**（仅作示意、非背书）：**LiteLLM** 提供自托管的参考标签集（`litellm_spend_metric`、缓存/推理 token 拆分、请求/上游/开销延迟分离、兜底+预算指标、Prometheus + Grafana）。**Helicone、Langfuse、Arize Phoenix、Pydantic Logfire、Braintrust** 以可观测为先（OTLP 原生、按维度归集成本、评测）。**Portkey** 提供 OTLP 导出 + 硬预算 + 缓存/护栏遥测。**Kong AI Gateway** 映射 `gen_ai.*` span 集并做 PII 清洗。**Cloudflare AI Gateway** 加了消费上限 + 免费 DLP/PII 扫描。*请在你自己的负载上验证——多数性能/评测数字为厂商自报。*
+
+> **信它的看板之前，先问这些**
+> - 给我看一条导出的 span：你**既发出也摄入 OTLP**、用 `gen_ai.*`/OpenInference 命名吗，还是只有自家私有遥测？
+> - 有 Prometheus `/metrics` 端点吗，标签都**有界**吗？（任何无界标签——prompt 文本、会话/请求 id、原始用户 id——直接 pass。）
+> - 成本能**同时按 虚拟 key／团队／用户／模型，并按 token 类型**归集，且取自厂商用量回包（而非仅靠模型名推断、在新/改名模型上失效）吗？
+> - 我能把 **总、上游、网关开销延迟分开读**，流式带 TTFT，且为直方图（p95/p99）而非一个平均值仪表吗？
+> - 当一个请求重试+兜底后才成功，trace 是显示**重试 span 和兜底 源→目标**，还是只有一个 200？
+> - 预算到限额是**硬截断**还是只告警，告警往哪发？
+> - 内容留存**默认关闭**吗，PII 是在**入库前、且厂商看到前**就脱敏吗？
+> - 你记录**解析后的** `gen_ai.response.model` 吗，以便发现静默改路由或模型重调？
+> - 在 ZDR/自托管下，我**会失去哪些可观测性**（通常保留元数据/指标、丢掉 prompt 正文）？
+
+> **依据**：[OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)（[spans](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md) · [metrics](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-metrics.md)）。2026 年多数 `gen_ai.*` 属性仍是 **Development** 状态（`error.type`/`server.*` 为 Stable）——固定 `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental` 以免看板跨版本静默失效。参考标签集：[LiteLLM Prometheus](https://docs.litellm.ai/docs/proxy/prometheus)、[OpenLLMetry/Traceloop](https://github.com/traceloop/openllmetry)、[OpenInference](https://github.com/Arize-ai/openinference)。最近审阅 **2026-06-25**。
+
+---
+
 ## 方法论与注意事项
 
 - **基准是必要但不充分的。** 公开测试集会泄漏进训练数据（污染），厂商也会针对榜单优化。因此我们同时展示*多个*基准 + 盲测人类偏好（Arena）+ 真实成本，不单独依赖任何一个。
@@ -277,6 +327,7 @@
 - [SWE-bench](https://www.swebench.com) — 智能体编码榜
 - [Vellum LLM 榜](https://www.vellum.ai/llm-leaderboard)、[OpenRouter 排名](https://openrouter.ai/rankings)
 - 官方价格：[Anthropic](https://www.anthropic.com/pricing)、[OpenAI](https://openai.com/api/pricing/)、[Google](https://ai.google.dev/gemini-api/docs/pricing)、[DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
+- 可观测性标准（第六部分）：[OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai) — `gen_ai.*` span 与指标
 
 逐格来源见 [`data/models.json`](data/models.json) 与 [`data/gateways_eval.json`](data/gateways_eval.json)。
 

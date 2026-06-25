@@ -316,6 +316,8 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 *Pain point: "Who spent what, on which model, and why did quality drop?"*
 
+> 🔎 **How to evaluate a gateway's observability** (table-stakes vs differentiating vs advanced, grounded in the OpenTelemetry GenAI conventions): see [BENCHMARKS → Part 6](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter).
+
 - [Helicone](https://github.com/Helicone/helicone) <!--s:Helicone/helicone-->⭐ 5.9k<!--/s--> — Logs, costs, sessions, prompt experiments; one-line proxy integration.
 - [TensorZero](https://github.com/tensorzero/tensorzero) <!--s:tensorzero/tensorzero-->⭐ 11.7k<!--/s--> — ⚠️ **Archived June 2026** (repo read-only; Apache-2.0 code + community forks remain). Gateway + observability + evals in one Rust binary, data stays in your ClickHouse.
 - [Portkey](https://portkey.ai) — Full LLMOps suite over its OSS gateway: traces, budgets, prompt management.
