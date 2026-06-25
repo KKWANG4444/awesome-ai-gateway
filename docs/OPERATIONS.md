@@ -96,7 +96,7 @@ Subreddit etiquette: read each sub's self-promo rules; r/LLMDevs **bans** self-p
 - ✅ [mahseema/awesome-ai-tools #1631](https://github.com/mahseema/awesome-ai-tools/pull/1631) — OPEN (Related Awesome Lists)
 - ✅ [underlines/awesome-ml #65](https://github.com/underlines/awesome-ml/pull/65) — OPEN (llm-tools.md / Libraries & Wrappers)
 - ❌ skip (verified bad fit): InftyAI/Awesome-LLMOps & EthicalML/awesome-production-machine-learning (tools-only, no meta-list section + star gate) · punkpeye/awesome-mcp-servers (MCP-only) · DefTruth/Awesome-LLM-Inference (deprecated/papers-only) · formulahendry/awesome-gpt (PR-averse, unmerged since 2023)
-- ⬜ sindresorhus/awesome — gated (≥30d old + lint-clean + maintainer personally reviews 4 PRs + `unicorn`); 👤
+- ⏳ sindresorhus/awesome — **eligible ~2026-07-11** (repo created 2026-06-11; the ≥30-day gate is the only blocker — topics/branch already pass). Then: lint-clean + maintainer personally reviews 4 PRs + `unicorn`; 👤. Do NOT submit before then (auto-closed).
 - **6 backlink PRs is plenty for launch period — hold further submissions (more same-week = spam-perception).**
 
 ---
@@ -179,6 +179,6 @@ A 6-agent research pass (how comparable awesome-lists + LLM-gateway projects act
 
 ### 9e. 👤 Maintainer-only — the moves that actually move stars now (agent has maxed the prep)
 1. **Create a Bing Webmaster Tools account** (bing.com/webmasters) → *Import from Google Search Console* (1-click) → submit `sitemap.xml` → record the June-2026 **Citation Share** baseline (it can't be backfilled, so every week of delay loses trend history). This unlocks the IndexNow pings already firing.
-2. **Submit to sindresorhus/awesome** — agent preps (`npx awesome-lint` to zero via `docs/awesome-lint-triage.md`; confirm topics `awesome`+`awesome-list`, branch `main`, PR body). You: open the PR from your account, **review 4 other open PRs**, post `unicorn` — in one sitting. *No star minimum exists; the gate is purely mechanical and we clear the 30-day age.* This is the single biggest evergreen backlink.
+2. **Submit to sindresorhus/awesome** — ⏳ **NOT YET ELIGIBLE.** The repo was created **2026-06-11**, and sindresorhus auto-closes lists **< 30 days old** — so the earliest valid submission is **~2026-07-11**. Topics (`awesome`+`awesome-list`) ✅ and branch `main` ✅ already pass; only the age blocks it. *(Correcting an earlier note that claimed we clear the age gate — we don't until mid-July.)* When eligible: agent preps (`npx awesome-lint` to zero via `docs/awesome-lint-triage.md`, PR body); you open the PR, **review 4 other open PRs**, post `unicorn` in one sitting. No star minimum exists. This is the single biggest evergreen backlink — worth doing the day it's eligible.
 3. **Run the 48–72h launch burst** (§3) — HN (factual title, $788 first comment) + r/LocalLLaMA + r/selfhosted + one newsletter, channel-distinct posts, present to answer. Drafts in `docs/launch-posts.md` (agent keeps them channel-distinct).
 4. **Warm 1:1 outreach** to people who already engaged (issue reporters, the #14 contributor, anyone who forked) — the proven path to the first ~100 real stars.
