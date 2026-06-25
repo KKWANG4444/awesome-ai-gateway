@@ -229,7 +229,7 @@ This is the part buyers actually lose sleep over. Models are interchangeable; th
 | **Kong AI Gateway** | ★★★½ | ★★★★½ | ★★★★ | PII sanitization (20+ types), Prompt Guard, RBAC on mature Kong lineage |
 | **Envoy AI Gateway** | ★★★🏠 | ★★★★ | ★★★★ | Multi-provider + MCP gateway w/ OAuth+CEL authz; native K8s/Istio |
 | **Bifrost** (Maxim) | ★★★🏠 | ★★★½ | ★★★★½ | Go; ~11µs overhead benchmark, cluster mode; no known CVEs |
-| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | Rust; <1ms p99 at 10k+ QPS; routing + built-in observability |
+| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | Rust; <1ms p99 at 10k+ QPS; routing + built-in observability; ⚠️ archived Jun 2026 |
 | **Higress** | ★★★🏠 | ★★★½ | ★★★★ | Istio/Envoy AI-native, Wasm plugins, console; Alibaba-backed |
 | **Apache APISIX** | ★★★🏠 | ★★★ | ★★★★ | ai-proxy / ai-prompt-guard plugins on mature ASF gateway |
 | **LiteLLM** | ★★★🏠 | ★★½ ⚠️ | ★★★★ | SOC 2 I + ISO (Enterprise); **patch to ≥v1.83.7** — 2 serious 2026 CVEs (1 RCE on CISA KEV), both fixed |

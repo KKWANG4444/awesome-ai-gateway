@@ -229,7 +229,7 @@
 | **Kong AI Gateway** | ★★★½ | ★★★★½ | ★★★★ | PII 脱敏（20+ 类）、Prompt Guard、RBAC，基于成熟 Kong 血统 |
 | **Envoy AI Gateway** | ★★★🏠 | ★★★★ | ★★★★ | 多厂商 + MCP 网关（OAuth+CEL 鉴权）；原生 K8s/Istio |
 | **Bifrost**（Maxim） | ★★★🏠 | ★★★½ | ★★★★½ | Go；~11µs 开销基准、集群模式；无已知 CVE |
-| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | Rust；万级 QPS 下 <1ms p99；路由 + 内置可观测 |
+| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | Rust；万级 QPS 下 <1ms p99；路由 + 内置可观测；⚠️ 2026-06 已归档 |
 | **Higress** | ★★★🏠 | ★★★½ | ★★★★ | Istio/Envoy AI 原生、Wasm 插件、控制台；阿里背书 |
 | **Apache APISIX** | ★★★🏠 | ★★★ | ★★★★ | 成熟 ASF 网关上的 ai-proxy / ai-prompt-guard 插件 |
 | **LiteLLM** | ★★★🏠 | ★★½ ⚠️ | ★★★★ | SOC 2 I + ISO（企业版）；**升到 ≥v1.83.7**——2 个严重 2026 CVE（含 1 个 CISA KEV 上的 RCE），均已修 |
