@@ -61,7 +61,22 @@ watch list is built together, **on evidence, never hearsay.**
    not a competitor grudge. Reports without evidence are closed. This is what keeps the
    watch list a credibility asset instead of a liability.
 
-## Reporting stale or wrong entries
+## Stale entries — the 12-month rule (and how it's enforced)
 
-Open an issue with the project name and evidence (last release date, archived repo,
-changed pricing). Mislabeled stale projects are bugs — we'd rather know.
+A listed project must be **active within the last 12 months**, or it stays only if it is
+historically significant **and** explicitly labeled `⚠️ stale` / `⚠️ archived` (criterion 3).
+
+This is enforced **mechanically** so nothing rots silently:
+[`scripts/check_stale_gateways.py`](scripts/check_stale_gateways.py) runs **monthly in CI**
+and flags any release-tracked repo that is archived or has had no push in 12 months **and is
+not already labeled**. A green run means the promise holds; a red run is a to-do.
+
+When an entry is flagged (or you spot one), the resolution is exactly one of:
+
+1. **Label it** — add `⚠️ stale` / `⚠️ archived <Mon YYYY>` to the description if the project
+   is historically significant and worth keeping for reference (e.g. TensorZero, Glide).
+2. **Remove it** — if it is neither active nor notable enough to keep labeled.
+
+Spotted a stale or wrong entry yourself? Open an issue with the project name and evidence
+(last release date, archived repo, changed pricing). Mislabeled stale projects are bugs —
+we'd rather know.

@@ -1,0 +1,30 @@
+name: Stale gateway check
+
+# Keeps the "active within 12 months — or explicitly labeled stale" promise
+# (CONTRIBUTING criterion 3) mechanical instead of manual: flags any release-tracked
+# repo that is archived or has had no push in 12 months AND is not yet labeled stale
+# in the README. The run goes red only when there's something to act on (a stale entry
+# with no label) — a green run means the promise holds. The maintainer decides
+# label-vs-remove. Monthly + on demand; this is its own workflow, so a nag here does
+# not touch the main CI badge.
+
+on:
+  schedule:
+    - cron: '23 7 1 * *'   # 07:23 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Flag stale-but-unlabeled gateways
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/check_stale_gateways.py
