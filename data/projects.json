@@ -71,6 +71,10 @@
     "agentic-community/mcp-gateway-registry",
     "Nexus-Router/nexus",
     "ai-dynamo/dynamo",
-    "InftyAI/llmaz"
+    "InftyAI/llmaz",
+    "emissary-ingress/emissary",
+    "etalab-ia/OpenGateLLM",
+    "BlockRunAI/ClawRouter",
+    "RouteWorks/RouterArena"
   ]
 }
