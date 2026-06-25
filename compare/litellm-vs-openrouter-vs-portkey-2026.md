@@ -2,6 +2,8 @@
 
 *Last updated 2026-06-13 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
+> 📊 **Key numbers** · Writing a 100K-token report costs **$0.03** on DeepSeek V4-Flash vs **$3.01** on GPT-5.5 — a **~106× spread** ([reproducible benchmark](../BENCHMARKS.md#part-3--real-world-token-cost-computed), computed 2026-06). OpenRouter adds **~5.5%** on credits; self-hosted **LiteLLM** (51k★) and BYOK gateways add **0%** per-token markup. The model you route to moves the bill far more than the gateway fee.
+
 The three names everyone compares when they pick an AI gateway are **LiteLLM, OpenRouter, and Portkey**. They solve the same surface problem — one endpoint for many LLMs — but they sit at completely different points on the self-host ↔ managed axis. Here's the honest, data-backed breakdown.
 
 ## TL;DR

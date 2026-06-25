@@ -2,6 +2,8 @@
 
 *更新于 2026-06-13 · [Awesome AI Gateway](../README.zh-CN.md) 的一部分。[⭐ 点个 Star](https://github.com/cuihuan/awesome-ai-gateway)。*
 
+> 📊 **关键数字** · **new-api(约 40k★)已超越 one-api(约 35k★)** 成为最活跃的国内中转/分发面板(LiteLLM 约 51k★)。⚠️ 别用转售「免费 API」中转:2026 年研究在转售中转里测出 **45.8%** 的指纹测试模型身份不符、输出偏差最高 **47%**([*Real Money, Fake Models*](https://arxiv.org/abs/2603.01919))——自建、用你自己的 key 才安全。
+
 国内自建大模型 API 中转/分发,绕不开这三个名字:**one-api、new-api、LiteLLM**。它们都能"一个接口打通多家模型",但定位差别很大。这是一份基于数据的实话对比。
 
 ## 一眼对比
