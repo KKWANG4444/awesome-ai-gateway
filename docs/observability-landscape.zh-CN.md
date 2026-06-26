@@ -34,6 +34,15 @@ metrics / logs / traces 这个框架由 **Peter Bourgon**（《Metrics, tracing,
 - **新但可行的：** **成本/消费预算**——错误预算的逻辑天然映射到美元。
 - **真正难的：** **质量 SLO**。「正确」是模糊的、生产无 ground truth，所以质量 SLO 只能对一个*代理指标*来定（「抽样响应中 ≥X% 通过 LLM 评审打分」）——也就是**对一个噪声估计量设 SLO**，这是 SRE 从未面对过的一步。
 
+**配套框架——四个黄金信号。** SRE 另一套经典指标（[*Monitoring Distributed Systems*](https://sre.google/sre-book/monitoring-distributed-systems/)）是检查网关埋点最快的尺子：
+
+| 黄金信号 | 经典 | AI 网关形态 |
+|---|---|---|
+| **延迟 Latency** | 请求耗时 | TTFT **与** 总完成时间（依赖 token 数），按 模型/路由 |
+| **流量 Traffic** | 请求/秒 | 请求/秒 **与 token/秒**（真正的负载单位） |
+| **错误 Errors** | 错误率 | **按来源**——厂商 4xx/5xx vs 网关 vs 护栏 vs 内容过滤（笼统错误率没用） |
+| **饱和度 Saturation** | 服务有多「满」 | 上游**限流/配额余量**、预算余量，以及（自托管）GPU/队列深度 |
+
 ### 1.4 控制论 → 闭环
 经典反馈控制器（观察输出 → 比对设定值 → 调整）映射到**评测 → 路由/护栏调整**：LLM 后置护栏配自我纠正、LLM 评审同时充当评测与动态护栏。其局限（我方综合）：经典控制假设*被控对象稳定*、*误差可测*；而 AI 网关的「被控对象」（上游模型）可能被**静默改路由**，误差信号（质量）又是由另一个 LLM 估出来的——于是闭环可能去追一个被标定错的设定值。
 
@@ -123,7 +132,7 @@ metrics / logs / traces 这个框架由 **Peter Bourgon**（《Metrics, tracing,
 
 **事实上的跨厂商标准是 [OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)**——`gen_ai.*` span（operation.name、provider.name、request/response.model、finish_reasons）与指标（**Required** 的 `gen_ai.client.operation.duration`、`gen_ai.client.token.usage` 直方图、流式 TTFT），且**内容留存默认关闭**（`OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`）。由 OTel GenAI SIG 自 ~2024 推进；**OpenLLMetry/Traceloop** 的约定被上游合并。**状态告诫：2026 年多数 `gen_ai.*` 属性仍是 “Development”（非 Stable）**——今天做的埋点有返工风险；固定 `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental`。互补的还有：**OpenInference**（Arize）、**OpenLLMetry**（Traceloop）。已被 Datadog/Honeycomb/Grafana 原生消费。*（要验证的具体信号见 [BENCHMARKS → 第六部分](../BENCHMARKS.zh-CN.md#第六部分--网关可观测性真正该看的因素)。）*
 
-> 🔧 *更完整的「标准沿革 + 工具分类法」正由一路专门的研究子任务扩充——见下方「工具」一节，下次审阅会再充实。*
+> 📌 *标准变化快——多数 `gen_ai.*` 属性仍是 “Development”，做看板前请到 [OTel GenAI 约定仓库](https://github.com/open-telemetry/semantic-conventions-genai) 复核当前稳定性。工具全景见下方 §6。*
 
 ---
 

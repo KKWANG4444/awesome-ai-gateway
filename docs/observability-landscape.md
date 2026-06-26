@@ -34,6 +34,15 @@ From the [Google SRE book](https://sre.google/sre-book/service-level-objectives/
 - **New but tractable:** a **cost / spend budget** — error-budget logic maps naturally onto dollars.
 - **The genuinely hard part:** a **quality SLO**. "Correct" is fuzzy and production has no ground truth, so a quality SLO is defined over a *proxy* ("≥X% of sampled responses pass an LLM-judge rubric") — i.e. **an SLO over a noisy estimator**, a move SRE never had to make.
 
+**Companion frame — the Four Golden Signals.** SRE's other canonical set ([*Monitoring Distributed Systems*](https://sre.google/sre-book/monitoring-distributed-systems/)) is the fastest sanity-check of a gateway's instrumentation:
+
+| Golden signal | Classical | AI-gateway form |
+|---|---|---|
+| **Latency** | request time | TTFT **and** total completion (token-dependent), per model/route |
+| **Traffic** | requests/sec | requests/sec **and tokens/sec** (the real load unit) |
+| **Errors** | error rate | **by origin** — provider 4xx/5xx vs gateway vs guardrail vs content-filter (a flat rate is useless) |
+| **Saturation** | how "full" the service is | upstream **rate-limit/quota headroom**, budget headroom, and (self-hosted) GPU/queue depth |
+
 ### 1.4 Control theory → closed loop
 The classical feedback controller (observe output → compare to setpoint → adjust) maps onto **evals → routing/guardrail adjustment**: post-LLM guardrails with self-correction, LLM-judge as both eval and dynamic guardrail. The limit (our synthesis): classical control assumes a *stable plant* and a *measurable error*; an LLM gateway's "plant" (the upstream model) can be **silently re-pointed**, and the error signal (quality) is itself estimated by another LLM — so the loop can chase a miscalibrated setpoint.
 
@@ -123,7 +132,7 @@ These are the academic basis for [the community relay watch-list](../README.md#c
 
 The **de-facto cross-vendor standard is the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai)** — `gen_ai.*` spans (operation.name, provider.name, request/response.model, finish_reasons) and metrics (the **Required** `gen_ai.client.operation.duration`, the `gen_ai.client.token.usage` histogram, streaming TTFT), with **content capture OFF by default** (`OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`). Driven by the OTel GenAI SIG since ~2024; conventions originally from **OpenLLMetry/Traceloop** were upstreamed. **Status caveat: most `gen_ai.*` attributes are still "Development" (not Stable) in 2026** — instrumentation built today risks rework; pin `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental`. Complementary: **OpenInference** (Arize), **OpenLLMetry** (Traceloop). Natively consumed by Datadog/Honeycomb/Grafana. *(See [BENCHMARKS → Part 6](../BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) for the exact signals to verify.)*
 
-> 🔧 *A fuller standards-history + tool taxonomy section is being expanded from a dedicated research pass — see the "Tools" section below, which will be enriched on the next review.*
+> 📌 *The standard moves fast — most `gen_ai.*` attributes are still "Development" status, so re-check the [OTel GenAI conventions repo](https://github.com/open-telemetry/semantic-conventions-genai) for current stability before building dashboards. The tool landscape is in §6 below.*
 
 ---
 
