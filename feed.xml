@@ -5,8 +5,64 @@
   <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
   <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
   <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
-  <updated>2026-06-25T02:58:49Z</updated>
+  <updated>2026-06-25T21:34:52Z</updated>
   <author><name>Awesome AI Gateway</name></author>
+  <entry>
+    <title>obot-platform/obot v0.23.3</title>
+    <link href="https://github.com/obot-platform/obot/releases/tag/v0.23.3" />
+    <id>https://github.com/obot-platform/obot/releases/tag/v0.23.3</id>
+    <updated>2026-06-25T21:34:52Z</updated>
+    <summary>obot-platform/obot released v0.23.3.</summary>
+  </entry>
+  <entry>
+    <title>kgateway-dev/kgateway v2.3.5</title>
+    <link href="https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.5" />
+    <id>https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.5</id>
+    <updated>2026-06-25T18:57:07Z</updated>
+    <summary>kgateway-dev/kgateway released v2.3.5.</summary>
+  </entry>
+  <entry>
+    <title>katanemo/plano 0.4.26</title>
+    <link href="https://github.com/katanemo/plano/releases/tag/0.4.26" />
+    <id>https://github.com/katanemo/plano/releases/tag/0.4.26</id>
+    <updated>2026-06-25T18:02:40Z</updated>
+    <summary>katanemo/plano released 0.4.26.</summary>
+  </entry>
+  <entry>
+    <title>router-for-me/CLIProxyAPI v7.2.41</title>
+    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.41" />
+    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.41</id>
+    <updated>2026-06-25T17:56:33Z</updated>
+    <summary>router-for-me/CLIProxyAPI released v7.2.41.</summary>
+  </entry>
+  <entry>
+    <title>maximhq/bifrost helm-chart-v2.1.25</title>
+    <link href="https://github.com/maximhq/bifrost/releases/tag/helm-chart-v2.1.25" />
+    <id>https://github.com/maximhq/bifrost/releases/tag/helm-chart-v2.1.25</id>
+    <updated>2026-06-25T14:35:07Z</updated>
+    <summary>maximhq/bifrost released Helm Chart v2.1.25.</summary>
+  </entry>
+  <entry>
+    <title>musistudio/claude-code-router v3.0.0</title>
+    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.0" />
+    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.0</id>
+    <updated>2026-06-25T11:46:45Z</updated>
+    <summary>musistudio/claude-code-router released 3.0.0.</summary>
+  </entry>
+  <entry>
+    <title>ENTERPILOT/GoModel v0.1.44</title>
+    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.44" />
+    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.44</id>
+    <updated>2026-06-25T11:44:50Z</updated>
+    <summary>ENTERPILOT/GoModel released v0.1.44.</summary>
+  </entry>
+  <entry>
+    <title>smart-mcp-proxy/mcpproxy-go v0.46.0</title>
+    <link href="https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.46.0" />
+    <id>https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.46.0</id>
+    <updated>2026-06-25T04:58:47Z</updated>
+    <summary>smart-mcp-proxy/mcpproxy-go released v0.46.0.</summary>
+  </entry>
   <entry>
     <title>higress-group/higress v2.2.3</title>
     <link href="https://github.com/higress-group/higress/releases/tag/v2.2.3" />
@@ -50,13 +106,6 @@
     <summary>stacklok/toolhive released v0.31.0.</summary>
   </entry>
   <entry>
-    <title>router-for-me/CLIProxyAPI v7.2.37</title>
-    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.37" />
-    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.37</id>
-    <updated>2026-06-24T17:35:29Z</updated>
-    <summary>router-for-me/CLIProxyAPI released v7.2.37.</summary>
-  </entry>
-  <entry>
     <title>QuantumNous/new-api v1.0.0-rc.15</title>
     <link href="https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.15" />
     <id>https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.15</id>
@@ -85,13 +134,6 @@
     <summary>IBM/mcp-context-forge released v1.0.4 - Rust Migration, Docker Improvements, Security Enhancements, and Bug Fixes.</summary>
   </entry>
   <entry>
-    <title>smart-mcp-proxy/mcpproxy-go v0.45.0</title>
-    <link href="https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.45.0" />
-    <id>https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.45.0</id>
-    <updated>2026-06-23T06:30:40Z</updated>
-    <summary>smart-mcp-proxy/mcpproxy-go released v0.45.0.</summary>
-  </entry>
-  <entry>
     <title>BlockRunAI/ClawRouter v0.12.212</title>
     <link href="https://github.com/BlockRunAI/ClawRouter/releases/tag/v0.12.212" />
     <id>https://github.com/BlockRunAI/ClawRouter/releases/tag/v0.12.212</id>
@@ -113,13 +155,6 @@
     <summary>agentgateway/agentgateway released v1.3.1.</summary>
   </entry>
   <entry>
-    <title>obot-platform/obot v0.23.2</title>
-    <link href="https://github.com/obot-platform/obot/releases/tag/v0.23.2" />
-    <id>https://github.com/obot-platform/obot/releases/tag/v0.23.2</id>
-    <updated>2026-06-22T19:43:21Z</updated>
-    <summary>obot-platform/obot released v0.23.2.</summary>
-  </entry>
-  <entry>
     <title>theopenco/llmgateway v1.5.0</title>
     <link href="https://github.com/theopenco/llmgateway/releases/tag/v1.5.0" />
     <id>https://github.com/theopenco/llmgateway/releases/tag/v1.5.0</id>
@@ -132,13 +167,6 @@
     <id>https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.138</id>
     <updated>2026-06-22T01:23:59Z</updated>
     <summary>Wei-Shaw/sub2api released Sub2API 0.1.138.</summary>
-  </entry>
-  <entry>
-    <title>maximhq/bifrost ent-v1.4.13-base</title>
-    <link href="https://github.com/maximhq/bifrost/releases/tag/ent-v1.4.13-base" />
-    <id>https://github.com/maximhq/bifrost/releases/tag/ent-v1.4.13-base</id>
-    <updated>2026-06-21T13:31:08Z</updated>
-    <summary>maximhq/bifrost released Enterprise v1.4.13 base.</summary>
   </entry>
   <entry>
     <title>decolua/9router v0.5.8</title>
@@ -169,20 +197,6 @@
     <summary>labring/aiproxy released Version 0.6.3.</summary>
   </entry>
   <entry>
-    <title>kgateway-dev/kgateway v2.3.4</title>
-    <link href="https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.4" />
-    <id>https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.4</id>
-    <updated>2026-06-18T21:02:42Z</updated>
-    <summary>kgateway-dev/kgateway released v2.3.4.</summary>
-  </entry>
-  <entry>
-    <title>ENTERPILOT/GoModel v0.1.43</title>
-    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.43" />
-    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.43</id>
-    <updated>2026-06-18T18:30:49Z</updated>
-    <summary>ENTERPILOT/GoModel released v0.1.43.</summary>
-  </entry>
-  <entry>
     <title>gpustack/gpustack v2.2.0</title>
     <link href="https://github.com/gpustack/gpustack/releases/tag/v2.2.0" />
     <id>https://github.com/gpustack/gpustack/releases/tag/v2.2.0</id>
@@ -202,19 +216,5 @@
     <id>https://github.com/mlflow/mlflow/releases/tag/v3.14.0</id>
     <updated>2026-06-17T08:50:33Z</updated>
     <summary>mlflow/mlflow released v3.14.0.</summary>
-  </entry>
-  <entry>
-    <title>Kong/kong 3.9.3</title>
-    <link href="https://github.com/Kong/kong/releases/tag/3.9.3" />
-    <id>https://github.com/Kong/kong/releases/tag/3.9.3</id>
-    <updated>2026-06-17T06:02:19Z</updated>
-    <summary>Kong/kong released 3.9.3.</summary>
-  </entry>
-  <entry>
-    <title>pomerium/pomerium v0.32.9</title>
-    <link href="https://github.com/pomerium/pomerium/releases/tag/v0.32.9" />
-    <id>https://github.com/pomerium/pomerium/releases/tag/v0.32.9</id>
-    <updated>2026-06-16T17:25:01Z</updated>
-    <summary>pomerium/pomerium released v0.32.9.</summary>
   </entry>
 </feed>
