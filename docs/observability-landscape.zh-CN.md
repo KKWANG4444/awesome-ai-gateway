@@ -132,6 +132,12 @@ metrics / logs / traces 这个框架由 **Peter Bourgon**（《Metrics, tracing,
 
 **事实上的跨厂商标准是 [OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)**——`gen_ai.*` span（operation.name、provider.name、request/response.model、finish_reasons）与指标（**Required** 的 `gen_ai.client.operation.duration`、`gen_ai.client.token.usage` 直方图、流式 TTFT），且**内容留存默认关闭**（`OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`）。由 OTel GenAI SIG 自 ~2024 推进；**OpenLLMetry/Traceloop** 的约定被上游合并。**状态告诫：2026 年多数 `gen_ai.*` 属性仍是 “Development”（非 Stable）**——今天做的埋点有返工风险；固定 `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental`。互补的还有：**OpenInference**（Arize）、**OpenLLMetry**（Traceloop）。已被 Datadog/Honeycomb/Grafana 原生消费。*（要验证的具体信号见 [BENCHMARKS → 第六部分](../BENCHMARKS.zh-CN.md#第六部分--网关可观测性真正该看的因素)。）*
 
+**治理、沿革与开放争论。** OTel **GenAI SIG** 于 **2024 年 4 月**成立（隶属语义约定 SIG，CNCF / Linux 基金会）；Traceloop 的 **OpenLLMetry**（2023）是早期推动者，其约定被上游合并、成为官方 `gen_ai.*` 命名空间的种子。**2026 年年中**整套 `gen_ai.*` 在主 semconv 仓库被弃用、**迁到专门的 [`semantic-conventions-genai`](https://github.com/open-telemetry/semantic-conventions-genai) 仓库**（用 Weaver 管理）。两个进行中的争论：
+- **约定频繁变动 / 版本固定。** v1.36 → v1.37 带来*破坏性*变更，所以规则是埋点**不得静默改变它发出的约定版本**；`OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental` 是显式切到最新（并丢弃 ≤1.36 形态）的开关。弃用 `gen_ai.prompt`/`gen_ai.completion` 曾打断下游工具——是真实变动，不是假设。
+- **OpenInference（Arize）↔ `gen_ai.*` 融合。** OpenInference *早于* OTel 命名空间（2023），带 AI 专属 span 种类（LLM/Tool/Agent/Retriever 等）。这不是地盘之争：2026 年 OpenInference 埋点**同时发出**自家与 `gen_ai.*` 属性——两者正在合并。可这样框定：*「OTel 定义遥测怎么成形/传输；OpenInference 与 `gen_ai.*` 定义其中的 AI 专属载荷。」*
+
+*截至 2026 年 6 月**尚无 GenAI 指标 Stable**——唯一 **Required** 的信号是 `gen_ai.client.operation.duration`；token 用量与 TTFT 为 Recommended，均仍 “Development”。*
+
 > 📌 *标准变化快——多数 `gen_ai.*` 属性仍是 “Development”，做看板前请到 [OTel GenAI 约定仓库](https://github.com/open-telemetry/semantic-conventions-genai) 复核当前稳定性。工具全景见下方 §6。*
 
 ---
@@ -140,10 +146,11 @@ metrics / logs / traces 这个框架由 **Peter Bourgon**（《Metrics, tracing,
 
 按功能（OSS = 开源；⊟ = 托管/商业）。很多已在 [清单的可观测章节](../README.zh-CN.md#-可观测与成本核算)：
 
-- **通用 LLM 可观测 / 追踪：** Langfuse(OSS)、Arize **Phoenix**(OSS)、**Helicone**(OSS, 代理)、LangSmith(⊟)、**Pydantic Logfire**(OTel 原生)、Honeycomb(⊟)、**Datadog LLM Observability**(⊟)、W&B **Weave**(OSS)、**OpenLLMetry/Traceloop**(OSS 埋点)。
+- **通用 LLM 可观测 / 追踪：** Langfuse(OSS)、Arize **Phoenix**(OSS)、**Helicone**(OSS, 代理)、LangSmith(⊟)、**Pydantic Logfire**(OTel 原生)、Honeycomb(⊟)、**Datadog LLM Observability**(⊟)、W&B **Weave**(OSS)、**OpenLLMetry/Traceloop**(OSS 埋点)、**OpenLIT**(OSS, OTel 原生 + GPU 监控；可埋点编码 Agent)、**MLflow Tracing**(OSS, 经典 MLOps 工具跨界 LLM-obs，实现 OTel GenAI 约定)、**TruLens**(OSS, RAG 三元组评测/追踪)。
+- **漂移 / 安全 / 偏监控类：** Arize、**Fiddler AI**(⊟；发表过清晰的「OTel 到哪为止」分析)、**Guardrails AI**(OSS, 输出校验)、**Maxim AI**(⊟, Bifrost 背后的评测/可观测平台)、**Confident AI**(⊟, DeepEval 背后)。
 - **评测 / 质量：** **Braintrust**(⊟)、Phoenix evals(OSS)、**DeepEval**(OSS)、**Ragas**(OSS)、**OpenAI Evals**(OSS)、**promptfoo**(OSS)。
 - **网关原生可观测：** **LiteLLM**（Prometheus 指标 + Grafana——自托管参考标签集）、**Portkey**（OTLP 导出 + 预算 + 缓存/护栏遥测）、**Kong AI Gateway**（`gen_ai.*` span 映射 + PII 清洗）、**Cloudflare AI Gateway**（消费上限 + DLP/PII 扫描）、**Bifrost**、**vLLora**（前 LangDB）。
-- **2026 洗牌（需留意）：** **Helicone → Mintlify**（维护态）、**Portkey → Palo Alto Networks**、**TensorZero 归档**（2026-06）——独立可观测的洗牌是真的，这正是为什么**开放导出/不锁定**（Part 6 必备项）很重要。
+- **2026 洗牌（需留意）：** **Helicone → Mintlify**（2026-03，维护态）、**Portkey → Palo Alto Networks**（2026-05-29 完成，并入 Prisma AIRS）、**TensorZero 归档**（仓库 2026-06-12 只读）、**promptfoo → OpenAI**（2026-03）、以及 **LiteLLM 的 PyPI 供应链投毒**（v1.82.7/.8，2026-03-24）——独立可观测的洗牌*与*供应链风险，正是为什么**开放导出/不锁定** + 版本固定（Part 6 必备项）很重要。
 
 ---
 
