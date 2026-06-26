@@ -97,6 +97,21 @@ These are the academic basis for [the community relay watch-list](../README.md#c
 
 *(2026 preprints; IDs/titles verified on arXiv, empirical claims are per-abstract, not independently audited.)*
 
+### 3.5 Detecting it in practice — borrowing from classical concept-drift detection
+
+The drift papers (§3.2) and the relay-fraud papers (§3.4) pose one operational question: *is the model behind this endpoint still what it claims?* Two method lineages answer it — and the first is exactly the classical tradition worth borrowing:
+
+**Classical concept-drift detection** (the ML-monitoring lineage):
+- **Distribution tests** on inputs / outputs / quality-scores over a rolling window — **PSI** (Population Stability Index), **KS** (Kolmogorov–Smirnov), **embedding-centroid / cosine drift**: cheap, unsupervised, catch *gradual* shift.
+- **Sequential change-point detectors** — **ADWIN** (adaptive windowing; Bifet & Gavaldà 2007), **DDM/EDDM**, **Page–Hinkley**: flag an abrupt change in an error/quality stream; built for "the world moved under me."
+
+**LLM-gateway-specific** (what the relay studies + this project's tooling add):
+- **Golden-set canary regression** — push a fixed discriminating prompt set through the endpoint *and* a trusted reference for the same model, then diff the outputs; a similarity drop signals a swap/downgrade. This is what [`canary_check.py`](../scripts/canary_check.py) does.
+- **Model fingerprinting** — compare `system_fingerprint`, the `prompt_tokens`/tokenizer footprint on identical prompts, and active behavioral fingerprints (LLMmap-style). ⚠️ **Limit from the research:** the [fingerprint-spoofing paper (§3.4)](https://arxiv.org/abs/2606.16100) shows a malicious provider can *evade* fingerprinting — so a passing fingerprint is *necessary, not sufficient*; pair it with output-diff and repeat over time.
+- **Resolved-model capture** — simply logging `gen_ai.response.model` (§5) makes a provider re-point (`gpt-4` → a cheaper variant) visible with no test at all.
+
+**The honest limit (ties to §7.11):** production has no ground truth, so every one of these is an *estimator*. The discipline that works: **pin a trusted reference, sample continuously, and alert on *change* — not on an absolute score.** That is precisely the classical drift-detection mindset, applied to a black box you rent.
+
 ---
 
 ## 4. What the companies have published ("扒下来")
