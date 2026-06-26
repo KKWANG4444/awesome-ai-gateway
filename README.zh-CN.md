@@ -167,6 +167,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 - [Novita AI](https://novita.ai) — 统一 API 接入 200+ 开源模型（DeepSeek/Qwen/Llama…），自带负载均衡、弹性扩缩与故障转移；另有 GPU 云。
 - [FlintAPI](https://flintapi.ai) ([仓库](https://github.com/moozechen/flintapi)) — 托管 OpenAI 兼容网关，聚合 25+ 国产大模型（DeepSeek、Qwen、Kimi、GLM、MiniMax），赠 $2 体验额度。较新且未经核实——投产前请先验证模型保真度（可用 [canary_check.py](scripts/canary_check.py)）。
 - [FlowBar](https://flowbarai.com) — 托管 OpenAI 兼容中转，转售 50+ 模型（GPT、Claude、Gemini、DeepSeek、Qwen、GLM、Kimi），定价低于 OpenRouter，支持美元/人民币/加密支付。较新且未经核实——投产前请先验证模型保真度（可用 [canary_check.py](scripts/canary_check.py)）。
+- [Meshs One](https://api.meshs.one) — 托管 OpenAI 兼容中转，一个 key 接入国产前沿模型（DeepSeek-V4、Qwen3.7-Max、MiniMax-M3），按 token 计费（其 `/v1` 端点返回 `new_api_error`，疑似基于 [new-api](https://github.com/QuantumNous/new-api)）。较新且未经核实——闭源、刚上线；投产前请先验证模型保真度（可用 [canary_check.py](scripts/canary_check.py)）。
 - [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) — 个人开发者打造的 OpenAI 兼容路由，覆盖 7+ 厂商（Anthropic、OpenAI、Google、Cerebras、Groq、Grok、GLM），分层自动回退、自动选用当前最便宜的可用模型。提供免费档与付费档，自称对 Anthropic 模型 0% 加价（可能另收充值手续费——请核实当前定价）。较新且未经核实——其公开仓库现已是**弃用占位**（路由已迁至闭源托管服务；仍无开源协议文件）——投产前请先验证模型保真度（可用 [canary_check.py](scripts/canary_check.py)）。
 - [OpenPaths](https://openpaths.io) — 托管 OpenAI 兼容路由，跨 15+ 厂商覆盖对话、图像、视频、音乐、语音、向量、转写与搜索；源码与开发在 [Codex Infinity](https://codex-infinity.com/lee101/openpaths)。较新的 SaaS。
 - [Glama Gateway](https://glama.ai/ai/gateway) — OpenAI 兼容网关，接入 100+ 模型，统一账单、缓存与日志（开源内核 [glama-ai/lightport](https://github.com/glama-ai/lightport)）。
@@ -432,6 +433,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 | [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) | 性价比优先 | ⚠️ 未验证——[自报 canary 通过](https://github.com/cuihuan/awesome-ai-gateway/issues/8)（2026-06-22）；待独立复现 | 个人开发者打造、转售 Anthropic/OpenAI/Google 前沿模型、自称 0% 加价（可能另收充值手续费）。项目方自己跑的 canary 对比通过（Opus 4.8 平均相似度 1.0）；尚未由第三方独立复现。公开仓库现为弃用占位——路由已闭源托管。 |
 | [Loop Gateway](https://github.com/Loop-XXI/loop-gateway) | 性价比优先 | ⚠️ 未验证——用前自测 | 匿名 1★ 仓库，*通过自己的 OpenRouter 账号*转售 311 个前沿模型并加价 15%，无账号 + 仅加密货币；模型保真度未经核实。 |
 | [nullsink](https://nullsink.is) ([仓库](https://github.com/nullsink/nullsink)) | 性价比优先 | ⚠️ 未验证——用前自测 | 无账号、无日志、仅门罗币/比特币的中转，*通过运营者自己的账号*代理 OpenAI/Anthropic 并加价约 10%；仓库 3★，模型保真度未经核实。 |
+| [Meshs One](https://api.meshs.one) | 性价比优先 | ⚠️ 未验证——用前自测 | 新的托管中转（疑似基于 new-api），按 token 转售国产前沿模型（DeepSeek/Qwen/MiniMax）；闭源、由关联方自荐，模型保真度未经核实。 |
 
 *目前没有 ⛔ 确认有问题 的条目——该状态需要可复现的 canary 判定或有据可查的事故，绝不凭传闻。*
 
