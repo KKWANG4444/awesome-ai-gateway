@@ -3,12 +3,32 @@
 `awesome-lint` runs in CI as **advisory** (`.github/workflows/ci.yml`). The success
 metric in [SPEC.md](SPEC.md) is being listed in
 [sindresorhus/awesome](https://github.com/sindresorhus/awesome), which requires
-`awesome-lint` to pass. As of the last run it reports **622 errors + 8 warnings**,
-but they collapse into a few categories — most are *design tensions* (the
-pain-point layout, compact wide tables, a TOC), not defects. This file triages
-them so the conformance pass is a deliberate decision, not a surprise.
+`awesome-lint` to pass. As of **2026-06-27** it reports **~678 errors + 8 warnings**
+(up from 622 on 06-24 as content grew), but they collapse into a few categories —
+**~620 of them are *design tensions*** (the pain-point layout, compact wide tables,
+a TOC), not defects. This file triages them so the conformance pass is a deliberate
+decision, not a surprise.
+
+> **Eligibility note:** the repo was created **2026-06-11**, and sindresorhus/awesome
+> auto-closes lists **< 30 days old** — so the earliest valid submission is **~2026-07-11**.
+> Topics (`awesome`+`awesome-list`) ✅ and branch `main` ✅ already pass; only the age + lint
+> remain. **Don't conformance-flatten the list before then** — it's more useful to readers
+> as-is, and the big calls below are deliberate maintainer decisions.
 
 Run it yourself: `npx --yes awesome-lint`.
+
+## Current snapshot (2026-06-27)
+
+| Rule | Count | Bucket |
+|---|---|---|
+| `table-pipe-alignment` + `table-cell-padding` | ~309 | 🟥 design call (wide comparison tables) |
+| `awesome-list-item` | 213 | 🟥 design call (` — ` em-dash house style + table cells) |
+| `double-link` | 111 | 🟥 design call (the in-README TOC) |
+| `emphasis-marker` (`*`→`_`) | 41 | 🟨 cosmetic — one `prettier`/`remark` pass (but it also pads tables; run scoped) |
+| `awesome-spell-check` | 8 (⚠) | 🟩 optional (K8s/WASM in alt-text — fine) |
+| `no-emphasis-as-heading` | 2 (L9, L462) | 🟨 reword 2 italic intro lines |
+| `no-heading-punctuation` | 1 (L64) | 🟨 the `?` on a question heading — reword or accept |
+| `awesome-license` | 1 (L548) | 🟨 lint forbids a `## License` *section*; move to footer/LICENSE file |
 
 | Rule | Count | What it wants | Disposition |
 |---|---|---|---|
