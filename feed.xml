@@ -5,14 +5,35 @@
   <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
   <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
   <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
-  <updated>2026-06-27T01:49:30Z</updated>
+  <updated>2026-06-28T01:41:07Z</updated>
   <author><name>Awesome AI Gateway</name></author>
   <entry>
-    <title>yym68686/uni-api v1.7.151</title>
-    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.151" />
-    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.151</id>
-    <updated>2026-06-27T01:49:30Z</updated>
-    <summary>yym68686/uni-api released Release 1.7.151.</summary>
+    <title>yym68686/uni-api v1.7.156</title>
+    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.156" />
+    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.156</id>
+    <updated>2026-06-28T01:41:07Z</updated>
+    <summary>yym68686/uni-api released Release 1.7.156.</summary>
+  </entry>
+  <entry>
+    <title>router-for-me/CLIProxyAPI v7.2.43</title>
+    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.43" />
+    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.43</id>
+    <updated>2026-06-27T19:38:15Z</updated>
+    <summary>router-for-me/CLIProxyAPI released v7.2.43.</summary>
+  </entry>
+  <entry>
+    <title>musistudio/claude-code-router v3.0.1</title>
+    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.1" />
+    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.1</id>
+    <updated>2026-06-27T08:53:16Z</updated>
+    <summary>musistudio/claude-code-router released 3.0.1.</summary>
+  </entry>
+  <entry>
+    <title>BerriAI/litellm v1.90.0</title>
+    <link href="https://github.com/BerriAI/litellm/releases/tag/v1.90.0" />
+    <id>https://github.com/BerriAI/litellm/releases/tag/v1.90.0</id>
+    <updated>2026-06-27T05:06:10Z</updated>
+    <summary>BerriAI/litellm released v1.90.0.</summary>
   </entry>
   <entry>
     <title>agentic-community/mcp-gateway-registry 1.25.0</title>
@@ -57,13 +78,6 @@
     <summary>NadirRouter/NadirClaw released v0.21.1 — Claude Code identity injection for OAuth tokens.</summary>
   </entry>
   <entry>
-    <title>router-for-me/CLIProxyAPI v7.2.42</title>
-    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.42" />
-    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.42</id>
-    <updated>2026-06-26T04:29:32Z</updated>
-    <summary>router-for-me/CLIProxyAPI released v7.2.42.</summary>
-  </entry>
-  <entry>
     <title>obot-platform/obot v0.23.3</title>
     <link href="https://github.com/obot-platform/obot/releases/tag/v0.23.3" />
     <id>https://github.com/obot-platform/obot/releases/tag/v0.23.3</id>
@@ -92,13 +106,6 @@
     <summary>maximhq/bifrost released Helm Chart v2.1.25.</summary>
   </entry>
   <entry>
-    <title>musistudio/claude-code-router v3.0.0</title>
-    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.0" />
-    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.0</id>
-    <updated>2026-06-25T11:46:45Z</updated>
-    <summary>musistudio/claude-code-router released 3.0.0.</summary>
-  </entry>
-  <entry>
     <title>ENTERPILOT/GoModel v0.1.44</title>
     <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.44" />
     <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.44</id>
@@ -118,13 +125,6 @@
     <id>https://github.com/higress-group/higress/releases/tag/v2.2.3</id>
     <updated>2026-06-25T02:58:49Z</updated>
     <summary>higress-group/higress released v2.2.3.</summary>
-  </entry>
-  <entry>
-    <title>BerriAI/litellm v1.89.4</title>
-    <link href="https://github.com/BerriAI/litellm/releases/tag/v1.89.4" />
-    <id>https://github.com/BerriAI/litellm/releases/tag/v1.89.4</id>
-    <updated>2026-06-25T02:56:04Z</updated>
-    <summary>BerriAI/litellm released v1.89.4.</summary>
   </entry>
   <entry>
     <title>stacklok/toolhive v0.31.0</title>
