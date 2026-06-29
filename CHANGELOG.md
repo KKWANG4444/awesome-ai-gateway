@@ -12,7 +12,7 @@ structural and editorial changes.
   **CLIProxyAPI**, **sub2api**, **9router** and **NVIDIA Dynamo**, plus enterprise/cloud
   vendors **Axway Amplify**, **Red Hat Connectivity Link**, **Sensedia** and
   **Tencent Cloud AI Gateway** — each with honest risk/maintenance caveats.
-- **Bilingual high-intent guide cluster** (EN + 简体中文): *LiteLLM vs OpenRouter*,
+- **Bilingual high-intent guide cluster** (EN + Simplified Chinese): *LiteLLM vs OpenRouter*,
   *OpenRouter alternatives*, *self-hosted gateways*, and *how to cut LLM API costs* —
   cross-linked with an interactive **cost calculator** and **gateway picker**.
 - First inbound community contribution — **nullsink** added by
@@ -46,7 +46,7 @@ First tagged release. The list is stable, bilingual, and CI-verified.
   a runnable model-fidelity checker, and a community relay watch-list process.
 - **6 deep-dive comparison pages** (LiteLLM/OpenRouter/Portkey, LiteLLM alternatives,
   OpenRouter alternatives, Cloudflare vs Vercel, best self-hosted, one-api vs new-api).
-- Bilingual **English + 简体中文** throughout; interactive companion site on GitHub Pages.
+- Bilingual **English + Simplified Chinese** throughout; interactive companion site on GitHub Pages.
 
 ### Infrastructure
 - Daily GitHub Actions refresh of star counts and latest releases.

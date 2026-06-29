@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping make this the best AI-gateway reference! / 感谢贡献！
+Thanks for helping make this the best AI-gateway reference!
 
 ## Inclusion criteria
 

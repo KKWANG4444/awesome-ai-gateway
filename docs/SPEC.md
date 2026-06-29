@@ -30,7 +30,7 @@ then listing in `sindresorhus/awesome` (eligible after day 30).
 | `.github/workflows/daily-update.yml` | Daily cron (02:23 UTC); commits only when content changed. |
 | `.github/workflows/ci.yml` | Unit tests (blocking) + cost-table freshness check (blocking) + awesome-lint (advisory). |
 
-### Evaluation set (体现专业度)
+### Evaluation set (demonstrates rigor)
 
 | Path | Purpose |
 |---|---|

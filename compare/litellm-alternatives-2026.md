@@ -23,7 +23,7 @@ Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubr
 | **OpenRouter** | Hosted | ~5.5% | ★3.0 | You want zero ops and 400+ models in five minutes |
 | **Cloudflare AI Gateway** | Hosted | 0% | ★4.0 | You want a free, 0-markup hosted gateway with DLP/PII scanning |
 | **Vercel AI Gateway** | Hosted | 0% | ★3.5 | You're on Vercel and want true 0% markup incl. BYOK |
-| **new-api / one-api** | Self-hosted | $0 | ★1.5–2.0 | You need a China-friendly 中转 panel — *and will patch aggressively* |
+| **new-api / one-api** | Self-hosted | $0 | ★1.5–2.0 | You need a China-friendly relay panel — *and will patch aggressively* |
 
 > Same task, the **model behind the gateway can cost 100× more** ($0.03 vs $3.01 for one 100K-token report — a [106× spread](../BENCHMARKS.md)). Every alternative below lets you route cheap-by-default and escalate only when needed — that, not the gateway's own fee, is where the money is.
 
@@ -40,9 +40,9 @@ Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubr
 - **[Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/)** — **0% markup**, SOC 2 II / ISO 27001 / PCI / GDPR, with free DLP + PII scanning, guardrails and fallback. 100% SLA on Business+. The strongest free hosted option on compliance.
 - **[Vercel AI Gateway](https://vercel.com/docs/ai-gateway)** — **true 0% markup including BYOK**, SOC 2 II, 99.99% SLA (Enterprise), ZDR option. The obvious choice if you already deploy on Vercel.
 
-## If you need a China-friendly 中转 panel
+## If you need a China-friendly relay panel
 
-- **[new-api](https://github.com/QuantumNous/new-api)** is the most active successor to one-api (~38k★) and **[one-api](https://github.com/songquanpeng/one-api)** is the MIT original. They're great for multi-key, multi-provider reselling panels — but be clear-eyed: new-api carries a **cluster of 2026 CVEs** (IDOR auth-bypass, two SSRF, a SQLi/DoS), so sandbox it, restrict egress, and patch aggressively. See the dedicated [one-api vs new-api vs LiteLLM (中文)](one-api-vs-new-api-vs-litellm.zh-CN.md) breakdown.
+- **[new-api](https://github.com/QuantumNous/new-api)** is the most active successor to one-api (~38k★) and **[one-api](https://github.com/songquanpeng/one-api)** is the MIT original. They're great for multi-key, multi-provider reselling panels — but be clear-eyed: new-api carries a **cluster of 2026 CVEs** (IDOR auth-bypass, two SSRF, a SQLi/DoS), so sandbox it, restrict egress, and patch aggressively. See the dedicated [one-api vs new-api vs LiteLLM (Chinese)](one-api-vs-new-api-vs-litellm.zh-CN.md) breakdown.
 
 ## So, should you actually leave LiteLLM?
 
