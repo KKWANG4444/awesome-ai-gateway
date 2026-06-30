@@ -34,13 +34,13 @@
       "name": "GPT-5.5",
       "provider": "OpenAI",
       "open": false,
-      "context_tokens": 400000,
+      "context_tokens": 1000000,
       "benchmarks": {"aa_index": 60.2, "gpqa_diamond": 0.936, "swe_bench_verified": 0.887, "swe_bench_pro": 0.586, "hle": null, "arena_elo": 1402, "aime": null, "mmlu_pro": null},
       "pricing_usd_per_mtok": {"input": 5.0, "output": 30.0, "cached_input": 0.5},
       "reasoning": true,
       "scenario_cost": true,
       "benchmark_table": true,
-      "notes": "Unified agentic/reasoning model; emits hidden thinking tokens billed as output. Arena Elo shown is the prior GPT-5.2 snapshot. Context ~400k+ (exact UNVERIFIED)."
+      "notes": "Unified agentic/reasoning model; emits hidden thinking tokens billed as output. Arena Elo shown is the prior GPT-5.2 snapshot. 1M-token context via the API (the 400K figure is the Codex cap only)."
     },
     {
       "name": "Gemini 3.1 Pro",
@@ -138,14 +138,14 @@
     },
     {
       "name": "Muse Spark",
-      "provider": "Meta (Llama line)",
-      "open": true,
+      "provider": "Meta (Superintelligence Labs)",
+      "open": false,
       "context_tokens": 262000,
       "benchmarks": {"aa_index": 52.1, "gpqa_diamond": null, "swe_bench_verified": null, "swe_bench_pro": null, "hle": null, "arena_elo": null, "aime": null, "mmlu_pro": null},
       "reasoning": false,
       "scenario_cost": false,
       "benchmark_table": true,
-      "notes": "Latest Meta open-weights line; trails the Chinese open models on coding."
+      "notes": "Closed-source frontier model from Meta Superintelligence Labs (Meta split its strategy: Llama 5 open, Muse Spark closed); trails the Chinese open models on coding."
     },
     {
       "name": "Mistral Large 3",

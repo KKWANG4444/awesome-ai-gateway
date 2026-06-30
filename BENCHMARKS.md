@@ -30,13 +30,13 @@ Ranked by the **Artificial Analysis Intelligence Index** (the most-cited one-num
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | **Claude Fable 5** | Anthropic | Closed | 1M | 95.0% | 95.0% | — | —ᵗ | **65** 🥇 |
 | 2 | **Claude Opus 4.8** | Anthropic | Closed | 1M | 93.6% | 88.6% | — | —ᵗ | **61.4** |
-| 3 | **GPT-5.5** | OpenAI | Closed | ~400K | 93.6% | 88.7% | — | 1402ᵗ | **60.2** |
+| 3 | **GPT-5.5** | OpenAI | Closed | ~1M | 93.6% | 88.7% | — | 1402ᵗ | **60.2** |
 | 4 | **Gemini 3.1 Pro** | Google | Closed | 1M | 94.3% | 80.6% | 98.2%¹ | 1406 | **57.2** |
 | 5 | **Qwen3.7 Max** | Alibaba | Closed | 1M | 92.4% | — | 75%² | — | **56.6** |
 | 6 | **Gemini 3.5 Flash** | Google | Closed | 1M | — | — | — | — | **55.3** |
 | 7 | **Kimi K2.6** | Moonshot | 🔓 Open | 256K | 90.5% | 80.2% | 96.4%¹ | — | **53.9** |
 | 8 | **Grok 4.3** | xAI | Closed | 1M | ~89%³ | ~75%³ | ~95%³ | — | **53.2** |
-| 9 | **Muse Spark** | Meta | 🔓 Open | 262K | — | — | — | — | **52.1** |
+| 9 | **Muse Spark** | Meta | Closed | 262K | — | — | — | — | **52.1** |
 | 10 | **DeepSeek V4 Pro** | DeepSeek | 🔓 Open · MIT | 1M | 90.1% | 80.6% | 89.3%² | — | **51.5** |
 | 11 | **GLM-5.1** | Z.ai (Zhipu) | 🔓 Open | 200K | 86.2% | — | 95.3%¹ | — | **51.4** |
 | 12 | **Claude Haiku 4.5** | Anthropic | Closed | 200K | — | 73.3% | — | — | — |
