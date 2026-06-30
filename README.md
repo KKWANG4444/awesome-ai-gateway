@@ -346,8 +346,10 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 📰 What's new
 
-*Curated monthly. Last review: 2026-06-15.*
+*Curated monthly. Last review: 2026-06-30.*
 
+- **2026-06** · **GLM-5.2 is the new leading open-weight model** — Z.ai's MIT-licensed ~753B MoE (1M context, released June 17) tops the open-weight tier of the Artificial Analysis Intelligence Index, taking the crown from the previous open leaders. ([Artificial Analysis](https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model))
+- **2026-02** · **OpenRouter hit two more outages (Feb 17 & 19)** — its caching layer dropped all DB connections, returning 401 "User not found" with request-failure rates up to ~80–90% (a DoS was ramping during the first). Even the dominant aggregator carries no SLA — a reason the cost-first picks here stay paired with self-host fallbacks. ([postmortem](https://openrouter.ai/blog/announcements/openrouter-outages-on-february-17-and-19-2026/))
 - **2026-06** · **TensorZero shut down** — the VC-backed open-source LLMOps gateway ($7.3M seed) archived its repo on June 12, as first-party clouds ship native gateway/observability features and squeeze independents. ([byteiota](https://byteiota.com/tensorzero-shuts-down-what-oss-llmops-cant-survive/))
 - **2026-03** · **Helicone acquired by Mintlify** (now maintenance mode); the same month **LiteLLM hit a PyPI supply-chain attack** — v1.82.7/1.82.8 were backdoored via a CI-token compromise and quarantined in ~3h, a sharp reminder to pin gateway versions. ([Mintlify](https://www.mintlify.com/blog/mintlify-acquires-helicone), [Trend Micro](https://www.trendmicro.com/en/research/26/c/inside-litellm-supply-chain-compromise.html))
 - **2026-05** · **Palo Alto Networks completed its acquisition of Portkey** (announced Apr 30, closed May 29), making the AI gateway the control plane for its Prisma AIRS security platform — a sign gateways are becoming core security infrastructure. ([Palo Alto Networks](https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-completes-acquisition-of-portkey-to-secure-ai-agents))

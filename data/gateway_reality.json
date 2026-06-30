@@ -12,8 +12,8 @@
       "gateway": "OpenRouter",
       "praised": "400+ models behind one key and one bill; hard spend caps",
       "gripe": "~5.5% credit fee at scale; provider quality/quantization varies; no public SLA",
-      "event": "<strong>~50-min database outage (Aug 28 2025)</strong> — a DB-layer failure, not an upstream provider; ~99.96% uptime over 8 months, but no SLA or downtime credits. <a href=\"https://statusgator.com/services/openrouter\">StatusGator</a>",
-      "search": "OpenRouter 400+ models behind one key and one bill; hard spend caps ~5.5% credit fee at scale; provider quality/quantization varies; no public SLA ~50-min database outage (Aug 28 2025) — a DB-layer failure, not an upstream provider; ~99.96% uptime over 8 months, but no SLA or downtime credits. StatusGator"
+      "event": "<strong>~50-min database outage (Aug 28 2025)</strong>, then two more on <strong>Feb 17 &amp; 19 2026</strong> — all DB-layer failures, not upstream providers (the Feb pair: the caching layer dropped every DB connection, returning 401s with ~80–90% request failures); ~99.96% uptime over 8 months, but no SLA or downtime credits. <a href=\"https://statusgator.com/services/openrouter\">StatusGator</a> · <a href=\"https://openrouter.ai/blog/announcements/openrouter-outages-on-february-17-and-19-2026/\">Feb 2026 postmortem</a>",
+      "search": "OpenRouter 400+ models behind one key and one bill; hard spend caps ~5.5% credit fee at scale; provider quality/quantization varies; no public SLA ~50-min database outage (Aug 28 2025), then two more on Feb 17 & 19 2026 — all DB-layer failures, not upstream providers (the Feb pair: the caching layer dropped every DB connection, returning 401s with ~80–90% request failures); ~99.96% uptime over 8 months, but no SLA or downtime credits. StatusGator · Feb 2026 postmortem"
     },
     {
       "gateway": "Portkey",
