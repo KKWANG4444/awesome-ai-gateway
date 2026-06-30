@@ -9,6 +9,7 @@
     "tensorzero/tensorzero",
     "higress-group/higress",
     "maximhq/bifrost",
+    "looplj/axonhub",
     "Helicone/helicone",
     "Helicone/ai-gateway",
     "envoyproxy/ai-gateway",
