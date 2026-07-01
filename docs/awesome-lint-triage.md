@@ -3,11 +3,11 @@
 `awesome-lint` runs in CI as **advisory** (`.github/workflows/ci.yml`). The success
 metric in [SPEC.md](SPEC.md) is being listed in
 [sindresorhus/awesome](https://github.com/sindresorhus/awesome), which requires
-`awesome-lint` to pass. As of **2026-06-27** it reports **~678 errors + 8 warnings**
-(up from 622 on 06-24 as content grew), but they collapse into a few categories —
-**~620 of them are *design tensions*** (the pain-point layout, compact wide tables,
-a TOC), not defects. This file triages them so the conformance pass is a deliberate
-decision, not a surprise.
+`awesome-lint` to pass. As of **2026-07-01** it reports **690 errors + 8 warnings**
+(was ~678 on 06-27, 622 on 06-24 — grows as content is added), but they collapse into a
+few categories — **~645 of them are *design tensions*** (the pain-point layout, compact
+wide tables, cross-link navigation), not defects. This file triages them so the
+conformance pass is a deliberate decision, not a surprise.
 
 > **Eligibility note:** the repo was created **2026-06-11**, and sindresorhus/awesome
 > auto-closes lists **< 30 days old** — so the earliest valid submission is **~2026-07-11**.
@@ -17,18 +17,26 @@ decision, not a surprise.
 
 Run it yourself: `npx --yes awesome-lint`.
 
-## Current snapshot (2026-06-27)
+## Current snapshot (2026-07-01)
 
 | Rule | Count | Bucket |
 |---|---|---|
-| `table-pipe-alignment` + `table-cell-padding` | ~309 | 🟥 design call (wide comparison tables) |
-| `awesome-list-item` | 213 | 🟥 design call (` — ` em-dash house style + table cells) |
-| `double-link` | 111 | 🟥 design call (the in-README TOC) |
-| `emphasis-marker` (`*`→`_`) | 41 | 🟨 cosmetic — one `prettier`/`remark` pass (but it also pads tables; run scoped) |
+| `table-pipe-alignment` + `table-cell-padding` | 312 | 🟥 design call (wide comparison tables) — **cosmetic in render** (prettier pads the source; GitHub shows identical tables) |
+| `awesome-list-item` | 220 | 🟥 design call (` — ` em-dash house style → wants ` - ` hyphen + trailing period; near-identical render) |
+| `double-link` | 113 | 🟥 **the one real UX cost** — see below |
+| `emphasis-marker` (`*`→`_`) | 41 | 🟨 cosmetic — `_` vs `*` italics render the same; do it in the pass (scoped so it doesn't re-pad tables) |
 | `awesome-spell-check` | 8 (⚠) | 🟩 optional (K8s/WASM in alt-text — fine) |
-| `no-emphasis-as-heading` | 2 (L9, L462) | 🟨 reword 2 italic intro lines |
-| `no-heading-punctuation` | 1 (L64) | 🟨 the `?` on a question heading — reword or accept |
-| `awesome-license` | 1 (L548) | 🟨 lint forbids a `## License` *section*; move to footer/LICENSE file |
+| `no-emphasis-as-heading` | 2 (L9, L470) | 🟥 **L9 is the "$788" growth hook** — converting it to a heading changes the page's lead; maintainer call, not a trivial fix |
+| `no-heading-punctuation` | 1 (L64) | 🟨 the `?` on "Which gateway should I use?" — reword or accept |
+| `awesome-license` | 1 (L556) | 🟨 lint forbids a `## License` *section*; the CC0 LICENSE file already exists → drop the section |
+
+**`double-link` (113) — what it actually is:** not external gateway URLs, but **internal
+navigation cross-links** — `BENCHMARKS.md`, `CONTRIBUTING.md`, and section `#anchors` are
+each linked from the quick-nav bar *and* re-linked in the body/FAQ/footer. awesome-lint
+forbids linking any target more than once. Conforming = **link each target exactly once**
+(keep the quick-nav bar as the single link per section; delink the inline repeats to plain
+text or contextual references). This is the only change with a genuine reader cost — the
+list is heavily cross-referenced to `BENCHMARKS.md` on purpose.
 
 | Rule | Count | What it wants | Disposition |
 |---|---|---|---|
