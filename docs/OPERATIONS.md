@@ -182,3 +182,29 @@ A 6-agent research pass (how comparable awesome-lists + LLM-gateway projects act
 2. **Submit to sindresorhus/awesome** — ⏳ **NOT YET ELIGIBLE.** The repo was created **2026-06-11**, and sindresorhus auto-closes lists **< 30 days old** — so the earliest valid submission is **~2026-07-11**. Topics (`awesome`+`awesome-list`) ✅ and branch `main` ✅ already pass; only the age blocks it. *(Correcting an earlier note that claimed we clear the age gate — we don't until mid-July.)* When eligible: agent preps (`npx awesome-lint` to zero via `docs/awesome-lint-triage.md`, PR body); you open the PR, **review 4 other open PRs**, post `unicorn` in one sitting. No star minimum exists. This is the single biggest evergreen backlink — worth doing the day it's eligible.
 3. **Run the 48–72h launch burst** (§3) — HN (factual title, $788 first comment) + r/LocalLLaMA + r/selfhosted + one newsletter, channel-distinct posts, present to answer. Drafts in `docs/launch-posts.md` (agent keeps them channel-distinct).
 4. **Warm 1:1 outreach** to people who already engaged (issue reporters, the #14 contributor, anyone who forked) — the proven path to the first ~100 real stars.
+
+### 9f. Venue + backlink refresh (2026-07-01 industry scan)
+
+**Boundary reminder:** every venue below is for **organic discovery / human-led discussion or a submit-once self-rec** — never bot auto-posting (that backfires). Drafts live in `docs/launch-posts.md`; the maintainer posts.
+
+**Highest-signal venues (ranked):**
+1. **r/LocalLLaMA** (~762k) — the single best organic-discovery venue; blunt, benchmark-driven, they actually run these gateways. Lead with data.
+2. **Hacker News** — still the top launch surface but saturated; a gateway Show HN needs a sharp benchmark angle (most land 1–5 pts; breakouts are data-led).
+3. **Gateway project Discords** — LiteLLM (~6k, most on-topic) + OpenRouter (~49k). Highest-intent, participate don't dump.
+4. **Latent Space + AINews (smol.ai)** — the AI-engineering canon + a discovery flywheel (AINews auto-summarizes top AI Discords/subreddits). Amplifier, not a post target.
+5. **AI Engineer community / World's Fair** — highest practitioner density; the SF World's Fair ran Jun 29–Jul 2 2026. Gateway/inference/ops angle is on-topic.
+6. **MLOps Community Slack** (~70k) — genuine LLMOps/AgentOps discussion.
+7. **HelloGitHub 【开源自荐】** ([521xueweihan/HelloGitHub](https://github.com/521xueweihan/HelloGitHub), ~163k★) — best single submit-once move for a CN audience (site + WeChat + Weibo). **NEW target, do this.**
+8. **阮一峰周刊 【开源自荐】** — already submitted ([ruanyf/weekly#10435](https://github.com/ruanyf/weekly/issues/10435)); the other high-leverage CN submit-once.
+Runner-ups (CN human discussion): linux.do 开发调优, 掘金/知乎 writeups, GitHub-Chinese-Top-Charts (auto-ranks on star velocity). **New in 2026:** r/AI_Agents surged to ~392k (routing lives inside agent-stack talk); **Datadog "State of AI Engineering 2026"** is a new citation-magnet anchor (69% run 3+ models; rate-limit ≈ ⅓ of LLM errors) — time a post around it. Low fit: r/MachineLearning (research-skewed), lobste.rs (invite-only, AI-cool), dev.to.
+
+**New backlink/listing targets (verified 2026-07-01; still hold to ~1/mo — 6 already open):**
+| Target | How we fit | Note |
+|---|---|---|
+| [KennethanCeyer/awesome-llmops](https://github.com/KennethanCeyer/awesome-llmops) (~55★) | its `Awesome`/related-lists block links out to other awesome-lists | **cleanest home to list *the list itself*** |
+| [filipecalegario/awesome-generative-ai](https://github.com/filipecalegario/awesome-generative-ai) (~3.5k★, active) | `LLMOps` / `AI Engineering` subsection | high authority (≠ steven2358, already done) |
+| [Sumanth077/ai-engineering-toolkit](https://github.com/Sumanth077/ai-engineering-toolkit) (~3.2k★) | has an **AI Gateway** entry | tool-row ask (list a gateway), not the catalog |
+| [InftyAI/Awesome-LLMOps](https://github.com/InftyAI/Awesome-LLMOps) (~252★) | literal **AI Gateway** + **LLM Router** sections | ⚠️ earlier flagged bad-for-*meta-list*; fits a **tool entry**, not listing our list |
+| [EthicalML/awesome-production-machine-learning](https://github.com/EthicalML/awesome-production-machine-learning) (~20.7k★) | MLOps meta | highest authority, but MLOps-lean → acceptance less certain |
+
+**sindresorhus/awesome:** eligibility opens **~2026-07-11** (30-day age gate; repo created 2026-06-11). Landing it cascades passive backlinks into awesome.ecosyste.ms / trackawesomelist / project-awesome automatically. Agent preps lint+body; 👤 opens + reviews 4 PRs + `unicorn`. **This is the imminent high-value move.**
