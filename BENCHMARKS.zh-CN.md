@@ -24,7 +24,7 @@
 
 模型有多强？以下是审阅日最被引用的公开基准。**务必结合[注意事项](#方法论与注意事项)阅读**——榜单会被刷分和数据污染，请与人类盲评（Arena）和下面的真实成本表交叉验证。
 
-按 **Artificial Analysis 智能指数**（最常被引用的综合分）排序。`♦` = GPQA Diamond。`—` = 审阅时未核实。
+按 **Artificial Analysis 智能指数**（最常被引用的综合分）排序。此处为 **v4.0** 口径的数值；AA 之后已发布 **v4.1**——它更偏重 Agent 任务，并已*吸收* Terminal-Bench、τ³ 与 GDPval，因此别把这几项当作独立于该指数的证据。`♦` = GPQA Diamond。`—` = 审阅时未核实。
 
 | # | 模型 | 厂商 | 权重 | 上下文 | GPQA♦ | SWE-bench Verified | AIME | Arena Elo | AA 指数 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -326,6 +326,8 @@
 - [Artificial Analysis](https://artificialanalysis.ai) — 智能指数、价格与速度
 - [SWE-bench](https://www.swebench.com) — 智能体编码榜
 - [Vellum LLM 榜](https://www.vellum.ai/llm-leaderboard)、[OpenRouter 排名](https://openrouter.ai/rankings)
+- **Agent 与工具调用：**[Terminal-Bench](https://www.tbench.ai/leaderboard)（shell/CLI 智能体）、[τ²-bench](https://github.com/sierra-research/tau2-bench)（工具-智能体策略遵从度）、[BFCL v4](https://gorilla.cs.berkeley.edu/leaderboard.html)（伯克利函数调用榜）、[Aider polyglot](https://aider.chat/docs/leaderboards/)（多语言代码编辑）
+- **抗污染 / 前沿：**[LiveBench](https://livebench.ai) 与 [LiveCodeBench](https://livecodebench.github.io/leaderboard.html)（每月刷新题目）、[FrontierMath](https://epoch.ai/frontiermath)（研究级数学）
 - 官方价格：[Anthropic](https://www.anthropic.com/pricing)、[OpenAI](https://openai.com/api/pricing/)、[Google](https://ai.google.dev/gemini-api/docs/pricing)、[DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 - 可观测性标准（第六部分）：[OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai) — `gen_ai.*` span 与指标
 

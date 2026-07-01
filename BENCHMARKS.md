@@ -24,7 +24,7 @@ Every number here is **sourced and dated**. Cost cells are *computed* from a pub
 
 How capable is each model? These are the most-cited public benchmarks as of the review date. **Read them with the [caveats](#methodology--caveats)** — leaderboards get gamed and contaminated; pair them with the human-preference Arena and the real-world cost tables below.
 
-Ranked by the **Artificial Analysis Intelligence Index** (the most-cited one-number composite). `♦` = GPQA Diamond. `—` = not verified at review time.
+Ranked by the **Artificial Analysis Intelligence Index** (the most-cited one-number composite). These are **v4.0**-scale numbers; AA has since shipped **v4.1**, which re-weights toward agentic work and now *absorbs* Terminal-Bench, τ³ and GDPval — so don't read those as independent of the Index. `♦` = GPQA Diamond. `—` = not verified at review time.
 
 | # | Model | Provider | Weights | Context | GPQA♦ | SWE-bench Verified | AIME | Arena Elo | AA Index |
 |---|---|---|---|---|---|---|---|---|---|
@@ -328,6 +328,8 @@ Primary leaderboards and pricing references (verify live — these move weekly):
 - [Artificial Analysis](https://artificialanalysis.ai) — Intelligence Index, price & speed
 - [SWE-bench](https://www.swebench.com) — agentic coding leaderboard
 - [Vellum LLM Leaderboard](https://www.vellum.ai/llm-leaderboard), [OpenRouter rankings](https://openrouter.ai/rankings)
+- **Agentic & tool-calling:** [Terminal-Bench](https://www.tbench.ai/leaderboard) (shell/CLI agents), [τ²-bench](https://github.com/sierra-research/tau2-bench) (tool-agent policy adherence), [BFCL v4](https://gorilla.cs.berkeley.edu/leaderboard.html) (Berkeley function-calling), [Aider polyglot](https://aider.chat/docs/leaderboards/) (multi-language code edits)
+- **Contamination-resistant / frontier:** [LiveBench](https://livebench.ai) & [LiveCodeBench](https://livecodebench.github.io/leaderboard.html) (questions refreshed monthly), [FrontierMath](https://epoch.ai/frontiermath) (research-level math)
 - Official pricing: [Anthropic](https://www.anthropic.com/pricing), [OpenAI](https://openai.com/api/pricing/), [Google](https://ai.google.dev/pricing), [DeepSeek](https://api-docs.deepseek.com/quick_start/pricing)
 - Observability standard (Part 6): [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) — `gen_ai.*` spans & metrics
 
