@@ -1,9 +1,9 @@
 {
   "_comment": "Benchmark + pricing snapshot for the evaluation set. Pricing drives scripts/cost_calc.py (reproducible cost tables). Benchmarks are dated public figures; null = not verified at review time. Prices USD per 1M tokens.",
-  "as_of": "2026-06-12",
+  "as_of": "2026-07-03",
   "sources": {
     "benchmarks": "Artificial Analysis Intelligence Index v4.0, Arena (ex-LMArena), SWE-bench, vendor model cards (see BENCHMARKS.md Sources)",
-    "pricing": "Official provider pricing pages + Artificial Analysis, captured 2026-06-12"
+    "pricing": "Official provider pricing pages + Artificial Analysis; all 16 headline prices re-verified against the litellm price library 2026-07-03 (unchanged; US-region markups excluded in favor of global list price)"
   },
   "models": [
     {

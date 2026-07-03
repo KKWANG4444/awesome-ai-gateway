@@ -337,4 +337,4 @@
 
 *作为 [Awesome AI Gateway](README.zh-CN.md) 的一部分维护。模型分数与价格变化很快；本评测集按公开节奏审阅，每个数字都在其来源处标注日期。*
 
-**最近审阅：2026-06-12** · 基准与价格快照见 [`data/models.json`](data/models.json)，网关评分见 [`data/gateways_eval.json`](data/gateways_eval.json)。
+**最近审阅：2026-07-03** · 基准与价格快照见 [`data/models.json`](data/models.json)，网关评分见 [`data/gateways_eval.json`](data/gateways_eval.json)。

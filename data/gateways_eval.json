@@ -1,13 +1,13 @@
 {
   "_comment": "Gateway scorecard snapshot. Scores ★1-5 per the rubric in BENCHMARKS.md. markup = gateway fee on top of provider token cost. self_hosted: compliance/security burden is the operator's; score reflects controls the software provides. Verify live certs before an audit.",
-  "as_of": "2026-06-12",
+  "as_of": "2026-07-03",
   "rubric": "BENCHMARKS.md#scoring-rubric-apply-consistently",
   "gateways": [
     {"name": "Cloudflare AI Gateway", "type": "hosted", "compliance": 4.5, "markup": "0%", "security": 4.0, "stability": 4.5, "self_hosted": false, "note": "SOC 2 II / ISO 27001 / PCI / GDPR; free DLP+PII scan, guardrails, fallback; 100% SLA at Business+."},
     {"name": "Portkey (cloud)", "type": "hosted", "compliance": 4.5, "markup": "free tier + usage", "security": 4.5, "stability": 4.0, "self_hosted": false, "note": "SOC 2 II + ISO 27001 + HIPAA + GDPR; 50+ guardrail marketplace, RBAC, SSO, key vault; 99.99% SLA."},
     {"name": "Vercel AI Gateway", "type": "hosted", "compliance": 4.0, "markup": "0%", "security": 3.5, "stability": 4.0, "self_hosted": false, "note": "SOC 2 II + 99.99% SLA (Enterprise); true 0% markup incl. BYOK; ZDR option."},
     {"name": "Helicone (cloud)", "type": "hosted", "compliance": 3.5, "markup": "0% passthrough", "security": 3.5, "stability": 3.0, "self_hosted": false, "note": "SOC 2 + HIPAA (Team $799/mo); PII detection, prompt-injection; OSS core enables VPC/self-host."},
-    {"name": "Requesty", "type": "hosted", "compliance": 3.5, "markup": "~5%", "security": 3.5, "stability": 3.0, "self_hosted": false, "note": "EU residency (Frankfurt) + PII masking + ZDR; SOC 2 'in progress, Q2 2026' per official page (not yet Type II)."},
+    {"name": "Requesty", "type": "hosted", "compliance": 3.5, "markup": "~5%", "security": 3.5, "stability": 3.0, "self_hosted": false, "note": "EU residency (Frankfurt) + PII masking + ZDR; SOC 2 Type II still in progress — official security page still shows 'expected Q2 2026', now overdue (re-checked 2026-07-03); not yet Type II."},
     {"name": "OpenRouter", "type": "hosted", "compliance": 3.5, "markup": "~5.5% credit fee", "security": 3.0, "stability": 3.0, "self_hosted": false, "note": "60+ providers, auto-failover, free ZDR, EU region-lock; SOC 2 Type II UNVERIFIED; no public SLA outside enterprise."},
     {"name": "Eden AI", "type": "hosted", "compliance": 3.5, "markup": "~5.5% platform fee", "security": 3.0, "stability": 3.5, "self_hosted": false, "note": "France-based, EU-default residency, GDPR-first, no-training; SOC 2 status UNVERIFIED; 99.99% self-reported."},
     {"name": "Martian", "type": "hosted", "compliance": 3.0, "markup": "volume (undisclosed)", "security": 3.5, "stability": 3.0, "self_hosted": false, "note": "Airlock model-compliance vetting + cost routing; SOC 2/ISO details UNVERIFIED."},

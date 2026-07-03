@@ -339,4 +339,4 @@ Per-cell sources are listed in [`data/models.json`](data/models.json) and the ga
 
 *Maintained as part of [Awesome AI Gateway](README.md). Model scores and prices change fast; this set is reviewed on a published cadence and every figure is dated at its source.*
 
-**Last reviewed: 2026-06-12** · benchmark & pricing snapshot in [`data/models.json`](data/models.json), gateway scores in [`data/gateways_eval.json`](data/gateways_eval.json).
+**Last reviewed: 2026-07-03** · benchmark & pricing snapshot in [`data/models.json`](data/models.json), gateway scores in [`data/gateways_eval.json`](data/gateways_eval.json).
