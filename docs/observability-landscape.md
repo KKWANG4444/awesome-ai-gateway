@@ -129,7 +129,7 @@ The drift papers (§3.2) and the relay-fraud papers (§3.4) pose one operational
 - **Auditing language models for hidden objectives** (Mar 2025) — **interpretability as a monitoring/auditing tool**: sparse autoencoders surface concealed concepts behavioral search misses. [link](https://www.anthropic.com/research/auditing-hidden-objectives)
 
 ### OpenRouter
-*Honest note: strong product docs, **essentially no observability engineering essays** (its blog is product/funding announcements).* Its contribution is the **surface itself**: [Usage Accounting](https://openrouter.ai/docs/cookbook/administration/usage-accounting) (per-response token/cost/timing), the [Analytics/cost-control API](https://openrouter.ai/docs/cookbook/administration/analytics-cost-control), and a [latency/performance guide](https://openrouter.ai/docs/guides/best-practices/latency-and-performance).
+*Honest note: strong product docs, **essentially no observability engineering essays** (its blog is product/funding announcements).* Its contribution is the **surface itself**: [Usage Accounting](https://openrouter.ai/docs/cookbook/administration/usage-accounting) (per-response token/cost/timing), an [activity export for cost analytics](https://openrouter.ai/docs/cookbook/administration/activity-export), and a [latency/performance guide](https://openrouter.ai/docs/guides/best-practices/latency-and-performance).
 
 ### Cloud platforms
 - **Google Vertex AI — Gen AI evaluation service** (model-based + computed metrics, agent/trajectory eval). [docs](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/run-evaluation)

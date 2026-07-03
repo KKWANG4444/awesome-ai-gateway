@@ -129,7 +129,7 @@ metrics / logs / traces 这个框架由 **Peter Bourgon**（《Metrics, tracing,
 - **Auditing language models for hidden objectives**（2025-03）——**可解释性即监控/审计工具**：稀疏自编码器能挖出行为搜索看不到的隐藏概念。[链接](https://www.anthropic.com/research/auditing-hidden-objectives)
 
 ### OpenRouter
-*诚实标注：产品文档很强，但**几乎没有可观测性工程文章**（其博客是产品/融资公告）。* 它的贡献是**面本身**：[用量记账](https://openrouter.ai/docs/cookbook/administration/usage-accounting)（每次响应带 token/成本/时延）、[分析/成本控制 API](https://openrouter.ai/docs/cookbook/administration/analytics-cost-control)、[延迟/性能指南](https://openrouter.ai/docs/guides/best-practices/latency-and-performance)。
+*诚实标注：产品文档很强，但**几乎没有可观测性工程文章**（其博客是产品/融资公告）。* 它的贡献是**面本身**：[用量记账](https://openrouter.ai/docs/cookbook/administration/usage-accounting)（每次响应带 token/成本/时延）、[用量/成本导出](https://openrouter.ai/docs/cookbook/administration/activity-export)、[延迟/性能指南](https://openrouter.ai/docs/guides/best-practices/latency-and-performance)。
 
 ### 云平台
 - **Google Vertex AI — Gen AI 评测服务**（模型评分 + 计算指标、Agent/轨迹评测）。[文档](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/run-evaluation)
