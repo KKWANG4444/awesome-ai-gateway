@@ -10,10 +10,22 @@ auto-post in your voice. Edit freely before posting.
 - [ ] Be available to reply for a few hours after the HN/Reddit post.
 
 ### Sequencing for velocity (the part that actually trips GitHub Trending)
-GitHub Trending ranks by star **velocity vs. *your own* baseline** (plus forks/issues/PRs/comments) — **not** absolute count. From ~24★, even **15–30 stars in 24–48h** can trip it in a niche tag; spreading the same stars thin over two weeks never builds the spike. So:
+GitHub Trending ranks by star **velocity vs. *your own* baseline** (plus forks/issues/PRs/comments) — **not** absolute count. From **~35★** (current), even **15–30 stars in 24–48h** can trip it in a niche tag; spreading the same stars thin over two weeks never builds the spike. So:
 - [ ] **Concentrate the high-velocity channels into one 24–48h window** — HN Show HN + r/LocalLLaMA + the X thread — ideally **Tue–Thu morning US Pacific** (avoid weekends/Mondays).
 - [ ] **Then sustain** over the next 1–2 weeks with the slower channels (周刊 async, V2EX, linux.do, r/selfhosted) **and reply to every issue/PR** — ongoing engagement keeps feeding Trending's signal after the initial burst.
 - [ ] **Never solicit upvotes** anywhere (esp. HN) — it gets the post flagged and undoes the whole launch.
+
+> **Where you actually are (2026-07-03):** 35★, ~1–2 organic stars/day from search discovery (Google is now the #1 external referrer), **but the concentrated launch burst has never fired.** The day-1 seed added 16★ in hours; a real multi-channel burst is the single biggest lever left to 100. Everything below is ready to paste.
+
+### ⏱️ Timely news-peg — use THIS week (decays by mid-July)
+The **Anthropic Fable 5 / Mythos 5 export-control episode** (pulled offline globally Jun 12–13, restored ~Jul 1–2) is a perfect *live* hook for **why a multi-provider gateway matters** — for three weeks, anyone hard-wired to one provider was simply down. Lead with it while it's fresh (prepend to the HN comment / Reddit / X opener):
+```
+Two weeks ago Anthropic pulled Fable 5 offline *globally* for three weeks under an export-control
+order. If your stack was hard-wired to one provider, you were down — no failover, no fallback.
+That's the whole reason this list leads with multi-provider routing. So I mapped + benchmarked the
+entire gateway landscape:
+```
+Drop it once the news goes stale (~mid-July) and revert to the $788 opener.
 
 ---
 
