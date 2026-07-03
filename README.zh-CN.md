@@ -312,7 +312,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 - [LLMRouter](https://github.com/ulab-uiuc/LLMRouter) <!--s:ulab-uiuc/LLMRouter-->⭐ 2k<!--/s--> — 图/学习式成本-质量模型路由的研究框架。
 - [Orq.ai](https://orq.ai) — 托管路由控制面：30+ 厂商 500+ 模型，带重试、兜底、缓存与治理（BYOK）。
 - [NadirClaw](https://github.com/NadirRouter/NadirClaw) <!--s:NadirRouter/NadirClaw-->⭐ 552<!--/s--> — 自托管、OpenAI 兼容的路由器（Python）：简单 prompt 走便宜/本地模型、复杂的走高端，配训练过的级联校验器，省 40–70% API 成本。
-- [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/) — 托管代理，路由到 OpenAI/Anthropic/Google 及本地 Ollama/vLLM/LM Studio，带自动兜底、密钥轮换与 CEL 流量策略（PII 脱敏）。
+- [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/overview) — 托管代理，路由到 OpenAI/Anthropic/Google 及本地 Ollama/vLLM/LM Studio，带自动兜底、密钥轮换与 CEL 流量策略（PII 脱敏）。
 
 ### 📊 可观测与成本核算
 
@@ -353,7 +353,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 - **2026-06** · **Envoy AI Gateway 发布 v1.0**（6 月 23 日）—— 首个基于 CNCF Envoy 的生产级稳定开源 AI 网关：一套 API 打通 16 家供应商，并内置原生 MCP 网关（Tetrate、彭博、Nutanix、腾讯背书）。（[发布公告](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/)）
 - **2026-06** · **云厂商齐齐押注 AI 网关治理** —— Databricks 在 Data+AI Summit 上线 **Unity AI Gateway**（智能路由 + 硬性消费上限），Azure **API Management 的 AI 网关**能力在 Build 上转正 GA，AWS 在纽约峰会扩展 **Bedrock AgentCore Gateway**。运行时治理已成标配。（[Databricks](https://www.databricks.com/blog/ai-governance-data-ai-summit-2026-whats-new-unity-ai-gateway)）
 - **2026-06** · **Anthropic 依美国出口管制指令全球下线 Fable 5 与 Mythos 5**（6 月 12–13 日；美国区预计约 7 月 1 日恢复）—— 今年最典型的"这就是为什么要保留多供应商故障转移"事件。（[Fortune](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/)）
-- **2026-06** · **GLM-5.2 成为最强开源权重模型** —— 智谱 Z.ai 的 MIT 许可 ~753B MoE（1M 上下文，6 月 17 日发布）在 Artificial Analysis 智能指数的开源档位登顶，接棒此前的开源领跑者。（[Artificial Analysis](https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model)）
+- **2026-06** · **GLM-5.2 成为最强开源权重模型** —— 智谱 Z.ai 的 MIT 许可 744B 参数 MoE（40B 激活，1M 上下文，6 月中旬开源）在 Artificial Analysis 智能指数的开源档位登顶（得分 51），接棒此前的开源领跑者。（[Artificial Analysis](https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index)）
 - **2026-02** · **OpenRouter 再遇两次宕机（2 月 17、19 日）** —— 缓存层把数据库连接全部打满，返回 401 "User not found"，请求失败率一度升至 ~80–90%（首次宕机期间还伴随 DoS）。即便最主流的聚合器也没有 SLA——这正是本页性价比首选始终搭配自托管兜底的原因。（[复盘](https://openrouter.ai/blog/announcements/openrouter-outages-on-february-17-and-19-2026/)）
 - **2026-06** · **TensorZero 关停** —— 这家 VC 支持的开源 LLMOps 网关（730 万美元种子轮）于 6 月 12 日归档仓库；原厂云纷纷内置网关/可观测能力，挤压独立玩家。（[byteiota](https://byteiota.com/tensorzero-shuts-down-what-oss-llmops-cant-survive/)）
 - **2026-03** · **Helicone 被 Mintlify 收购**（转入维护模式）；同月 **LiteLLM 遭 PyPI 供应链投毒** —— v1.82.7/1.82.8 经 CI 令牌被窃植入后门、约 3 小时内被隔离，提醒务必锁定网关版本。（[Mintlify](https://www.mintlify.com/blog/mintlify-acquires-helicone)、[Trend Micro](https://www.trendmicro.com/en/research/26/c/inside-litellm-supply-chain-compromise.html)）
