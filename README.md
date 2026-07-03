@@ -33,7 +33,7 @@ _Built the hard way: **I burned $788 on AI coding in a single day** — one flag
 
 ## 📊 Latest evaluations
 
-*A running digest of fresh model, pricing and gateway evals — **newest first, every entry dated and sourced.** This is the fast-moving signal layer; for our own **reproducible** cost tables and model scorecard, see the [full evaluation set](BENCHMARKS.md). Spotted a new eval worth tracking? [Add it](CONTRIBUTING.md).*
+_A running digest of fresh model, pricing and gateway evals — **newest first, every entry dated and sourced.** This is the fast-moving signal layer; for our own **reproducible** cost tables and model scorecard, see the [full evaluation set](BENCHMARKS.md). Spotted a new eval worth tracking? [Add it](CONTRIBUTING.md)._
 
 | Date | Category | Finding | Source |
 |---|---|---|---|
@@ -57,11 +57,11 @@ How many **input+output tokens** ¥100 buys, by model (blended estimate · snaps
 | 🏁 Flagship | GPT-5.5 | 0.42M | ~0.32M |
 | 🏁 Flagship | GPT-5.5 Pro | 0.07M | ~0.05M |
 
-> **One line:** ¥100 reads **~26M Chinese characters** on DeepSeek V4 Flash — roughly **52× the *Three-Body* trilogy** — but only **~50K** on GPT-5.5 Pro, about one short story. Choosing a model is choosing the scale factor on your money; the [Cost-first](#-cost-first-cheapest-multi-model-access) gateways exist to exploit exactly this spread.
+> **One line:** ¥100 reads **~26M Chinese characters** on DeepSeek V4 Flash — roughly **52× the _Three-Body_ trilogy** — but only **~50K** on GPT-5.5 Pro, about one short story. Choosing a model is choosing the scale factor on your money; the [Cost-first](#-cost-first-cheapest-multi-model-access) gateways exist to exploit exactly this spread.
 
 </details>
 
-## Which gateway should I use?
+## Which gateway should I use
 
 <p align="center">
   <img src="assets/decision-tree.png" alt="Decision tree: which AI gateway should you use? Hosted (OpenRouter, Vercel, Cloudflare, Bedrock, Azure, Vertex, Portkey) vs self-hosted open source (LiteLLM, Bifrost, new-api, one-api, GPT-Load, Kong, Higress, APISIX, Envoy AI Gateway, agentgateway), chosen by what you need." width="840">
@@ -152,7 +152,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 💰 Cost-first: cheapest multi-model access
 
-*Pain point: "I want many models for the least money and zero ops."*
+_Pain point: "I want many models for the least money and zero ops."_
 
 - [OpenRouter](https://openrouter.ai) — The dominant model marketplace: 400+ models behind one OpenAI-compatible API, pay-as-you-go with automatic failover; ~5.5% fee when buying credits. $113M Series B (May 2026), ~8M users.
 - [Vercel AI Gateway](https://vercel.com/ai-gateway) — Hundreds of models at **provider list price (0% markup)**, $5/month free credits, zero-data-retention option; pairs naturally with the AI SDK.
@@ -161,7 +161,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 - [Eden AI](https://www.edenai.co) — Unified API for 500+ models plus vision/OCR/speech; EU-based, ~5.5% platform fee.
 - [Helicone AI Gateway (cloud)](https://www.helicone.ai) — Passthrough billing at **0% markup** with observability bundled.
 - [GPT-Load](https://github.com/tbphp/gpt-load) <!--s:tbphp/gpt-load-->⭐ 6.2k<!--/s--> — High-performance Go proxy that rotates pools of API keys across channels to maximize quota usage.
-- [Loop Gateway](https://api.loopxxi.com) — OpenAI-compatible proxy that meters every request in Bitcoin sats instead of dollars. 311 models via OpenRouter at a 15% markup. No accounts, no email, no card; top up over Lightning, get a bearer token. Three auth rails (prepaid bearer, L402, Cashu). Hosted at [api.loopxxi.com](https://api.loopxxi.com). **New & unverified** (anonymous; its public GitHub repo has since been removed, so treat it as a closed hosted relay) — it resells frontier models *through the operator's own OpenRouter account* at a 15% markup, and account-less + crypto-prepaid means no recourse if it swaps models or vanishes; confirm fidelity with [canary_check.py](scripts/canary_check.py) and only top up what you can afford to lose.
+- [Loop Gateway](https://api.loopxxi.com) — OpenAI-compatible proxy that meters every request in Bitcoin sats instead of dollars. 311 models via OpenRouter at a 15% markup. No accounts, no email, no card; top up over Lightning, get a bearer token. Three auth rails (prepaid bearer, L402, Cashu). Hosted at [api.loopxxi.com](https://api.loopxxi.com). **New & unverified** (anonymous; its public GitHub repo has since been removed, so treat it as a closed hosted relay) — it resells frontier models _through the operator's own OpenRouter account_ at a 15% markup, and account-less + crypto-prepaid means no recourse if it swaps models or vanishes; confirm fidelity with [canary_check.py](scripts/canary_check.py) and only top up what you can afford to lose.
 - [nullsink](https://nullsink.is) ([repo](https://github.com/nullsink/nullsink)) — Account-less, metered proxy for frontier-model APIs, paid in Monero or Bitcoin. No accounts, no email, no card; mint a bearer token, prepay on-chain, and point the official SDKs at one base URL. ~10% markup taken once at top-up; no IP logging, no request logs; payment and token kept unlinkable. Self-hostable single binary (TypeScript/Bun, AGPL-3.0), live at [nullsink.is](https://nullsink.is). **New & unverified** (repo created 2026-06, 4★) — account-less + crypto-prepaid + no logs means no recourse if it swaps models or vanishes; confirm fidelity with [canary_check.py](scripts/canary_check.py) and only top up what you can afford to lose.
 - [AIMLAPI](https://aimlapi.com) — One OpenAI/Anthropic-compatible endpoint fronting 400+ models (chat, image, video, audio, embeddings); prepaid, OpenRouter-style aggregator.
 - [Novita AI](https://novita.ai) — Unified API to 200+ open-source models (DeepSeek/Qwen/Llama…) with load balancing, autoscaling and failover; also a GPU cloud.
@@ -176,7 +176,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 🔓 Self-hosted open source
 
-*Pain point: "My keys, my infra, no per-token middleman fee."*
+_Pain point: "My keys, my infra, no per-token middleman fee."_
 
 - [LiteLLM](https://github.com/BerriAI/litellm) <!--s:BerriAI/litellm-->⭐ 52.3k<!--/s--> — The default choice: Python SDK + proxy server speaking OpenAI format to 100+ providers, with virtual keys, budgets, load balancing and guardrails.
 - [Portkey Gateway](https://github.com/Portkey-AI/gateway) <!--s:Portkey-AI/gateway-->⭐ 12.3k<!--/s--> — Fast TypeScript gateway (1,600+ models, 50+ guardrails) that also powers Portkey's commercial LLMOps platform.
@@ -201,7 +201,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 🏢 Enterprise & compliance
 
-*Pain point: "Audit logs, PII redaction, RBAC, on-prem, and the EU AI Act (enforceable Aug 2026)."*
+_Pain point: "Audit logs, PII redaction, RBAC, on-prem, and the EU AI Act (enforceable Aug 2026)."_
 
 - [Kong AI Gateway](https://github.com/Kong/kong) <!--s:Kong/kong-->⭐ 43.7k<!--/s--> — Mature API gateway with AI plugins: semantic caching/routing, prompt guard, token rate-limiting; Konnect for managed control plane.
 - [Apache APISIX](https://github.com/apache/apisix) <!--s:apache/apisix-->⭐ 16.8k<!--/s--> — Cloud-native API + AI gateway with `ai-proxy` / `ai-proxy-multi` plugins.
@@ -226,7 +226,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## ☁️ First-party gateways (cloud & model vendors)
 
-*Pain point: "We're already committed to one cloud — give us the native path."*
+_Pain point: "We're already committed to one cloud — give us the native path."_
 
 - [AWS Bedrock](https://aws.amazon.com/bedrock/) — Multi-model access via the unified Converse API, cross-region inference, and AgentCore Gateway for tools/MCP.
 - [Azure API Management — GenAI gateway](https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities) — Token limits, semantic caching and load balancing in front of Azure OpenAI / AI Foundry.
@@ -238,7 +238,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 🇨🇳 China ecosystem
 
-*Pain point: "Domestic models (Qwen/DeepSeek/GLM/Kimi), CNY payment, key distribution & billing for teams."*
+_Pain point: "Domestic models (Qwen/DeepSeek/GLM/Kimi), CNY payment, key distribution & billing for teams."_
 
 - [new-api](https://github.com/QuantumNous/new-api) <!--s:QuantumNous/new-api-->⭐ 40.8k<!--/s--> — The most active one-api fork, now a "unified AI model hub": protocol conversion, billing, Rerank/Realtime endpoints. AGPL-3.0.
 - [one-api](https://github.com/songquanpeng/one-api) <!--s:songquanpeng/one-api-->⭐ 35.4k<!--/s--> — The original LLM API management & distribution system (OpenAI/Azure/Claude/Gemini/DeepSeek/Doubao…); development has slowed.
@@ -257,11 +257,11 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 - [metapi](https://github.com/cita-777/metapi) <!--s:cita-777/metapi-->⭐ 3k<!--/s--> — Self-hosted "router of routers": aggregates your accounts across new-api/one-api/OneHub/DoneHub/Veloera/AnyRouter/sub2api into one key, with cost/balance/utilization-weighted smart routing, channel cool-down/retry, model auto-discovery and OpenAI⇄Claude conversion (TypeScript, MIT). Routing software only — vet the upstream relays it points at.
 - [Volcengine AI Gateway](https://www.volcengine.com/docs/6569/1356167) — ByteDance's cloud AI gateway: unified access, routing and governance for Doubao + third-party models.
 
-> ⚠️ This list deliberately **excludes reverse-engineered / resold "free-api" relays** — and not on principle alone. Two 2026 measurement studies found systematic fraud across the relay population: [*Real Money, Fake Models*](https://arxiv.org/abs/2603.01919) measured model-identity failures in **45.8%** of fingerprint tests and output divergence up to **47%**; [*Your Agent Is Mine*](https://arxiv.org/abs/2604.08407) caught routers **injecting malicious code** and **exfiltrating planted API keys**. If you're forced to vet one anyway, use the canary-diff test in [How to choose safely](#how-to-choose-safely).
+> ⚠️ This list deliberately **excludes reverse-engineered / resold "free-api" relays** — and not on principle alone. Two 2026 measurement studies found systematic fraud across the relay population: [_Real Money, Fake Models_](https://arxiv.org/abs/2603.01919) measured model-identity failures in **45.8%** of fingerprint tests and output divergence up to **47%**; [_Your Agent Is Mine_](https://arxiv.org/abs/2604.08407) caught routers **injecting malicious code** and **exfiltrating planted API keys**. If you're forced to vet one anyway, use the canary-diff test in [How to choose safely](#how-to-choose-safely).
 
 ## 🤖 MCP & agent gateways
 
-*Pain point: "Agents call tools now — govern MCP traffic like you govern APIs."* The newest category (2025–2026).
+_Pain point: "Agents call tools now — govern MCP traffic like you govern APIs."_ The newest category (2025–2026).
 
 - [agentgateway](https://github.com/agentgateway/agentgateway) <!--s:agentgateway/agentgateway-->⭐ 3.6k<!--/s--> — CNCF proxy for agentic traffic: MCP governance and agent-to-agent (A2A) communication.
 - [Lunar.dev MCPX](https://github.com/TheLunarCompany/lunar) <!--s:TheLunarCompany/lunar-->⭐ 464<!--/s--> — Gateway for managing MCP server consumption.
@@ -291,11 +291,11 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 🔧 More by capability (cross-cutting)
 
-*These cut across the need-based sections above — routing intelligence, observability, and Kubernetes infra that complement whichever gateway you picked.*
+_These cut across the need-based sections above — routing intelligence, observability, and Kubernetes infra that complement whichever gateway you picked._
 
 ### 🧠 Smart routing & model selection
 
-*Pain point: "Send each prompt to the cheapest model that can handle it."*
+_Pain point: "Send each prompt to the cheapest model that can handle it."_
 
 - [Not Diamond](https://www.notdiamond.ai) — SOTA model-routing intelligence; powers OpenRouter's Auto router.
 - [Martian](https://withmartian.com) — Pioneer commercial model router; Accenture partnership.
@@ -316,7 +316,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ### 📊 Observability & cost tracking
 
-*Pain point: "Who spent what, on which model, and why did quality drop?"*
+_Pain point: "Who spent what, on which model, and why did quality drop?"_
 
 > 🔎 **How to evaluate a gateway's observability** (table-stakes vs differentiating vs advanced, grounded in the OpenTelemetry GenAI conventions): see [BENCHMARKS → Part 6](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter). For the **research landscape — theory, seminal papers, company writing, standards & open problems**: see the [observability survey](docs/observability-landscape.md).
 
@@ -330,7 +330,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ### ☸️ Kubernetes-native & inference infra
 
-*Pain point: "Routing to self-hosted models (vLLM/Ollama) inside the cluster, GPU-aware."*
+_Pain point: "Routing to self-hosted models (vLLM/Ollama) inside the cluster, GPU-aware."_
 
 - [Gateway API Inference Extension](https://github.com/kubernetes-sigs/gateway-api-inference-extension) <!--s:kubernetes-sigs/gateway-api-inference-extension-->⭐ 703<!--/s--> — The Kubernetes standard for inference-aware routing.
 - [AIBrix](https://github.com/vllm-project/aibrix) <!--s:vllm-project/aibrix-->⭐ 4.9k<!--/s--> — Cost-efficient control plane for vLLM on K8s (ByteDance-origin).
@@ -347,7 +347,7 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 ## 📰 What's new
 
-*Curated monthly. Last review: 2026-06-30.*
+_Curated monthly. Last review: 2026-06-30._
 
 - **2026-06** · **LiteLLM RCE added to CISA's KEV catalog** — CVE-2026-42271 (an MCP command-injection) chains with a Starlette auth-bypass into unauthenticated remote code execution that can reach master keys and provider credentials (KEV-listed Jun 8; further CVEs Jun 16–22). Distinct from March's PyPI supply-chain attack — patch and lock down the gateway control plane. ([CSA](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/))
 - **2026-06** · **Envoy AI Gateway hit v1.0** (Jun 23) — the first production-stable open-source AI gateway built on CNCF Envoy: one API across 16 providers plus a native MCP gateway (backed by Tetrate, Bloomberg, Nutanix, Tencent). ([release](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/))
@@ -387,15 +387,15 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 <summary>Key terms used in the tables above (click to expand)</summary>
 
 - **AI gateway / LLM gateway** — a proxy between your app and LLM providers; one endpoint and key for many models.
-- **LLM router** — the part that decides *which model* serves each request (cheap vs flagship, by cost or quality).
+- **LLM router** — the part that decides _which model_ serves each request (cheap vs flagship, by cost or quality).
 - **Fallback** — automatically retry on another model/provider when the first fails or times out.
 - **Load balancing (LB)** — spread traffic across keys/providers to dodge rate limits and outages.
-- **Semantic caching** — return a cached answer when a *new* prompt is semantically similar to a past one (not just identical).
+- **Semantic caching** — return a cached answer when a _new_ prompt is semantically similar to a past one (not just identical).
 - **Prompt / cached input** — providers bill reused prompt prefixes at a steep discount (≈0.1×); the gateway must not mangle the prefix or the cache misses.
 - **Guardrails** — input/output checks: prompt-injection detection, PII redaction, content filtering, schema enforcement.
 - **Virtual keys** — per-user/team keys the gateway issues in front of your real provider keys, with their own budgets and limits.
 - **ZDR (zero data retention)** — provider/gateway contractually does not store your prompts or completions.
-- **BYOK** — bring your own key: the gateway uses *your* provider accounts rather than reselling tokens.
+- **BYOK** — bring your own key: the gateway uses _your_ provider accounts rather than reselling tokens.
 - **Markup** — the gateway's fee on top of provider token cost (0% to ~6%).
 - **MCP gateway** — governs agent ↔ tool traffic (Model Context Protocol), the agentic counterpart to an LLM gateway.
 
@@ -407,43 +407,43 @@ Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not av
 
 | Your data | Route it to | Don't |
 |---|---|---|
-| 🔴 **Secrets / regulated** (PII, PHI, financial, source code, keys) | First-party **direct + ZDR** (Azure / Bedrock / Vertex) or a gateway **self-hosted in your VPC** | …send it through *any* third-party relay — full stop |
+| 🔴 **Secrets / regulated** (PII, PHI, financial, source code, keys) | First-party **direct + ZDR** (Azure / Bedrock / Vertex) or a gateway **self-hosted in your VPC** | …send it through _any_ third-party relay — full stop |
 | 🟡 **Internal / business** | Compliant hosted (Cloudflare, Vercel, Portkey) **or** self-hosted (LiteLLM, Bifrost) | …use an unvetted relay; get ZDR in writing |
-| 🟢 **Low-stakes / public / throwaway** (demos, scraped public text) | Cheapest wins — a gray relay can even be *economically* rational here | …skip the [canary test](#how-to-choose-safely): assume model-swap + data-harvest until you've proven otherwise |
+| 🟢 **Low-stakes / public / throwaway** (demos, scraped public text) | Cheapest wins — a gray relay can even be _economically_ rational here | …skip the [canary test](#how-to-choose-safely): assume model-swap + data-harvest until you've proven otherwise |
 
 > The mistake is using one trust tier for all your traffic. Sensitive prompts through a $0.50/M relay is how keys leak; throwaway prompts through a FedRAMP endpoint is how you overpay 100×. **Match the tier to the data.**
 
 Then, whatever tier you're in:
 
 1. **Check the markup.** Marketplaces charge 0–6% — for high volume, self-hosting or 0%-markup gateways (Vercel, Helicone cloud) pay for themselves fast.
-2. **Verify model fidelity (canary-diff test).** Some relays silently downgrade or quantize models. Send fixed "canary" prompts — a known-hard reasoning question plus a tokenizer/fingerprint probe — through the gateway *and* direct to the provider, then **diff the outputs** — [`scripts/canary_check.py`](scripts/canary_check.py) automates exactly this (relay vs. official → a verdict you can attach to a [watch-list report](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml)). 2026 research found model-identity failures in ~46% of audited relays ([arXiv:2603.01919](https://arxiv.org/abs/2603.01919)). Community monitors [apiranking.com](https://apiranking.com) and [rate.linux.do](https://rate.linux.do) (browser-only) track relay authenticity/stability — usable as *signal* if you must vet one, but **listing there is not endorsement, and this list includes none of them.**
+2. **Verify model fidelity (canary-diff test).** Some relays silently downgrade or quantize models. Send fixed "canary" prompts — a known-hard reasoning question plus a tokenizer/fingerprint probe — through the gateway _and_ direct to the provider, then **diff the outputs** — [`scripts/canary_check.py`](scripts/canary_check.py) automates exactly this (relay vs. official → a verdict you can attach to a [watch-list report](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml)). 2026 research found model-identity failures in ~46% of audited relays ([arXiv:2603.01919](https://arxiv.org/abs/2603.01919)). Community monitors [apiranking.com](https://apiranking.com) and [rate.linux.do](https://rate.linux.do) (browser-only) track relay authenticity/stability — usable as _signal_ if you must vet one, but **listing there is not endorsement, and this list includes none of them.**
 3. **Mind data flow.** Every gateway sees your prompts. For sensitive data: self-host, or require ZDR (zero data retention) in writing.
 4. **License check before embedding.** new-api is AGPL-3.0; LiteLLM has an enterprise-licensed directory; "open core" ≠ everything free.
 5. **Project health.** Star count ≠ maintenance. Check last release date — several once-popular gateways (BricksLLM, Glide, RouteLLM) are effectively unmaintained; this list labels them.
-6. **Avoid gray-market relays** reselling reverse-engineered or stolen-quota access. Beyond account-ban risk, 2026 research caught relays serving poisoned models and exfiltrating planted secrets ([*Your Agent Is Mine*](https://arxiv.org/abs/2604.08407)) — and the most-visible relay "rankings" are often paid press releases or carry affiliate links. Account bans and data leaks are your risk, not theirs. **Caught one swapping models, harvesting data, or vanishing with your balance? [Report it — with evidence](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) — and we'll build the community watch list together.**
+6. **Avoid gray-market relays** reselling reverse-engineered or stolen-quota access. Beyond account-ban risk, 2026 research caught relays serving poisoned models and exfiltrating planted secrets ([_Your Agent Is Mine_](https://arxiv.org/abs/2604.08407)) — and the most-visible relay "rankings" are often paid press releases or carry affiliate links. Account bans and data leaks are your risk, not theirs. **Caught one swapping models, harvesting data, or vanishing with your balance? [Report it — with evidence](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) — and we'll build the community watch list together.**
 
 ### 🧰 Companion tools — verify what you picked
 
-This list tells you *which* gateway to start with; these two open-source tools — **from this list's maintainer** (disclosed) — help you **prove it behaves** before trusting it in production:
+This list tells you _which_ gateway to start with; these two open-source tools — **from this list's maintainer** (disclosed) — help you **prove it behaves** before trusting it in production:
 
 - **[llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench)** ([live dashboard](https://cuihuan.github.io/llm-gateway-bench/)) — black-box benchmark for any OpenAI-compatible gateway/relay: TTFT & throughput, success rate, price multiple, plus fidelity probes (model-echo, fake-streaming, usage inflation, context truncation). Test your own gateway with your own key and compare it to the best.
-- **[modelprobe](https://github.com/cuihuan/modelprobe)** — a tiny, dependency-free Go availability prober: point it at a base URL + key and it reports, per model, *is it up and how fast*. One static binary — drop it in CI or a cron on a $5 VM.
+- **[modelprobe](https://github.com/cuihuan/modelprobe)** — a tiny, dependency-free Go availability prober: point it at a base URL + key and it reports, per model, _is it up and how fast_. One static binary — drop it in CI or a cron on a $5 VM.
 
 ### Community relay watch-list
 
-Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *listed* but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic. The script diffs across one or more models in a single pass (`--model a,b`) and adds a tokenizer/fingerprint probe — `system_fingerprint` mismatch and `prompt_tokens` divergence on identical prompts — an independent tell beyond text similarity. A passing canary from a project's own team is logged as *self-reported* — reaching ✅ verified takes an **independent** reproduction by someone unaffiliated.
+Built on **evidence, not hearsay.** Newer or unusually cheap relays we've _listed_ but **not yet independently fidelity-checked** sit here as "vet before use." Run the [canary-diff test](scripts/canary_check.py) and [report your verdict](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) to move an entry to ✅ verified or ⛔ confirmed-problematic. The script diffs across one or more models in a single pass (`--model a,b`) and adds a tokenizer/fingerprint probe — `system_fingerprint` mismatch and `prompt_tokens` divergence on identical prompts — an independent tell beyond text similarity. A passing canary from a project's own team is logged as _self-reported_ — reaching ✅ verified takes an **independent** reproduction by someone unaffiliated.
 
 | Relay | Listed in | Status | Why it's here |
 |---|---|---|---|
 | [FlintAPI](https://flintapi.ai) ([repo](https://github.com/moozechen/flintapi)) | Cost-first | ⚠️ Unverified — vet before use | Aggregates 25+ Chinese LLMs (DeepSeek/Qwen/Kimi/GLM/MiniMax) with $2 free credits; model fidelity unconfirmed. |
 | [FlowBar](https://flowbarai.com) | Cost-first | ⚠️ Unverified — vet before use | Resells frontier models (GPT/Claude/Gemini) below OpenRouter with crypto/CNY payment; model fidelity unconfirmed. |
 | [lxg2it ModelRouter](https://api.lxg2it.com) ([repo](https://github.com/lxg2it/modelrouter-core)) | Cost-first | ⚠️ Unverified — [self-reported canary OK](https://github.com/cuihuan/awesome-ai-gateway/issues/8) (2026-06-22); needs independent repro | Solo-built router reselling Anthropic/OpenAI/Google frontier models at an advertised 0% markup (deposit fee may apply). A canary-diff posted by the project's own side passed (mean sim 1.0 on Opus 4.8); not yet independently reproduced. Public repo is a thin unlicensed stub (committed again in 2026-06) — routing is closed/hosted. |
-| [Loop Gateway](https://api.loopxxi.com) | Cost-first | ⚠️ Unverified — vet before use | Anonymous closed relay (public GitHub repo since removed) reselling 311 frontier models *through its own OpenRouter account* at a 15% markup, account-less + crypto-only; model fidelity unconfirmed. |
-| [nullsink](https://nullsink.is) ([repo](https://github.com/nullsink/nullsink)) | Cost-first | ⚠️ Unverified — vet before use | Account-less, no-logs, Monero/Bitcoin-only relay proxying OpenAI/Anthropic *through the operator's own account* at ~10% markup; repo 4★, model fidelity unconfirmed. |
+| [Loop Gateway](https://api.loopxxi.com) | Cost-first | ⚠️ Unverified — vet before use | Anonymous closed relay (public GitHub repo since removed) reselling 311 frontier models _through its own OpenRouter account_ at a 15% markup, account-less + crypto-only; model fidelity unconfirmed. |
+| [nullsink](https://nullsink.is) ([repo](https://github.com/nullsink/nullsink)) | Cost-first | ⚠️ Unverified — vet before use | Account-less, no-logs, Monero/Bitcoin-only relay proxying OpenAI/Anthropic _through the operator's own account_ at ~10% markup; repo 4★, model fidelity unconfirmed. |
 | [Meshs One](https://api.meshs.one) | Cost-first | ⚠️ Unverified — vet before use | New hosted relay (appears new-api-based) reselling Chinese frontier models (DeepSeek/Qwen/MiniMax) per-token; closed-source, self-submitted, model fidelity unconfirmed. |
 | [OpenPaths](https://openpaths.io) ([repo](https://github.com/lee101/openpaths)) | Cost-first | ⚠️ Unverified — vet before use | Hosted multi-provider router (15+ providers, multi-modal) with auto-routing; the "open-source" GitHub repo is a no-code, unlicensed marketing mirror pointing to a third-party platform, so treat as closed/hosted; model fidelity unconfirmed. |
 
-*Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay.*
+_Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay._
 
 ## FAQ
 
@@ -451,7 +451,7 @@ Built on **evidence, not hearsay.** Newer or unusually cheap relays we've *liste
 A proxy between your code and LLM providers: one OpenAI-compatible endpoint and key for many models, adding routing, failover, caching, rate limits, cost tracking and guardrails. See the [intro](#which-gateway-should-i-use).
 
 **AI gateway vs LLM router — what's the difference?**
-A *router* decides *which model* gets each request (e.g. cheap vs flagship); a *gateway* is the full proxy layer (auth, caching, observability, guardrails) that usually *includes* routing. See [smart routing](#-smart-routing--model-selection).
+A _router_ decides _which model_ gets each request (e.g. cheap vs flagship); a _gateway_ is the full proxy layer (auth, caching, observability, guardrails) that usually _includes_ routing. See [smart routing](#-smart-routing--model-selection).
 
 **What's the best open-source AI gateway?**
 [LiteLLM](https://github.com/BerriAI/litellm) is the default for breadth (Python, 100+ providers). For raw performance pick [Bifrost](https://github.com/maximhq/bifrost) (Go); for enterprise K8s pick [Kong](https://github.com/Kong/kong) or [Higress](https://github.com/higress-group/higress). Full list under [self-hosted](#-self-hosted-open-source).
@@ -467,7 +467,7 @@ Every gateway sees your prompts. For sensitive data self-host or require zero-da
 
 ## 📚 Essential reading
 
-*A short, vetted shelf — every link below was HTTP-checked live (2026-06-15). These are the concepts the comparison tables assume; read them before you commit to a gateway.*
+_A short, vetted shelf — every link below was HTTP-checked live (2026-06-15). These are the concepts the comparison tables assume; read them before you commit to a gateway._
 
 **What an AI gateway actually is**
 - [LLM Gateway: The One Decision That Removes 100 AI Engineering Decisions](https://www.latent.space/p/gateway) — Latent.Space (swyx), 2025-02 — why one gateway choice collapses routing, caching, observability and guardrails into a single control plane.
@@ -520,7 +520,7 @@ In-depth, data-backed comparisons for the questions people actually search:
 - [**Best self-hosted AI gateway in 2026**](compare/best-self-hosted-ai-gateway-2026.md) — LiteLLM vs Bifrost vs Portkey vs Kong
 - [**one-api vs new-api vs LiteLLM**](compare/one-api-vs-new-api-vs-litellm.zh-CN.md) — Choosing a China-market LLM API gateway (Chinese)
 
-*More comparisons coming. Suggest one via an [issue](https://github.com/cuihuan/awesome-ai-gateway/issues).*
+_More comparisons coming. Suggest one via an [issue](https://github.com/cuihuan/awesome-ai-gateway/issues)._
 
 ## Why this exists
 
@@ -530,7 +530,7 @@ On **June 10 I ran Claude Code hard for ~13 hours, and the bill came to ≈ $788
   <img src="assets/claude-code-cost-receipt.png" alt="Claude Code usage for one day: 11 sessions, 3,572 API calls across 4 models, ≈ $788 — Fable 5 alone $617 (78% of the bill), while Haiku did 242 tasks for $1.70." width="760">
 </p>
 
-The fix wasn't "stop using good models." It was **route by task** — default to a cheap model, escalate to a flagship only when the work is genuinely hard. That's exactly what an AI gateway is for. While I was at it, I couldn't find a single gateway list organized by *what you actually need*, that scored the options honestly (CVEs and all), and shipped *reproducible* cost numbers instead of vibes. So I built one — that's this repo.
+The fix wasn't "stop using good models." It was **route by task** — default to a cheap model, escalate to a flagship only when the work is genuinely hard. That's exactly what an AI gateway is for. While I was at it, I couldn't find a single gateway list organized by _what you actually need_, that scored the options honestly (CVEs and all), and shipped _reproducible_ cost numbers instead of vibes. So I built one — that's this repo.
 
 No vendor money, no affiliate links, CC0. If it saves you one surprise bill, it did its job. ⭐ **[Star it](https://github.com/cuihuan/awesome-ai-gateway)** so the next person mid-$788-day finds it.
 
@@ -540,12 +540,12 @@ Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first. Inc
 
 ## 🔗 Related lists
 
-This list lives in the awesome-list ecosystem. If it doesn't have what you need, these well-maintained neighbors might — and the gateways here sit *between* their tools and the models:
+This list lives in the awesome-list ecosystem. If it doesn't have what you need, these well-maintained neighbors might — and the gateways here sit _between_ their tools and the models:
 
 - [Awesome-LLMOps](https://github.com/tensorchord/Awesome-LLMOps) — the broader LLMOps landscape (serving, fine-tuning, observability) this list's gateways plug into.
 - [Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM) — models, papers and the wider LLM ecosystem.
 - [awesome-langchain](https://github.com/kyrolabs/awesome-langchain) — LangChain tools and LLM app frameworks that call through these gateways.
-- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) — MCP servers to put *behind* the [MCP & agent gateways](#-mcp--agent-gateways) here.
+- [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) — MCP servers to put _behind_ the [MCP & agent gateways](#-mcp--agent-gateways) here.
 
 Maintain a related list and think this belongs in yours? [Open an issue](https://github.com/cuihuan/awesome-ai-gateway/issues) — cross-linking helps every list's readers.
 
