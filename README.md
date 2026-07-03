@@ -37,6 +37,8 @@ _A running digest of fresh model, pricing and gateway evals — **newest first, 
 
 | Date | Category | Finding | Source |
 |---|---|---|---|
+| 2026-07-02 | 🛡️ Reliability | **Anthropic pulled Fable 5 & Mythos 5 offline globally** for ~3 weeks under a US export-control order, then restored them once Commerce lifted it (back on the Claude platform/Code by Jul 2) — a live reminder that single-provider stacks have no fallback, and multi-provider routing is the mitigation. | [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html) |
+| 2026-06-23 | 🚀 Gateway | **Envoy AI Gateway reached v1.0** (production GA) — the CNCF/Envoy-backed, Kubernetes-native multi-provider data plane (provider failover, token rate-limiting, MCP support) graduates to stable. | [Envoy](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/) |
 | 2026-06-21 | 💰 Pricing | The API pricing market now spans **123 models across 12 providers**, with a **>400× price spread** over the full input/output range — cheapest flagship **DeepSeek V4 Flash ($0.14/M input)** vs priciest **GPT-5.5 Pro ($30.00/M input)** is already ~214× on input alone. Tiering has hardened: top reasoning (o3) runs ~20× a nano-tier model on input, wider on output. | [aipricing.guru](https://aipricing.guru) |
 | 2026-06 | 📈 Adoption | ChatGPT hit **~900M weekly active users** and **>2.5B queries/day** — demand scaling about as fast as the price spread. | [DemandSage](https://www.demandsage.com/chatgpt-statistics/) |
 
