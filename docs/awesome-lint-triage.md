@@ -17,18 +17,20 @@ conformance pass is a deliberate decision, not a surprise.
 
 Run it yourself: `npx --yes awesome-lint`.
 
-## Current snapshot (2026-07-01)
+## Current snapshot (2026-07-03 — after the emphasis + heading quick-wins, 690→~656)
 
 | Rule | Count | Bucket |
 |---|---|---|
-| `table-pipe-alignment` + `table-cell-padding` | 312 | 🟥 design call (wide comparison tables) — **cosmetic in render** (prettier pads the source; GitHub shows identical tables) |
+| `table-pipe-alignment` + `table-cell-padding` | ~101 after prettier | 🟥 **NOT cheaply fixable — see PoC 2026-07-03.** prettier only gets 366→101; residual = emoji/VS/CJK width disagreement, unfixable without stripping cell emoji |
 | `awesome-list-item` | 220 | 🟥 design call (` — ` em-dash house style → wants ` - ` hyphen + trailing period; near-identical render) |
-| `double-link` | 113 | 🟥 **the one real UX cost** — see below |
-| `emphasis-marker` (`*`→`_`) | 41 | 🟨 cosmetic — `_` vs `*` italics render the same; do it in the pass (scoped so it doesn't re-pad tables) |
+| `double-link` | 113 | 🟥 **a real UX cost** — see below |
+| `emphasis-marker` (`*`→`_`) | ✅ **DONE 2026-07-03** | cleared all 41 via a 1-for-1 `*`→`_` swap (no table drift); commit `405a30e` |
 | `awesome-spell-check` | 8 (⚠) | 🟩 optional (K8s/WASM in alt-text — fine) |
 | `no-emphasis-as-heading` | 2 (L9, L470) | 🟥 **L9 is the "$788" growth hook** — converting it to a heading changes the page's lead; maintainer call, not a trivial fix |
-| `no-heading-punctuation` | 1 (L64) | 🟨 the `?` on "Which gateway should I use?" — reword or accept |
+| `no-heading-punctuation` | ✅ **DONE 2026-07-03** | dropped trailing `?` on the section heading (anchor unchanged); commit `405a30e` |
 | `awesome-license` | 1 (L556) | 🟨 lint forbids a `## License` *section*; the CC0 LICENSE file already exists → drop the section |
+
+> **⚠️ PoC 2026-07-03 — reaching green is NOT a clean mechanical pass (this overturns the "prettier fixes tables" assumption above).** Ran `prettier@3 --prose-wrap preserve` on a copy, then re-linted: table errors only dropped **366 → 101**. The residual 101 are a **per-table poison** — any table containing an emoji/variation-selector/CJK cell (⚠️ ✅ 💰 🔓 …, i.e. *most* comparison tables + the zh entries) is width-counted differently by prettier vs awesome-lint's `string-width`, so **every row of that table flags**. Reaching literal green would require **stripping the status/category emoji from all table cells** — which guts the scannable design that is core to the list's usability. Combined with `awesome-list-item` (220 house-style rewrites) + `double-link` (113 nav-link removals), **green is a destructive flatten, not a tidy-up.** **Revised recommendation: do NOT chase the sindresorhus/awesome listing at the cost of the emoji-table UX** — it's a secondary (+10–30★ over weeks) lever and the list is more valuable to readers as-is. Prioritize the launch burst (bigger, zero downside). Revisit only if awesome-lint gains emoji-width tolerance or a maintainer accepts de-emoji'd tables.
 
 **`double-link` (113) — what it actually is:** not external gateway URLs, but **internal
 navigation cross-links** — `BENCHMARKS.md`, `CONTRIBUTING.md`, and section `#anchors` are
