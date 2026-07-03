@@ -49,6 +49,20 @@ emits `watch-list` + `needs-evidence`, so these must exist (they now do).
 - **Relay report w/o evidence** → "We only name relays on shareable proof (rumor → liability). Fastest path is a canary diff: `python scripts/canary_check.py …`. Marking `needs-evidence`; reopen anytime with output."
 - **Methodology question** → answer once, then **fold it into BENCHMARKS.md / FAQ** so the next person self-serves.
 
+### Operator self-promotion PRs — the self-certification rule (precedent 2026-07-02)
+Relay operators submit PRs editing *their own* listing. Welcome the factual parts; **never let a
+party self-graduate its own watch-list status.** Reject-on-sight signals (all seen in one real PR):
+- **Self-certifies ⚠️ Unverified → ✅ Verified** citing "my endpoint returns 200 / I tested it." Not the
+  bar — ✅ needs an **independent** model-fidelity diff (`canary_check.py` / K2-Vendor-Verifier), never the operator's own key.
+- **Deletes a true caveat** (e.g. removing the `new_api_error` → new-api note). Re-probe before believing the removal; keep verified-true signals.
+- **Injects marketing** — `utm_*` tracking params, campaign links, "N% below official" as a headline (that price is itself a resale signal), or a star-span (`<!--s:owner/repo-->`) pointing at a non-repo (breaks the star-refresh CI).
+- **New relay with no reachable `/v1`** — root serves a 404/placeholder, `/v1/models` 404s (a live one answers 401). Hold, don't merge; ask for a reachable base URL.
+
+Disposition: post an evidence-based, non-hostile review (re-probe and cite what you found), keep the entry ⚠️ Unverified,
+and **close** self-certification PRs with a clear path back (independent canary repro auto-flips the status). Honest-but-premature
+entries (good format, just no live endpoint) get the review and stay **open** for the author to fix. Saved reply:
+- **Operator self-certifies own listing** → "Thanks for the update. Status changes need *independent* verification — `/v1/models` returning 200 with your own key isn't the bar (that's a canary-diff). I re-probed and [finding]. Keeping ⚠️ Unverified; the moment there's an independent canary repro the ✅ is automatic."
+
 ### Convert reporters → contributors
 Every "you should add X" → offer the 2-line PR + `good first issue`. Recognize contributors in
 `CHANGELOG.md` and a README `## Contributors` block. Keep 3–5 genuinely-10-minute `good first issue`s open.
