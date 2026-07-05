@@ -17,6 +17,10 @@ structural and editorial changes.
   cross-linked with an interactive **cost calculator** and **gateway picker**.
 - First inbound community contribution — **nullsink** added by
   [@c99e](https://github.com/c99e) in [#14](https://github.com/cuihuan/awesome-ai-gateway/pull/14). 🙏
+- **CoderPlan** (China-market relay) added by [@onepaperbox](https://github.com/onepaperbox) in
+  [#21](https://github.com/cuihuan/awesome-ai-gateway/pull/21) — endpoint independently re-verified
+  (`api.coderplan.ai/v1` → `new_api_error`, i.e. new-api-based) before listing, with the standard
+  new-and-unverified caveat. 🙏
 
 ### Changed
 - Account-less / crypto-only relays (**Loop Gateway**, **nullsink**) now carry an explicit
@@ -26,8 +30,9 @@ structural and editorial changes.
   Pydantic Logfire) as deprecated/renamed — both verified `archived` via the GitHub API.
 
 ### Contributors
-Thanks to [@c99e](https://github.com/c99e) for the first community PR. Spotted a gateway we're
-missing, or run one in production? See [CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
+Thanks to [@c99e](https://github.com/c99e) and [@onepaperbox](https://github.com/onepaperbox) for
+community PRs. Spotted a gateway we're missing, or run one in production? See
+[CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
 
 ## [1.0.0] - 2026-06-18
 
