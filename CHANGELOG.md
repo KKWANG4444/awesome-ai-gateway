@@ -7,6 +7,12 @@ structural and editorial changes.
 ## [Unreleased]
 
 ### Added
+- Coverage sweep (2026-07-06) added **6 verified gateways** the list was missing — led by
+  the two glaring high-star gaps **[OmniRoute](https://github.com/diegosouzapw/OmniRoute)**
+  (~12k★, coding-agent token-saver) and **[Chat Nio / CoAI](https://github.com/coaidev/coai)**
+  (~9.2k★, multi-tenant billing panel) — plus **Traceloop Hub** (Rust/OTel), and the routers
+  **workweave/router**, **UncommonRoute** and **OrcaRouter Lite**. Each verified live via the
+  GitHub API (stars, license, activity) before listing; all release-tracked.
 - Directory grown to **~122 entries** since 1.0.0. A multi-agent accuracy/coverage audit
   added **17 verified gateways** — including the previously-missing high-star projects
   **CLIProxyAPI**, **sub2api**, **9router** and **NVIDIA Dynamo**, plus enterprise/cloud
