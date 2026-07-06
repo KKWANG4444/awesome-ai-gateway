@@ -118,6 +118,22 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 
 ⭐ **觉得有用就点个 [Star](https://github.com/cuihuan/awesome-ai-gateway)** —— 下一个在选网关的工程师就是这样找到它的。CC0 授权，无需注册、无追踪、不收厂商一分钱。
 
+## 诉求速查表
+
+网关被买单，本质上是为了**八件不同的事**。找到你的那件，直达证据：
+
+| 你的诉求 | 它回答的问题 | 去哪看 |
+|---|---|---|
+| 🔀 **路由与故障转移** | "一家厂商挂了——我的应用挂了吗？" | [快速对比](#快速对比) · [智能路由](#-智能路由与模型选择) |
+| 💰 **成本控制** | "谁能花多少钱，花到哪里会被拦住？" | [性价比优先](#-性价比优先) · [成本表](BENCHMARKS.zh-CN.md) · [计算器](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.zh-CN.html) |
+| 📊 **可观测性** | "哪个 key、哪个模型、哪条 prompt——质量为什么掉了？" | [可观测章节](#-可观测与成本核算) · [该测什么](BENCHMARKS.zh-CN.md) · [研究综述](docs/observability-landscape.zh-CN.md) |
+| 🛡️ **安全与合规** | "能向审计员证明 prompt 都去了哪里吗？" | [企业合规](#-企业合规) · [评分卡](BENCHMARKS.zh-CN.md) |
+| 📦 **供应链可信** | "网关本身跑起来安全吗？" | [如何安全选型](#如何安全选型)（第 7 条） |
+| ⚡ **缓存与限流** | "别为同一个答案付两次钱；扛住 429" | [快速对比](#快速对比) 缓存列 |
+| ☸️ **自托管模型 / K8s** | "把请求路由到集群里的 vLLM/Ollama，感知 GPU" | [Kubernetes 原生与推理基础设施](#️-kubernetes-原生与推理基础设施) |
+| 🤖 **Agent 与 MCP 治理** | "我的 Agent 在调工具——谁在看这些流量？" | [MCP 与 Agent 网关](#-mcp-与-agent-网关) |
+| 🔍 **模型保真 / 中转可信** | "我拿到的真是我付钱买的那个模型吗？" | [canary_check.py](scripts/canary_check.py) · [观察名单](#社区中转避雷观察名单) |
+
 ## 快速对比
 
 星数每日自动刷新。✅ 内置 · ➕ 插件/付费版 · ❌ 不支持。
@@ -429,6 +445,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 4. **嵌入前查协议。** new-api 是 AGPL-3.0；LiteLLM 含企业授权目录；"open core" ≠ 全部免费。
 5. **看项目健康度。** 星数 ≠ 维护。看最近 release 日期——几个曾经热门的网关（BricksLLM、Glide、RouteLLM）实际已停更，本清单都打了标。
 6. **远离灰产中转**（逆向接口、盗刷额度转售）。除封号风险外，2026 年研究还抓到中转投放被投毒的模型、窃取预埋密钥（[*Your Agent Is Mine*](https://arxiv.org/abs/2604.08407)）——而且最显眼的中转"榜单"往往是付费稿或带返利链接。封号和数据泄露的风险在你，不在它。**抓到哪家在换模型、收数据、或卷款跑路？[带证据来举报](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml)——我们一起把社区避雷板建起来。**
+7. **把网关本身当作供应链来审。** 它看得到你的每条 prompt、拿着你所有厂商密钥，所以它自己的安全水位就是选型标准：**2026 年 3 月** LiteLLM 的 PyPI 发布 v1.82.7/.8 因 CI token 失窃被植入后门（约 3 小时下架）；**2026 年 6 月** 一条 LiteLLM RCE 利用链（[CVE-2026-42271](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/)）进入 CISA KEV 名录——一个季度内、在部署量最大的开源网关上，出现两种完全不同的失效模式。实操卫生：**锁定精确版本**（别用 `latest`）、盯项目安全公告 + KEV、控制面快速打补丁、管理后台不暴露公网，接第三方中转前先用 [api-relay-audit](https://github.com/toby-bridges/api-relay-audit) <!--s:toby-bridges/api-relay-audit-->⭐ 739<!--/s--> 这类审计工具过一遍（检查 prompt 注入、模型偷换、工具调用改写、SSE 异常）。
 
 ### 🧰 配套工具——验证你选的网关
 

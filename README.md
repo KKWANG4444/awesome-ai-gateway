@@ -120,6 +120,22 @@ Do you want to self-host?
 
 ⭐ **Found this useful? [Star it](https://github.com/cuihuan/awesome-ai-gateway)** — that's how the next engineer choosing a gateway finds it. CC0, no signup, no tracking, no vendor money.
 
+## The requirements map
+
+Gateways get bought for **eight distinct jobs**. Find yours, jump straight to the evidence:
+
+| Your requirement | The question it answers | Where to look |
+|---|---|---|
+| 🔀 **Routing & failover** | "One provider went down — did my app?" | [Quick comparison](#quick-comparison) · [Smart routing](#-smart-routing--model-selection) |
+| 💰 **Cost control** | "Who can spend what, and where does it stop?" | [Cost-first](#-cost-first-cheapest-multi-model-access) · [cost tables](BENCHMARKS.md) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
+| 📊 **Observability** | "Which key, which model, which prompt — and why did quality drop?" | [Observability section](#-observability--cost-tracking) · [what to measure](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) · [research survey](docs/observability-landscape.md) |
+| 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability) |
+| 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 7) |
+| ⚡ **Caching & rate limits** | "Stop paying twice for the same answer; survive 429s" | [Quick comparison](#quick-comparison) cache column |
+| ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
+| 🤖 **Agent & MCP governance** | "My agents call tools — who's watching that traffic?" | [MCP & agent gateways](#-mcp--agent-gateways) |
+| 🔍 **Model fidelity / relay trust** | "Am I getting the model I'm paying for?" | [canary_check.py](scripts/canary_check.py) · [watch-list](#community-relay-watch-list) |
+
 ## Quick comparison
 
 Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not available.
@@ -431,6 +447,7 @@ Then, whatever tier you're in:
 4. **License check before embedding.** new-api is AGPL-3.0; LiteLLM has an enterprise-licensed directory; "open core" ≠ everything free.
 5. **Project health.** Star count ≠ maintenance. Check last release date — several once-popular gateways (BricksLLM, Glide, RouteLLM) are effectively unmaintained; this list labels them.
 6. **Avoid gray-market relays** reselling reverse-engineered or stolen-quota access. Beyond account-ban risk, 2026 research caught relays serving poisoned models and exfiltrating planted secrets ([_Your Agent Is Mine_](https://arxiv.org/abs/2604.08407)) — and the most-visible relay "rankings" are often paid press releases or carry affiliate links. Account bans and data leaks are your risk, not theirs. **Caught one swapping models, harvesting data, or vanishing with your balance? [Report it — with evidence](https://github.com/cuihuan/awesome-ai-gateway/issues/new?template=report-relay.yml) — and we'll build the community watch list together.**
+7. **Treat the gateway itself as supply chain.** It sees every prompt and holds every provider key, so its own security posture is a buying criterion: in **March 2026** LiteLLM's PyPI releases v1.82.7/.8 were backdoored via a CI-token compromise (quarantined in ~3h), and in **June 2026** a LiteLLM RCE chain ([CVE-2026-42271](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/)) entered CISA's KEV catalog — two different failure modes in one quarter, on the most-deployed OSS gateway. Practical hygiene: **pin exact versions** (never `latest`), watch the project's security advisories + KEV, patch the control plane fast, keep the admin UI off the public internet, and pre-vet any third-party relay with an audit tool like [api-relay-audit](https://github.com/toby-bridges/api-relay-audit) <!--s:toby-bridges/api-relay-audit-->⭐ 739<!--/s--> (checks prompt injection, model substitution, tool-call rewriting, SSE anomalies).
 
 ### 🧰 Companion tools — verify what you picked
 
