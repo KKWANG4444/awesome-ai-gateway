@@ -222,3 +222,33 @@ Runner-ups (CN human discussion): linux.do 开发调优, 掘金/知乎 writeups,
 | [EthicalML/awesome-production-machine-learning](https://github.com/EthicalML/awesome-production-machine-learning) (~20.7k★) | MLOps meta | highest authority, but MLOps-lean → acceptance less certain |
 
 **sindresorhus/awesome:** eligibility opens **~2026-07-11** (30-day age gate; repo created 2026-06-11). Landing it cascades passive backlinks into awesome.ecosyste.ms / trackawesomelist / project-awesome automatically. Agent preps lint+body; 👤 opens + reviews 4 PRs + `unicorn`. **This is the imminent high-value move.**
+
+## 10. Growth research v3 (2026-07-06) — the star-velocity playbook + content strategy
+
+Two research agents (growth mechanics + fast-rising competitors). What's NEW vs §3/§9 below; older sections stand.
+
+### 10a. Star growth is a velocity game (evidence-backed)
+Trending ranks stars-gained **vs your own ~1–2★/day baseline**, so at ~39★ a **30–60★ day** can trend and self-reinforce (Explore → search → "users also starred"). Concrete lift data (arXiv 2511.04453 + case studies): HN front page ≈ **+121/+189/+289 stars @ 24h/48h/7d** (right-skewed — most posts land modest); post **12–17 UTC** (~+200 vs off-hours); **HN *score*, not the "Show HN" tag, predicts stars** (tag has no significant lift after controls). Fast-grower pattern = **(unique content OR first-mover on a wave) × owned distribution × freshness cadence** — our reproducible benchmark IS the unique content, so **lead every post with the numbers, not the link list**.
+
+### 10b. New / re-prioritized channels (add to the launch set)
+- **daily.dev** — underrated, low-gatekeeping, dev audience; a case study got its **first +100★** here. Submit — high ROI, low effort.
+- **X repost by a GitHub-projects influencer** (e.g. @GithubProjects) — the single highest-leverage *external* trigger (drove a repo to #2 daily Trending); needs a **demo GIF/video** + crisp hook.
+- **Warm-up to ~100★ via your network BEFORE the public push** — legitimate social-proof seeding that converts cold traffic (distinct from vote manipulation). Do this first.
+- Still true & load-bearing: **never solicit upvotes** (HN voting-ring detector silently kills front-page eligibility; ToS bans bought/solicited stars). Say "check it out," never "upvote/star it."
+- Chinese stack unchanged and high-ROI: **HelloGitHub 开源自荐** + **阮一峰周刊** (submitted) → cascade to V2EX/juejin/linux.do.
+
+### 10c. #1 README lever still open: an above-the-fold demo
+The single highest-leverage on-page change (named #1 in a 8k-star case) is an **animated GIF/screenshot of the interactive site + a results table in the first screen**. We have the hook + links but no top-of-fold visual. 👤/🤖: record a short GIF of the gateway-picker/cost-calculator; drop it above the fold. (OG/social-card image already = the cost-spread chart. ✓)
+
+### 10d. Content strategy from the competitor scan (informs future adds, not just growth)
+- **The highest-velocity 2026 segment is "free/cheap model routing for coding agents"** (Claude Code / Codex / Cursor / Cline). Nearly every fast riser (OmniRoute, 9router, ClawRouter, workweave/router, UncommonRoute) pitches this. Leaning into the `claude-code` / `token-saver` framing captures the segment AND earns inbound links from those repos. (6 such gateways added 2026-07-06, commit `b1b5d0c`.)
+- **Benchmarks are the credibility engine** — OrcaRouter (RouterArena #1–2 + arXiv + wire) and UncommonRoute (accuracy/cost stats + Trendshift) grew on numbers. **Tightly link each router entry to its RouterArena score** — a differentiator no competitor list has.
+- **Security/supply-chain is now a first-class buying axis** after the **LiteLLM PyPI supply-chain attack (March 2026)**. A short "Security & supply-chain" angle (audit tooling like `toby-bridges/api-relay-audit`, each gateway's provenance/signing story) would age well and match buyer attention. Candidate future addition.
+- **Watch-list (below the add-bar for now):** mozilla-ai/otari (Mozilla-backed, ~66★), ferro-labs/ai-gateway (~167★ Go), DEEIX-Chat (~815★), Mirrowel/LLM-API-Key-Proxy (~517★), CPA-Manager-Plus (~1.3k★ observability). Re-check on a new star wave.
+
+### 10e. Ranked top-5 moves for a list at ~39★ (from the research)
+1. **Above-the-fold demo GIF + headline results table** (§10c) — compounds every downstream click.
+2. **One concentrated launch day (12–17 UTC)** firing 4–6 channels at once (r/LocalLLaMA + r/selfhosted + daily.dev + HN "Show HN: reproducible cost benchmark…" + a Dev.to methodology writeup), after warming to ~100★. Lead with data; never ask for upvotes.
+3. **Fire the Chinese stack in parallel** — HelloGitHub + 阮一峰 (both submit-once), then V2EX/juejin/linux.do.
+4. **Cross-list in the adjacent hype ecosystem** — awesome-llmops / awesome-mcp-servers / awesome-ai-agents (MCP adjacency), + sindresorhus/awesome when eligible.
+5. **Monthly freshness cadence** — announce each benchmark re-run as a milestone; freshness is what kept awesome-llm-apps re-triggering Trending and what makes AI assistants cite you.

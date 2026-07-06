@@ -5,13 +5,15 @@ auto-post in your voice. Edit freely before posting.
 
 ## Pre-launch checklist (do first)
 - [ ] **Push everything** so the repo + live site reflect all improvements (the launchers will look).
-- [ ] Upload a **social-preview image** (Settings → Social preview, 1280×640 — the price-spread or decision-tree chart). Every share unfurls with it.
+- [ ] Upload a **social-preview image** (Settings → Social preview, 1280×640 — `assets/social-preview.png`, already generated). Every share unfurls with it.
+- [ ] **Warm up to ~100★ via your own network FIRST** (research-backed): a friends/colleagues/community-you're-in ask to "check it out" creates the social proof that converts cold launch traffic. Legitimate seeding — distinct from vote manipulation. Do NOT ask anyone to upvote HN/Reddit.
 - [ ] Sanity-check the live site loads: https://cuihuan.github.io/awesome-ai-gateway/
+- [ ] (Nice-to-have, #1 on-page lever) a short **demo GIF of the interactive site** at the top of the README.
 - [ ] Be available to reply for a few hours after the HN/Reddit post.
 
 ### Sequencing for velocity (the part that actually trips GitHub Trending)
 GitHub Trending ranks by star **velocity vs. *your own* baseline** (plus forks/issues/PRs/comments) — **not** absolute count. From **~35★** (current), even **15–30 stars in 24–48h** can trip it in a niche tag; spreading the same stars thin over two weeks never builds the spike. So:
-- [ ] **Concentrate the high-velocity channels into one 24–48h window** — HN Show HN + r/LocalLLaMA + the X thread — ideally **Tue–Thu morning US Pacific** (avoid weekends/Mondays).
+- [ ] **Concentrate the high-velocity channels into one 24–48h window** — HN Show HN + r/LocalLLaMA + **daily.dev** (underrated, low-gate, dev audience — a case study's first +100★) + the X thread (ideally with a demo GIF, and pitched to a GitHub-projects reposter like @GithubProjects) — ideally **Tue–Thu, 12–17 UTC** (research: ~+200 stars vs off-hours; HN *score*, not the "Show HN" tag, is what predicts stars).
 - [ ] **Then sustain** over the next 1–2 weeks with the slower channels (周刊 async, V2EX, linux.do, r/selfhosted) **and reply to every issue/PR** — ongoing engagement keeps feeding Trending's signal after the initial burst.
 - [ ] **Never solicit upvotes** anywhere (esp. HN) — it gets the post flagged and undoes the whole launch.
 
