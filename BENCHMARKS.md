@@ -207,7 +207,7 @@ This is the part buyers actually lose sleep over. Models are interchangeable; th
 | **Vercel AI Gateway** | ★★★★ | **0%** | ★★★½ | ★★★★ | ★★★★ | SOC 2 II + 99.99% SLA (Enterprise); true 0% even on BYOK |
 | **Helicone** (cloud) | ★★★½ | **0%** passthrough | ★★★½ | ★★★ | ★★★★½ | SOC 2 + HIPAA (Team); PII detection; OSS core → VPC/self-host option |
 | **Requesty** | ★★★½ | ~5% | ★★★½ | ★★★ | ★★★ | EU residency + PII masking + ZDR; SOC 2 "in progress Q2'26" (not yet Type II) |
-| **OpenRouter** | ★★★½ | ~5.5% credit fee | ★★★ | ★★★ | ★★★★½ | 60+ providers, auto-failover, free ZDR; **no public SLA** (enterprise only) |
+| **OpenRouter** | ★★★½ | ~5.5% credit fee | ★★★ | ★★★ | ★★★★½ | ~90 providers, auto-failover, free ZDR; **no public SLA** (enterprise only) |
 | **Eden AI** | ★★★½ | ~5.5% platform fee | ★★★ | ★★★½ | ★★★ | France-based, EU-default residency, GDPR-first; SOC 2 UNVERIFIED |
 | **Martian** | ★★★ | volume (undisclosed) | ★★★½ | ★★★ | ★★½ | "Airlock" compliance vetting + cost-routing; certs UNVERIFIED |
 

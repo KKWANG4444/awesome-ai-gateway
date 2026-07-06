@@ -73,7 +73,7 @@
       "observability": 4.5,
       "observability_note": "Usage+cost in responses, per-key limits; Broadcast exports logs/traces to OTel/Datadog/S3/webhooks; no Prometheus.",
       "self_hosted": false,
-      "note": "60+ providers, auto-failover, free ZDR, EU region-lock; SOC 2 Type II UNVERIFIED; no public SLA outside enterprise."
+      "note": "~90 providers (live API count 2026-07-06), auto-failover, free ZDR, EU region-lock; SOC 2 Type II UNVERIFIED; no public SLA outside enterprise."
     },
     {
       "name": "Eden AI",
