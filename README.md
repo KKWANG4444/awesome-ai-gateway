@@ -16,6 +16,10 @@ _Built the hard way: **I burned $788 on AI coding in a single day** — one flag
 <a href="BENCHMARKS.md"><kbd> &nbsp; 📊 Cost & scorecard &nbsp; </kbd></a>
 </p>
 
+<p align="center">
+  <a href="#the-requirements-map"><img src="assets/hero-demo.gif" alt="How this list works, in four steps: pick by requirement (routing, cost, observability, compliance, supply-chain, caching, K8s, MCP/agents, fidelity), match the trust tier to your data, check evidence-based five-axis scores, and mind the 106x model cost spread ($0.03 vs $3.01 for the same 100K-token report)." width="840"></a>
+</p>
+
 <details>
 <summary>📑 <b>Full contents</b> — pick fast · browse by need · reference</summary>
 

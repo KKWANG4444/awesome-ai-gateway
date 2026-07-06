@@ -16,6 +16,10 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 <a href="BENCHMARKS.zh-CN.md"><kbd> &nbsp; 📊 成本与评分卡 &nbsp; </kbd></a>
 </p>
 
+<p align="center">
+  <a href="#诉求速查表"><img src="assets/hero-demo.gif" alt="本清单的四步用法：按诉求选（路由、成本、可观测、合规、供应链、缓存、K8s、MCP/Agent、保真），按数据敏感度匹配信任层级，查证据化的五维评分，并留意 106 倍的模型成本差（同一份 10 万 token 报告 $0.03 vs $3.01）。" width="840"></a>
+</p>
+
 <details>
 <summary>📑 <b>完整目录</b> —— 快速选 · 按需浏览 · 参考</summary>
 
