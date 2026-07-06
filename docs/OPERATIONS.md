@@ -252,3 +252,12 @@ The single highest-leverage on-page change (named #1 in a 8k-star case) is an **
 3. **Fire the Chinese stack in parallel** — HelloGitHub + 阮一峰 (both submit-once), then V2EX/juejin/linux.do.
 4. **Cross-list in the adjacent hype ecosystem** — awesome-llmops / awesome-mcp-servers / awesome-ai-agents (MCP adjacency), + sindresorhus/awesome when eligible.
 5. **Monthly freshness cadence** — announce each benchmark re-run as a milestone; freshness is what kept awesome-llm-apps re-triggering Trending and what makes AI assistants cite you.
+
+## 11. Five-axis scorecard maintenance (added 2026-07-06 — the observability axis)
+
+The gateway scorecard is now **compliance · markup · security · stability · observability** (Part 4). Continuity rules:
+- **Observability rubric = 5 evidence pillars** (metrics export · OTel trace export · per-key token/cost attribution · log export · dashboard), published in the Part 4 rubric table; what each pillar means in practice is Part 6. Score ≈ pillar count (partial = ½), halves allowed.
+- **Evidence lives in `data/gateways_eval.json` → `observability_note`** (one line per gateway: which pillars, from which docs, reviewed date). Never change a score without re-checking the vendor docs and updating the note — same "sourced, not asserted" bar as pricing.
+- **Re-review cadence:** rides the existing `check_freshness.py` 30-day gate on `gateways_eval.json` (`as_of`). On each refresh, spot-check the 3 most volatile: **Portkey OSS** (score jumps to ~4.5 the day the 2.0 branch ships a stable release — watch releases), **Kong OSS** (features drift Enterprise-ward; verify against the OSS source tree, not docs), **Requesty/Eden/Martian** (sparse docs — "not documented" ≠ absent, revisit).
+- **New gateway added to the scorecard ⇒ must get all 5 axes** incl. an observability_note; `export_csv.py` exports the column (tests enforce the field).
+- **Adding a 6th axis someday:** follow this precedent — publish the rubric row first, evidence-note per gateway in the JSON, sweep the Part-4 heading anchor repo-wide (10+ refs incl. compare/*.md sources → regenerate HTML), bump `as_of`.
