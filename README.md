@@ -129,7 +129,7 @@ Gateways get bought for **eight distinct jobs**. Find yours, jump straight to th
 | 🔀 **Routing & failover** | "One provider went down — did my app?" | [Quick comparison](#quick-comparison) · [Smart routing](#-smart-routing--model-selection) |
 | 💰 **Cost control** | "Who can spend what, and where does it stop?" | [Cost-first](#-cost-first-cheapest-multi-model-access) · [cost tables](BENCHMARKS.md) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
 | 📊 **Observability** | "Which key, which model, which prompt — and why did quality drop?" | [Observability section](#-observability--cost-tracking) · [what to measure](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) · [research survey](docs/observability-landscape.md) |
-| 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability) |
+| 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) |
 | 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 7) |
 | ⚡ **Caching & rate limits** | "Stop paying twice for the same answer; survive 429s" | [Quick comparison](#quick-comparison) cache column |
 | ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
@@ -492,7 +492,7 @@ OpenRouter is hosted (zero ops, ~5.5% fee, 400+ models); LiteLLM is self-hosted 
 For zero ops: [Vercel AI Gateway](https://vercel.com/ai-gateway) or [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) (0% markup). For lowest token cost, route bulk work to cheap models — a 100K-token report runs **$0.03 on DeepSeek vs $3.01 on GPT-5.5**. See [cost-first](#-cost-first-cheapest-multi-model-access).
 
 **Are AI gateways safe? Who sees my prompts?**
-Every gateway sees your prompts. For sensitive data self-host or require zero-data-retention in writing; check the [gateway scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability) for compliance/security ratings and known CVEs.
+Every gateway sees your prompts. For sensitive data self-host or require zero-data-retention in writing; check the [gateway scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) for compliance/security ratings and known CVEs.
 
 ## 📚 Essential reading
 

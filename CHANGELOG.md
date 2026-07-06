@@ -7,6 +7,14 @@ structural and editorial changes.
 ## [Unreleased]
 
 ### Added
+- **Observability is now a first-class scorecard axis** (2026-07-06): all 23 scored gateways
+  re-reviewed against a published 5-pillar evidence rubric (metrics export · trace export ·
+  per-key token/cost attribution · log export · dashboard) — four parallel research passes over
+  official docs, per-gateway evidence machine-readable in
+  [`data/gateways_eval.json`](data/gateways_eval.json) (`observability_note`) and exported to
+  CSV. The scorecard is five-axis (合规·价格·安全·稳定·可观测); README gained a
+  **requirements map** (the 9 jobs a gateway is bought for → where the evidence lives) and
+  "How to choose safely" gained a **supply-chain step** grounded in the 2026 LiteLLM incidents.
 - Coverage sweep (2026-07-06) added **6 verified gateways** the list was missing — led by
   the two glaring high-star gaps **[OmniRoute](https://github.com/diegosouzapw/OmniRoute)**
   (~12k★, coding-agent token-saver) and **[Chat Nio / CoAI](https://github.com/coaidev/coai)**

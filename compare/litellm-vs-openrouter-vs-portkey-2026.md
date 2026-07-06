@@ -41,7 +41,7 @@ That's why the gateway *matters*: LiteLLM/Portkey let you route cheap-by-default
 - **OpenRouter** offers free zero-data-retention and EU region-locking, but publishes no hard uptime SLA outside enterprise.
 - **Portkey** carries SOC 2 Type II + ISO 27001 + HIPAA and the richest guardrail marketplace of the three.
 
-Full compliance/security/stability scores for 23 gateways are in the [gateway scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability).
+Full compliance/security/stability scores for 23 gateways are in the [gateway scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability).
 
 ## The honest verdict
 

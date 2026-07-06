@@ -1,6 +1,6 @@
 # OpenRouter Alternatives (2026): 8 AI Gateways Compared by Markup, Compliance & Self-Hosting
 
-*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
+*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
 > 📊 **Key numbers** · OpenRouter adds **~5.5%** on credits; **Vercel AI Gateway** and **Helicone** pass through at **0% markup**. But the bigger lever is the model, not the fee: a 100K-token report spans **$0.03 → $3.01** (a **~106×** spread, [reproducible benchmark](../BENCHMARKS.md#part-3--real-world-token-cost-computed), computed 2026-06).
 
@@ -11,7 +11,7 @@
 3. **They want their keys on their own infra** → a self-hosted gateway.
 4. **EU data residency** → an EU-first provider.
 
-Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubric](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability) (snapshot 2026-06).
+Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubric](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) (snapshot 2026-06).
 
 ## TL;DR — pick by your actual constraint
 

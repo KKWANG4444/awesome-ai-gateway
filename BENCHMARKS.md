@@ -12,7 +12,7 @@ Every number here is **sourced and dated**. Cost cells are *computed* from a pub
 - [Part 1 — Authoritative model benchmarks](#part-1--authoritative-model-benchmarks)
 - [Part 2 — Pick a model by scenario](#part-2--pick-a-model-by-scenario)
 - [Part 3 — Real-world token cost (computed)](#part-3--real-world-token-cost-computed)
-- [Part 4 — Gateway scorecard: compliance · price · security · stability](#part-4--gateway-scorecard-compliance--price--security--stability)
+- [Part 4 — Gateway scorecard: compliance · price · security · stability · observability](#part-4--gateway-scorecard-compliance--price--security--stability--observability)
 - [Part 5 — Real-world reviews: what production users report](#part-5--real-world-reviews-what-production-users-report)
 - [Part 6 — Gateway observability: the factors that matter](#part-6--gateway-observability-the-factors-that-matter)
 - [Methodology & caveats](#methodology--caveats)
@@ -69,7 +69,7 @@ Benchmarks rank capability in the abstract; most teams have one concrete job. Th
 | **Cheapest acceptable chat** | GPT-5.4 nano | DeepSeek V4-Flash | ~$0.21 per 1M-token chatbot month vs $17.50 for GPT-5.5 |
 | **Open-ended chat** (human pref) | Gemini 3.1 Pro (Arena 1406) · GPT-5.5 | — | Arena Elo is the metric that tracks "feels good to use" |
 | **On-prem / data-sovereign** | DeepSeek V4 Pro (MIT) · GLM-5.1 | Kimi K2.6 | Open weights you can run inside your own VPC — zero data egress |
-| **Compliance-bound enterprise** | Claude Opus 4.8 / GPT-5.5 via Azure / Bedrock / Vertex | — | Route flagships through a [first-party cloud](#part-4--gateway-scorecard-compliance--price--security--stability) with HIPAA/FedRAMP |
+| **Compliance-bound enterprise** | Claude Opus 4.8 / GPT-5.5 via Azure / Bedrock / Vertex | — | Route flagships through a [first-party cloud](#part-4--gateway-scorecard-compliance--price--security--stability--observability) with HIPAA/FedRAMP |
 
 > A **gateway** is what lets you act on this table without rewriting code: set the capability pick as primary and the value pick as fallback, or route per-request by task. That's the whole point of the [list](README.md).
 
@@ -181,64 +181,66 @@ Benchmarks rank capability in the abstract; most teams have one concrete job. Th
 
 ---
 
-## Part 4 — Gateway scorecard: compliance · price · security · stability
+## Part 4 — Gateway scorecard: compliance · price · security · stability · observability
 
-This is the part buyers actually lose sleep over. Models are interchangeable; the gateway is where your keys, prompts, and audit trail live. Each gateway is scored ★1–5 on four axes using the rubric below, so scores are comparable rather than vibes.
+This is the part buyers actually lose sleep over. Models are interchangeable; the gateway is where your keys, prompts, and audit trail live. Each gateway is scored ★1–5 on five axes using the rubric below, so scores are comparable rather than vibes. The observability axis grades what a gateway actually exposes (per-gateway evidence in [`data/gateways_eval.json`](data/gateways_eval.json)); [Part 6](#part-6--gateway-observability-the-factors-that-matter) explains what each pillar means in practice.
 
 ### Scoring rubric (apply consistently)
 
-| ★ | Compliance | Security | Stability / reliability |
-|---|---|---|---|
-| ★5 | SOC 2 Type II **+** ISO 27001 **+** HIPAA BAA **+** EU residency **+** ZDR | Guardrails + PII redaction + RBAC + SSO/SAML + audit logs + key vault | Public uptime SLA ≥99.9%, status page, multi-provider failover, sub-ms overhead |
-| ★4 | SOC 2 + one of {ISO, HIPAA, residency} + ZDR option | Most of the above, missing one enterprise control | SLA or strong failover + healthy maintenance |
-| ★3 | SOC 2 **or** GDPR posture, ZDR on request | RBAC + audit logs + keys encrypted | Failover/fallback, active releases, no public SLA |
-| ★2 | Privacy policy only, no third-party audit | Basic auth + key storage, few controls | Best-effort, community-maintained |
-| ★1 | None stated | Known unpatched issues / minimal controls | Sporadic maintenance or unproven |
-| 🏠 | *Self-hosted: **you** own these. Score reflects the controls the software gives you to comply.* | | |
+| ★ | Compliance | Security | Stability / reliability | Observability |
+|---|---|---|---|---|
+| ★5 | SOC 2 Type II **+** ISO 27001 **+** HIPAA BAA **+** EU residency **+** ZDR | Guardrails + PII redaction + RBAC + SSO/SAML + audit logs + key vault | Public uptime SLA ≥99.9%, status page, multi-provider failover, sub-ms overhead | All 5 pillars: metrics export + trace export + per-key token/cost attribution + log export + dashboard |
+| ★4 | SOC 2 + one of {ISO, HIPAA, residency} + ZDR option | Most of the above, missing one enterprise control | SLA or strong failover + healthy maintenance | 4 of 5 pillars (typically missing trace export or a bundled UI) |
+| ★3 | SOC 2 **or** GDPR posture, ZDR on request | RBAC + audit logs + keys encrypted | Failover/fallback, active releases, no public SLA | Cost/usage accounting + dashboard, no standards-based (Prometheus/OTel) export |
+| ★2 | Privacy policy only, no third-party audit | Basic auth + key storage, few controls | Best-effort, community-maintained | Basic request logs/stats only |
+| ★1 | None stated | Known unpatched issues / minimal controls | Sporadic maintenance or unproven | Little beyond the provider invoice |
+| 🏠 | *Self-hosted: **you** own these. Score reflects the controls the software gives you to comply.* | | | |
 
 **Markup** = what the gateway charges on top of provider token cost. Self-hosted = $0 markup, you pay infra + ops.
 
 #### Hosted multi-provider gateways
 
-| Gateway | Compliance | Markup | Security | Stability | One-line |
-|---|---|---|---|---|---|
-| **Cloudflare AI Gateway** | ★★★★½ | **0%** | ★★★★ | ★★★★½ | CF holds SOC 2 II / ISO 27001 / PCI; free DLP + fallback; 100% SLA at Business+ |
-| **Portkey** (cloud) | ★★★★½ | usage-based | ★★★★½ | ★★★★ | SOC 2 II + ISO + HIPAA; 50+ guardrail marketplace, RBAC/SSO; 99.99% SLA |
-| **Vercel AI Gateway** | ★★★★ | **0%** | ★★★½ | ★★★★ | SOC 2 II + 99.99% SLA (Enterprise); true 0% even on BYOK |
-| **Helicone** (cloud) | ★★★½ | **0%** passthrough | ★★★½ | ★★★ | SOC 2 + HIPAA (Team); PII detection; OSS core → VPC/self-host option |
-| **Requesty** | ★★★½ | ~5% | ★★★½ | ★★★ | EU residency + PII masking + ZDR; SOC 2 "in progress Q2'26" (not yet Type II) |
-| **OpenRouter** | ★★★½ | ~5.5% credit fee | ★★★ | ★★★ | 60+ providers, auto-failover, free ZDR; **no public SLA** (enterprise only) |
-| **Eden AI** | ★★★½ | ~5.5% platform fee | ★★★ | ★★★½ | France-based, EU-default residency, GDPR-first; SOC 2 UNVERIFIED |
-| **Martian** | ★★★ | volume (undisclosed) | ★★★½ | ★★★ | "Airlock" compliance vetting + cost-routing; certs UNVERIFIED |
+| Gateway | Compliance | Markup | Security | Stability | Obsv | One-line |
+|---|---|---|---|---|---|---|
+| **Cloudflare AI Gateway** | ★★★★½ | **0%** | ★★★★ | ★★★★½ | ★★★★★ | CF holds SOC 2 II / ISO 27001 / PCI; free DLP + fallback; 100% SLA at Business+ |
+| **Portkey** (cloud) | ★★★★½ | usage-based | ★★★★½ | ★★★★ | ★★★★★ | SOC 2 II + ISO + HIPAA; 50+ guardrail marketplace, RBAC/SSO; 99.99% SLA |
+| **Vercel AI Gateway** | ★★★★ | **0%** | ★★★½ | ★★★★ | ★★★★ | SOC 2 II + 99.99% SLA (Enterprise); true 0% even on BYOK |
+| **Helicone** (cloud) | ★★★½ | **0%** passthrough | ★★★½ | ★★★ | ★★★★½ | SOC 2 + HIPAA (Team); PII detection; OSS core → VPC/self-host option |
+| **Requesty** | ★★★½ | ~5% | ★★★½ | ★★★ | ★★★ | EU residency + PII masking + ZDR; SOC 2 "in progress Q2'26" (not yet Type II) |
+| **OpenRouter** | ★★★½ | ~5.5% credit fee | ★★★ | ★★★ | ★★★★½ | 60+ providers, auto-failover, free ZDR; **no public SLA** (enterprise only) |
+| **Eden AI** | ★★★½ | ~5.5% platform fee | ★★★ | ★★★½ | ★★★ | France-based, EU-default residency, GDPR-first; SOC 2 UNVERIFIED |
+| **Martian** | ★★★ | volume (undisclosed) | ★★★½ | ★★★ | ★★½ | "Airlock" compliance vetting + cost-routing; certs UNVERIFIED |
 
 #### First-party clouds (single-vendor, strongest certs)
 
-| Gateway | Compliance | Markup | Security | Stability | One-line |
-|---|---|---|---|---|---|
-| **Azure OpenAI** | ★★★★★ | N/A | ★★★★★ | ★★★★½ | SOC 2 / ISO / HIPAA-BAA / **FedRAMP High**, region pinning, ZDR endpoints |
-| **AWS Bedrock** | ★★★★★ | N/A | ★★★★★ | ★★★★½ | ISO / SOC / CSA STAR / HIPAA / FedRAMP High; multi-model within Bedrock |
-| **Google Vertex AI** | ★★★★½ | N/A | ★★★★★ | ★★★★½ | First GenAI platform to FedRAMP High (2025); SOC 2 / ISO / HIPAA |
-| **OpenAI** (direct) | ★★★★ | N/A | ★★★★ | ★★★★ | SOC 2 II, HIPAA-BAA, ZDR; but single-vendor = no cross-provider failover |
+| Gateway | Compliance | Markup | Security | Stability | Obsv | One-line |
+|---|---|---|---|---|---|---|
+| **Azure OpenAI** | ★★★★★ | N/A | ★★★★★ | ★★★★½ | ★★★★½ | SOC 2 / ISO / HIPAA-BAA / **FedRAMP High**, region pinning, ZDR endpoints |
+| **AWS Bedrock** | ★★★★★ | N/A | ★★★★★ | ★★★★½ | ★★★★ | ISO / SOC / CSA STAR / HIPAA / FedRAMP High; multi-model within Bedrock |
+| **Google Vertex AI** | ★★★★½ | N/A | ★★★★★ | ★★★★½ | ★★★★ | First GenAI platform to FedRAMP High (2025); SOC 2 / ISO / HIPAA |
+| **OpenAI** (direct) | ★★★★ | N/A | ★★★★ | ★★★★ | ★★★★ | SOC 2 II, HIPAA-BAA, ZDR; but single-vendor = no cross-provider failover |
 
 > ⚠️ First-party clouds win compliance but **can't survive a provider outage** — that cross-vendor failover is exactly what a gateway in front of them buys you.
 
 #### Open-source self-hosted (🏠 you own compliance; $0 markup, you pay infra)
 
-| Gateway | Compliance | Security | Stability | One-line |
-|---|---|---|---|---|
-| **Portkey Gateway** (OSS) | ★★★🏠 | ★★★★ | ★★★★ | Apache-2.0; full guardrails, MCP OAuth, fallbacks free; <1ms overhead |
-| **Kong AI Gateway** | ★★★½ | ★★★★½ | ★★★★ | PII sanitization (20+ types), Prompt Guard, RBAC on mature Kong lineage |
-| **Envoy AI Gateway** | ★★★🏠 | ★★★★ | ★★★★ | Multi-provider + MCP gateway w/ OAuth+CEL authz; native K8s/Istio |
-| **Bifrost** (Maxim) | ★★★🏠 | ★★★½ | ★★★★½ | Go; ~11µs overhead benchmark, cluster mode; no known CVEs |
-| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | Rust; <1ms p99 at 10k+ QPS; routing + built-in observability; ⚠️ archived Jun 2026 |
-| **Higress** | ★★★🏠 | ★★★½ | ★★★★ | Istio/Envoy AI-native, Wasm plugins, console; Alibaba-backed |
-| **Apache APISIX** | ★★★🏠 | ★★★ | ★★★★ | ai-proxy / ai-prompt-guard plugins on mature ASF gateway |
-| **LiteLLM** | ★★★🏠 | ★★½ ⚠️ | ★★★★ | SOC 2 I + ISO (Enterprise); **patch to ≥v1.83.7** — 2 serious 2026 CVEs (1 RCE on CISA KEV), both fixed |
-| **GPT-Load** | ★★🏠 | ★★½ | ★★★½ | Go key-pool rotation + encrypted key store + dual auth; proxy-level only |
-| **new-api** | ★★🏠 | ★½ ⚠️ | ★★★ | ~38k★ & active, but **cluster of 2026 CVEs** (IDOR/SSRF/SQLi) — sandbox + patch fast |
-| **one-api** | ★★🏠 | ★★ | ★★½ | The MIT original; maintenance slowed — new-api is the more active successor |
+| Gateway | Compliance | Security | Stability | Obsv | One-line |
+|---|---|---|---|---|---|
+| **Portkey Gateway** (OSS) | ★★★🏠 | ★★★★ | ★★★★ | ★★ | Apache-2.0; full guardrails, MCP OAuth, fallbacks free; <1ms overhead |
+| **Kong AI Gateway** | ★★★½ | ★★★★½ | ★★★★ | ★★★½ | PII sanitization (20+ types), Prompt Guard, RBAC on mature Kong lineage |
+| **Envoy AI Gateway** | ★★★🏠 | ★★★★ | ★★★★ | ★★★★ | Multi-provider + MCP gateway w/ OAuth+CEL authz; native K8s/Istio |
+| **Bifrost** (Maxim) | ★★★🏠 | ★★★½ | ★★★★½ | ★★★★★ | Go; ~11µs overhead benchmark, cluster mode; no known CVEs |
+| **TensorZero** | ★★★🏠 | ★★★ | ★★★★ | ★★★★½ | Rust; <1ms p99 at 10k+ QPS; routing + built-in observability; ⚠️ archived Jun 2026 |
+| **Higress** | ★★★🏠 | ★★★½ | ★★★★ | ★★★★½ | Istio/Envoy AI-native, Wasm plugins, console; Alibaba-backed |
+| **Apache APISIX** | ★★★🏠 | ★★★ | ★★★★ | ★★★½ | ai-proxy / ai-prompt-guard plugins on mature ASF gateway |
+| **LiteLLM** | ★★★🏠 | ★★½ ⚠️ | ★★★★ | ★★★★★ | SOC 2 I + ISO (Enterprise); **patch to ≥v1.83.7** — 2 serious 2026 CVEs (1 RCE on CISA KEV), both fixed |
+| **GPT-Load** | ★★🏠 | ★★½ | ★★★½ | ★½ | Go key-pool rotation + encrypted key store + dual auth; proxy-level only |
+| **new-api** | ★★🏠 | ★½ ⚠️ | ★★★ | ★★½ | ~38k★ & active, but **cluster of 2026 CVEs** (IDOR/SSRF/SQLi) — sandbox + patch fast |
+| **one-api** | ★★🏠 | ★★ | ★★½ | ★★ | The MIT original; maintenance slowed — new-api is the more active successor |
 
 > ⚠️ **CVE honesty.** Popularity makes OSS gateways targets. LiteLLM (pre-auth SQLi + unauth RCE) and new-api (IDOR/SSRF/SQLi) both had serious 2026 advisories — *patched*, but the lesson is: pin to current stable, restrict egress, and don't expose the admin panel publicly. Absence of found CVEs (Bifrost, TensorZero, Higress, Envoy, GPT-Load) ≠ proven-secure; it can mean less scrutiny.
+
+> 📊 **Obsv column** = the five-pillar observability score from the rubric; per-gateway evidence (which pillars, which docs) is machine-readable in [`data/gateways_eval.json`](data/gateways_eval.json). Standouts: **LiteLLM / Bifrost / Cloudflare / Portkey cloud** cover all five pillars; **Portkey OSS v1.x ships near-zero observability** (its telemetry lands in the unreleased 2.0 branch); **Envoy AI Gateway** is the strongest standards-first pick (OTel GenAI-semconv, no UI); CN-panel gateways (new-api/one-api/GPT-Load) invert — strong billing UI, no Prometheus/OTel.
 
 > 🏠 **Self-hosted shifts the burden to you.** LiteLLM/Bifrost/Kong score on the *controls they hand you* (RBAC, audit logs, key vaulting, on-prem) — but SOC 2 / HIPAA compliance of the *deployment* is yours to earn. That's the trade for $0 markup and full data control.
 
@@ -246,7 +248,7 @@ This is the part buyers actually lose sleep over. Models are interchangeable; th
 
 ## Part 5 — Real-world reviews: what production users report
 
-Benchmarks rank capability; this ranks **what actually breaks once a gateway is in production**. Sourced from incident postmortems, status pages, security research and acquisition news — every dated event below links to a primary or recognized source, summarized fairly (what users praise *and* complain about). Read it alongside the [scorecard](#part-4--gateway-scorecard-compliance--price--security--stability): stars measure popularity; this measures the 3am pager.
+Benchmarks rank capability; this ranks **what actually breaks once a gateway is in production**. Sourced from incident postmortems, status pages, security research and acquisition news — every dated event below links to a primary or recognized source, summarized fairly (what users praise *and* complain about). Read it alongside the [scorecard](#part-4--gateway-scorecard-compliance--price--security--stability--observability): stars measure popularity; this measures the 3am pager.
 
 | Gateway | Praised for | Recurring gripe | Dated event worth knowing |
 |---|---|---|---|
@@ -266,7 +268,7 @@ Benchmarks rank capability; this ranks **what actually breaks once a gateway is 
 
 ## Part 6 — Gateway observability: the factors that matter
 
-*Why this is its own axis — separate from the [scorecard](#part-4--gateway-scorecard-compliance--price--security--stability) and from generic APM: a gateway sits between many internal consumers and metered, $-per-token providers, so the unit of analysis is **tokens and dollars attributed per key / team / user / model** — and the gateway's own value-add (retries, fallback, caching, guardrails) actively **masks** cost and failure unless it's instrumented. The cross-vendor standard is the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) (`gen_ai.*` spans + metrics), now natively consumed by Datadog/Honeycomb/Grafana — but most `gen_ai.*` attributes are still **"Development"** status in 2026, and several heavily-marketed capabilities (online evals, drift detection) are real **product features, not standards**. This rubric grades what a gateway actually exposes, flags standardized vs aspirational, and stays neutral.*
+*Why this is its own axis — separate from the [scorecard](#part-4--gateway-scorecard-compliance--price--security--stability--observability) and from generic APM: a gateway sits between many internal consumers and metered, $-per-token providers, so the unit of analysis is **tokens and dollars attributed per key / team / user / model** — and the gateway's own value-add (retries, fallback, caching, guardrails) actively **masks** cost and failure unless it's instrumented. The cross-vendor standard is the [OpenTelemetry GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai) (`gen_ai.*` spans + metrics), now natively consumed by Datadog/Honeycomb/Grafana — but most `gen_ai.*` attributes are still **"Development"** status in 2026, and several heavily-marketed capabilities (online evals, drift detection) are real **product features, not standards**. This rubric grades what a gateway actually exposes, flags standardized vs aspirational, and stays neutral.*
 
 ### Table-stakes — miss these and it's barely instrumented (mostly maps to Required/Stable OTel)
 
@@ -339,4 +341,4 @@ Per-cell sources are listed in [`data/models.json`](data/models.json) and the ga
 
 *Maintained as part of [Awesome AI Gateway](README.md). Model scores and prices change fast; this set is reviewed on a published cadence and every figure is dated at its source.*
 
-**Last reviewed: 2026-07-03** · benchmark & pricing snapshot in [`data/models.json`](data/models.json), gateway scores in [`data/gateways_eval.json`](data/gateways_eval.json).
+**Last reviewed: 2026-07-06** · benchmark & pricing snapshot in [`data/models.json`](data/models.json), gateway scores in [`data/gateways_eval.json`](data/gateways_eval.json).

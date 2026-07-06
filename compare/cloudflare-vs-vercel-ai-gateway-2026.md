@@ -1,6 +1,6 @@
 # Cloudflare AI Gateway vs Vercel AI Gateway (2026): Which 0%-Markup Hosted Gateway?
 
-*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
+*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
 > 📊 **Key numbers** · Both gateways are **0% markup**, so the deciding cost factor isn't the gateway — it's the model: a 100K-token report runs **$0.03** (DeepSeek V4-Flash) to **$3.01** (GPT-5.5), a **~106× spread** ([computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06).
 

@@ -35,10 +35,11 @@ class TestScorecardRows(unittest.TestCase):
         rows = scorecard_rows([
             {"name": "G", "type": "self-hosted", "self_hosted": True,
              "compliance": 3.0, "markup": "$0", "security": 2.5, "stability": 4.0,
-             "cve": ["CVE-1", "CVE-2"]},
+             "observability": 5.0, "cve": ["CVE-1", "CVE-2"]},
         ])
         self.assertEqual(rows[0]["gateway"], "G")
         self.assertEqual(rows[0]["cve"], "CVE-1; CVE-2")
+        self.assertEqual(rows[0]["observability"], 5.0)
 
     def test_missing_cve_is_empty(self):
         rows = scorecard_rows([
@@ -46,6 +47,13 @@ class TestScorecardRows(unittest.TestCase):
              "compliance": 4.0, "markup": "0%", "security": 4.0, "stability": 4.0},
         ])
         self.assertEqual(rows[0]["cve"], "")
+
+    def test_missing_observability_is_empty(self):
+        rows = scorecard_rows([
+            {"name": "G", "type": "hosted", "self_hosted": False,
+             "compliance": 4.0, "markup": "0%", "security": 4.0, "stability": 4.0},
+        ])
+        self.assertEqual(rows[0]["observability"], "")
 
 
 if __name__ == "__main__":

@@ -55,7 +55,7 @@
 <h2>安全:别只看 Star 数</h2>
 <p>自托管 = 安全你自己扛。2026 年的实话:</p>
 <ul><li><strong>new-api</strong> 2026 年有一串 CVE(IDOR 越权 CVE-2026-30886、SSRF、SQLi/DoS)——<strong>务必隔离部署、限制出站、别把后台暴露公网、及时打补丁</strong>。</li><li><strong>one-api</strong> 同源风险,且维护放缓,上生产前自行审计。</li><li><strong>LiteLLM</strong> 两个严重 CVE(预鉴权 SQLi + 一个上了 CISA 在野利用清单的 RCE)均<strong>已在 v1.83.7 修复</strong>——锁定最新 stable 即可。</li></ul>
-<p>23 个网关的合规/安全/稳定 ★1–5 评分见<a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.zh-CN.md#第四部分--网关四维评分合规价格安全稳定">网关评分卡</a>。</p>
+<p>23 个网关的合规/安全/稳定 ★1–5 评分见<a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.zh-CN.md#第四部分--网关五维评分合规价格安全稳定可观测">网关评分卡</a>。</p>
 <h2>别忽略模型成本</h2>
 <p>网关本身 0 加价,真正花钱的是<strong>背后的模型</strong>。同一份 10 万 token 报告:<strong>DeepSeek $0.03 vs GPT-5.5 $3.01,差 106 倍</strong>。国产模型(DeepSeek/Kimi/GLM/通义)把成本压到了几十分之一,还能私有化、数据零出境——这正是国内自建中转的最大价值。<a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.zh-CN.md">完整成本对比表</a>。</p>
 <h2>结论</h2>

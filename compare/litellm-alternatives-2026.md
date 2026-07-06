@@ -1,8 +1,8 @@
 # LiteLLM Alternatives (2026): 8 AI Gateways Compared by Cost, Security & Self-Hosting
 
-*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
+*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
-> 📊 **Key numbers** · **LiteLLM** is the most-starred OSS gateway (51k★) but shipped two serious 2026 CVEs — a pre-auth SQL injection and an unauthenticated RCE on CISA's KEV list (both fixed in current stable; pin it and don't expose the admin panel) ([security scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability)). On cost the model dominates, not the gateway: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed) 2026-06).
+> 📊 **Key numbers** · **LiteLLM** is the most-starred OSS gateway (51k★) but shipped two serious 2026 CVEs — a pre-auth SQL injection and an unauthenticated RCE on CISA's KEV list (both fixed in current stable; pin it and don't expose the admin panel) ([security scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability)). On cost the model dominates, not the gateway: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed) 2026-06).
 
 **[LiteLLM](https://github.com/BerriAI/litellm)** is the default self-hosted LLM gateway — one OpenAI-compatible proxy in front of 100+ providers, virtual keys, budgets, load balancing. It's popular for good reason. But people go looking for alternatives for three honest reasons:
 
@@ -10,7 +10,7 @@
 2. **They don't want to run a server at all** → a *hosted* gateway.
 3. **They want lower latency or a different governance model** → a Go/Rust-native proxy, or an enterprise guardrail platform.
 
-Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubric](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability) (snapshot 2026-06).
+Here's the honest, data-backed map. Scores are ★1–5 from the [scorecard rubric](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) (snapshot 2026-06).
 
 ## TL;DR — pick by your actual constraint
 

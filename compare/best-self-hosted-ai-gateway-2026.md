@@ -2,7 +2,7 @@
 
 *Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
-> 📊 **Key numbers** · Self-hosting adds **$0** per-token markup — but the model still dominates the bill: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06). And star count ≠ safety — **LiteLLM** (51k★) shipped 2026 CVEs, so weigh [patch discipline](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability), not just popularity.
+> 📊 **Key numbers** · Self-hosting adds **$0** per-token markup — but the model still dominates the bill: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06). And star count ≠ safety — **LiteLLM** (51k★) shipped 2026 CVEs, so weigh [patch discipline](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability), not just popularity.
 
 If you want one OpenAI-compatible endpoint for every model — but on **your own infrastructure, with $0 markup** — you're choosing a self-hosted AI gateway. Here are the four that matter in 2026, and how to pick.
 
@@ -36,7 +36,7 @@ Self-hosting means **you own the security**. Honest 2026 facts:
 - **Bifrost / Portkey**: no major CVEs surfaced — but absence of found CVEs ≠ proven secure (less scrutiny).
 - **Kong**: inherits Kong's mature, hardened auth/RBAC stack.
 
-Full ★1–5 compliance/security/stability scores for 23 gateways: [gateway scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability).
+Full ★1–5 compliance/security/stability scores for 23 gateways: [gateway scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability).
 
 ## Don't forget the model cost
 

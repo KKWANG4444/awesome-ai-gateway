@@ -43,6 +43,7 @@ def scorecard_rows(gateways: list[dict]) -> list[dict]:
             "gateway": g["name"], "type": g["type"], "self_hosted": g["self_hosted"],
             "compliance": g["compliance"], "markup": g["markup"],
             "security": g["security"], "stability": g["stability"],
+            "observability": g.get("observability", ""),
             "cve": "; ".join(g.get("cve", [])),
         }
         for g in gateways
