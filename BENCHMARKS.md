@@ -242,6 +242,8 @@ This is the part buyers actually lose sleep over. Models are interchangeable; th
 
 > 📊 **Obsv column** = the five-pillar observability score from the rubric; per-gateway evidence (which pillars, which docs) is machine-readable in [`data/gateways_eval.json`](data/gateways_eval.json). Standouts: **LiteLLM / Bifrost / Cloudflare / Portkey cloud** cover all five pillars; **Portkey OSS v1.x ships near-zero observability** (its telemetry lands in the unreleased 2.0 branch); **Envoy AI Gateway** is the strongest standards-first pick (OTel GenAI-semconv, no UI); CN-panel gateways (new-api/one-api/GPT-Load) invert — strong billing UI, no Prometheus/OTel.
 
+> ⏱️ **Gateway overhead, independently measured.** Vendors market conflicting overhead claims (µs-level vs ms-level) with no third-party numbers — so this project measures it: a reproducible harness (mock OpenAI upstream, interleaved rounds, median-of-medians; no API keys) runs monthly in CI. First result: **LiteLLM v1.91.0 adds ~6.5 ms median per request** (IQR 6.38–6.62; direct 1.79 ms → 8.26 ms through the proxy, GitHub-runner Linux, 2026-07). Data: [`llm-gateway-bench/data/overhead.json`](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) · [methodology](https://github.com/cuihuan/llm-gateway-bench/blob/main/docs/methodology.md) — PRs adding Bifrost/Portkey/Kong to the harness are welcome.
+
 > 🏠 **Self-hosted shifts the burden to you.** LiteLLM/Bifrost/Kong score on the *controls they hand you* (RBAC, audit logs, key vaulting, on-prem) — but SOC 2 / HIPAA compliance of the *deployment* is yours to earn. That's the trade for $0 markup and full data control.
 
 ---

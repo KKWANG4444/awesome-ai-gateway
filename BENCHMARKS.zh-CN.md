@@ -240,6 +240,8 @@
 
 > ⚠️ **CVE 诚实披露。** 越流行的开源网关越是攻击目标。LiteLLM（预鉴权 SQLi + 未鉴权 RCE）和 new-api（IDOR/SSRF/SQLi）2026 年都有严重通告——*已修复*，但教训是：锁定到最新 stable、限制出站、别把管理后台暴露到公网。没发现 CVE（Bifrost、TensorZero、Higress、Envoy、GPT-Load）≠ 已证明安全，也可能只是关注度低。
 
+> ⏱️ **网关开销,独立实测。** 厂商们的开销宣传互相矛盾（微秒级 vs 毫秒级）且无第三方数据——本项目直接测：可复现基准（mock OpenAI 上游、轮次交错、中位数的中位数；无需任何 API key），每月在 CI 跑。首个结果：**LiteLLM v1.91.0 每请求增加约 6.5ms 中位开销**（IQR 6.38–6.62；直连 1.79ms → 过代理 8.26ms，GitHub Linux 跑机，2026-07）。数据：[`llm-gateway-bench/data/overhead.json`](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) · [方法学](https://github.com/cuihuan/llm-gateway-bench/blob/main/docs/methodology.md)——欢迎 PR 把 Bifrost/Portkey/Kong 加进基准。
+
 > 📊 **可观测列** = 上方标准里的五支柱评分；逐网关证据（有哪些支柱、出自哪份文档）机器可读地存放在 [`data/gateways_eval.json`](data/gateways_eval.json)。突出者：**LiteLLM / Bifrost / Cloudflare / Portkey 云**五柱齐全；**Portkey 开源 v1.x 几乎零可观测**（遥测在未发布的 2.0 分支）；**Envoy AI Gateway** 是最「标准优先」的选择（OTel GenAI 语义约定、无 UI）；国产面板类（new-api/one-api/GPT-Load）正相反——计费后台强，无 Prometheus/OTel。
 
 ---
