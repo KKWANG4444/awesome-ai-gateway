@@ -5,21 +5,91 @@
   <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
   <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
   <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
-  <updated>2026-07-06T06:03:18Z</updated>
+  <updated>2026-07-07T06:06:07Z</updated>
   <author><name>Awesome AI Gateway</name></author>
+  <entry>
+    <title>QuantumNous/new-api v1.0.0-rc.19-i18nfix.2</title>
+    <link href="https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.19-i18nfix.2" />
+    <id>https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.19-i18nfix.2</id>
+    <updated>2026-07-07T06:06:07Z</updated>
+    <summary>QuantumNous/new-api released v1.0.0-rc.19-i18nfix.2.</summary>
+  </entry>
+  <entry>
+    <title>maximhq/bifrost plugins/telemetry/v1.5.27</title>
+    <link href="https://github.com/maximhq/bifrost/releases/tag/plugins/telemetry/v1.5.27" />
+    <id>https://github.com/maximhq/bifrost/releases/tag/plugins/telemetry/v1.5.27</id>
+    <updated>2026-07-07T04:50:40Z</updated>
+    <summary>maximhq/bifrost released Plugin telemetry v1.5.27.</summary>
+  </entry>
+  <entry>
+    <title>Wei-Shaw/sub2api v0.1.146</title>
+    <link href="https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.146" />
+    <id>https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.146</id>
+    <updated>2026-07-07T03:16:34Z</updated>
+    <summary>Wei-Shaw/sub2api released Sub2API 0.1.146.</summary>
+  </entry>
+  <entry>
+    <title>archestra-ai/archestra platform-v1.3.1</title>
+    <link href="https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.1" />
+    <id>https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.1</id>
+    <updated>2026-07-07T01:07:57Z</updated>
+    <summary>archestra-ai/archestra released platform: v1.3.1.</summary>
+  </entry>
+  <entry>
+    <title>router-for-me/CLIProxyAPI v7.2.51</title>
+    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.51" />
+    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.51</id>
+    <updated>2026-07-06T18:40:56Z</updated>
+    <summary>router-for-me/CLIProxyAPI released v7.2.51.</summary>
+  </entry>
+  <entry>
+    <title>ascending-llc/jarvis-registry asc0.5.1</title>
+    <link href="https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.1" />
+    <id>https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.1</id>
+    <updated>2026-07-06T17:21:33Z</updated>
+    <summary>ascending-llc/jarvis-registry released Jarvis Registry asc0.5.1.</summary>
+  </entry>
+  <entry>
+    <title>musistudio/claude-code-router v3.0.8</title>
+    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.8" />
+    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.8</id>
+    <updated>2026-07-06T14:28:34Z</updated>
+    <summary>musistudio/claude-code-router released v3.0.8.</summary>
+  </entry>
+  <entry>
+    <title>ENTERPILOT/GoModel v0.1.49</title>
+    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.49" />
+    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.49</id>
+    <updated>2026-07-06T14:10:32Z</updated>
+    <summary>ENTERPILOT/GoModel released v0.1.49.</summary>
+  </entry>
+  <entry>
+    <title>yym68686/uni-api v1.7.165</title>
+    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.165" />
+    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.165</id>
+    <updated>2026-07-06T13:52:12Z</updated>
+    <summary>yym68686/uni-api released Release 1.7.165.</summary>
+  </entry>
+  <entry>
+    <title>agentic-community/mcp-gateway-registry 1.26.0</title>
+    <link href="https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.26.0" />
+    <id>https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.26.0</id>
+    <updated>2026-07-06T12:04:00Z</updated>
+    <summary>agentic-community/mcp-gateway-registry released 1.26.0 - Egress Auth &amp; Security Hardening.</summary>
+  </entry>
+  <entry>
+    <title>theopenco/llmgateway v1.7.0</title>
+    <link href="https://github.com/theopenco/llmgateway/releases/tag/v1.7.0" />
+    <id>https://github.com/theopenco/llmgateway/releases/tag/v1.7.0</id>
+    <updated>2026-07-06T10:40:06Z</updated>
+    <summary>theopenco/llmgateway released v1.7.0.</summary>
+  </entry>
   <entry>
     <title>diegosouzapw/OmniRoute v3.8.45</title>
     <link href="https://github.com/diegosouzapw/OmniRoute/releases/tag/v3.8.45" />
     <id>https://github.com/diegosouzapw/OmniRoute/releases/tag/v3.8.45</id>
     <updated>2026-07-06T06:03:18Z</updated>
     <summary>diegosouzapw/OmniRoute released v3.8.45.</summary>
-  </entry>
-  <entry>
-    <title>yym68686/uni-api v1.7.164</title>
-    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.164" />
-    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.164</id>
-    <updated>2026-07-05T12:19:22Z</updated>
-    <summary>yym68686/uni-api released Release 1.7.164.</summary>
   </entry>
   <entry>
     <title>algorithmicsuperintelligence/optillm v0.3.21</title>
@@ -36,41 +106,6 @@
     <summary>BerriAI/litellm released v1.91.0.</summary>
   </entry>
   <entry>
-    <title>ENTERPILOT/GoModel v0.1.48</title>
-    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.48" />
-    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.48</id>
-    <updated>2026-07-04T14:05:45Z</updated>
-    <summary>ENTERPILOT/GoModel released v0.1.48.</summary>
-  </entry>
-  <entry>
-    <title>Wei-Shaw/sub2api v0.1.144</title>
-    <link href="https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.144" />
-    <id>https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.144</id>
-    <updated>2026-07-04T03:49:29Z</updated>
-    <summary>Wei-Shaw/sub2api released Sub2API 0.1.144.</summary>
-  </entry>
-  <entry>
-    <title>router-for-me/CLIProxyAPI v7.2.50</title>
-    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.50" />
-    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.50</id>
-    <updated>2026-07-03T16:38:22Z</updated>
-    <summary>router-for-me/CLIProxyAPI released v7.2.50.</summary>
-  </entry>
-  <entry>
-    <title>musistudio/claude-code-router v3.0.7</title>
-    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.7" />
-    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.7</id>
-    <updated>2026-07-03T15:07:59Z</updated>
-    <summary>musistudio/claude-code-router released v3.0.7.</summary>
-  </entry>
-  <entry>
-    <title>archestra-ai/archestra platform-v1.2.82</title>
-    <link href="https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.82" />
-    <id>https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.82</id>
-    <updated>2026-07-03T14:10:23Z</updated>
-    <summary>archestra-ai/archestra released platform: v1.2.82.</summary>
-  </entry>
-  <entry>
     <title>gpustack/gpustack v2.2.1</title>
     <link href="https://github.com/gpustack/gpustack/releases/tag/v2.2.1" />
     <id>https://github.com/gpustack/gpustack/releases/tag/v2.2.1</id>
@@ -83,13 +118,6 @@
     <id>https://github.com/decolua/9router/releases/tag/v0.5.18</id>
     <updated>2026-07-03T08:38:06Z</updated>
     <summary>decolua/9router released v0.5.18: cached token tracking, provider fixes version 0.5.18.</summary>
-  </entry>
-  <entry>
-    <title>QuantumNous/new-api v1.0.0-rc.16</title>
-    <link href="https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.16" />
-    <id>https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.16</id>
-    <updated>2026-07-03T07:41:42Z</updated>
-    <summary>QuantumNous/new-api released v1.0.0-rc.16.</summary>
   </entry>
   <entry>
     <title>tbphp/gpt-load v1.4.9</title>
@@ -113,13 +141,6 @@
     <summary>stacklok/toolhive released v0.33.0.</summary>
   </entry>
   <entry>
-    <title>maximhq/bifrost ent-v1.5.2-base</title>
-    <link href="https://github.com/maximhq/bifrost/releases/tag/ent-v1.5.2-base" />
-    <id>https://github.com/maximhq/bifrost/releases/tag/ent-v1.5.2-base</id>
-    <updated>2026-07-01T11:32:29Z</updated>
-    <summary>maximhq/bifrost released Enterprise v1.5.2 base .</summary>
-  </entry>
-  <entry>
     <title>lightseekorg/smg v1.7.0</title>
     <link href="https://github.com/lightseekorg/smg/releases/tag/v1.7.0" />
     <id>https://github.com/lightseekorg/smg/releases/tag/v1.7.0</id>
@@ -134,25 +155,11 @@
     <summary>etalab-ia/OpenGateLLM released 0.4.8.</summary>
   </entry>
   <entry>
-    <title>theopenco/llmgateway v1.6.0</title>
-    <link href="https://github.com/theopenco/llmgateway/releases/tag/v1.6.0" />
-    <id>https://github.com/theopenco/llmgateway/releases/tag/v1.6.0</id>
-    <updated>2026-06-29T10:42:15Z</updated>
-    <summary>theopenco/llmgateway released v1.6.0.</summary>
-  </entry>
-  <entry>
     <title>labring/aiproxy v0.6.5</title>
     <link href="https://github.com/labring/aiproxy/releases/tag/v0.6.5" />
     <id>https://github.com/labring/aiproxy/releases/tag/v0.6.5</id>
     <updated>2026-06-29T10:33:08Z</updated>
     <summary>labring/aiproxy released Version 0.6.5.</summary>
-  </entry>
-  <entry>
-    <title>agentic-community/mcp-gateway-registry 1.25.0</title>
-    <link href="https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.25.0" />
-    <id>https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.25.0</id>
-    <updated>2026-06-26T23:18:44Z</updated>
-    <summary>agentic-community/mcp-gateway-registry released 1.25.0 - Agentic Registry Discovery (ARD), Lifecycle Webhooks, and Storage Simplification.</summary>
   </entry>
   <entry>
     <title>llm-d/llm-d v0.8.1</title>
@@ -209,12 +216,5 @@
     <id>https://github.com/envoyproxy/ai-gateway/releases/tag/v1.0.0</id>
     <updated>2026-06-23T15:32:39Z</updated>
     <summary>envoyproxy/ai-gateway released v1.0.0.</summary>
-  </entry>
-  <entry>
-    <title>IBM/mcp-context-forge v1.0.4</title>
-    <link href="https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.4" />
-    <id>https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.4</id>
-    <updated>2026-06-23T12:49:04Z</updated>
-    <summary>IBM/mcp-context-forge released v1.0.4 - Rust Migration, Docker Improvements, Security Enhancements, and Bug Fixes.</summary>
   </entry>
 </feed>
