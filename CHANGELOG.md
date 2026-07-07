@@ -38,6 +38,11 @@ structural and editorial changes.
 - **KeepRouter** (OpenAI+Anthropic-compatible gateway, native `/v1/messages`) added by
   [@Digidai](https://github.com/Digidai) in [#22](https://github.com/cuihuan/awesome-ai-gateway/pull/22)
   — live endpoint verified before merge; CoderPlan + KeepRouter also added to the relay watch-list. 🙏
+- **RouterPlex** added by [@MaridWSH](https://github.com/MaridWSH) in
+  [#23](https://github.com/cuihuan/awesome-ai-gateway/pull/23) and **AI快站 (aifast.club)** added by
+  [@KKWANG4444](https://github.com/KKWANG4444) in [#24](https://github.com/cuihuan/awesome-ai-gateway/pull/24)
+  — both live endpoints verified before merge (LiteLLM-style / new-api error signatures respectively);
+  both on the relay watch-list. 🙏
 
 ### Changed
 - Account-less / crypto-only relays (**Loop Gateway**, **nullsink**) now carry an explicit
@@ -47,8 +52,9 @@ structural and editorial changes.
   Pydantic Logfire) as deprecated/renamed — both verified `archived` via the GitHub API.
 
 ### Contributors
-Thanks to [@c99e](https://github.com/c99e), [@onepaperbox](https://github.com/onepaperbox) and
-[@Digidai](https://github.com/Digidai) for community PRs. Spotted a gateway we're missing, or run
+Thanks to [@c99e](https://github.com/c99e), [@onepaperbox](https://github.com/onepaperbox),
+[@Digidai](https://github.com/Digidai), [@MaridWSH](https://github.com/MaridWSH) and
+[@KKWANG4444](https://github.com/KKWANG4444) for community PRs. Spotted a gateway we're missing, or run
 one in production? See [CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
 
 ## [1.0.0] - 2026-06-18
