@@ -40,6 +40,22 @@ A project belongs on this list if **all** of these hold:
 - [ ] `python -m unittest discover -s scripts -p 'test_*.py'` passes if you touched scripts
 - [ ] One project per PR (easier to review)
 
+## Badge for listed projects
+
+If your project is listed here, you're welcome to show it — it links your users to an
+independent, evidence-based comparison (and helps them verify you against the scorecard):
+
+[![Listed in Awesome AI Gateway](https://img.shields.io/badge/listed%20in-Awesome%20AI%20Gateway-58a6ff?logo=awesomelists&logoColor=white)](https://github.com/cuihuan/awesome-ai-gateway)
+
+```markdown
+[![Listed in Awesome AI Gateway](https://img.shields.io/badge/listed%20in-Awesome%20AI%20Gateway-58a6ff?logo=awesomelists&logoColor=white)](https://github.com/cuihuan/awesome-ai-gateway)
+```
+
+Entirely optional, no strings attached. The badge doesn't change your scores or your
+watch-list status — those follow the [published rubric](BENCHMARKS.md#scoring-rubric-apply-consistently)
+and evidence only. (Watch-list entries: the badge is fine too; ⚠️ Unverified is a
+verification status, not a verdict.)
+
 ## Report a sketchy relay (community watch list)
 
 This list **excludes** ToS-violating "free-api" relays — but it also helps you spot

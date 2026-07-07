@@ -586,6 +586,8 @@ No vendor money, no affiliate links, CC0. If it saves you one surprise bill, it 
 
 Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first. Inclusion criteria, in short: the project must be an actual gateway/proxy/router for LLM or agent traffic (not an SDK wrapper or chat UI), publicly available, and active within the last 12 months — or clearly labeled as stale.
 
+Listed here? You're welcome to show the badge — [![Listed in Awesome AI Gateway](https://img.shields.io/badge/listed%20in-Awesome%20AI%20Gateway-58a6ff?logo=awesomelists&logoColor=white)](https://github.com/cuihuan/awesome-ai-gateway) — snippet in [CONTRIBUTING.md](CONTRIBUTING.md#badge-for-listed-projects). It never changes your scores; those follow the rubric and evidence only.
+
 ## 🔗 Related lists
 
 This list lives in the awesome-list ecosystem. If it doesn't have what you need, these well-maintained neighbors might — and the gateways here sit _between_ their tools and the models:

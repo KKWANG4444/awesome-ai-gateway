@@ -586,6 +586,8 @@ OpenRouter 是托管（零运维、约 5.5% 手续费、400+ 模型）；LiteLLM
 
 欢迎贡献！请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。收录标准简述：必须是真正的 LLM/Agent 流量网关、代理或路由（不是 SDK 封装或聊天 UI），公开可用，且最近 12 个月内活跃——或明确标注停滞状态。
 
+已被收录？欢迎挂上徽章——[![Listed in Awesome AI Gateway](https://img.shields.io/badge/listed%20in-Awesome%20AI%20Gateway-58a6ff?logo=awesomelists&logoColor=white)](https://github.com/cuihuan/awesome-ai-gateway)——代码见 [CONTRIBUTING.md](CONTRIBUTING.md#badge-for-listed-projects)。徽章不影响评分；评分只看标准和证据。
+
 ## 🔗 相关清单
 
 本清单身处 awesome-list 生态。如果这里没有你要的，下面这些维护良好的"邻居"也许有——而本清单的网关正好位于它们的工具与模型**之间**：
