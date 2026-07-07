@@ -1,8 +1,8 @@
 # Cloudflare AI Gateway vs Vercel AI Gateway (2026): Which 0%-Markup Hosted Gateway?
 
-*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
+*Last updated 2026-07-07 · Part of [Awesome AI Gateway](../README.md) — the only AI-gateway list with a [reproducible cost benchmark](../BENCHMARKS.md) and a [security-honest scorecard](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
-> 📊 **Key numbers** · Both gateways are **0% markup**, so the deciding cost factor isn't the gateway — it's the model: a 100K-token report runs **$0.03** (DeepSeek V4-Flash) to **$3.01** (GPT-5.5), a **~106× spread** ([computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06).
+> 📊 **Key numbers** · Both gateways are **0% markup**, so the deciding cost factor isn't the gateway — it's the model: a 100K-token report runs **$0.03** (DeepSeek V4-Flash) to **$3.01** (GPT-5.5), a **~106× spread** ([computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06). And caching is measurably underused: across 1,000+ orgs' production traffic **only 28% of LLM calls show any cached input**, while system prompts eat 69% of input tokens ([Datadog, 2026-04](https://www.datadoghq.com/state-of-ai-engineering/)) — both gateways ship caching; turning it on is free money.
 
 If you want a **hosted** AI gateway that **doesn't take a cut of your token spend**, the two from major infrastructure vendors are **Cloudflare AI Gateway** and **Vercel AI Gateway**. Both are **0% markup**, both give you one endpoint in front of many providers, both add observability and fallback. They differ on where they sit in your stack and how far the governance goes. Here's the honest, data-backed breakdown.
 

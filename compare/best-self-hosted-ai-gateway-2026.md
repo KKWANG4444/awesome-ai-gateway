@@ -1,8 +1,8 @@
 # Best Self-Hosted AI Gateway in 2026 (LiteLLM vs Bifrost vs Portkey vs Kong)
 
-*Last updated 2026-06-16 · Part of [Awesome AI Gateway](../README.md). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
+*Last updated 2026-07-07 · Part of [Awesome AI Gateway](../README.md). [⭐ Star it](https://github.com/cuihuan/awesome-ai-gateway).*
 
-> 📊 **Key numbers** · Self-hosting adds **$0** per-token markup — but the model still dominates the bill: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06). And star count ≠ safety — **LiteLLM** (51k★) shipped 2026 CVEs, so weigh [patch discipline](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability), not just popularity.
+> 📊 **Key numbers** · Self-hosting adds **$0** per-token markup — but the model still dominates the bill: a 100K-token report ranges **$0.03–$3.01** (a **~106×** spread, [computed](../BENCHMARKS.md#part-3--real-world-token-cost-computed), 2026-06). And star count ≠ safety — **LiteLLM** (51k★) shipped 2026 CVEs, so weigh [patch discipline](../BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability), not just popularity. Self-hosting the gateway doesn't exempt you from provider outages: peer-reviewed measurements show the OpenAI/Anthropic APIs fail **~every 2 days** with ~1h median recovery ([ICPE 2025](https://arxiv.org/abs/2501.12469)) — cross-provider fallback in your gateway config is the fix.
 
 If you want one OpenAI-compatible endpoint for every model — but on **your own infrastructure, with $0 markup** — you're choosing a self-hosted AI gateway. Here are the four that matter in 2026, and how to pick.
 
