@@ -105,7 +105,7 @@ Do you want to self-host?
 └─ YES — self-hosted / open source
     ├─ Python stack, broadest features ─────────▶ LiteLLM
     ├─ Raw performance (Go/Rust/TS) ────────────▶ Bifrost · Portkey Gateway
-    ├─ Built-in evals + observability ──────────▶ Helicone · Portkey Gateway
+    ├─ Built-in evals + observability ──────────▶ Helicone · LiteLLM · Bifrost
     ├─ Key distribution / billing / CN models ──▶ new-api · one-api · GPT-Load
     ├─ Enterprise K8s, audit, guardrails ───────▶ Kong · Higress · APISIX · Envoy AI Gateway
     └─ Governing AI agents & MCP traffic ───────▶ agentgateway · Lunar.dev

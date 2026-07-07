@@ -105,7 +105,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 └─ 要部署 — 自托管 / 开源
     ├─ Python 技术栈、功能最全 ─────▶ LiteLLM
     ├─ 追求极致性能（Go/Rust/TS）──▶ Bifrost · Portkey Gateway
-    ├─ 自带评测 + 可观测 ───────────▶ Helicone · Portkey Gateway
+    ├─ 自带评测 + 可观测 ───────────▶ Helicone · LiteLLM · Bifrost
     ├─ 国产模型、Key 分发/计费 ─────▶ new-api · one-api · GPT-Load
     ├─ 企业 K8s、审计、护栏 ────────▶ Kong · Higress · APISIX · Envoy AI Gateway
     └─ 治理 Agent / MCP 流量 ───────▶ agentgateway · Lunar.dev
