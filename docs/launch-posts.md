@@ -29,6 +29,12 @@ entire gateway landscape:
 ```
 Drop it once the news goes stale (~mid-July) and revert to the $788 opener.
 
+**Evergreen stat pack (Amplify 2026 AI Engineering Report, n>1,000 — cite freely, doesn't decay):**
+- **87%** of AI engineers actively run multiple models together (44% route by task type, 11% by cost) — multi-model routing is the default architecture.
+- **75%** adjust how ambitiously they use AI because of cost; cost is the **#2 most-monitored production metric** after quality.
+- Only **20%** rank reliability top-3 in model selection — pair this with the Fable 5 story: failover is underpriced insurance.
+- Source: https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report
+
 ---
 
 ## 1. Hacker News — Show HN  (highest ROI; US weekday morning PT)

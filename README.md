@@ -41,6 +41,7 @@ _A running digest of fresh model, pricing and gateway evals — **newest first, 
 
 | Date | Category | Finding | Source |
 |---|---|---|---|
+| 2026-07 | 📈 Adoption | **Multi-model is now the default architecture** — of 1,000+ surveyed AI engineers, **87% actively use multiple models together** (44% route by task type, 11% by cost), **75% adjust usage because of cost**, and cost is the **#2 most-monitored production metric** after quality. Only 20% rank reliability top-3 — failover stays underpriced. | [Amplify Partners](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) |
 | 2026-07-02 | 🛡️ Reliability | **Anthropic pulled Fable 5 & Mythos 5 offline globally** for ~3 weeks under a US export-control order, then restored them once Commerce lifted it (back on the Claude platform/Code by Jul 2) — a live reminder that single-provider stacks have no fallback, and multi-provider routing is the mitigation. | [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html) |
 | 2026-06-23 | 🚀 Gateway | **Envoy AI Gateway reached v1.0** (production GA) — the CNCF/Envoy-backed, Kubernetes-native multi-provider data plane (provider failover, token rate-limiting, MCP support) graduates to stable. | [Envoy](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/) |
 | 2026-06-21 | 💰 Pricing | The API pricing market now spans **123 models across 12 providers**, with a **>400× price spread** over the full input/output range — cheapest flagship **DeepSeek V4 Flash ($0.14/M input)** vs priciest **GPT-5.5 Pro ($30.00/M input)** is already ~214× on input alone. Tiering has hardened: top reasoning (o3) runs ~20× a nano-tier model on input, wider on output. | [aipricing.guru](https://aipricing.guru) |
@@ -139,6 +140,8 @@ Gateways get bought for **eight distinct jobs**. Find yours, jump straight to th
 | ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
 | 🤖 **Agent & MCP governance** | "My agents call tools — who's watching that traffic?" | [MCP & agent gateways](#-mcp--agent-gateways) |
 | 🔍 **Model fidelity / relay trust** | "Am I getting the model I'm paying for?" | [canary_check.py](scripts/canary_check.py) · [watch-list](#community-relay-watch-list) |
+
+> **How common is each job? Survey-grounded.** From the [Amplify Partners 2026 AI Engineering Report](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) (1,000+ engineers, with Notion & Vercel): **87% actively run multiple models together** — routing is the default architecture, not the edge case (44% route by task type, 11% by cost). **75% adjust how ambitiously they use AI because of cost** (40% say it *regularly* shapes ambition), and **cost is the #2 most-monitored production metric** after quality — which is why per-key cost attribution anchors the [observability axis](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter). **89% of agent-running teams now grant write permissions** while guardrails stay primitive — the case for [agent/MCP governance](#-mcp--agent-gateways). And one number worth reading twice: only **20%** put reliability in their top-3 selection criteria — engineers underweight failover until an event like the [June-2026 Fable 5 pullout](#-whats-new) takes single-provider stacks offline for three weeks. Multi-provider routing is cheap insurance precisely *because* it's underpriced.
 
 ## Quick comparison
 
@@ -503,6 +506,7 @@ Every gateway sees your prompts. For sensitive data self-host or require zero-da
 _A short, vetted shelf — every link below was HTTP-checked live (2026-06-15). These are the concepts the comparison tables assume; read them before you commit to a gateway._
 
 **What an AI gateway actually is**
+- [The 2026 AI Engineering Report](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) — Amplify Partners (with Notion & Vercel), 2026 — the survey behind the numbers this list assumes: 87% of 1,000+ engineers run multiple models together, 75% are cost-constrained, cost is the #2 production metric, and inference is the most *bought* (vs built) layer of the stack.
 - [LLM Gateway: The One Decision That Removes 100 AI Engineering Decisions](https://www.latent.space/p/gateway) — Latent.Space (swyx), 2025-02 — why one gateway choice collapses routing, caching, observability and guardrails into a single control plane.
 - [AI Gateway — overview](https://developers.cloudflare.com/ai-gateway/) — Cloudflare — first-party docs defining the pattern: one endpoint in front of many providers, with caching, rate limiting, analytics and cost tracking.
 - [AI Gateway documentation](https://developer.konghq.com/ai-gateway/) — Kong — how gateway concerns (provider-agnostic routing, PII sanitization, token rate-limiting) map onto mature API-gateway infrastructure.

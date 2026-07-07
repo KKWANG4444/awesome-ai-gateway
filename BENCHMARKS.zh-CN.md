@@ -266,7 +266,7 @@
 
 ## 第六部分 — 网关可观测性：真正该看的因素
 
-*为什么它是独立的一维——既不同于[评分卡](#第四部分--网关五维评分合规价格安全稳定可观测)，也不同于通用 APM：网关处在「众多内部调用方」与「按 token 计费的厂商」之间，所以分析单位是**按 key／团队／用户／模型归集的 token 与美元**——而网关自身的增值能力（重试、兜底、缓存、护栏）会**掩盖**成本与故障，除非被埋点。跨厂商标准是 [OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)（`gen_ai.*` span + 指标），已被 Datadog/Honeycomb/Grafana 原生消费——但 2026 年大多数 `gen_ai.*` 属性仍是 **"Development"** 状态，且若干被大肆营销的能力（在线评测、漂移检测）是真实的**产品功能、而非标准**。本评估表衡量网关「实际暴露了什么」，标注「标准化 vs 仅为愿景」，并保持中立。*
+*为什么它是独立的一维——既不同于[评分卡](#第四部分--网关五维评分合规价格安全稳定可观测)，也不同于通用 APM：网关处在「众多内部调用方」与「按 token 计费的厂商」之间，所以分析单位是**按 key／团队／用户／模型归集的 token 与美元**——而网关自身的增值能力（重试、兜底、缓存、护栏）会**掩盖**成本与故障，除非被埋点。跨厂商标准是 [OpenTelemetry GenAI 语义约定](https://github.com/open-telemetry/semantic-conventions-genai)（`gen_ai.*` span + 指标），已被 Datadog/Honeycomb/Grafana 原生消费——但 2026 年大多数 `gen_ai.*` 属性仍是 **"Development"** 状态，且若干被大肆营销的能力（在线评测、漂移检测）是真实的**产品功能、而非标准**。本评估表衡量网关「实际暴露了什么」，标注「标准化 vs 仅为愿景」，并保持中立。这一前提已有调研背书：成本是生产环境**第二大被监控指标**（仅次于质量/任务成功率），近半团队在生产中主动监控成本（[Amplify《2026 AI 工程报告》](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report)，n>1,000）。*
 
 ### 必备项——缺了就是几乎没埋点（大体对应 OTel 的 Required/Stable 部分）
 
