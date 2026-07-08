@@ -31,7 +31,7 @@ The questions people actually ask ([sourced from real threads](#-essential-readi
 | "How much does the _model_ choice matter?" | **106×** — the same 100K-token report costs $0.03 (DeepSeek) vs $3.01 (GPT-5.5) → [computed tables](BENCHMARKS.md#part-3--real-world-token-cost-computed) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
 | "How much latency does the gateway itself add?" | **Independently measured** (nobody else does): Bifrost **0.56 ms** · Portkey OSS **2.69 ms** · LiteLLM **5.41 ms** per request → [data](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
 | "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |
-| "Who sees my prompts?" | The gateway does, always. Match [trust tier to data sensitivity](#how-to-choose-safely); secrets → self-host or first-party + ZDR |
+| "Who sees my prompts?" | The gateway does, always — and routers range from **ZDR-by-default** to **training on your prompts by ToS**. See the [data-retention matrix](#-who-sees-your-prompts--the-data-retention-matrix) |
 | "Sick of LiteLLM — what else?" | [LiteLLM alternatives, compared honestly](compare/litellm-alternatives-2026.md) (overhead-measured: it's 10× heavier than Bifrost) |
 | "Will it break my Claude Code / Codex / Cursor?" | **The #1 gateway failure in 2025–26 issue trackers** — broken tool-call/thinking-block translation. Test _your_ agent through it first → [coding-agent routers](#-smart-routing--model-selection) |
 
@@ -500,6 +500,30 @@ Then, whatever tier you're in:
 7. **Watch for the 2026 bait: "unlimited" plans that throttle.** The scam vocabulary has moved upmarket — from fake relays to _official-but-cheap subscription plans_ that are quietly speed-throttled into uselessness: "it's unlimited in practice because it's so slow there's no chance you'll spend your quota… the pay-as-you-go API is orders of magnitude faster than the subscription" ([r/ClaudeCode on Z.ai's GLM coding plan](https://www.reddit.com/r/ClaudeCode/comments/1qijtjx/), echoed [here](https://www.reddit.com/r/ClaudeCode/comments/1q3sssl/)). Before buying any flat-rate plan: benchmark its _throughput_ against the same vendor's pay-as-you-go API — a 10× speed gap is the tell.
 8. **Treat the gateway itself as supply chain.** It sees every prompt and holds every provider key, so its own security posture is a buying criterion: in **March 2026** LiteLLM's PyPI releases v1.82.7/.8 were backdoored via a CI-token compromise (quarantined in ~3h), and in **June 2026** a LiteLLM RCE chain ([CVE-2026-42271](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/)) entered CISA's KEV catalog — two different failure modes in one quarter, on the most-deployed OSS gateway. Practical hygiene: **pin exact versions** (never `latest`), watch the project's security advisories + KEV, patch the control plane fast, keep the admin UI off the public internet, and pre-vet any third-party relay with an audit tool like [api-relay-audit](https://github.com/toby-bridges/api-relay-audit) <!--s:toby-bridges/api-relay-audit-->⭐ 747<!--/s--> (checks prompt injection, model substitution, tool-call rewriting, SSE anomalies).
 
+### 🔒 Who sees your prompts? — the data-retention matrix
+
+_The #1 trust question, with no neutral cross-vendor answer anywhere. Here's one, from primary sources ([machine-readable](data/data_retention.json), verified 2026-07-08). Self-hosted gateways are omitted — you own the data plane._
+
+| Hosted gateway | Logs bodies by default | ZDR / no-log mode | Trains on your prompts | Default retention |
+|---|---|---|---|---|
+| [Vercel AI Gateway](https://vercel.com/docs/ai-gateway/security-and-compliance/zdr) | ❌ no | ✅ **default** (own layer) | ❌ no (own); upstream opt-in filter | 0 days (own layer) |
+| [Eden AI](https://www.edenai.co/privacy) | ❌ no | ✅ **default** | ❌ no (own) | not retained after processing |
+| [Requesty](https://www.requesty.ai/security) | ❌ no (bodies) | ✅ **default** | ❌ no (own); upstream opt-in | 0 days (30d EU if you enable logging) |
+| [OpenRouter](https://openrouter.ai/privacy) | ❌ no | ✅ opt-in (`zdr:true`, global/per-req) | ❌ no (own); ⚠️ **upstream-depends** (free routes may train) | 0 days unless you opt into logging |
+| [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/observability/logging/) | ✅ **yes** | ⚠️ opt-out only (no formal ZDR) | ❔ not documented | storage-limit based |
+| [Portkey (cloud)](https://portkey.ai/docs/introduction/what-is-portkey) | ✅ **yes** | ⚠️ opt-in toggle (full "nothing stored" = sales-gated) | ❔ not documented | 3d free · 30d Prod |
+| [Helicone (cloud)](https://docs.helicone.ai/features/advanced-usage/omit-logs) | ✅ **yes** (logging proxy) | ⚠️ omit-headers only, no branded ZDR | ❔ not documented (2023-24 legal docs, silent) | 7d free → configurable |
+| [Martian](https://www.withmartian.com/terms-of-service) | ❔ not documented | ❌ **none documented** | 🔴 **YES — by ToS** (licenses your Input Data to train its models) | not documented |
+
+| First-party cloud | Logs bodies by default | ZDR | Trains on your prompts | Default retention |
+|---|---|---|---|---|
+| [AWS Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html) | ❌ no (off by default) | ✅ config (`data_retention_mode: none`) | ❌ no (except opt-in `provider_data_share`) | 0 days |
+| [Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy) | ⚙️ only human-review-flagged | ⚠️ approval-gated (Limited Access form) | ❌ no | conditional (⚠️ the old "30-day" figure is gone as of Oct 2025) |
+| [Google Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance) | ⚙️ configurable — ⚠️ **standard non-invoiced accounts ARE logged** | ⚠️ opt-in / enterprise (disable caching + invoiced billing) | ❌ no | 90d abuse logs · 24h cache · 0 under full ZDR |
+| [OpenAI (direct API)](https://developers.openai.com/api/docs/guides/your-data) | ✅ **yes** (30-day abuse monitoring) | ⚠️ approval-gated (via sales) | ❌ no (API, since 2023) | 30 days — ⚠️ **but under NYT legal hold**, API content is being preserved despite the delete-at-30d promise |
+
+> **The two things everyone misses:** (1) **On every router, your real exposure is the _upstream_ you route to, not the router's own policy** — a "ZDR-by-default" router still hits non-ZDR (or training) providers unless you turn on a ZDR-only / no-training filter. (2) **"We delete after 30 days" is not always binding** — OpenAI's API deletion is currently overridden by a court preservation order, and Azure quietly dropped its 30-day commitment. When it matters, get ZDR _in the contract_, and read the specific upstream endpoint's policy — not just the front-door marketing. Full evidence + source links per row: [`data/data_retention.json`](data/data_retention.json).
+
 ### 🧰 Companion tools — verify what you picked
 
 This list tells you _which_ gateway to start with; these two open-source tools — **from this list's maintainer** (disclosed) — help you **prove it behaves** before trusting it in production:
@@ -631,6 +655,7 @@ Everything behind the tables is machine-readable, CC0, and refreshed by CI — c
 | 5-axis gateway scorecard + per-gateway observability evidence | [`data/gateways_eval.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_eval.json) · [CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_scorecard.csv) | reviewed ≤30 days (CI-enforced) |
 | Model pricing + benchmark snapshot | [`data/models.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/models.json) · [cost CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/cost_table.csv) | reviewed ≤30 days (CI-enforced) |
 | Gateway incident/reality check | [`data/gateway_reality.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateway_reality.json) | on change (drift-gated) |
+| **Data-retention / ZDR / logging posture** (per hosted gateway + cloud) | [`data/data_retention.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/data_retention.json) | on policy change |
 | Stars + latest releases for ~80 tracked gateways | [`data/projects.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/projects.json) · [`data/releases.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/releases.json) | daily |
 | **Measured gateway overhead** (Bifrost/Portkey/LiteLLM) | [`overhead.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/overhead.json) | monthly CI |
 | Multi-source price triangulation (litellm/openrouter/models.dev) | [`prices.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/prices.json) | every 6h |
