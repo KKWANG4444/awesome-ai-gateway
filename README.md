@@ -27,6 +27,7 @@ The questions people actually ask ([sourced from real threads](#-essential-readi
 | You're asking… | The answer |
 |---|---|
 | "Cheapest way to hit many models right now?" | **OpenRouter** (~5.5% credit fee, ~340 models) — or **0% markup on your own keys**: Vercel / Cloudflare AI Gateway → [Cost-first](#-cost-first-cheapest-multi-model-access) |
+| "Which free tiers still work, and what are the real limits?" | OpenRouter `:free`: **50 req/day** (<$10 credits) or **1,000/day** ($10+ top-up), 20 req/min shared ([official limits](https://openrouter.ai/docs/api-reference/limits)). The catch with "free": your prompts may train someone's model — check the fine print |
 | "How much does the _model_ choice matter?" | **106×** — the same 100K-token report costs $0.03 (DeepSeek) vs $3.01 (GPT-5.5) → [computed tables](BENCHMARKS.md#part-3--real-world-token-cost-computed) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
 | "How much latency does the gateway itself add?" | **Independently measured** (nobody else does): Bifrost **0.56 ms** · Portkey OSS **2.69 ms** · LiteLLM **5.41 ms** per request → [data](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
 | "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |

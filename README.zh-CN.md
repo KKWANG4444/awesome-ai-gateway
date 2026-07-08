@@ -27,6 +27,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 | 你在问… | 答案 |
 |---|---|
 | "现在最便宜地打通一堆模型？" | **OpenRouter**（~5.5% 充值费、~340 模型）——或**自己的 key 0 加价**：Vercel / Cloudflare AI Gateway → [性价比优先](#-性价比优先) |
+| "哪些免费额度还活着，真实限流是多少？" | OpenRouter `:free`：**50 次/天**（充值 <$10）或 **1,000 次/天**（充值 $10+），共享 20 次/分钟（[官方限流文档](https://openrouter.ai/docs/api-reference/limits)）。"免费"的代价：你的 prompt 可能被拿去训练——看清条款 |
 | "选*模型*到底差多少钱？" | **106×**——同一份 10 万 token 报告，DeepSeek $0.03 vs GPT-5.5 $3.01 → [脚本算的表](BENCHMARKS.zh-CN.md) · [计算器](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.zh-CN.html) |
 | "网关本身加多少延迟？" | **独立实测**（全网仅此一家）：每请求 Bifrost **0.56ms** · Portkey OSS **2.69ms** · LiteLLM **5.41ms** → [数据](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
 | "缓存折扣过了网关还在吗？" | **经常不在——而且悄无声息。** 多数账单里最大的一笔没领的折扣 → [缓存过网关](#-缓存过网关钱的问题) |
