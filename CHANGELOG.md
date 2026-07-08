@@ -6,7 +6,38 @@ structural and editorial changes.
 
 ## [Unreleased]
 
-### Added
+## [1.1.0] - 2026-07-08
+
+The "evidence engine" release — three things **no other gateway list measures**, plus an answer-first rebuild grounded in what developers actually ask.
+
+### Added — independent measurements (exclusive)
+- **⏱️ Gateway overhead, measured** — a reproducible harness (mock upstream, interleaved rounds,
+  no API keys, monthly CI on a neutral runner) benchmarks the latency each self-hosted gateway
+  *itself* adds: **Bifrost 0.56 ms · Portkey OSS 2.69 ms · LiteLLM 5.41 ms** per request. Reads
+  vendor marketing honestly (Bifrost's "50×" is loaded-throughput, not per-request; Portkey's
+  "<1 ms" didn't reproduce on shared CI). Data: `llm-gateway-bench/data/overhead.json`.
+- **🔌 Protocol-translation fidelity, measured** — does the gateway relay tool-calls / streaming /
+  usage intact (the #1 real-world failure — "claude code" is in 400+ LiteLLM issues)? **LiteLLM 3/3
+  · Bifrost 3/3 · Portkey OSS v1.15.2 1/3** (its custom-host streaming errored on a clean CI runner;
+  hosted product untested, caveated). Data: `llm-gateway-bench/data/fidelity.json`.
+- **🔒 Data-retention / ZDR / logging matrix** — primary-source answer to "who sees/logs/trains on my
+  prompts?" across 12 hosted gateways + first-party clouds. Surfaces facts no other list has: Martian's
+  ToS licenses your prompts to train its models; OpenAI's 30-day deletion is under the NYT legal hold;
+  Azure dropped its 30-day figure; Vertex logs standard non-invoiced accounts. Machine-readable
+  `data/data_retention.json`.
+
+### Added — answer-first UX (grounded in mined Reddit/HN questions)
+- **⚡ 10-second answers** block above the fold — the 7 questions developers actually ask, answered in
+  one line each (cheapest access, model-cost 106× spread, proxy overhead, does caching survive the
+  router, who sees my prompts, LiteLLM alternatives, will it break my Claude Code).
+- **The requirements map** — the 9 jobs a gateway is bought for, each → the question it answers + where
+  the evidence lives; survey-grounded (Amplify 2026: 87% run multiple models, cost = #2 monitored metric).
+- **💾 "Prompt caching through a gateway"** — the ecosystem's most-asked, worst-answered question,
+  answered with evidence + a 30-second usage-field self-test.
+- **🔌 Use the data — it's an API** — every dataset as a raw CC0 URL with a refresh cadence.
+- Above-the-fold **animated demo GIF**; five-axis interactive scorecard on the Pages site.
+
+### Added — scorecard, coverage, community
 - **Observability is now a first-class scorecard axis** (2026-07-06): all 23 scored gateways
   re-reviewed against a published 5-pillar evidence rubric (metrics export · trace export ·
   per-key token/cost attribution · log export · dashboard) — four parallel research passes over
@@ -43,6 +74,8 @@ structural and editorial changes.
   [@KKWANG4444](https://github.com/KKWANG4444) in [#24](https://github.com/cuihuan/awesome-ai-gateway/pull/24)
   — both live endpoints verified before merge (LiteLLM-style / new-api error signatures respectively);
   both on the relay watch-list. 🙏
+- **TierUp** (tier-based relay via OpenRouter) added by [@atxapple](https://github.com/atxapple) in
+  [#26](https://github.com/cuihuan/awesome-ai-gateway/pull/26) — exceptionally honest self-disclosure (solo-built, subsidized, ~zero users); live endpoint verified, on the watch-list. 🙏
 
 ### Changed
 - Account-less / crypto-only relays (**Loop Gateway**, **nullsink**) now carry an explicit
@@ -54,7 +87,7 @@ structural and editorial changes.
 ### Contributors
 Thanks to [@c99e](https://github.com/c99e), [@onepaperbox](https://github.com/onepaperbox),
 [@Digidai](https://github.com/Digidai), [@MaridWSH](https://github.com/MaridWSH) and
-[@KKWANG4444](https://github.com/KKWANG4444) for community PRs. Spotted a gateway we're missing, or run
+[@KKWANG4444](https://github.com/KKWANG4444) and [@atxapple](https://github.com/atxapple) for community PRs. Spotted a gateway we're missing, or run
 one in production? See [CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
 
 ## [1.0.0] - 2026-06-18
@@ -81,4 +114,5 @@ First tagged release. The list is stable, bilingual, and CI-verified.
 - CI: 69 unit tests, cost-table/CSV drift checks, advisory awesome-lint, and link-health
   checking (lychee) on PRs and weekly.
 
+[1.1.0]: https://github.com/cuihuan/awesome-ai-gateway/releases/tag/v1.1.0
 [1.0.0]: https://github.com/cuihuan/awesome-ai-gateway/releases/tag/v1.0.0
