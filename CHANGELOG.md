@@ -86,7 +86,7 @@ The "evidence engine" release — three things **no other gateway list measures*
 
 ### Contributors
 Thanks to [@c99e](https://github.com/c99e), [@onepaperbox](https://github.com/onepaperbox),
-[@Digidai](https://github.com/Digidai), [@MaridWSH](https://github.com/MaridWSH) and
+[@Digidai](https://github.com/Digidai), [@MaridWSH](https://github.com/MaridWSH),
 [@KKWANG4444](https://github.com/KKWANG4444) and [@atxapple](https://github.com/atxapple) for community PRs. Spotted a gateway we're missing, or run
 one in production? See [CONTRIBUTING](CONTRIBUTING.md) — most additions are a 2-line PR.
 
