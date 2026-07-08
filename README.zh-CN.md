@@ -486,6 +486,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 | [KeepRouter](https://keeprouter.com) | 性价比优先 | ⚠️ 未验证——用前自测 | 托管 OpenAI+Anthropic 双兼容网关（原生 `/v1/messages`），聚合 50+ 模型、按成本 0% 加价（充值费 8%+$0.35）；`/v1/models` 端点在线（OpenAI 格式）；模型保真度未经核实。 |
 | [RouterPlex](https://routerplex.com) | 性价比优先 | ⚠️ 未验证——用前自测 | 托管中转，按厂商标价接入 11 家 25+ 模型；`api.routerplex.com/v1` 在线（LiteLLM 式鉴权错误，疑似基于 LiteLLM）；闭源、自荐，模型保真度未经核实。 |
 | [AI快站 (aifast.club)](https://www.aifast.club) | 性价比优先 | ⚠️ 未验证——用前自测 | 面向国内的中转（572 模型、支付宝/微信），OpenAI+Anthropic 双兼容；`/v1` 在线（new-api 错误签名）；延迟数据为运营方自述；闭源、自荐，模型保真度未经核实。 |
+| [TierUp](https://tierup.ai) | 性价比优先 | ⚠️ 未验证——用前自测 | 档位制中转，经 OpenRouter 转售、约零售价 50%（透明补贴、个人开发、生产用户约零——均为自我披露）；`api.tierup.ai/v1` 在线（OpenAI 格式）；转售访问，模型保真度未经核实。 |
 | [OpenPaths](https://openpaths.io) ([仓库](https://github.com/lee101/openpaths)) | 性价比优先 | ⚠️ 未验证——用前自测 | 托管的多厂商路由（15+ 厂商、多模态）带自动路由；其"开源"GitHub 仓库实为无代码、无协议的展示镜像，指向第三方平台，应视作闭源托管；模型保真度未经核实。 |
 
 *目前没有 ⛔ 确认有问题 的条目——该状态需要可复现的 canary 判定或有据可查的事故，绝不凭传闻。*
