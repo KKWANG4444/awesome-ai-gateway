@@ -154,7 +154,7 @@ Gateways get bought for **eight distinct jobs**. Find yours, jump straight to th
 | 💰 **Cost control** | "Who can spend what, and where does it stop?" | [Cost-first](#-cost-first-cheapest-multi-model-access) · [cost tables](BENCHMARKS.md) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
 | 📊 **Observability** | "Which key, which model, which prompt — and why did quality drop?" | [Observability section](#-observability--cost-tracking) · [what to measure](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) · [research survey](docs/observability-landscape.md) |
 | 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) |
-| 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 7) |
+| 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 8) |
 | ⚡ **Caching & rate limits** | "Stop paying twice for the same answer; survive 429s" | [Quick comparison](#quick-comparison) cache column |
 | ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
 | 🤖 **Agent & MCP governance** | "My agents call tools — who's watching that traffic?" | [MCP & agent gateways](#-mcp--agent-gateways) |
