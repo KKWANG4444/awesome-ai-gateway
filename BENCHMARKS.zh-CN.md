@@ -242,6 +242,8 @@
 
 > ⏱️ **网关开销,独立实测。** 厂商们的开销宣传互相矛盾（微秒级 vs 毫秒级）且无第三方数据——本项目直接测：可复现基准（mock OpenAI 上游、轮次交错、中位数的中位数；无需任何 API key），每月在同一中立 CI 跑机上跑。2026-07 结果，每请求增加：**Bifrost 0.56ms**（IQR 0.51–0.58）· **Portkey Gateway OSS v1.15.2 2.69ms**（2.56–2.82）· **LiteLLM v1.91.0 5.41ms**（5.38–5.60）。对照营销读：Bifrost「最快」方向属实（比 LiteLLM 低 ~10×——不是宣传的 50×，那说的是负载吞吐）；Portkey「<1ms」在共享 CI 硬件上未复现（快桌面机上能到 0.47ms）。数据：[`llm-gateway-bench/data/overhead.json`](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) · [方法学](https://github.com/cuihuan/llm-gateway-bench/blob/main/docs/methodology.md)——欢迎 PR 加测 Kong/Envoy/Higress。
 
+> 🔌 **协议翻译保真度，独立实测（2026-07）。** 真实 issue 区里网关最常被报的故障不是路由，而是网关在**翻译中损坏工具调用 / 流式 / usage**（"claude code" 出现在 400+ 个 LiteLLM issue 里；Portkey/OpenRouter/Bifrost 评论最多的 issue 全是这类）。本项目直接测：mock 上游返回规范响应（一个 tool_call、一个真正多块的 SSE 流带 `usage`），基准检查经过每个网关后**实际到达客户端**的是什么（无需 key，CI 可复现）。结果（自托管指向自定义上游）：**LiteLLM v1.91.0 — 3/3 · Bifrost — 3/3 · Portkey Gateway OSS v1.15.2 — 1/3。** 三者都能完整转发 tool_call；但 **Portkey OSS 在 custom-host 模式下对*每一个*流式请求都抛了内部错误**（客户端收到 0 块、无 `usage`），而非流式正常——已在干净 CI 跑机上复现。公允说明：这是开源网关的*自托管 custom-host 路径*（Portkey 托管产品/标准厂商集成可能流式正常，且 2.0 尚未发布），且本测试只覆盖 OpenAI 格式**透传**——跨格式（Anthropic `tool_use` id 重映射）翻译这块最难的 bug 是后续工作。**结论：上生产前，拿你真实的 Agent（带工具 + 流式）过一遍网关，别只测 hello-world。** 数据：[`llm-gateway-bench/data/fidelity.json`](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/fidelity.json)。
+
 > 📊 **可观测列** = 上方标准里的五支柱评分；逐网关证据（有哪些支柱、出自哪份文档）机器可读地存放在 [`data/gateways_eval.json`](data/gateways_eval.json)。突出者：**LiteLLM / Bifrost / Cloudflare / Portkey 云**五柱齐全；**Portkey 开源 v1.x 几乎零可观测**（遥测在未发布的 2.0 分支）；**Envoy AI Gateway** 是最「标准优先」的选择（OTel GenAI 语义约定、无 UI）；国产面板类（new-api/one-api/GPT-Load）正相反——计费后台强，无 Prometheus/OTel。
 
 ---
