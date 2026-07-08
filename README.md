@@ -20,6 +20,19 @@ _Built the hard way: **I burned $788 on AI coding in a single day** — one flag
   <a href="#the-requirements-map"><img src="assets/hero-demo.gif" alt="How this list works, in four steps: pick by requirement (routing, cost, observability, compliance, supply-chain, caching, K8s, MCP/agents, fidelity), match the trust tier to your data, check evidence-based five-axis scores, and mind the 106x model cost spread ($0.03 vs $3.01 for the same 100K-token report)." width="840"></a>
 </p>
 
+## ⚡ 10-second answers
+
+The questions people actually ask ([sourced from real threads](#-essential-reading)) — answered first:
+
+| You're asking… | The answer |
+|---|---|
+| "Cheapest way to hit many models right now?" | **OpenRouter** (~5.5% credit fee, ~340 models) — or **0% markup on your own keys**: Vercel / Cloudflare AI Gateway → [Cost-first](#-cost-first-cheapest-multi-model-access) |
+| "How much does the _model_ choice matter?" | **106×** — the same 100K-token report costs $0.03 (DeepSeek) vs $3.01 (GPT-5.5) → [computed tables](BENCHMARKS.md#part-3--real-world-token-cost-computed) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
+| "How much latency does the gateway itself add?" | **Independently measured** (nobody else does): Bifrost **0.56 ms** · Portkey OSS **2.69 ms** · LiteLLM **5.41 ms** per request → [data](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
+| "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |
+| "Who sees my prompts?" | The gateway does, always. Match [trust tier to data sensitivity](#how-to-choose-safely); secrets → self-host or first-party + ZDR |
+| "Sick of LiteLLM — what else?" | [LiteLLM alternatives, compared honestly](compare/litellm-alternatives-2026.md) (overhead-measured: it's 10× heavier than Bifrost) |
+
 <details>
 <summary>📑 <b>Full contents</b> — pick fast · browse by need · reference</summary>
 
@@ -354,6 +367,25 @@ _Pain point: "Send each prompt to the cheapest model that can handle it."_
 - [NadirClaw](https://github.com/NadirRouter/NadirClaw) <!--s:NadirRouter/NadirClaw-->⭐ 570<!--/s--> — Self-hosted, OpenAI-compatible router (Python) that sends simple prompts to cheap/local models and hard ones to premium, with a trained cascade verifier to cut API cost 40–70%.
 - [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/overview) — Managed proxy routing to OpenAI/Anthropic/Google + local Ollama/vLLM/LM Studio, with automatic failover, key rotation, and CEL traffic-policy controls (PII redaction).
 
+### 💾 Prompt caching through a gateway — the money question
+
+_Pain point: "Anthropic/OpenAI sell 75–90% cache discounts — do I still get them through a router?"_
+
+**Often no, and the failure is silent.** This is one of the most-asked, worst-answered questions in the ecosystem — real users repeatedly discover their cache discount vanished in transit: `native_tokens_cached` stuck at 0 through OpenRouter in Zed ([zed#52576](https://github.com/zed-industries/zed/issues/52576)), the OpenRouter AI-SDK provider shipping broken cache options ([ai-sdk-provider#35](https://github.com/OpenRouterTeam/ai-sdk-provider/issues/35)), and a long tail of "[caching doesn't work](https://www.reddit.com/r/ChatGPTCoding/comments/1j4f45r/)" threads — sometimes it works but the router simply doesn't _report_ it. At production scale, [only 28% of LLM calls show any cached input while system prompts eat 69% of input tokens](https://www.datadoghq.com/state-of-ai-engineering/) — the largest unclaimed discount in most AI bills.
+
+**Verify it in 30 seconds — never trust vibes:** send the same long-system-prompt request twice, then diff the usage fields:
+
+```
+OpenAI-style:    usage.prompt_tokens_details.cached_tokens   > 0 on the 2nd call?
+Anthropic-style: usage.cache_read_input_tokens               > 0 on the 2nd call?
+```
+
+If the second call shows 0, you're paying full price — switch the route (provider-direct, or a gateway that passes `cache_control` through) and re-test.
+
+**Two different "caches" — they stack:**
+1. **Provider prompt caching** (the 75–90% discount above) — the gateway must _pass through_ cache headers/params and _report back_ the usage fields. LiteLLM supports Anthropic `cache_control` passthrough; check any gateway against the test above.
+2. **Gateway-side response caching** (exact or semantic) — Kong, Bifrost, Zuplo, Cloudflare AI Gateway serve repeated/similar requests from _their own_ cache at ~$0; this stacks on top of provider caching. See the cache column in [Quick comparison](#quick-comparison).
+
 ### 📊 Observability & cost tracking
 
 _Pain point: "Who spent what, on which model, and why did quality drop?"_
@@ -584,6 +616,21 @@ On **June 10 I ran Claude Code hard for ~13 hours, and the bill came to ≈ $788
 The fix wasn't "stop using good models." It was **route by task** — default to a cheap model, escalate to a flagship only when the work is genuinely hard. That's exactly what an AI gateway is for. While I was at it, I couldn't find a single gateway list organized by _what you actually need_, that scored the options honestly (CVEs and all), and shipped _reproducible_ cost numbers instead of vibes. So I built one — that's this repo.
 
 No vendor money, no affiliate links, CC0. If it saves you one surprise bill, it did its job. ⭐ **[Star it](https://github.com/cuihuan/awesome-ai-gateway)** so the next person mid-$788-day finds it.
+
+## 🔌 Use the data — it's an API
+
+Everything behind the tables is machine-readable, CC0, and refreshed by CI — consume it directly (like [models.dev](https://models.dev), the raw files _are_ the API):
+
+| Dataset | Raw URL | Refresh |
+|---|---|---|
+| 5-axis gateway scorecard + per-gateway observability evidence | [`data/gateways_eval.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_eval.json) · [CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_scorecard.csv) | reviewed ≤30 days (CI-enforced) |
+| Model pricing + benchmark snapshot | [`data/models.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/models.json) · [cost CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/cost_table.csv) | reviewed ≤30 days (CI-enforced) |
+| Gateway incident/reality check | [`data/gateway_reality.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateway_reality.json) | on change (drift-gated) |
+| Stars + latest releases for ~80 tracked gateways | [`data/projects.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/projects.json) · [`data/releases.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/releases.json) | daily |
+| **Measured gateway overhead** (Bifrost/Portkey/LiteLLM) | [`overhead.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/overhead.json) | monthly CI |
+| Multi-source price triangulation (litellm/openrouter/models.dev) | [`prices.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/prices.json) | every 6h |
+
+Attribution appreciated, not required. If you build on it, [tell us](https://github.com/cuihuan/awesome-ai-gateway/issues) — we'll link you.
 
 ## Contributing
 

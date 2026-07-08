@@ -20,6 +20,19 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
   <a href="#诉求速查表"><img src="assets/hero-demo.gif" alt="本清单的四步用法：按诉求选（路由、成本、可观测、合规、供应链、缓存、K8s、MCP/Agent、保真），按数据敏感度匹配信任层级，查证据化的五维评分，并留意 106 倍的模型成本差（同一份 10 万 token 报告 $0.03 vs $3.01）。" width="840"></a>
 </p>
 
+## ⚡ 10 秒答案
+
+大家真正在问的问题（[出处见真实帖子](#-必读精选)）——先回答：
+
+| 你在问… | 答案 |
+|---|---|
+| "现在最便宜地打通一堆模型？" | **OpenRouter**（~5.5% 充值费、~340 模型）——或**自己的 key 0 加价**：Vercel / Cloudflare AI Gateway → [性价比优先](#-性价比优先) |
+| "选*模型*到底差多少钱？" | **106×**——同一份 10 万 token 报告，DeepSeek $0.03 vs GPT-5.5 $3.01 → [脚本算的表](BENCHMARKS.zh-CN.md) · [计算器](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.zh-CN.html) |
+| "网关本身加多少延迟？" | **独立实测**（全网仅此一家）：每请求 Bifrost **0.56ms** · Portkey OSS **2.69ms** · LiteLLM **5.41ms** → [数据](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
+| "缓存折扣过了网关还在吗？" | **经常不在——而且悄无声息。** 多数账单里最大的一笔没领的折扣 → [缓存过网关](#-缓存过网关钱的问题) |
+| "谁看得到我的 prompt？" | 网关永远看得到。按[数据敏感度匹配信任层级](#如何安全选型)；机密 → 自托管或原厂 + ZDR |
+| "受够 LiteLLM 了，还有啥？" | [LiteLLM 替代品诚实对比](compare/litellm-alternatives-2026.md)（开销实测：它比 Bifrost 重 10×） |
+
 <details>
 <summary>📑 <b>完整目录</b> —— 快速选 · 按需浏览 · 参考</summary>
 
@@ -354,6 +367,25 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 - [NadirClaw](https://github.com/NadirRouter/NadirClaw) <!--s:NadirRouter/NadirClaw-->⭐ 570<!--/s--> — 自托管、OpenAI 兼容的路由器（Python）：简单 prompt 走便宜/本地模型、复杂的走高端，配训练过的级联校验器，省 40–70% API 成本。
 - [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/overview) — 托管代理，路由到 OpenAI/Anthropic/Google 及本地 Ollama/vLLM/LM Studio，带自动兜底、密钥轮换与 CEL 流量策略（PII 脱敏）。
 
+### 💾 缓存过网关——钱的问题
+
+_痛点："Anthropic/OpenAI 的缓存折扣有 75–90%——过一层路由之后还拿得到吗？"_
+
+**经常拿不到，而且失败是无声的。** 这是生态里问得最多、答得最差的问题之一——用户反复发现折扣在中转途中消失：Zed 里经 OpenRouter `native_tokens_cached` 恒为 0（[zed#52576](https://github.com/zed-industries/zed/issues/52576)）、OpenRouter 官方 AI-SDK 的缓存选项失效（[ai-sdk-provider#35](https://github.com/OpenRouterTeam/ai-sdk-provider/issues/35)）、还有一长串"[缓存不生效](https://www.reddit.com/r/ChatGPTCoding/comments/1j4f45r/)"的帖子——有时其实生效了，只是路由不*回报*。生产尺度上，[仅 28% 的 LLM 调用有任何缓存命中，而系统提示词占输入 token 的 69%](https://www.datadoghq.com/state-of-ai-engineering/)——多数 AI 账单里最大的一笔没领的折扣。
+
+**30 秒自测——别信感觉：** 同一个长系统提示词请求发两次，对比 usage 字段：
+
+```
+OpenAI 系：    usage.prompt_tokens_details.cached_tokens   第二次 > 0 吗？
+Anthropic 系： usage.cache_read_input_tokens               第二次 > 0 吗？
+```
+
+第二次还是 0 = 你在付全价——换路由（直连厂商，或换成会透传 `cache_control` 的网关）再测。
+
+**两种"缓存"，可以叠加：**
+1. **厂商提示词缓存**（上面 75–90% 的折扣）——网关必须*透传*缓存头/参数并*回报* usage 字段。LiteLLM 支持 Anthropic `cache_control` 透传；任何网关都用上面的自测法验证。
+2. **网关侧响应缓存**（精确或语义）——Kong、Bifrost、Zuplo、Cloudflare AI Gateway 用*自己的*缓存以 ~$0 服务重复/相似请求；与厂商缓存叠加。见[快速对比](#快速对比)缓存列。
+
 ### 📊 可观测与成本核算
 
 *痛点："谁在哪个模型上花了多少钱？质量为什么降了？"*
@@ -584,6 +616,21 @@ OpenRouter 是托管（零运维、约 5.5% 手续费、400+ 模型）；LiteLLM
 解法不是"别用好模型"，而是**按任务路由**——默认走便宜模型，真遇到难的再升级到旗舰。这正是 AI 网关该干的事。顺手我还发现：全网找不到一份"按你真实诉求分类、敢如实打分（含 CVE）、成本数还能复现"的网关清单。那就自己做一份——就是这个仓库。
 
 不收厂商钱、无返利链接、CC0。如果它帮你挡下哪怕一次账单意外，就值了。⭐ **[点个 Star](https://github.com/cuihuan/awesome-ai-gateway)**，让下一个正在烧 $788 的人也能找到它。
+
+## 🔌 直接用数据——它就是 API
+
+表格背后的一切都机器可读、CC0、CI 自动刷新——像 [models.dev](https://models.dev) 一样，原始文件*就是* API：
+
+| 数据集 | 原始 URL | 刷新 |
+|---|---|---|
+| 五维网关评分卡 + 逐网关可观测证据 | [`data/gateways_eval.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_eval.json) · [CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateways_scorecard.csv) | ≤30 天复审（CI 强制） |
+| 模型定价 + 基准快照 | [`data/models.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/models.json) · [成本 CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/cost_table.csv) | ≤30 天复审（CI 强制） |
+| 网关事故/现实核查 | [`data/gateway_reality.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateway_reality.json) | 变更即更新（drift 门） |
+| ~80 个网关的星标 + 最新版本 | [`data/projects.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/projects.json) · [`data/releases.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/releases.json) | 每日 |
+| **网关开销实测**（Bifrost/Portkey/LiteLLM） | [`overhead.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/overhead.json) | 每月 CI |
+| 多源价格三角校验（litellm/openrouter/models.dev） | [`prices.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/prices.json) | 每 6 小时 |
+
+欢迎但不强制署名。基于它做了东西？[告诉我们](https://github.com/cuihuan/awesome-ai-gateway/issues)——我们回链你。
 
 ## 参与贡献
 
