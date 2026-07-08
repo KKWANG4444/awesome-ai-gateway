@@ -99,7 +99,7 @@
 <div class="wrap">
   <header>
     <h1>⚡ Awesome AI Gateway</h1>
-    <p class="sub">The only AI-gateway list with a <b>reproducible cost benchmark</b> and a <b>4-axis scorecard</b> — not just links.</p>
+    <p class="sub">The only AI-gateway list with a <b>reproducible cost benchmark</b>, a <b>5-axis scorecard</b>, and <b>independently-measured proxy overhead</b> — not just links.</p>
     <div class="bar">
       <span class="pill">100+ gateways · 9 categories</span>
       <span class="pill">106× cost spread</span>
@@ -131,11 +131,12 @@
   </div>
 
   <div id="score-view" class="hidden">
-    <p class="sub">Scores ★1–5 from <a href="data/gateways_scorecard.csv">gateways_scorecard.csv</a> per the <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.md">published rubric</a>. 🏠 = self-hosted, you own compliance.</p>
+    <p class="sub">Scores ★1–5 across <b>five axes</b> from <a href="data/gateways_scorecard.csv">gateways_scorecard.csv</a> per the <a href="https://github.com/cuihuan/awesome-ai-gateway/blob/main/BENCHMARKS.md#scoring-rubric-apply-consistently">published rubric</a>. 🏠 = self-hosted, you own compliance. Click a header to sort.</p>
     <table id="score-table"><thead><tr>
       <th data-k="gateway">Gateway</th><th data-k="type">Type</th>
       <th data-k="compliance" class="num">Compliance</th><th data-k="markup">Markup</th>
       <th data-k="security" class="num">Security</th><th data-k="stability" class="num">Stability</th>
+      <th data-k="observability" class="num">Obsv</th>
     </tr></thead><tbody></tbody></table>
   </div>
 
@@ -214,9 +215,11 @@ function renderScore(){
   const s=sort.score, rows=scoreData.filter(r=>(r.gateway+r.type).toLowerCase().includes(q))
     .sort((a,b)=>{const x=+a[s.k]||a[s.k],y=+b[s.k]||b[s.k];return (x>y?1:x<y?-1:0)*(s.asc?1:-1)});
   tb.innerHTML=rows.map(r=>{const home=r.self_hosted==='True'?' 🏠':'';
+    const obs=r.observability!==''&&r.observability!=null?stars(+r.observability):'—';
     return `<tr><td>${r.gateway}</td><td>${r.type}${home}</td>
       <td class="num">${stars(+r.compliance)}</td><td>${r.markup}</td>
-      <td class="num">${stars(+r.security)}</td><td class="num">${stars(+r.stability)}</td></tr>`;
+      <td class="num">${stars(+r.security)}</td><td class="num">${stars(+r.stability)}</td>
+      <td class="num">${obs}</td></tr>`;
   }).join('');
 }
 function renderReality(){
