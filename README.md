@@ -32,6 +32,7 @@ The questions people actually ask ([sourced from real threads](#-essential-readi
 | "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |
 | "Who sees my prompts?" | The gateway does, always. Match [trust tier to data sensitivity](#how-to-choose-safely); secrets → self-host or first-party + ZDR |
 | "Sick of LiteLLM — what else?" | [LiteLLM alternatives, compared honestly](compare/litellm-alternatives-2026.md) (overhead-measured: it's 10× heavier than Bifrost) |
+| "Will it break my Claude Code / Codex / Cursor?" | **The #1 gateway failure in 2025–26 issue trackers** — broken tool-call/thinking-block translation. Test _your_ agent through it first → [coding-agent routers](#-smart-routing--model-selection) |
 
 <details>
 <summary>📑 <b>Full contents</b> — pick fast · browse by need · reference</summary>
@@ -346,6 +347,8 @@ _These cut across the need-based sections above — routing intelligence, observ
 ### 🧠 Smart routing & model selection
 
 _Pain point: "Send each prompt to the cheapest model that can handle it."_
+
+> ⚠️ **The most common gateway failure isn't routing — it's translation.** Across 2025–26 issue trackers, the single largest bug category on every major gateway is corrupted **tool-call / thinking-block / streaming translation**: Portkey's most-commented issue ([#980](https://github.com/Portkey-AI/gateway/issues/980), tool_use ids lost), OpenRouter's AI-SDK thinking-mode breakage (filed three times: [#245](https://github.com/OpenRouterTeam/ai-sdk-provider/issues/245)), Claude Code erroring through LiteLLM ([#13373](https://github.com/BerriAI/litellm/issues/13373)) and new-api ([#1854](https://github.com/QuantumNous/new-api/issues/1854)) — "claude code" appears in **413 LiteLLM issues** since 2025. "OpenAI-compatible" is a spectrum, not a checkbox ([LangChain's own compat issue](https://github.com/langchain-ai/langchain/issues/34328)). **Before committing: run your actual agent (tool calls + streaming + thinking) through the gateway, not just a hello-world completion.**
 
 - [Not Diamond](https://www.notdiamond.ai) — SOTA model-routing intelligence; powers OpenRouter's Auto router.
 - [Martian](https://withmartian.com) — Pioneer commercial model router; Accenture partnership.

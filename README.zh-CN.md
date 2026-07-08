@@ -32,6 +32,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 | "缓存折扣过了网关还在吗？" | **经常不在——而且悄无声息。** 多数账单里最大的一笔没领的折扣 → [缓存过网关](#-缓存过网关钱的问题) |
 | "谁看得到我的 prompt？" | 网关永远看得到。按[数据敏感度匹配信任层级](#如何安全选型)；机密 → 自托管或原厂 + ZDR |
 | "受够 LiteLLM 了，还有啥？" | [LiteLLM 替代品诚实对比](compare/litellm-alternatives-2026.md)（开销实测：它比 Bifrost 重 10×） |
+| "会不会弄坏我的 Claude Code / Codex / Cursor？" | **2025–26 各网关 issue 区的头号故障**——工具调用/thinking 块翻译损坏。先拿你的 Agent 实测再上 → [编码 Agent 路由](#-智能路由与模型选择) |
 
 <details>
 <summary>📑 <b>完整目录</b> —— 快速选 · 按需浏览 · 参考</summary>
@@ -346,6 +347,8 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 ### 🧠 智能路由与模型选择
 
 *痛点："每条 prompt 都路由到能胜任的最便宜模型。"*
+
+> ⚠️ **网关最常见的故障不是路由，是翻译。** 纵观 2025–26 各家 issue 区，每个主流网关最大的 bug 类别都是**工具调用 / thinking 块 / 流式翻译损坏**：Portkey 评论最多的 issue（[#980](https://github.com/Portkey-AI/gateway/issues/980)，tool_use id 丢失）、OpenRouter AI-SDK 的 thinking 模式三度报修（[#245](https://github.com/OpenRouterTeam/ai-sdk-provider/issues/245)）、Claude Code 过 LiteLLM 报错（[#13373](https://github.com/BerriAI/litellm/issues/13373)）、过 new-api 报错（[#1854](https://github.com/QuantumNous/new-api/issues/1854)）——2025 年以来 **413 个 LiteLLM issue 提到 "claude code"**。"OpenAI 兼容"是个光谱，不是复选框（[LangChain 自己的兼容性 issue](https://github.com/langchain-ai/langchain/issues/34328)）。**上生产前：拿你真实的 Agent（带工具调用 + 流式 + thinking）过一遍网关，别只测 hello-world。**
 
 - [Not Diamond](https://www.notdiamond.ai) — SOTA 模型路由智能，OpenRouter Auto 的幕后引擎。
 - [Martian](https://withmartian.com) — 模型路由商业先驱，与埃森哲合作。
