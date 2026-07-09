@@ -3,6 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/cuihuan/awesome-ai-gateway?style=social)](https://github.com/cuihuan/awesome-ai-gateway/stargazers)
 [![Evaluation set](https://img.shields.io/badge/📊-evaluation%20set-orange)](BENCHMARKS.md)
 [![Data verified](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway?label=data%20verified&color=success&logo=githubactions&logoColor=white)](.github/workflows/daily-update.yml) [![CI](https://img.shields.io/github/actions/workflow/status/cuihuan/awesome-ai-gateway/ci.yml?label=168%20tests)](https://github.com/cuihuan/awesome-ai-gateway/actions/workflows/ci.yml)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
 
 > **Pick the right AI gateway for your need in ~10 seconds — then trust the answer.** A decision tree, a reproducible cost benchmark, and independent evidence for what we exclude. Organized by what you actually need, not by vendor.
 
@@ -20,182 +21,51 @@ _Built the hard way: **I burned $788 on AI coding in a single day** — one flag
   <a href="#the-requirements-map"><img src="assets/hero-demo.gif" alt="How this list works, in four steps: pick by requirement (routing, cost, observability, compliance, supply-chain, caching, K8s, MCP/agents, fidelity), match the trust tier to your data, check evidence-based five-axis scores, and mind the 106x model cost spread ($0.03 vs $3.01 for the same 100K-token report)." width="840"></a>
 </p>
 
-## ⚡ 10-second answers
+## Contents
 
-The questions people actually ask ([sourced from real threads](#-essential-reading)) — answered first:
+- [🔥 Top gateways (by stars)](#-top-gateways-by-stars)
+- **Browse by need**
+  - [💰 Cost-first — cheapest multi-model access](#-cost-first-cheapest-multi-model-access) · [🆓 free tiers that still work](#-free-tiers-that-still-work--the-verified-limits-table)
+  - [🔓 Self-hosted open source](#-self-hosted-open-source)
+  - [🏢 Enterprise & compliance](#-enterprise--compliance)
+  - [☁️ First-party gateways (cloud & model vendors)](#️-first-party-gateways-cloud--model-vendors)
+  - [🇨🇳 China ecosystem](#-china-ecosystem)
+  - [🤖 MCP & agent gateways](#-mcp--agent-gateways)
+  - [🔧 More by capability](#-more-by-capability-cross-cutting) — [routing](#-smart-routing--model-selection) · [caching](#-prompt-caching-through-a-gateway--the-money-question) · [observability](#-observability--cost-tracking) · [K8s](#️-kubernetes-native--inference-infra)
+- **Decide & compare**
+  - [Which gateway should I use](#which-gateway-should-i-use) · [Quick comparison](#quick-comparison) · [The requirements map](#the-requirements-map)
+  - [How to choose safely](#how-to-choose-safely) — [data-retention matrix](#-who-sees-your-prompts--the-data-retention-matrix) · [relay watch-list](#community-relay-watch-list)
+- **Signal & reference**
+  - [📊 Latest evaluations](#-latest-evaluations) · [📰 What's new](#-whats-new) · [🚀 Recent releases](#-recent-releases-auto-updated)
+  - [⚡ 10-second answers](#-10-second-answers) · [📚 Essential reading](#-essential-reading) · [Guides & comparisons](#guides--comparisons)
+  - [FAQ](#faq) · [Glossary](#glossary) · [Why this exists](#why-this-exists) · [🔌 Use the data](#-use-the-data--its-an-api)
 
-| You're asking… | The answer |
-|---|---|
-| "Cheapest way to hit many models right now?" | **OpenRouter** (~5.5% credit fee, ~340 models) — or **0% markup on your own keys**: Vercel / Cloudflare AI Gateway → [Cost-first](#-cost-first-cheapest-multi-model-access) |
-| "Which free tiers still work, and what are the real limits?" | OpenRouter `:free`: **50 req/day** (<$10 credits) or **1,000/day** ($10+ top-up), 20 req/min shared ([official limits](https://openrouter.ai/docs/api-reference/limits)). Eleven providers verified row-by-row in the [free-tier table](#-free-tiers-that-still-work--the-verified-limits-table). The catch with "free": your prompts may train someone's model — check the fine print |
-| "How much does the _model_ choice matter?" | **106×** — the same 100K-token report costs $0.03 (DeepSeek) vs $3.01 (GPT-5.5) → [computed tables](BENCHMARKS.md#part-3--real-world-token-cost-computed) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
-| "How much latency does the gateway itself add?" | **Independently measured** (nobody else does): Bifrost **0.56 ms** · Portkey OSS **2.69 ms** · LiteLLM **5.41 ms** per request → [data](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
-| "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |
-| "Who sees my prompts?" | The gateway does, always — and routers range from **ZDR-by-default** to **training on your prompts by ToS**. See the [data-retention matrix](#-who-sees-your-prompts--the-data-retention-matrix) |
-| "Sick of LiteLLM — what else?" | [LiteLLM alternatives, compared honestly](compare/litellm-alternatives-2026.md) (overhead-measured: it's 10× heavier than Bifrost) |
-| "Will it break my Claude Code / Codex / Cursor?" | **The #1 gateway failure in 2025–26 issue trackers** — broken tool-call/thinking-block translation. Test _your_ agent through it first → [coding-agent routers](#-smart-routing--model-selection) |
+## 🔥 Top gateways (by stars)
 
-<details>
-<summary>📑 <b>Full contents</b> — pick fast · browse by need · reference</summary>
+The most-starred, most-authoritative projects in the list — a fast orientation. Stars auto-refresh daily; full context (features, license, caveats) is in each linked section. ⚠️ flags a project whose coding-subscription / account-pool routing can carry provider-ToS or account-ban risk.
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![License: CC0](https://img.shields.io/badge/license-CC0-lightgrey.svg)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/cuihuan/awesome-ai-gateway)](https://github.com/cuihuan/awesome-ai-gateway/commits/main)
-
-**Pick fast** · [Which gateway should I use?](#which-gateway-should-i-use) · [📊 Latest evaluations](#-latest-evaluations) · [Quick comparison](#quick-comparison)
-
-**Browse by need** · [💰 Cost-first](#-cost-first-cheapest-multi-model-access) · [🔓 Self-hosted](#-self-hosted-open-source) · [🏢 Enterprise & compliance](#-enterprise--compliance) · [☁️ First-party clouds](#️-first-party-gateways-cloud--model-vendors) · [🇨🇳 China ecosystem](#-china-ecosystem) · [🤖 MCP & agent gateways](#-mcp--agent-gateways)
-
-**Reference** · [📊 Evaluation set](BENCHMARKS.md) · [How to choose safely](#how-to-choose-safely) · [FAQ](#faq) · [📚 Essential reading](#-essential-reading) · [📰 What's new](#-whats-new) · [Glossary](#glossary) · [Why this exists](#why-this-exists) · [Contributing](#contributing)
-
-</details>
-
-## 📊 Latest evaluations
-
-_A running digest of fresh model, pricing and gateway evals — **newest first, every entry dated and sourced.** This is the fast-moving signal layer; for our own **reproducible** cost tables and model scorecard, see the [full evaluation set](BENCHMARKS.md). Spotted a new eval worth tracking? [Add it](CONTRIBUTING.md)._
-
-| Date | Category | Finding | Source |
+| Gateway | Stars | What it is | Jump to |
 |---|---|---|---|
-| 2026-07-09 | 🔌 Cross-format | **The hardest path now measured** — an Anthropic client (e.g. Claude Code) routed to an OpenAI model, the single most-filed "tool calls break" complaint. **LiteLLM v1.91.1 — 3/3** on the neutral CI runner (tool_use + streaming + usage all survive the translation). Load-bearing finding: LiteLLM's `/v1/messages` transport **changed across versions** (≤1.57.x OpenAI Chat Completions → ≥~1.9x OpenAI **Responses API**), which fails `KeyError('created_at')` against a chat-completions-only upstream — so **pin your version**. Reproducible: `node probe/xformat.mjs`. | [xformat.json](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/xformat.json) |
-| 2026-07-09 | 🆓 Free tiers | **Free-tier audit across 11 providers, each row re-verified against the provider's own docs**: Google now hides Gemini free-tier limits behind a login; Mistral's free mode **trains on your data by default** (manual opt-out); Together AI's `-free` models are **gone** ($5 minimum prepaid); Kimi was never free ($1 to start). Machine-readable, CI-enforced ≤30-day re-review. | [free_tiers.json](data/free_tiers.json) |
-| 2026-07 | 🔌 Fidelity | **First independent protocol-fidelity test** — does the gateway relay tool-calls/streaming/usage intact (the #1 real-world failure)? **LiteLLM 3/3 · Bifrost 3/3 · Portkey OSS 1/3** — Portkey OSS's custom-host streaming threw an internal error on a clean CI runner (non-streaming fine; hosted product untested). Reproducible: `node probe/fidelity.mjs`. | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/fidelity.json) |
-| 2026-07 | ⏱️ Performance | **First independent gateway-overhead comparison** (same neutral CI runner, mock upstream, no vendor claims): **Bifrost 0.56 ms** · **Portkey OSS 2.69 ms** · **LiteLLM 5.41 ms** added per request. Bifrost's "fastest" claim holds directionally (~10× vs LiteLLM, not the marketed 50×); Portkey's "<1 ms" didn't reproduce on shared CI hardware. Reproducible: `node probe/overhead.mjs`; PRs add more gateways. | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
-| 2026-07 | 📈 Adoption | **Multi-model is now the default architecture** — of 1,000+ surveyed AI engineers, **87% actively use multiple models together** (44% route by task type, 11% by cost), **75% adjust usage because of cost**, and cost is the **#2 most-monitored production metric** after quality. Only 20% rank reliability top-3 — failover stays underpriced. | [Amplify Partners](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) |
-| 2026-07-02 | 🛡️ Reliability | **Anthropic pulled Fable 5 & Mythos 5 offline globally** for ~3 weeks under a US export-control order, then restored them once Commerce lifted it (back on the Claude platform/Code by Jul 2) — a live reminder that single-provider stacks have no fallback, and multi-provider routing is the mitigation. | [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html) |
-| 2026-06-23 | 🚀 Gateway | **Envoy AI Gateway reached v1.0** (production GA) — the CNCF/Envoy-backed, Kubernetes-native multi-provider data plane (provider failover, token rate-limiting, MCP support) graduates to stable. | [Envoy](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/) |
-| 2026-06-21 | 💰 Pricing | The API pricing market now spans **123 models across 12 providers**, with a **>400× price spread** over the full input/output range — cheapest flagship **DeepSeek V4 Flash ($0.14/M input)** vs priciest **GPT-5.5 Pro ($30.00/M input)** is already ~214× on input alone. Tiering has hardened: top reasoning (o3) runs ~20× a nano-tier model on input, wider on output. | [aipricing.guru](https://aipricing.guru) |
-| 2026-06 | 📈 Adoption | ChatGPT hit **~900M weekly active users** and **>2.5B queries/day** — demand scaling about as fast as the price spread. | [DemandSage](https://www.demandsage.com/chatgpt-statistics/) |
-| 2026-04 | 📡 Telemetry | **Production telemetry confirms the survey data** — across 1,000+ orgs' live LLM traffic: **>70% run 3+ models**, OpenAI's share fell **75% → 63%** in a year (Gemini +20pp, Claude +23pp), rate limits caused **~⅓ of all LLM errors** in March (8.4M), and **only 28% of calls show any cached input** while system prompts eat 69% of input tokens — routing, failover and caching are measurably underused. | [Datadog](https://www.datadoghq.com/state-of-ai-engineering/) |
-| 2026-01 | 📡 Telemetry | **100 trillion tokens of real gateway traffic analyzed** (OpenRouter × a16z): open-weight models reached **~⅓ of token volume**; no single OSS model holds >20–25% for long (rapid turnover); and a 10% price cut moves usage only ~0.5–0.7% — **quality, not price, drives model switching**. | [arXiv](https://arxiv.org/abs/2601.10088) |
-| 2025-12 | 💰 Spend | **Enterprise LLM-API spend keeps flipping providers** — Anthropic 40% · OpenAI 27% (was 50% in 2023) · Google 21% of $12.5B enterprise model-API spend (n=495; disclosure: Menlo is an Anthropic investor). Provider churn at this scale is the business case against hard-wiring one vendor. | [Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/) |
+| [LiteLLM](https://github.com/BerriAI/litellm) | <!--s:BerriAI/litellm-->⭐ 53k<!--/s--> | The default OSS proxy + SDK — OpenAI format to 100+ providers | [Self-hosted](#-self-hosted-open-source) |
+| [Kong](https://github.com/Kong/kong) | <!--s:Kong/kong-->⭐ 43.8k<!--/s--> | Mature API gateway with AI plugins (semantic cache, guard) | [Enterprise](#-enterprise--compliance) |
+| [new-api](https://github.com/QuantumNous/new-api) | <!--s:QuantumNous/new-api-->⭐ 41.6k<!--/s--> | The most active relay/billing hub for teams | [China](#-china-ecosystem) |
+| [CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI) ⚠️ | <!--s:router-for-me/CLIProxyAPI-->⭐ 39.6k<!--/s--> | Wraps coding-CLI subscriptions (Claude Code, Codex…) into APIs | [Self-hosted](#-self-hosted-open-source) |
+| [Claude Code Router](https://github.com/musistudio/claude-code-router) | <!--s:musistudio/claude-code-router-->⭐ 35.7k<!--/s--> | Route Claude Code and agent CLIs to any model/provider | [Smart routing](#-smart-routing--model-selection) |
+| [one-api](https://github.com/songquanpeng/one-api) | <!--s:songquanpeng/one-api-->⭐ 35.6k<!--/s--> | The original LLM API management / distribution system | [China](#-china-ecosystem) |
+| [sub2api](https://github.com/Wei-Shaw/sub2api) ⚠️ | <!--s:Wei-Shaw/sub2api-->⭐ 30.9k<!--/s--> | Pools subscription accounts behind one endpoint | [China](#-china-ecosystem) |
+| [MLflow AI Gateway](https://github.com/mlflow/mlflow) | <!--s:mlflow/mlflow-->⭐ 26.9k<!--/s--> | Unified endpoints + governance in the MLflow platform | [Observability](#-observability--cost-tracking) |
+| [9router](https://github.com/decolua/9router) ⚠️ | <!--s:decolua/9router-->⭐ 21.2k<!--/s--> | BYOK local proxy, subscription→cheap→free fallback | [Self-hosted](#-self-hosted-open-source) |
+| [Apache APISIX](https://github.com/apache/apisix) | <!--s:apache/apisix-->⭐ 16.8k<!--/s--> | Cloud-native API + AI gateway (`ai-proxy` plugins) | [Enterprise](#-enterprise--compliance) |
+| [aisuite](https://github.com/andrewyng/aisuite) | <!--s:andrewyng/aisuite-->⭐ 14.9k<!--/s--> | Andrew Ng's unified multi-provider client (a library) | [Self-hosted](#-self-hosted-open-source) |
+| [OmniRoute](https://github.com/diegosouzapw/OmniRoute) ⚠️ | <!--s:diegosouzapw/OmniRoute-->⭐ 13.9k<!--/s--> | Coding-agent token-saver across 231+ providers | [Self-hosted](#-self-hosted-open-source) |
+| [Portkey Gateway](https://github.com/Portkey-AI/gateway) | <!--s:Portkey-AI/gateway-->⭐ 12.4k<!--/s--> | Fast TypeScript gateway, 1,600+ models, 50+ guardrails | [Self-hosted](#-self-hosted-open-source) |
+| [Higress](https://github.com/higress-group/higress) | <!--s:higress-group/higress-->⭐ 8.8k<!--/s--> | Alibaba's AI-native gateway on Envoy/Istio | [China](#-china-ecosystem) |
+| [NVIDIA Dynamo](https://github.com/ai-dynamo/dynamo) | <!--s:ai-dynamo/dynamo-->⭐ 7.4k<!--/s--> | Datacenter-scale, KV-cache-aware inference routing | [K8s](#️-kubernetes-native--inference-infra) |
+| [Bifrost](https://github.com/maximhq/bifrost) | <!--s:maximhq/bifrost-->⭐ 6.4k<!--/s--> | Go gateway, lowest independently-measured overhead | [Self-hosted](#-self-hosted-open-source) |
 
-<details>
-<summary>💸 <b>Same ¥100 (≈ $14.66) — how much can each model read?</b> The 400× spread, made concrete.</summary>
-
-How many **input+output tokens** ¥100 buys, by model (blended estimate · snapshot **2026-06-21** · [aipricing.guru](https://aipricing.guru)):
-
-| Tier | Model | Tokens / ¥100 | ≈ Chinese chars |
-|---|---|---|---|
-| 🥇 Rock-bottom | **DeepSeek V4 Flash** | 35.2M | ~26.4M |
-| 🥇 Rock-bottom | GPT-4.1 nano | 29.6M | ~22.2M |
-| 🥇 Rock-bottom | GPT-5.4 nano | 10.2M | ~7.7M |
-| 💚 Value | GPT-5.4 mini | 2.83M | ~2.1M |
-| 💚 Value | DeepSeek V4 Pro | 2.83M | ~2.1M |
-| 🧠 Reasoning | o3 | 1.48M | ~1.1M |
-| 🏁 Flagship | Gemini 2.5 Pro | 1.31M | ~0.98M |
-| 🏁 Flagship | GPT-5.5 | 0.42M | ~0.32M |
-| 🏁 Flagship | GPT-5.5 Pro | 0.07M | ~0.05M |
-
-> **One line:** ¥100 reads **~26M Chinese characters** on DeepSeek V4 Flash — roughly **52× the _Three-Body_ trilogy** — but only **~50K** on GPT-5.5 Pro, about one short story. Choosing a model is choosing the scale factor on your money; the [Cost-first](#-cost-first-cheapest-multi-model-access) gateways exist to exploit exactly this spread.
-
-</details>
-
-## Which gateway should I use
-
-<p align="center">
-  <img src="assets/decision-tree.png" alt="Decision tree: which AI gateway should you use? Hosted (OpenRouter, Vercel, Cloudflare, Bedrock, Azure, Vertex, Portkey) vs self-hosted open source (LiteLLM, Bifrost, new-api, one-api, GPT-Load, Kong, Higress, APISIX, Envoy AI Gateway, agentgateway), chosen by what you need." width="840">
-</p>
-
-**⚡ Fast answer** — one sane default per need (alternatives in each linked section):
-
-| I need… | Start with | Drill into |
-|---|---|---|
-| Cheapest access to many models, zero ops | **OpenRouter** | [Cost-first](#-cost-first-cheapest-multi-model-access) |
-| Zero markup on my own keys | **Vercel** / **Cloudflare** | [Cost-first](#-cost-first-cheapest-multi-model-access) |
-| Self-host, broadest features | **LiteLLM** | [Self-hosted](#-self-hosted-open-source) |
-| Self-host, lowest overhead | **Bifrost** (Go) | [Self-hosted](#-self-hosted-open-source) |
-| China models + team key billing | **new-api** | [China ecosystem](#-china-ecosystem) |
-| Enterprise K8s + audit | **Kong** / **Higress** | [Enterprise](#-enterprise--compliance) |
-| Strongest compliance (HIPAA/FedRAMP) | **Azure** / **Bedrock** | [First-party](#️-first-party-gateways-cloud--model-vendors) |
-| Govern agents / MCP traffic | **agentgateway** | [MCP & agents](#-mcp--agent-gateways) |
-
-<details>
-<summary>📋 The full decision tree — every branch, copy-pasteable</summary>
-
-```text
-Do you want to self-host?
-│
-├─ NO — hosted, minimal ops
-│   ├─ Cheapest access to many models ──────────▶ OpenRouter · Vercel AI Gateway (0% markup)
-│   ├─ Free control plane over your own keys ───▶ Cloudflare AI Gateway
-│   ├─ EU data residency matters ───────────────▶ Requesty · Eden AI · nexos.ai
-│   └─ Already on one cloud ────────────────────▶ AWS Bedrock · Azure APIM · Vertex AI
-│
-└─ YES — self-hosted / open source
-    ├─ Python stack, broadest features ─────────▶ LiteLLM
-    ├─ Raw performance (Go/Rust/TS) ────────────▶ Bifrost · Portkey Gateway
-    ├─ Built-in evals + observability ──────────▶ Helicone · LiteLLM · Bifrost
-    ├─ Key distribution / billing / CN models ──▶ new-api · one-api · GPT-Load
-    ├─ Enterprise K8s, audit, guardrails ───────▶ Kong · Higress · APISIX · Envoy AI Gateway
-    └─ Governing AI agents & MCP traffic ───────▶ agentgateway · Lunar.dev
-```
-
-</details>
-
-### ✅ Why trust this list
-- **Independent — no vendor money, no affiliate links, CC0.** Unlike affiliate-driven relay "rankings," nobody pays to appear here.
-- **Reproducible, not asserted.** Every cost cell is computed from [open pricing data](data/models.json) by a [unit-tested script](scripts/cost_calc.py); stars refresh daily via CI.
-- **Honest about risk.** We disclose CVEs, label archived/stale projects, and [exclude gray-market relays](#how-to-choose-safely) — with the research to back it.
-
----
-
-> **Why this matters:** the same task can cost **100× more** depending on the model behind your gateway. An **AI gateway** sits between your code and LLM providers — one endpoint, one key, many models — handling routing, failover, caching, rate limits, cost tracking and guardrails, so you change a `base_url` instead of rewriting your app. Pick the gateway here, then the [evaluation set](BENCHMARKS.md) shows which model to route to.
-
-<p align="center">
-  <a href="BENCHMARKS.md"><img src="assets/cost-spread.png" alt="Cost to write one 100K-token report: $0.03 on DeepSeek vs $3.01 on GPT-5.5 — a 106x spread, computed by a unit-tested script" width="760"></a>
-</p>
-
-⭐ **Found this useful? [Star it](https://github.com/cuihuan/awesome-ai-gateway)** — that's how the next engineer choosing a gateway finds it. CC0, no signup, no tracking, no vendor money.
-
-## The requirements map
-
-Gateways get bought for **eight distinct jobs**. Find yours, jump straight to the evidence:
-
-| Your requirement | The question it answers | Where to look |
-|---|---|---|
-| 🔀 **Routing & failover** | "One provider went down — did my app?" | [Quick comparison](#quick-comparison) · [Smart routing](#-smart-routing--model-selection) |
-| 💰 **Cost control** | "Who can spend what, and where does it stop?" | [Cost-first](#-cost-first-cheapest-multi-model-access) · [cost tables](BENCHMARKS.md) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
-| 📊 **Observability** | "Which key, which model, which prompt — and why did quality drop?" | [Observability section](#-observability--cost-tracking) · [what to measure](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) · [research survey](docs/observability-landscape.md) |
-| 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) |
-| 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 8) |
-| ⚡ **Caching & rate limits** | "Stop paying twice for the same answer; survive 429s" | [Quick comparison](#quick-comparison) cache column |
-| ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
-| 🤖 **Agent & MCP governance** | "My agents call tools — who's watching that traffic?" | [MCP & agent gateways](#-mcp--agent-gateways) |
-| 🔍 **Model fidelity / relay trust** | "Am I getting the model I'm paying for?" | [canary_check.py](scripts/canary_check.py) · [watch-list](#community-relay-watch-list) |
-
-> **How common is each job? Survey-grounded.** From the [Amplify Partners 2026 AI Engineering Report](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) (1,000+ engineers, with Notion & Vercel): **87% actively run multiple models together** — routing is the default architecture, not the edge case (44% route by task type, 11% by cost). **75% adjust how ambitiously they use AI because of cost** (40% say it _regularly_ shapes ambition), and **cost is the #2 most-monitored production metric** after quality — which is why per-key cost attribution anchors the [observability axis](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter). **89% of agent-running teams now grant write permissions** while guardrails stay primitive — the case for [agent/MCP governance](#-mcp--agent-gateways). And one number worth reading twice: only **20%** put reliability in their top-3 selection criteria — yet peer-reviewed status-page measurements show the OpenAI and Anthropic APIs each fail **about every 2 days** (median MTBF 1.99 / 2.09 days) with **~1h median recovery**, and only 6.15% of incidents get a postmortem ([ICPE 2025](https://arxiv.org/abs/2501.12469)); in production traffic, rate limits alone caused **~⅓ of all LLM errors** ([Datadog, Mar 2026](https://www.datadoghq.com/state-of-ai-engineering/)). Engineers underweight failover until an event like the [June-2026 Fable 5 pullout](#-whats-new) takes single-provider stacks offline for three weeks. Multi-provider routing is cheap insurance precisely _because_ it's underpriced.
-
-## Quick comparison
-
-Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not available.
-
-| Project | Type | Stars | License | Multi-provider | Fallback / LB | Caching | Guardrails | Cost tracking |
-|---|---|---|---|---|---|---|---|---|
-| [LiteLLM](https://github.com/BerriAI/litellm) | OSS proxy + SDK | <!--s:BerriAI/litellm-->⭐ 53k<!--/s--> | MIT¹ | ✅ 100+ | ✅ | ✅ | ✅ | ✅ |
-| [new-api](https://github.com/QuantumNous/new-api) | OSS relay/billing | <!--s:QuantumNous/new-api-->⭐ 41.6k<!--/s--> | AGPL-3.0 | ✅ | ✅ | ➕ | ➕ | ✅ |
-| [one-api](https://github.com/songquanpeng/one-api) | OSS relay/billing | <!--s:songquanpeng/one-api-->⭐ 35.6k<!--/s--> | MIT | ✅ | ✅ | ❌ | ❌ | ✅ |
-| [Kong AI Gateway](https://github.com/Kong/kong) | OSS API gateway | <!--s:Kong/kong-->⭐ 43.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ semantic | ✅ | ✅ |
-| [Apache APISIX](https://github.com/apache/apisix) | OSS API gateway | <!--s:apache/apisix-->⭐ 16.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ➕ | ➕ | ➕ |
-| [Portkey Gateway](https://github.com/Portkey-AI/gateway) | OSS gateway + SaaS | <!--s:Portkey-AI/gateway-->⭐ 12.4k<!--/s--> | MIT | ✅ 1600+ | ✅ | ✅ | ✅ 50+ | ➕ SaaS |
-| [TensorZero](https://github.com/tensorzero/tensorzero) | OSS LLMOps · ⚠️ archived '26 | <!--s:tensorzero/tensorzero-->⭐ 11.7k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ➕ | ✅ |
-| [Higress](https://github.com/higress-group/higress) | OSS AI-native gateway | <!--s:higress-group/higress-->⭐ 8.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| [GPT-Load](https://github.com/tbphp/gpt-load) | OSS key-pool proxy | <!--s:tbphp/gpt-load-->⭐ 6.2k<!--/s--> | MIT | ✅ | ✅ key rotation | ❌ | ❌ | ➕ |
-| [Bifrost](https://github.com/maximhq/bifrost) | OSS gateway (Go) | <!--s:maximhq/bifrost-->⭐ 6.4k<!--/s--> | Apache-2.0 | ✅ | ✅ adaptive | ✅ | ✅ | ✅ |
-| [Helicone](https://github.com/Helicone/helicone) | OSS observability + gateway | <!--s:Helicone/helicone-->⭐ 5.9k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ➕ | ✅ |
-| [Envoy AI Gateway](https://github.com/envoyproxy/ai-gateway) | OSS K8s gateway | <!--s:envoyproxy/ai-gateway-->⭐ 1.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ➕ | ➕ | ✅ |
-| [OpenRouter](https://openrouter.ai) | SaaS marketplace | — | Commercial | ✅ 400+ | ✅ | ✅ | ➕ | ✅ |
-| [Vercel AI Gateway](https://vercel.com/ai-gateway) | SaaS (0% markup) | — | Commercial | ✅ 100s | ✅ | ❌ | ❌ | ✅ |
-| [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) | SaaS control plane | — | Commercial (free tier) | ✅ | ✅ dynamic | ✅ | ✅ | ✅ budgets |
-
-¹ LiteLLM core is MIT; the repo contains a separately licensed enterprise directory.
-
-> 📂 **Browse the raw data** (machine-readable, CC0): [models & pricing JSON](data/models.json) · [cost table CSV](data/cost_table.csv) · [gateway scorecard CSV](data/gateways_scorecard.csv). Every cost cell is regenerated from this data by a [unit-tested script](scripts/cost_calc.py).
-
-<p align="center">
-  <img src="assets/landscape.png" alt="The AI Gateway Landscape: 100+ gateways across 9 categories — hosted aggregators (OpenRouter, Vercel, Cloudflare, AIMLAPI, Novita), self-hosted OSS (LiteLLM, Portkey, Bifrost, Plano), enterprise & API gateways (Kong, APISIX, Envoy, Tyk, Gravitee, KrakenD), first-party clouds (Bedrock, Azure, Vertex, Databricks), China ecosystem (new-api, one-api, Higress, GPT-Load, VoAPI), smart routing (Not Diamond, Martian, RouteLLM, Claude Code Router, NVIDIA LLM Router), observability (Helicone, MLflow, Respan), MCP & agent (agentgateway, Lunar.dev, IBM ContextForge, MetaMCP, Pomerium), and K8s & inference (KServe, GPUStack, llm-d, AIBrix)." width="900">
-</p>
-
-> _The full directory at a glance — browse the sections below by your need._
+> **Hosted leaders** (SaaS, no GitHub stars): [OpenRouter](https://openrouter.ai) (400+ models, ~5.5% fee) · [Vercel AI Gateway](https://vercel.com/ai-gateway) & [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) (0% markup) → [Cost-first](#-cost-first-cheapest-multi-model-access).
+>
+> _Stars measure popularity, not fitness for **your** need — that's what the category sections and the evidence-based [scorecard](BENCHMARKS.md) are for._
 
 ## 💰 Cost-first: cheapest multi-model access
 
@@ -444,61 +314,112 @@ _Pain point: "Routing to self-hosted models (vLLM/Ollama) inside the cluster, GP
 - [NVIDIA Dynamo](https://github.com/ai-dynamo/dynamo) <!--s:ai-dynamo/dynamo-->⭐ 7.4k<!--/s--> — NVIDIA's datacenter-scale distributed inference framework whose Endpoint Picker (EPP) plugin for the Gateway API Inference Extension does KV-cache-aware, LLM-aware request routing at the gateway layer over vLLM/SGLang/TensorRT-LLM backends.
 - [llmaz](https://github.com/InftyAI/llmaz) <!--s:InftyAI/llmaz-->⭐ 307<!--/s--> — K8s-native inference platform fronting heterogeneous backends (vLLM, SGLang, TGI, llama.cpp, TensorRT-LLM) with Envoy AI Gateway-based model routing and token rate-limiting, Gateway-API inference-pool routing, and LLM-metric HPA plus Karpenter autoscaling. Maintained but slower cadence (still v0.1.x).
 
-## 📰 What's new
+## Which gateway should I use
 
-_Curated monthly. Last review: 2026-06-30._
+<p align="center">
+  <img src="assets/decision-tree.png" alt="Decision tree: which AI gateway should you use? Hosted (OpenRouter, Vercel, Cloudflare, Bedrock, Azure, Vertex, Portkey) vs self-hosted open source (LiteLLM, Bifrost, new-api, one-api, GPT-Load, Kong, Higress, APISIX, Envoy AI Gateway, agentgateway), chosen by what you need." width="840">
+</p>
 
-- **2026-06** · **LiteLLM RCE added to CISA's KEV catalog** — CVE-2026-42271 (an MCP command-injection) chains with a Starlette auth-bypass into unauthenticated remote code execution that can reach master keys and provider credentials (KEV-listed Jun 8; further CVEs Jun 16–22). Distinct from March's PyPI supply-chain attack — patch and lock down the gateway control plane. ([CSA](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/))
-- **2026-06** · **Envoy AI Gateway hit v1.0** (Jun 23) — the first production-stable open-source AI gateway built on CNCF Envoy: one API across 16 providers plus a native MCP gateway (backed by Tetrate, Bloomberg, Nutanix, Tencent). ([release](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/))
-- **2026-06** · **Hyperscalers converged on AI-gateway governance** — Databricks shipped **Unity AI Gateway** (smart routing + hard spend caps) at Data+AI Summit, Azure **API Management's AI-gateway** features reached GA at Build, and AWS extended **Bedrock AgentCore Gateway** at Summit NY. Runtime governance is now table stakes. ([Databricks](https://www.databricks.com/blog/ai-governance-data-ai-summit-2026-whats-new-unity-ai-gateway))
-- **2026-06** · **Anthropic pulled Fable 5 & Mythos 5 offline globally** under a US export-control directive (Jun 12–13), then restored them after the Dept of Commerce lifted the controls (Jun 30) — Fable 5 was back on the Claude platform, Claude.ai and Claude Code by Jul 2. The canonical "this is why you keep multi-provider failover" event of the year. ([Fortune](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/), [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html))
-- **2026-06** · **GLM-5.2 is the new leading open-weight model** — Z.ai's MIT-licensed 744B-param MoE (40B active, 1M context, open-weighted mid-June) tops the open-weight tier of the Artificial Analysis Intelligence Index (score 51), taking the crown from the previous open leaders. ([Artificial Analysis](https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index))
-- **2026-02** · **OpenRouter hit two more outages (Feb 17 & 19)** — its caching layer dropped all DB connections, returning 401 "User not found" with request-failure rates up to ~80–90% (a DoS was ramping during the first). Even the dominant aggregator carries no SLA — a reason the cost-first picks here stay paired with self-host fallbacks. ([postmortem](https://openrouter.ai/blog/announcements/openrouter-outages-on-february-17-and-19-2026/))
-- **2026-06** · **TensorZero shut down** — the VC-backed open-source LLMOps gateway ($7.3M seed) archived its repo on June 12, as first-party clouds ship native gateway/observability features and squeeze independents. ([byteiota](https://byteiota.com/tensorzero-shuts-down-what-oss-llmops-cant-survive/))
-- **2026-03** · **Helicone acquired by Mintlify** (now maintenance mode); the same month **LiteLLM hit a PyPI supply-chain attack** — v1.82.7/1.82.8 were backdoored via a CI-token compromise and quarantined in ~3h, a sharp reminder to pin gateway versions. ([Mintlify](https://www.mintlify.com/blog/mintlify-acquires-helicone), [Trend Micro](https://www.trendmicro.com/en/research/26/c/inside-litellm-supply-chain-compromise.html))
-- **2026-05** · **Palo Alto Networks completed its acquisition of Portkey** (announced Apr 30, closed May 29), making the AI gateway the control plane for its Prisma AIRS security platform — a sign gateways are becoming core security infrastructure. ([Palo Alto Networks](https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-completes-acquisition-of-portkey-to-secure-ai-agents))
-- **2026-05** · OpenRouter raised a **$113M Series B** led by CapitalG at a $1.3B valuation — ~8M users, ~100T tokens/month. ([TechCrunch](https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/))
-- **2026-06** · NetFoundry launched **zero-trust MCP and LLM gateways**; Cisco Investments joined its Series A. ([PR Newswire](https://www.prnewswire.com/news-releases/netfoundry-launches-enterprise-class-mcp-and-llm-gateways-bringing-zero-trust-to-ai-deployments-302789053.html))
-- **2026** · Cloudflare AI Gateway shipped **dollar-denominated spend limits** (public beta) on top of dynamic routing and unified billing. ([Cloudflare blog](https://blog.cloudflare.com/ai-gateway-spend-limits/))
-- **2025-11** · Pydantic AI Gateway went open beta and has since merged into **Logfire**. ([Pydantic Logfire](https://pydantic.dev/logfire))
-- **Trend** · MCP gateways emerged as a distinct category; spend-limit enforcement became table stakes; the **EU AI Act (enforceable Aug 2026)** is driving the compliance bucket; **new-api overtook one-api** as the most active China-ecosystem relay; and an **independent-gateway shakeout** is underway — Portkey (→Palo Alto) and Helicone (→Mintlify) acquired, TensorZero shut down, and the consolidation kept going (Katanemo→DigitalOcean, TrueFoundry→Seldon, Langfuse→ClickHouse).
+**⚡ Fast answer** — one sane default per need (alternatives in each linked section):
 
-## 🚀 Recent releases (auto-updated)
-
-<!-- RELEASES:START -->
-- **2026-07-09** · [smart-mcp-proxy/mcpproxy-go v0.48.0](https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.0) — v0.48.0
-- **2026-07-09** · [archestra-ai/archestra platform-v1.3.5](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.5) — platform: v1.3.5
-- **2026-07-08** · [BerriAI/litellm v1.91.1](https://github.com/BerriAI/litellm/releases/tag/v1.91.1) — v1.91.1
-- **2026-07-08** · [router-for-me/CLIProxyAPI v7.2.54](https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.54) — v7.2.54
-- **2026-07-08** · [ENTERPILOT/GoModel v0.1.50](https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.50) — v0.1.50
-- **2026-07-08** · [krakend/krakend-ce v2.13.8](https://github.com/krakend/krakend-ce/releases/tag/v2.13.8) — v2.13.8
-- **2026-07-07** · [diegosouzapw/OmniRoute v3.8.46](https://github.com/diegosouzapw/OmniRoute/releases/tag/v3.8.46) — v3.8.46
-- **2026-07-07** · [IBM/mcp-context-forge v1.0.5](https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.5) — v1.0.5 - API Versioning, Auth Hardening, A2A Compatibility, and Build Consoli...
-- **2026-07-07** · [musistudio/claude-code-router v3.0.9](https://github.com/musistudio/claude-code-router/releases/tag/v3.0.9) — v3.0.9
-- **2026-07-07** · [QuantumNous/new-api v1.0.0-rc.20](https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.20) — v1.0.0-rc.20
-- **2026-07-07** · [stacklok/toolhive v0.34.0](https://github.com/stacklok/toolhive/releases/tag/v0.34.0) — v0.34.0
-- **2026-07-07** · [decolua/9router v0.5.20](https://github.com/decolua/9router/releases/tag/v0.5.20) — feat: thinking level picker + suffix support across providers version 0.5.20
-<!-- RELEASES:END -->
-
-## Glossary
+| I need… | Start with | Drill into |
+|---|---|---|
+| Cheapest access to many models, zero ops | **OpenRouter** | [Cost-first](#-cost-first-cheapest-multi-model-access) |
+| Zero markup on my own keys | **Vercel** / **Cloudflare** | [Cost-first](#-cost-first-cheapest-multi-model-access) |
+| Self-host, broadest features | **LiteLLM** | [Self-hosted](#-self-hosted-open-source) |
+| Self-host, lowest overhead | **Bifrost** (Go) | [Self-hosted](#-self-hosted-open-source) |
+| China models + team key billing | **new-api** | [China ecosystem](#-china-ecosystem) |
+| Enterprise K8s + audit | **Kong** / **Higress** | [Enterprise](#-enterprise--compliance) |
+| Strongest compliance (HIPAA/FedRAMP) | **Azure** / **Bedrock** | [First-party](#️-first-party-gateways-cloud--model-vendors) |
+| Govern agents / MCP traffic | **agentgateway** | [MCP & agents](#-mcp--agent-gateways) |
 
 <details>
-<summary>Key terms used in the tables above (click to expand)</summary>
+<summary>📋 The full decision tree — every branch, copy-pasteable</summary>
 
-- **AI gateway / LLM gateway** — a proxy between your app and LLM providers; one endpoint and key for many models.
-- **LLM router** — the part that decides _which model_ serves each request (cheap vs flagship, by cost or quality).
-- **Fallback** — automatically retry on another model/provider when the first fails or times out.
-- **Load balancing (LB)** — spread traffic across keys/providers to dodge rate limits and outages.
-- **Semantic caching** — return a cached answer when a _new_ prompt is semantically similar to a past one (not just identical).
-- **Prompt / cached input** — providers bill reused prompt prefixes at a steep discount (≈0.1×); the gateway must not mangle the prefix or the cache misses.
-- **Guardrails** — input/output checks: prompt-injection detection, PII redaction, content filtering, schema enforcement.
-- **Virtual keys** — per-user/team keys the gateway issues in front of your real provider keys, with their own budgets and limits.
-- **ZDR (zero data retention)** — provider/gateway contractually does not store your prompts or completions.
-- **BYOK** — bring your own key: the gateway uses _your_ provider accounts rather than reselling tokens.
-- **Markup** — the gateway's fee on top of provider token cost (0% to ~6%).
-- **MCP gateway** — governs agent ↔ tool traffic (Model Context Protocol), the agentic counterpart to an LLM gateway.
+```text
+Do you want to self-host?
+│
+├─ NO — hosted, minimal ops
+│   ├─ Cheapest access to many models ──────────▶ OpenRouter · Vercel AI Gateway (0% markup)
+│   ├─ Free control plane over your own keys ───▶ Cloudflare AI Gateway
+│   ├─ EU data residency matters ───────────────▶ Requesty · Eden AI · nexos.ai
+│   └─ Already on one cloud ────────────────────▶ AWS Bedrock · Azure APIM · Vertex AI
+│
+└─ YES — self-hosted / open source
+    ├─ Python stack, broadest features ─────────▶ LiteLLM
+    ├─ Raw performance (Go/Rust/TS) ────────────▶ Bifrost · Portkey Gateway
+    ├─ Built-in evals + observability ──────────▶ Helicone · LiteLLM · Bifrost
+    ├─ Key distribution / billing / CN models ──▶ new-api · one-api · GPT-Load
+    ├─ Enterprise K8s, audit, guardrails ───────▶ Kong · Higress · APISIX · Envoy AI Gateway
+    └─ Governing AI agents & MCP traffic ───────▶ agentgateway · Lunar.dev
+```
 
 </details>
+
+### ✅ Why trust this list
+- **Independent — no vendor money, no affiliate links, CC0.** Unlike affiliate-driven relay "rankings," nobody pays to appear here.
+- **Reproducible, not asserted.** Every cost cell is computed from [open pricing data](data/models.json) by a [unit-tested script](scripts/cost_calc.py); stars refresh daily via CI.
+- **Honest about risk.** We disclose CVEs, label archived/stale projects, and [exclude gray-market relays](#how-to-choose-safely) — with the research to back it.
+
+---
+
+> **Why this matters:** the same task can cost **100× more** depending on the model behind your gateway. An **AI gateway** sits between your code and LLM providers — one endpoint, one key, many models — handling routing, failover, caching, rate limits, cost tracking and guardrails, so you change a `base_url` instead of rewriting your app. Pick the gateway here, then the [evaluation set](BENCHMARKS.md) shows which model to route to.
+
+<p align="center">
+  <a href="BENCHMARKS.md"><img src="assets/cost-spread.png" alt="Cost to write one 100K-token report: $0.03 on DeepSeek vs $3.01 on GPT-5.5 — a 106x spread, computed by a unit-tested script" width="760"></a>
+</p>
+
+⭐ **Found this useful? [Star it](https://github.com/cuihuan/awesome-ai-gateway)** — that's how the next engineer choosing a gateway finds it. CC0, no signup, no tracking, no vendor money.
+
+## Quick comparison
+
+Stars auto-refresh daily. ✅ built-in · ➕ via plugin/paid tier · ❌ not available.
+
+| Project | Type | Stars | License | Multi-provider | Fallback / LB | Caching | Guardrails | Cost tracking |
+|---|---|---|---|---|---|---|---|---|
+| [LiteLLM](https://github.com/BerriAI/litellm) | OSS proxy + SDK | <!--s:BerriAI/litellm-->⭐ 53k<!--/s--> | MIT¹ | ✅ 100+ | ✅ | ✅ | ✅ | ✅ |
+| [new-api](https://github.com/QuantumNous/new-api) | OSS relay/billing | <!--s:QuantumNous/new-api-->⭐ 41.6k<!--/s--> | AGPL-3.0 | ✅ | ✅ | ➕ | ➕ | ✅ |
+| [one-api](https://github.com/songquanpeng/one-api) | OSS relay/billing | <!--s:songquanpeng/one-api-->⭐ 35.6k<!--/s--> | MIT | ✅ | ✅ | ❌ | ❌ | ✅ |
+| [Kong AI Gateway](https://github.com/Kong/kong) | OSS API gateway | <!--s:Kong/kong-->⭐ 43.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ semantic | ✅ | ✅ |
+| [Apache APISIX](https://github.com/apache/apisix) | OSS API gateway | <!--s:apache/apisix-->⭐ 16.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ➕ | ➕ | ➕ |
+| [Portkey Gateway](https://github.com/Portkey-AI/gateway) | OSS gateway + SaaS | <!--s:Portkey-AI/gateway-->⭐ 12.4k<!--/s--> | MIT | ✅ 1600+ | ✅ | ✅ | ✅ 50+ | ➕ SaaS |
+| [TensorZero](https://github.com/tensorzero/tensorzero) | OSS LLMOps · ⚠️ archived '26 | <!--s:tensorzero/tensorzero-->⭐ 11.7k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ➕ | ✅ |
+| [Higress](https://github.com/higress-group/higress) | OSS AI-native gateway | <!--s:higress-group/higress-->⭐ 8.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [GPT-Load](https://github.com/tbphp/gpt-load) | OSS key-pool proxy | <!--s:tbphp/gpt-load-->⭐ 6.2k<!--/s--> | MIT | ✅ | ✅ key rotation | ❌ | ❌ | ➕ |
+| [Bifrost](https://github.com/maximhq/bifrost) | OSS gateway (Go) | <!--s:maximhq/bifrost-->⭐ 6.4k<!--/s--> | Apache-2.0 | ✅ | ✅ adaptive | ✅ | ✅ | ✅ |
+| [Helicone](https://github.com/Helicone/helicone) | OSS observability + gateway | <!--s:Helicone/helicone-->⭐ 5.9k<!--/s--> | Apache-2.0 | ✅ | ✅ | ✅ | ➕ | ✅ |
+| [Envoy AI Gateway](https://github.com/envoyproxy/ai-gateway) | OSS K8s gateway | <!--s:envoyproxy/ai-gateway-->⭐ 1.8k<!--/s--> | Apache-2.0 | ✅ | ✅ | ➕ | ➕ | ✅ |
+| [OpenRouter](https://openrouter.ai) | SaaS marketplace | — | Commercial | ✅ 400+ | ✅ | ✅ | ➕ | ✅ |
+| [Vercel AI Gateway](https://vercel.com/ai-gateway) | SaaS (0% markup) | — | Commercial | ✅ 100s | ✅ | ❌ | ❌ | ✅ |
+| [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) | SaaS control plane | — | Commercial (free tier) | ✅ | ✅ dynamic | ✅ | ✅ | ✅ budgets |
+
+¹ LiteLLM core is MIT; the repo contains a separately licensed enterprise directory.
+
+> 📂 **Browse the raw data** (machine-readable, CC0): [models & pricing JSON](data/models.json) · [cost table CSV](data/cost_table.csv) · [gateway scorecard CSV](data/gateways_scorecard.csv). Every cost cell is regenerated from this data by a [unit-tested script](scripts/cost_calc.py).
+
+<p align="center">
+  <img src="assets/landscape.png" alt="The AI Gateway Landscape: 100+ gateways across 9 categories — hosted aggregators (OpenRouter, Vercel, Cloudflare, AIMLAPI, Novita), self-hosted OSS (LiteLLM, Portkey, Bifrost, Plano), enterprise & API gateways (Kong, APISIX, Envoy, Tyk, Gravitee, KrakenD), first-party clouds (Bedrock, Azure, Vertex, Databricks), China ecosystem (new-api, one-api, Higress, GPT-Load, VoAPI), smart routing (Not Diamond, Martian, RouteLLM, Claude Code Router, NVIDIA LLM Router), observability (Helicone, MLflow, Respan), MCP & agent (agentgateway, Lunar.dev, IBM ContextForge, MetaMCP, Pomerium), and K8s & inference (KServe, GPUStack, llm-d, AIBrix)." width="900">
+</p>
+
+> _The full directory at a glance — browse the sections below by your need._
+
+## The requirements map
+
+Gateways get bought for **eight distinct jobs**. Find yours, jump straight to the evidence:
+
+| Your requirement | The question it answers | Where to look |
+|---|---|---|
+| 🔀 **Routing & failover** | "One provider went down — did my app?" | [Quick comparison](#quick-comparison) · [Smart routing](#-smart-routing--model-selection) |
+| 💰 **Cost control** | "Who can spend what, and where does it stop?" | [Cost-first](#-cost-first-cheapest-multi-model-access) · [cost tables](BENCHMARKS.md) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
+| 📊 **Observability** | "Which key, which model, which prompt — and why did quality drop?" | [Observability section](#-observability--cost-tracking) · [what to measure](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter) · [research survey](docs/observability-landscape.md) |
+| 🛡️ **Security & compliance** | "Can I prove to an auditor where prompts went?" | [Enterprise & compliance](#-enterprise--compliance) · [scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) |
+| 📦 **Supply-chain trust** | "Is the gateway itself safe to run?" | [How to choose safely](#how-to-choose-safely) (step 8) |
+| ⚡ **Caching & rate limits** | "Stop paying twice for the same answer; survive 429s" | [Quick comparison](#quick-comparison) cache column |
+| ☸️ **Self-hosted models / K8s** | "Route to vLLM/Ollama inside my cluster, GPU-aware" | [Kubernetes-native & inference infra](#️-kubernetes-native--inference-infra) |
+| 🤖 **Agent & MCP governance** | "My agents call tools — who's watching that traffic?" | [MCP & agent gateways](#-mcp--agent-gateways) |
+| 🔍 **Model fidelity / relay trust** | "Am I getting the model I'm paying for?" | [canary_check.py](scripts/canary_check.py) · [watch-list](#community-relay-watch-list) |
+
+> **How common is each job? Survey-grounded.** From the [Amplify Partners 2026 AI Engineering Report](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) (1,000+ engineers, with Notion & Vercel): **87% actively run multiple models together** — routing is the default architecture, not the edge case (44% route by task type, 11% by cost). **75% adjust how ambitiously they use AI because of cost** (40% say it _regularly_ shapes ambition), and **cost is the #2 most-monitored production metric** after quality — which is why per-key cost attribution anchors the [observability axis](BENCHMARKS.md#part-6--gateway-observability-the-factors-that-matter). **89% of agent-running teams now grant write permissions** while guardrails stay primitive — the case for [agent/MCP governance](#-mcp--agent-gateways). And one number worth reading twice: only **20%** put reliability in their top-3 selection criteria — yet peer-reviewed status-page measurements show the OpenAI and Anthropic APIs each fail **about every 2 days** (median MTBF 1.99 / 2.09 days) with **~1h median recovery**, and only 6.15% of incidents get a postmortem ([ICPE 2025](https://arxiv.org/abs/2501.12469)); in production traffic, rate limits alone caused **~⅓ of all LLM errors** ([Datadog, Mar 2026](https://www.datadoghq.com/state-of-ai-engineering/)). Engineers underweight failover until an event like the [June-2026 Fable 5 pullout](#-whats-new) takes single-provider stacks offline for three weeks. Multi-provider routing is cheap insurance precisely _because_ it's underpriced.
 
 ## How to choose safely
 
@@ -575,25 +496,96 @@ Built on **evidence, not hearsay.** Newer or unusually cheap relays we've _liste
 
 _Nothing is ⛔ confirmed-problematic yet — that status needs a reproducible canary verdict or a documented incident, never hearsay._
 
-## FAQ
+## 📊 Latest evaluations
 
-**What is an AI gateway (LLM gateway)?**
-A proxy between your code and LLM providers: one OpenAI-compatible endpoint and key for many models, adding routing, failover, caching, rate limits, cost tracking and guardrails. See the [intro](#which-gateway-should-i-use).
+_A running digest of fresh model, pricing and gateway evals — **newest first, every entry dated and sourced.** This is the fast-moving signal layer; for our own **reproducible** cost tables and model scorecard, see the [full evaluation set](BENCHMARKS.md). Spotted a new eval worth tracking? [Add it](CONTRIBUTING.md)._
 
-**AI gateway vs LLM router — what's the difference?**
-A _router_ decides _which model_ gets each request (e.g. cheap vs flagship); a _gateway_ is the full proxy layer (auth, caching, observability, guardrails) that usually _includes_ routing. See [smart routing](#-smart-routing--model-selection).
+| Date | Category | Finding | Source |
+|---|---|---|---|
+| 2026-07-09 | 🔌 Cross-format | **The hardest path now measured** — an Anthropic client (e.g. Claude Code) routed to an OpenAI model, the single most-filed "tool calls break" complaint. **LiteLLM v1.91.1 — 3/3** on the neutral CI runner (tool_use + streaming + usage all survive the translation). Load-bearing finding: LiteLLM's `/v1/messages` transport **changed across versions** (≤1.57.x OpenAI Chat Completions → ≥~1.9x OpenAI **Responses API**), which fails `KeyError('created_at')` against a chat-completions-only upstream — so **pin your version**. Reproducible: `node probe/xformat.mjs`. | [xformat.json](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/xformat.json) |
+| 2026-07-09 | 🆓 Free tiers | **Free-tier audit across 11 providers, each row re-verified against the provider's own docs**: Google now hides Gemini free-tier limits behind a login; Mistral's free mode **trains on your data by default** (manual opt-out); Together AI's `-free` models are **gone** ($5 minimum prepaid); Kimi was never free ($1 to start). Machine-readable, CI-enforced ≤30-day re-review. | [free_tiers.json](data/free_tiers.json) |
+| 2026-07 | 🔌 Fidelity | **First independent protocol-fidelity test** — does the gateway relay tool-calls/streaming/usage intact (the #1 real-world failure)? **LiteLLM 3/3 · Bifrost 3/3 · Portkey OSS 1/3** — Portkey OSS's custom-host streaming threw an internal error on a clean CI runner (non-streaming fine; hosted product untested). Reproducible: `node probe/fidelity.mjs`. | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/fidelity.json) |
+| 2026-07 | ⏱️ Performance | **First independent gateway-overhead comparison** (same neutral CI runner, mock upstream, no vendor claims): **Bifrost 0.56 ms** · **Portkey OSS 2.69 ms** · **LiteLLM 5.41 ms** added per request. Bifrost's "fastest" claim holds directionally (~10× vs LiteLLM, not the marketed 50×); Portkey's "<1 ms" didn't reproduce on shared CI hardware. Reproducible: `node probe/overhead.mjs`; PRs add more gateways. | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
+| 2026-07 | 📈 Adoption | **Multi-model is now the default architecture** — of 1,000+ surveyed AI engineers, **87% actively use multiple models together** (44% route by task type, 11% by cost), **75% adjust usage because of cost**, and cost is the **#2 most-monitored production metric** after quality. Only 20% rank reliability top-3 — failover stays underpriced. | [Amplify Partners](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) |
+| 2026-07-02 | 🛡️ Reliability | **Anthropic pulled Fable 5 & Mythos 5 offline globally** for ~3 weeks under a US export-control order, then restored them once Commerce lifted it (back on the Claude platform/Code by Jul 2) — a live reminder that single-provider stacks have no fallback, and multi-provider routing is the mitigation. | [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html) |
+| 2026-06-23 | 🚀 Gateway | **Envoy AI Gateway reached v1.0** (production GA) — the CNCF/Envoy-backed, Kubernetes-native multi-provider data plane (provider failover, token rate-limiting, MCP support) graduates to stable. | [Envoy](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/) |
+| 2026-06-21 | 💰 Pricing | The API pricing market now spans **123 models across 12 providers**, with a **>400× price spread** over the full input/output range — cheapest flagship **DeepSeek V4 Flash ($0.14/M input)** vs priciest **GPT-5.5 Pro ($30.00/M input)** is already ~214× on input alone. Tiering has hardened: top reasoning (o3) runs ~20× a nano-tier model on input, wider on output. | [aipricing.guru](https://aipricing.guru) |
+| 2026-06 | 📈 Adoption | ChatGPT hit **~900M weekly active users** and **>2.5B queries/day** — demand scaling about as fast as the price spread. | [DemandSage](https://www.demandsage.com/chatgpt-statistics/) |
+| 2026-04 | 📡 Telemetry | **Production telemetry confirms the survey data** — across 1,000+ orgs' live LLM traffic: **>70% run 3+ models**, OpenAI's share fell **75% → 63%** in a year (Gemini +20pp, Claude +23pp), rate limits caused **~⅓ of all LLM errors** in March (8.4M), and **only 28% of calls show any cached input** while system prompts eat 69% of input tokens — routing, failover and caching are measurably underused. | [Datadog](https://www.datadoghq.com/state-of-ai-engineering/) |
+| 2026-01 | 📡 Telemetry | **100 trillion tokens of real gateway traffic analyzed** (OpenRouter × a16z): open-weight models reached **~⅓ of token volume**; no single OSS model holds >20–25% for long (rapid turnover); and a 10% price cut moves usage only ~0.5–0.7% — **quality, not price, drives model switching**. | [arXiv](https://arxiv.org/abs/2601.10088) |
+| 2025-12 | 💰 Spend | **Enterprise LLM-API spend keeps flipping providers** — Anthropic 40% · OpenAI 27% (was 50% in 2023) · Google 21% of $12.5B enterprise model-API spend (n=495; disclosure: Menlo is an Anthropic investor). Provider churn at this scale is the business case against hard-wiring one vendor. | [Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/) |
 
-**What's the best open-source AI gateway?**
-[LiteLLM](https://github.com/BerriAI/litellm) is the default for breadth (Python, 100+ providers). For raw performance pick [Bifrost](https://github.com/maximhq/bifrost) (Go); for enterprise K8s pick [Kong](https://github.com/Kong/kong) or [Higress](https://github.com/higress-group/higress). Full list under [self-hosted](#-self-hosted-open-source).
+<details>
+<summary>💸 <b>Same ¥100 (≈ $14.66) — how much can each model read?</b> The 400× spread, made concrete.</summary>
 
-**LiteLLM vs OpenRouter — which should I use?**
-OpenRouter is hosted (zero ops, ~5.5% fee, 400+ models); LiteLLM is self-hosted (your keys, your infra, $0 markup). Hosted to start, self-host when volume justifies it. Cost math in the [evaluation set](BENCHMARKS.md#part-3--real-world-token-cost-computed).
+How many **input+output tokens** ¥100 buys, by model (blended estimate · snapshot **2026-06-21** · [aipricing.guru](https://aipricing.guru)):
 
-**What's the cheapest way to call many LLMs?**
-For zero ops: [Vercel AI Gateway](https://vercel.com/ai-gateway) or [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) (0% markup). For lowest token cost, route bulk work to cheap models — a 100K-token report runs **$0.03 on DeepSeek vs $3.01 on GPT-5.5**. See [cost-first](#-cost-first-cheapest-multi-model-access).
+| Tier | Model | Tokens / ¥100 | ≈ Chinese chars |
+|---|---|---|---|
+| 🥇 Rock-bottom | **DeepSeek V4 Flash** | 35.2M | ~26.4M |
+| 🥇 Rock-bottom | GPT-4.1 nano | 29.6M | ~22.2M |
+| 🥇 Rock-bottom | GPT-5.4 nano | 10.2M | ~7.7M |
+| 💚 Value | GPT-5.4 mini | 2.83M | ~2.1M |
+| 💚 Value | DeepSeek V4 Pro | 2.83M | ~2.1M |
+| 🧠 Reasoning | o3 | 1.48M | ~1.1M |
+| 🏁 Flagship | Gemini 2.5 Pro | 1.31M | ~0.98M |
+| 🏁 Flagship | GPT-5.5 | 0.42M | ~0.32M |
+| 🏁 Flagship | GPT-5.5 Pro | 0.07M | ~0.05M |
 
-**Are AI gateways safe? Who sees my prompts?**
-Every gateway sees your prompts. For sensitive data self-host or require zero-data-retention in writing; check the [gateway scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) for compliance/security ratings and known CVEs.
+> **One line:** ¥100 reads **~26M Chinese characters** on DeepSeek V4 Flash — roughly **52× the _Three-Body_ trilogy** — but only **~50K** on GPT-5.5 Pro, about one short story. Choosing a model is choosing the scale factor on your money; the [Cost-first](#-cost-first-cheapest-multi-model-access) gateways exist to exploit exactly this spread.
+
+</details>
+
+## 📰 What's new
+
+_Curated monthly. Last review: 2026-06-30._
+
+- **2026-06** · **LiteLLM RCE added to CISA's KEV catalog** — CVE-2026-42271 (an MCP command-injection) chains with a Starlette auth-bypass into unauthenticated remote code execution that can reach master keys and provider credentials (KEV-listed Jun 8; further CVEs Jun 16–22). Distinct from March's PyPI supply-chain attack — patch and lock down the gateway control plane. ([CSA](https://labs.cloudsecurityalliance.org/research/csa-research-note-litellm-cve-2026-42271-ai-gateway-exploita/))
+- **2026-06** · **Envoy AI Gateway hit v1.0** (Jun 23) — the first production-stable open-source AI gateway built on CNCF Envoy: one API across 16 providers plus a native MCP gateway (backed by Tetrate, Bloomberg, Nutanix, Tencent). ([release](https://aigateway.envoyproxy.io/blog/v1.0-release-announcement/))
+- **2026-06** · **Hyperscalers converged on AI-gateway governance** — Databricks shipped **Unity AI Gateway** (smart routing + hard spend caps) at Data+AI Summit, Azure **API Management's AI-gateway** features reached GA at Build, and AWS extended **Bedrock AgentCore Gateway** at Summit NY. Runtime governance is now table stakes. ([Databricks](https://www.databricks.com/blog/ai-governance-data-ai-summit-2026-whats-new-unity-ai-gateway))
+- **2026-06** · **Anthropic pulled Fable 5 & Mythos 5 offline globally** under a US export-control directive (Jun 12–13), then restored them after the Dept of Commerce lifted the controls (Jun 30) — Fable 5 was back on the Claude platform, Claude.ai and Claude Code by Jul 2. The canonical "this is why you keep multi-provider failover" event of the year. ([Fortune](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/), [CNBC](https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html))
+- **2026-06** · **GLM-5.2 is the new leading open-weight model** — Z.ai's MIT-licensed 744B-param MoE (40B active, 1M context, open-weighted mid-June) tops the open-weight tier of the Artificial Analysis Intelligence Index (score 51), taking the crown from the previous open leaders. ([Artificial Analysis](https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index))
+- **2026-02** · **OpenRouter hit two more outages (Feb 17 & 19)** — its caching layer dropped all DB connections, returning 401 "User not found" with request-failure rates up to ~80–90% (a DoS was ramping during the first). Even the dominant aggregator carries no SLA — a reason the cost-first picks here stay paired with self-host fallbacks. ([postmortem](https://openrouter.ai/blog/announcements/openrouter-outages-on-february-17-and-19-2026/))
+- **2026-06** · **TensorZero shut down** — the VC-backed open-source LLMOps gateway ($7.3M seed) archived its repo on June 12, as first-party clouds ship native gateway/observability features and squeeze independents. ([byteiota](https://byteiota.com/tensorzero-shuts-down-what-oss-llmops-cant-survive/))
+- **2026-03** · **Helicone acquired by Mintlify** (now maintenance mode); the same month **LiteLLM hit a PyPI supply-chain attack** — v1.82.7/1.82.8 were backdoored via a CI-token compromise and quarantined in ~3h, a sharp reminder to pin gateway versions. ([Mintlify](https://www.mintlify.com/blog/mintlify-acquires-helicone), [Trend Micro](https://www.trendmicro.com/en/research/26/c/inside-litellm-supply-chain-compromise.html))
+- **2026-05** · **Palo Alto Networks completed its acquisition of Portkey** (announced Apr 30, closed May 29), making the AI gateway the control plane for its Prisma AIRS security platform — a sign gateways are becoming core security infrastructure. ([Palo Alto Networks](https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-completes-acquisition-of-portkey-to-secure-ai-agents))
+- **2026-05** · OpenRouter raised a **$113M Series B** led by CapitalG at a $1.3B valuation — ~8M users, ~100T tokens/month. ([TechCrunch](https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/))
+- **2026-06** · NetFoundry launched **zero-trust MCP and LLM gateways**; Cisco Investments joined its Series A. ([PR Newswire](https://www.prnewswire.com/news-releases/netfoundry-launches-enterprise-class-mcp-and-llm-gateways-bringing-zero-trust-to-ai-deployments-302789053.html))
+- **2026** · Cloudflare AI Gateway shipped **dollar-denominated spend limits** (public beta) on top of dynamic routing and unified billing. ([Cloudflare blog](https://blog.cloudflare.com/ai-gateway-spend-limits/))
+- **2025-11** · Pydantic AI Gateway went open beta and has since merged into **Logfire**. ([Pydantic Logfire](https://pydantic.dev/logfire))
+- **Trend** · MCP gateways emerged as a distinct category; spend-limit enforcement became table stakes; the **EU AI Act (enforceable Aug 2026)** is driving the compliance bucket; **new-api overtook one-api** as the most active China-ecosystem relay; and an **independent-gateway shakeout** is underway — Portkey (→Palo Alto) and Helicone (→Mintlify) acquired, TensorZero shut down, and the consolidation kept going (Katanemo→DigitalOcean, TrueFoundry→Seldon, Langfuse→ClickHouse).
+
+## 🚀 Recent releases (auto-updated)
+
+<!-- RELEASES:START -->
+- **2026-07-09** · [smart-mcp-proxy/mcpproxy-go v0.48.0](https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.0) — v0.48.0
+- **2026-07-09** · [archestra-ai/archestra platform-v1.3.5](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.5) — platform: v1.3.5
+- **2026-07-08** · [BerriAI/litellm v1.91.1](https://github.com/BerriAI/litellm/releases/tag/v1.91.1) — v1.91.1
+- **2026-07-08** · [router-for-me/CLIProxyAPI v7.2.54](https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.54) — v7.2.54
+- **2026-07-08** · [ENTERPILOT/GoModel v0.1.50](https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.50) — v0.1.50
+- **2026-07-08** · [krakend/krakend-ce v2.13.8](https://github.com/krakend/krakend-ce/releases/tag/v2.13.8) — v2.13.8
+- **2026-07-07** · [diegosouzapw/OmniRoute v3.8.46](https://github.com/diegosouzapw/OmniRoute/releases/tag/v3.8.46) — v3.8.46
+- **2026-07-07** · [IBM/mcp-context-forge v1.0.5](https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.5) — v1.0.5 - API Versioning, Auth Hardening, A2A Compatibility, and Build Consoli...
+- **2026-07-07** · [musistudio/claude-code-router v3.0.9](https://github.com/musistudio/claude-code-router/releases/tag/v3.0.9) — v3.0.9
+- **2026-07-07** · [QuantumNous/new-api v1.0.0-rc.20](https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.20) — v1.0.0-rc.20
+- **2026-07-07** · [stacklok/toolhive v0.34.0](https://github.com/stacklok/toolhive/releases/tag/v0.34.0) — v0.34.0
+- **2026-07-07** · [decolua/9router v0.5.20](https://github.com/decolua/9router/releases/tag/v0.5.20) — feat: thinking level picker + suffix support across providers version 0.5.20
+<!-- RELEASES:END -->
+
+## ⚡ 10-second answers
+
+The questions people actually ask ([sourced from real threads](#-essential-reading)) — answered first:
+
+| You're asking… | The answer |
+|---|---|
+| "Cheapest way to hit many models right now?" | **OpenRouter** (~5.5% credit fee, ~340 models) — or **0% markup on your own keys**: Vercel / Cloudflare AI Gateway → [Cost-first](#-cost-first-cheapest-multi-model-access) |
+| "Which free tiers still work, and what are the real limits?" | OpenRouter `:free`: **50 req/day** (<$10 credits) or **1,000/day** ($10+ top-up), 20 req/min shared ([official limits](https://openrouter.ai/docs/api-reference/limits)). Eleven providers verified row-by-row in the [free-tier table](#-free-tiers-that-still-work--the-verified-limits-table). The catch with "free": your prompts may train someone's model — check the fine print |
+| "How much does the _model_ choice matter?" | **106×** — the same 100K-token report costs $0.03 (DeepSeek) vs $3.01 (GPT-5.5) → [computed tables](BENCHMARKS.md#part-3--real-world-token-cost-computed) · [calculator](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html) |
+| "How much latency does the gateway itself add?" | **Independently measured** (nobody else does): Bifrost **0.56 ms** · Portkey OSS **2.69 ms** · LiteLLM **5.41 ms** per request → [data](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
+| "Will my prompt-cache discount still work through it?" | **Often no — and it's silent.** The most under-claimed discount in most bills → [caching through a gateway](#-prompt-caching-through-a-gateway--the-money-question) |
+| "Who sees my prompts?" | The gateway does, always — and routers range from **ZDR-by-default** to **training on your prompts by ToS**. See the [data-retention matrix](#-who-sees-your-prompts--the-data-retention-matrix) |
+| "Sick of LiteLLM — what else?" | [LiteLLM alternatives, compared honestly](compare/litellm-alternatives-2026.md) (overhead-measured: it's 10× heavier than Bifrost) |
+| "Will it break my Claude Code / Codex / Cursor?" | **The #1 gateway failure in 2025–26 issue trackers** — broken tool-call/thinking-block translation. Test _your_ agent through it first → [coding-agent routers](#-smart-routing--model-selection) |
 
 ## 📚 Essential reading
 
@@ -656,6 +648,46 @@ In-depth, data-backed comparisons for the questions people actually search:
 - [**one-api vs new-api vs LiteLLM**](compare/one-api-vs-new-api-vs-litellm.zh-CN.md) — Choosing a China-market LLM API gateway (Chinese)
 
 _More comparisons coming. Suggest one via an [issue](https://github.com/cuihuan/awesome-ai-gateway/issues)._
+
+## FAQ
+
+**What is an AI gateway (LLM gateway)?**
+A proxy between your code and LLM providers: one OpenAI-compatible endpoint and key for many models, adding routing, failover, caching, rate limits, cost tracking and guardrails. See the [intro](#which-gateway-should-i-use).
+
+**AI gateway vs LLM router — what's the difference?**
+A _router_ decides _which model_ gets each request (e.g. cheap vs flagship); a _gateway_ is the full proxy layer (auth, caching, observability, guardrails) that usually _includes_ routing. See [smart routing](#-smart-routing--model-selection).
+
+**What's the best open-source AI gateway?**
+[LiteLLM](https://github.com/BerriAI/litellm) is the default for breadth (Python, 100+ providers). For raw performance pick [Bifrost](https://github.com/maximhq/bifrost) (Go); for enterprise K8s pick [Kong](https://github.com/Kong/kong) or [Higress](https://github.com/higress-group/higress). Full list under [self-hosted](#-self-hosted-open-source).
+
+**LiteLLM vs OpenRouter — which should I use?**
+OpenRouter is hosted (zero ops, ~5.5% fee, 400+ models); LiteLLM is self-hosted (your keys, your infra, $0 markup). Hosted to start, self-host when volume justifies it. Cost math in the [evaluation set](BENCHMARKS.md#part-3--real-world-token-cost-computed).
+
+**What's the cheapest way to call many LLMs?**
+For zero ops: [Vercel AI Gateway](https://vercel.com/ai-gateway) or [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) (0% markup). For lowest token cost, route bulk work to cheap models — a 100K-token report runs **$0.03 on DeepSeek vs $3.01 on GPT-5.5**. See [cost-first](#-cost-first-cheapest-multi-model-access).
+
+**Are AI gateways safe? Who sees my prompts?**
+Every gateway sees your prompts. For sensitive data self-host or require zero-data-retention in writing; check the [gateway scorecard](BENCHMARKS.md#part-4--gateway-scorecard-compliance--price--security--stability--observability) for compliance/security ratings and known CVEs.
+
+## Glossary
+
+<details>
+<summary>Key terms used in the tables above (click to expand)</summary>
+
+- **AI gateway / LLM gateway** — a proxy between your app and LLM providers; one endpoint and key for many models.
+- **LLM router** — the part that decides _which model_ serves each request (cheap vs flagship, by cost or quality).
+- **Fallback** — automatically retry on another model/provider when the first fails or times out.
+- **Load balancing (LB)** — spread traffic across keys/providers to dodge rate limits and outages.
+- **Semantic caching** — return a cached answer when a _new_ prompt is semantically similar to a past one (not just identical).
+- **Prompt / cached input** — providers bill reused prompt prefixes at a steep discount (≈0.1×); the gateway must not mangle the prefix or the cache misses.
+- **Guardrails** — input/output checks: prompt-injection detection, PII redaction, content filtering, schema enforcement.
+- **Virtual keys** — per-user/team keys the gateway issues in front of your real provider keys, with their own budgets and limits.
+- **ZDR (zero data retention)** — provider/gateway contractually does not store your prompts or completions.
+- **BYOK** — bring your own key: the gateway uses _your_ provider accounts rather than reselling tokens.
+- **Markup** — the gateway's fee on top of provider token cost (0% to ~6%).
+- **MCP gateway** — governs agent ↔ tool traffic (Model Context Protocol), the agentic counterpart to an LLM gateway.
+
+</details>
 
 ## Why this exists
 
