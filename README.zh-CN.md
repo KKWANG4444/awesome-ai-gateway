@@ -27,7 +27,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 | 你在问… | 答案 |
 |---|---|
 | "现在最便宜地打通一堆模型？" | **OpenRouter**（~5.5% 充值费、~340 模型）——或**自己的 key 0 加价**：Vercel / Cloudflare AI Gateway → [性价比优先](#-性价比优先) |
-| "哪些免费额度还活着，真实限流是多少？" | OpenRouter `:free`：**50 次/天**（充值 <$10）或 **1,000 次/天**（充值 $10+），共享 20 次/分钟（[官方限流文档](https://openrouter.ai/docs/api-reference/limits)）。"免费"的代价：你的 prompt 可能被拿去训练——看清条款 |
+| "哪些免费额度还活着，真实限流是多少？" | OpenRouter `:free`：**50 次/天**（充值 <$10）或 **1,000 次/天**（充值 $10+），共享 20 次/分钟（[官方限流文档](https://openrouter.ai/docs/api-reference/limits)）。11 家厂商逐行核实见[免费额度表](#-哪些免费额度还活着-核实限额表)。"免费"的代价：你的 prompt 可能被拿去训练——看清条款 |
 | "选*模型*到底差多少钱？" | **106×**——同一份 10 万 token 报告，DeepSeek $0.03 vs GPT-5.5 $3.01 → [脚本算的表](BENCHMARKS.zh-CN.md) · [计算器](https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.zh-CN.html) |
 | "网关本身加多少延迟？" | **独立实测**（全网仅此一家）：每请求 Bifrost **0.56ms** · Portkey OSS **2.69ms** · LiteLLM **5.41ms** → [数据](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
 | "缓存折扣过了网关还在吗？" | **经常不在——而且悄无声息。** 多数账单里最大的一笔没领的折扣 → [缓存过网关](#-缓存过网关钱的问题) |
@@ -56,6 +56,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 
 | 日期 | 分类 | 结论 | 来源 |
 |---|---|---|---|
+| 2026-07-09 | 🆓 免费额度 | **11 家厂商免费额度逐行审计，全部对照厂商自己的文档核实**：Google 已把 Gemini 免费档限额藏进登录后台；Mistral 免费模式**默认拿你的数据训练**（需手动关闭）；Together AI 的 `-free` 模型**已全部下线**（最低预充 $5）；Kimi 从来不免费（先充 $1）。机器可读，CI 强制 ≤30 天复审。 | [free_tiers.json](data/free_tiers.json) |
 | 2026-07 | 🔌 保真度 | **首个独立协议保真度测试**——网关能否完整转发工具调用/流式/usage（第一大真实故障）？**LiteLLM 3/3 · Bifrost 3/3 · Portkey OSS 1/3**——Portkey OSS 的 custom-host 流式在干净 CI 跑机上抛内部错误（非流式正常；托管产品未测）。可复现：`node probe/fidelity.mjs`。 | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/fidelity.json) |
 | 2026-07 | ⏱️ 性能 | **首个独立网关开销横评**（同一中立 CI 跑机、mock 上游、不含厂商宣传）：每请求增加 **Bifrost 0.56ms** · **Portkey OSS 2.69ms** · **LiteLLM 5.41ms**。Bifrost「最快」方向属实（比 LiteLLM 低 ~10×，而非宣传的 50×）；Portkey「<1ms」在共享 CI 硬件上未复现。`node probe/overhead.mjs` 可复现；欢迎 PR 加测。 | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
 | 2026-07 | 📈 采用 | **多模型已是默认架构**——1,000+ 受访 AI 工程师中 **87% 在同时使用多个模型**（44% 按任务类型路由、11% 按成本），**75% 因成本调整用量**，成本是生产环境**第二大被监控指标**（仅次于质量）。只有 20% 把可靠性放进选型前三——故障转移仍被低估。 | [Amplify Partners](https://www.amplifypartners.com/blog-posts/the-2026-ai-engineering-report) |
@@ -223,6 +224,26 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 - [TierUp](https://tierup.ai) — 托管的 OpenAI 兼容网关，用四个固定性能档位（tier-1…tier-4）取代模型名，每个档位在服务端映射到当前性价比最高的模型；底层通过 OpenRouter 路由，定价约为底层模型零售价的 50%，在早期产品市场契合阶段内透明补贴（个人开发、生产用户约为零、tier 1 目前免费）。较新且未经核实——投产前请先验证模型保真度（可用 [canary_check.py](scripts/canary_check.py)）。
 
 > 💡 任何网关都能再省一笔：开**语义缓存**（Kong、Bifrost、Zuplo），设**消费上限**（Cloudflare、Zuplo、Pydantic/Logfire），简单请求路由到便宜模型（见[智能路由](#-智能路由与模型选择)）。
+
+### 🆓 哪些免费额度还活着？—— 核实限额表
+
+_生态里被问得最多的问题之一，而网上的答案大多已过期。下表每一行都对照厂商**自己的**文档重新核实（[机器可读](data/free_tiers.json)，2026-07-09 核验，CI 强制 ≤30 天复审）。标注"未公开"表示厂商已把数字藏进登录后台——我们如实说明，而不是转抄三手数字。_
+
+| 厂商 | 免费内容（核实限额） | 代表性免费模型 | 要卡？ | 代价 |
+|---|---|---|---|---|
+| [OpenRouter `:free`](https://openrouter.ai/docs/api-reference/limits) | **50 次/天**（累计充值 <$10）→ **1,000 次/天**（一次性充 $10+）；所有 `:free` 模型共享 20 次/分 | 轮换的 `:free` 池 | ❌ | 免费线路打到的第三方**可能拿你的数据训练**（按各家政策——检查免费/付费路由设置） |
+| [Google Gemini API](https://ai.google.dev/gemini-api/docs/rate-limits) | Flash 系列免费；逐模型 RPM/RPD 自 2026 起**未公开**（登录 AI Studio 才可见）；每日配额太平洋时间午夜重置 | Gemini 3.5 Flash · 3.1 Flash-Lite · 2.5 Flash · Gemma 4 | ❌ | 免费档内容_"用于改进我们的产品"_（定价页原话） |
+| [Groq](https://console.groq.com/docs/rate-limits) | 逐模型：Llama-3.3-70B **30 次/分 / 1K 次/天 / 10 万 token/天** · GPT-OSS-120B 30 RPM / 1K RPD / 20 万 TPD · Llama-3.1-8B 14.4K RPD / 50 万 TPD | GPT-OSS-120B/20B · Llama-4-Scout · Llama-3.3-70B · Qwen3-32B | ❌（升级才要卡） | 70B+ 模型的每日 token 上限烧得很快；限额按组织计 |
+| [Cerebras](https://inference-docs.cerebras.ai/support/rate-limits) | **5 次/分 / 3 万 TPM / 每天 100 万 token**，全模型统一 | GPT-OSS-120B · GLM-4.7 · Gemma-4-31B | ❔ 未说明 | 5 RPM 只够单人交互；宣传"全部模型"但限额表上只有 3 个 |
+| [GitHub Models](https://docs.github.com/en/github-models/use-github-models/prototyping-with-ai-models) | 任意 GitHub 账号：低档模型 **15 次/分 / 150 次/天**，高档 **10 次/分 / 50 次/天**；单请求 8K 进 / 4K 出 | GPT-5 · o4-mini · Llama 4 · Phi-4 · DeepSeek-R1 | ❌ | 官方明说仅供实验；单请求 8K/4K 上限用不了长上下文 |
+| [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) | **每天 10,000 neurons**（按官方费率折算：Llama-3.2-1B 约 400 万输入 token/天，GPT-OSS-120B 约 31.4 万——除法是我们做的） | Llama-3.3-70B · GPT-OSS-120B/20B · DeepSeek-R1-distill | ❔ 未说明 | neurons 按算力计——输出比输入烧得快 5–10 倍 |
+| [Mistral](https://docs.mistral.ai/getting-started/quickstarts/studio/activate-and-generate-api-key) | 免费 Experiment 模式；具体限额**未公开**（按账号，Admin Console 可见） | Large · Small · Codestral（第三方报告） | ❌ | **默认拿你的数据训练**——免费用户必须手动关掉开关 |
+| [Cohere](https://docs.cohere.com/docs/rate-limits) | 试用 key：**每月 1,000 次调用**；Chat 20 次/分 | Command A · Command R+ | ❌ | 只够评估用 |
+| [SambaNova](https://docs.sambanova.ai/docs/en/models/rate-limits) | **20 次/分 / 每天 20 次 / 每天 20 万 token** | DeepSeek-V3.1 · Llama-3.3-70B · GPT-OSS-120B | ❌ | 每天 20 次 = 只够演示（推理速度倒是很快） |
+| [Hugging Face](https://huggingface.co/docs/inference-providers/en/pricing) | **每月 $0.10** 的透传额度（PRO：$2/月） | 200+ 路由模型（DeepSeek-V3 …） | ❌ | $0.10 ≈ 大模型几次请求 |
+| [Z.ai（GLM）](https://docs.z.ai/guides/overview/pricing) | GLM Flash 系列**输入输出全 $0**；限流未公开（按 key，登录可见） | GLM-4.7-Flash · GLM-4.5-Flash · GLM-4.6V-Flash | ❔ 未说明 | 并发限制不透明且多变；中国大陆厂商——自行权衡数据敏感度 |
+
+**试用额度 ≠ 免费档**（会过期）：NVIDIA [build.nvidia.com](https://docs.api.nvidia.com/nim/docs/faq)（注册送 1,000 次请求，企业邮箱 +4,000——数字来自官方论坛员工答复；仅限原型用途）、阿里云 [Model Studio 国际版](https://www.alibabacloud.com/help/en/model-studio/new-free-quota)（逐模型额度，激活后 90 天硬性过期，仅新加坡区）。**近期已取消——别信过期榜单：** Together AI 已下线全部 `-free` 模型（现在最低预充 $5，官方原话 _"does not currently offer free trials"_），Moonshot/Kimi 需先充 $1 才能用，xAI 广为流传的数据共享额度已从所有公开页面消失。逐行证据：[`data/free_tiers.json`](data/free_tiers.json)。发现哪行过期了？[提 issue](https://github.com/cuihuan/awesome-ai-gateway/issues/new)。
 
 ## 🔓 自托管开源
 
@@ -657,6 +678,7 @@ OpenRouter 是托管（零运维、约 5.5% 手续费、400+ 模型）；LiteLLM
 | 模型定价 + 基准快照 | [`data/models.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/models.json) · [成本 CSV](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/cost_table.csv) | ≤30 天复审（CI 强制） |
 | 网关事故/现实核查 | [`data/gateway_reality.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/gateway_reality.json) | 变更即更新（drift 门） |
 | **数据留存 / ZDR / 日志姿态**（逐托管网关 + 云） | [`data/data_retention.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/data_retention.json) | 政策变更时 |
+| **核实版免费额度 / 限流表**（11 家厂商 + 已取消名单） | [`data/free_tiers.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/free_tiers.json) | ≤30 天复审（CI 强制） |
 | ~80 个网关的星标 + 最新版本 | [`data/projects.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/projects.json) · [`data/releases.json`](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/data/releases.json) | 每日 |
 | **网关开销实测**（Bifrost/Portkey/LiteLLM） | [`overhead.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/overhead.json) | 每月 CI |
 | **协议保真度结果**（工具调用/流式/usage 转发） | [`fidelity.json`](https://raw.githubusercontent.com/cuihuan/llm-gateway-bench/main/data/fidelity.json) | 每月 CI |

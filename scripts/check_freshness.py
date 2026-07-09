@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TRACKED = [
     ("data/models.json (pricing & benchmark snapshot)", "data/models.json"),
     ("data/gateways_eval.json (gateway scorecard snapshot)", "data/gateways_eval.json"),
+    ("data/free_tiers.json (verified free-tier / rate-limit table)", "data/free_tiers.json"),
 ]
 
 
