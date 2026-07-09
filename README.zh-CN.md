@@ -56,6 +56,7 @@ _这清单是被账单逼出来的：**我一天在 AI 写代码上烧了 $788**
 
 | 日期 | 分类 | 结论 | 来源 |
 |---|---|---|---|
+| 2026-07-09 | 🔌 跨格式 | **最难的路径也测了**——Anthropic 客户端（如 Claude Code）路由到 OpenAI 模型，也就是被报最多的"工具调用坏了"。**LiteLLM v1.91.1 — 3/3**（中立 CI 跑机，tool_use + 流式 + usage 全都扛过了翻译）。关键发现：LiteLLM 的 `/v1/messages` 传输路径**跨版本变了**（≤1.57.x 走 OpenAI Chat Completions → ≥~1.9x 改走 OpenAI **Responses API**），指向只支持 chat-completions 的上游时以 `KeyError('created_at')` 失败——**务必锁版本**。可复现：`node probe/xformat.mjs`。 | [xformat.json](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/xformat.json) |
 | 2026-07-09 | 🆓 免费额度 | **11 家厂商免费额度逐行审计，全部对照厂商自己的文档核实**：Google 已把 Gemini 免费档限额藏进登录后台；Mistral 免费模式**默认拿你的数据训练**（需手动关闭）；Together AI 的 `-free` 模型**已全部下线**（最低预充 $5）；Kimi 从来不免费（先充 $1）。机器可读，CI 强制 ≤30 天复审。 | [free_tiers.json](data/free_tiers.json) |
 | 2026-07 | 🔌 保真度 | **首个独立协议保真度测试**——网关能否完整转发工具调用/流式/usage（第一大真实故障）？**LiteLLM 3/3 · Bifrost 3/3 · Portkey OSS 1/3**——Portkey OSS 的 custom-host 流式在干净 CI 跑机上抛内部错误（非流式正常；托管产品未测）。可复现：`node probe/fidelity.mjs`。 | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/fidelity.json) |
 | 2026-07 | ⏱️ 性能 | **首个独立网关开销横评**（同一中立 CI 跑机、mock 上游、不含厂商宣传）：每请求增加 **Bifrost 0.56ms** · **Portkey OSS 2.69ms** · **LiteLLM 5.41ms**。Bifrost「最快」方向属实（比 LiteLLM 低 ~10×，而非宣传的 50×）；Portkey「<1ms」在共享 CI 硬件上未复现。`node probe/overhead.mjs` 可复现；欢迎 PR 加测。 | [llm-gateway-bench](https://github.com/cuihuan/llm-gateway-bench/blob/main/data/overhead.json) |
