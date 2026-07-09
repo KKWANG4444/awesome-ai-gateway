@@ -185,7 +185,7 @@ A 6-agent research pass (how comparable awesome-lists + LLM-gateway projects act
 ### 9d. New verified backlink/listing targets (the NEXT WAVE — hold to ~1/month; 6 already open is enough for the launch window)
 | Target | Section we fit | Recent-merge evidence | Priority |
 |---|---|---|---|
-| [kyrolabs/awesome-langchain](https://github.com/kyrolabs/awesome-langchain) (9.4k★) | `## Complement to this list` (+ optional fix: flag the now-archived TensorZero under `## Other LLM Frameworks` as reviewer value-add) | merged ext. PRs #327/#322 (2026-04-26), #215/#210 (03-14); **0 open PRs** | **TOP** |
+| [kyrolabs/awesome-langchain](https://github.com/kyrolabs/awesome-langchain) (9.4k★) | `## Complement to this list` | **OUTCOME: PR #447 closed unmerged, no comment (2026-07-09)** — maintainer passed; do NOT resubmit | ~~TOP~~ closed |
 | [eudk/awesome-ai-tools](https://github.com/eudk/awesome-ai-tools) (522★) | `## LLM Ops` | 10 recent merges 2026-06-05→07 from distinct authors | secondary (≠ the already-submitted mahseema/awesome-ai-tools #1631) |
 | [awesomelistsio/awesome-llmops](https://github.com/awesomelistsio/awesome-llmops) | `## Related Awesome Lists` | ext. PRs #16 (06-22), #28 (06-23); 0 open | lowest-friction (small but compounding network cross-links) |
 | [OpenAlternative.co](https://github.com/piotrkulpinski/openalternative) (6.4k★) | AI-gateways category, via /submit form | repo pushed 2026-06-24; public /submit | best **non-awesome** directory — 👤 (lists tools, not catalogs; submit individual angle) |

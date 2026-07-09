@@ -8,3 +8,4 @@ __pycache__/
 LAUNCH_DRAFTS.md
 drafts/
 social/
+node_modules/
