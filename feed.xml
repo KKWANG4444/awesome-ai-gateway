@@ -5,28 +5,70 @@
   <link href="https://cuihuan.github.io/awesome-ai-gateway/" />
   <link rel="self" type="application/atom+xml" href="https://cuihuan.github.io/awesome-ai-gateway/feed.xml" />
   <id>https://cuihuan.github.io/awesome-ai-gateway/feed.xml</id>
-  <updated>2026-07-10T05:42:19Z</updated>
+  <updated>2026-07-11T04:18:15Z</updated>
   <author><name>Awesome AI Gateway</name></author>
   <entry>
-    <title>router-for-me/CLIProxyAPI v7.2.61</title>
-    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.61" />
-    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.61</id>
-    <updated>2026-07-10T05:42:19Z</updated>
-    <summary>router-for-me/CLIProxyAPI released v7.2.61.</summary>
+    <title>router-for-me/CLIProxyAPI v7.2.66</title>
+    <link href="https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.66" />
+    <id>https://github.com/router-for-me/CLIProxyAPI/releases/tag/v7.2.66</id>
+    <updated>2026-07-11T04:18:15Z</updated>
+    <summary>router-for-me/CLIProxyAPI released v7.2.66.</summary>
   </entry>
   <entry>
-    <title>archestra-ai/archestra platform-v1.3.7</title>
-    <link href="https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.7" />
-    <id>https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.7</id>
-    <updated>2026-07-10T02:31:01Z</updated>
-    <summary>archestra-ai/archestra released platform: v1.3.7.</summary>
+    <title>looplj/axonhub v1.0.0-beta5</title>
+    <link href="https://github.com/looplj/axonhub/releases/tag/v1.0.0-beta5" />
+    <id>https://github.com/looplj/axonhub/releases/tag/v1.0.0-beta5</id>
+    <updated>2026-07-11T03:13:18Z</updated>
+    <summary>looplj/axonhub released v1.0.0-beta5.</summary>
   </entry>
   <entry>
-    <title>yym68686/uni-api v1.7.166</title>
-    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.166" />
-    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.166</id>
-    <updated>2026-07-09T21:17:33Z</updated>
-    <summary>yym68686/uni-api released Release 1.7.166.</summary>
+    <title>ENTERPILOT/GoModel v0.1.51</title>
+    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.51" />
+    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.51</id>
+    <updated>2026-07-10T17:48:44Z</updated>
+    <summary>ENTERPILOT/GoModel released v0.1.51.</summary>
+  </entry>
+  <entry>
+    <title>ascending-llc/jarvis-registry asc0.5.2</title>
+    <link href="https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.2" />
+    <id>https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.2</id>
+    <updated>2026-07-10T17:04:03Z</updated>
+    <summary>ascending-llc/jarvis-registry released Jarvis Registry asc0.5.2.</summary>
+  </entry>
+  <entry>
+    <title>archestra-ai/archestra platform-v1.3.8</title>
+    <link href="https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.8" />
+    <id>https://github.com/archestra-ai/archestra/releases/tag/platform-v1.3.8</id>
+    <updated>2026-07-10T15:44:46Z</updated>
+    <summary>archestra-ai/archestra released platform: v1.3.8.</summary>
+  </entry>
+  <entry>
+    <title>musistudio/claude-code-router v3.0.11</title>
+    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.11" />
+    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.11</id>
+    <updated>2026-07-10T15:31:18Z</updated>
+    <summary>musistudio/claude-code-router released v3.0.11.</summary>
+  </entry>
+  <entry>
+    <title>Wei-Shaw/sub2api v0.1.151</title>
+    <link href="https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.151" />
+    <id>https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.151</id>
+    <updated>2026-07-10T13:23:58Z</updated>
+    <summary>Wei-Shaw/sub2api released Sub2API 0.1.151.</summary>
+  </entry>
+  <entry>
+    <title>smart-mcp-proxy/mcpproxy-go v0.48.1</title>
+    <link href="https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.1" />
+    <id>https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.1</id>
+    <updated>2026-07-10T11:51:39Z</updated>
+    <summary>smart-mcp-proxy/mcpproxy-go released v0.48.1.</summary>
+  </entry>
+  <entry>
+    <title>yym68686/uni-api v1.7.169</title>
+    <link href="https://github.com/yym68686/uni-api/releases/tag/v1.7.169" />
+    <id>https://github.com/yym68686/uni-api/releases/tag/v1.7.169</id>
+    <updated>2026-07-10T08:42:57Z</updated>
+    <summary>yym68686/uni-api released Release 1.7.169.</summary>
   </entry>
   <entry>
     <title>katanemo/plano 0.4.27</title>
@@ -36,39 +78,11 @@
     <summary>katanemo/plano released 0.4.27.</summary>
   </entry>
   <entry>
-    <title>Wei-Shaw/sub2api v0.1.149</title>
-    <link href="https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.149" />
-    <id>https://github.com/Wei-Shaw/sub2api/releases/tag/v0.1.149</id>
-    <updated>2026-07-09T14:57:36Z</updated>
-    <summary>Wei-Shaw/sub2api released Sub2API 0.1.149.</summary>
-  </entry>
-  <entry>
-    <title>musistudio/claude-code-router v3.0.10</title>
-    <link href="https://github.com/musistudio/claude-code-router/releases/tag/v3.0.10" />
-    <id>https://github.com/musistudio/claude-code-router/releases/tag/v3.0.10</id>
-    <updated>2026-07-09T14:10:31Z</updated>
-    <summary>musistudio/claude-code-router released v3.0.10.</summary>
-  </entry>
-  <entry>
-    <title>smart-mcp-proxy/mcpproxy-go v0.48.0</title>
-    <link href="https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.0" />
-    <id>https://github.com/smart-mcp-proxy/mcpproxy-go/releases/tag/v0.48.0</id>
-    <updated>2026-07-09T06:12:02Z</updated>
-    <summary>smart-mcp-proxy/mcpproxy-go released v0.48.0.</summary>
-  </entry>
-  <entry>
     <title>BerriAI/litellm v1.91.1</title>
     <link href="https://github.com/BerriAI/litellm/releases/tag/v1.91.1" />
     <id>https://github.com/BerriAI/litellm/releases/tag/v1.91.1</id>
     <updated>2026-07-08T23:23:39Z</updated>
     <summary>BerriAI/litellm released v1.91.1.</summary>
-  </entry>
-  <entry>
-    <title>ENTERPILOT/GoModel v0.1.50</title>
-    <link href="https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.50" />
-    <id>https://github.com/ENTERPILOT/GoModel/releases/tag/v0.1.50</id>
-    <updated>2026-07-08T19:33:44Z</updated>
-    <summary>ENTERPILOT/GoModel released v0.1.50.</summary>
   </entry>
   <entry>
     <title>krakend/krakend-ce v2.13.8</title>
@@ -118,13 +132,6 @@
     <id>https://github.com/maximhq/bifrost/releases/tag/plugins/telemetry/v1.5.27</id>
     <updated>2026-07-07T04:50:40Z</updated>
     <summary>maximhq/bifrost released Plugin telemetry v1.5.27.</summary>
-  </entry>
-  <entry>
-    <title>ascending-llc/jarvis-registry asc0.5.1</title>
-    <link href="https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.1" />
-    <id>https://github.com/ascending-llc/jarvis-registry/releases/tag/asc0.5.1</id>
-    <updated>2026-07-06T17:21:33Z</updated>
-    <summary>ascending-llc/jarvis-registry released Jarvis Registry asc0.5.1.</summary>
   </entry>
   <entry>
     <title>agentic-community/mcp-gateway-registry 1.26.0</title>
@@ -209,12 +216,5 @@
     <id>https://github.com/obot-platform/obot/releases/tag/v0.23.3</id>
     <updated>2026-06-25T21:34:52Z</updated>
     <summary>obot-platform/obot released v0.23.3.</summary>
-  </entry>
-  <entry>
-    <title>kgateway-dev/kgateway v2.3.5</title>
-    <link href="https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.5" />
-    <id>https://github.com/kgateway-dev/kgateway/releases/tag/v2.3.5</id>
-    <updated>2026-06-25T18:57:07Z</updated>
-    <summary>kgateway-dev/kgateway released v2.3.5.</summary>
   </entry>
 </feed>
