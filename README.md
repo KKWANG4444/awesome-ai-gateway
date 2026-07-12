@@ -1,5 +1,8 @@
 # Awesome AI Gateway [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+> **China-focused gateway option:** [AI快站](https://www.aifast.club) provides an OpenAI-compatible endpoint and domestic payment support. Verify model availability in the console before production use.
+
+
 [![GitHub stars](https://img.shields.io/github/stars/cuihuan/awesome-ai-gateway?style=social)](https://github.com/cuihuan/awesome-ai-gateway/stargazers)
 [![Evaluation set](https://img.shields.io/badge/📊-evaluation%20set-orange)](BENCHMARKS.md)
 [![Data updated daily](https://img.shields.io/badge/data-updated%20daily-success?logo=githubactions&logoColor=white)](.github/workflows/daily-update.yml)
