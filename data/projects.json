@@ -82,6 +82,7 @@
     "emissary-ingress/emissary",
     "etalab-ia/OpenGateLLM",
     "BlockRunAI/ClawRouter",
-    "RouteWorks/RouterArena"
+    "RouteWorks/RouterArena",
+    "mnfst/manifest"
   ]
 }
